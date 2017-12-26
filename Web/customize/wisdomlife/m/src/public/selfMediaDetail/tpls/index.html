@@ -1,0 +1,52 @@
+﻿<div class="wrapSelfMediaDetail">
+    <div class="idDetail">
+        <i class="icon iconfont icon-fanhui fanhui" ng-click="pageFunc.goback()"></i>
+        账号详情
+    </div>
+    <div class="wrapBanner">
+        <div class="row">
+            <div class="avatar">
+                <img src="{{pageData.article.imgSrc}}" alt="{{pageData.article.title}}" class="img">
+                <!--<img src="/customize/wisdomlife/m/static/img/cctv.png" class="img" />-->
+            </div>
+            <div class="col">
+                <div class="title">{{pageData.article.title}}</div>
+                <div class="colorLightBlack">认证信息：{{pageData.article.k1}}</div>
+                <div class="colorLightBlack">时间：{{pageData.article.k2}}</div>
+            </div>            
+                <a id="btnFollow" href="javascript:;" ng-if="pageData.selfDataMedia.k10 != ''" class="button" ng-click="pageFunc.follow(pageData.article)">关注</a>                 
+        </div>
+    </div>
+    <div class="row influence">
+        <div class="col rLine textCenter">
+            影响力度：{{pageData.article.k6}}
+        </div>
+        <div class="col textCenter">
+            智慧指数：{{pageData.article.k4}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col textCenter">
+            影响区域：{{pageData.article.k9}}
+        </div>
+        <div class="col textCenter">
+            行业排名：{{pageData.article.k7}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col textCenter">
+            行业分类：{{pageData.article.categoryName}}
+        </div>
+        <div class="col textCenter">
+            总体排名：{{pageData.article.k8}}
+        </div>
+    </div>
+    <div class="article">
+        <div class="introduction">
+            <div class="redBlock"></div>
+            账号介绍：
+        </div>
+        <p ng-bind-html="pageData.article.content" class="pLeft12 pRight12">
+        </p>
+    </div>
+</div>

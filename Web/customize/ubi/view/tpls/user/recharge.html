@@ -1,0 +1,57 @@
+<div class="layout  warpRecharge boxMain ">
+    <div class="row">
+       <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span class="hand" ng-click="go('#/userspace/'+pageData.id)">个人中心</span> >积分充值</span>
+                </span>
+            </div>
+            <div class="warpReCon">
+                <div class="reConOne">
+                    <label for="txt">充值数量：</label><input id="txt" type="text" class="txt" ng-model="pageData.score" placeholder="请输入积分数" required="required" onkeyup="this.value=this.value.replace(/\D/g,'')"
+       onafterpaste="this.value=this.value.replace(/\D/g,'')"><span>积分（100积分={{pageData.fee}}元）</span>
+                </div>
+                <div class="reConOne">
+                    <label>
+                        <input type="radio" ng-model="pageData.score" value="100" name="group"/><span class="mLeft10 mRight10">100</span>
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="pageData.score" value="300" name="group"/><span class="mLeft10 mRight10">300</span>
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="pageData.score" value="500" name="group"/><span class="mLeft10 mRight10">500</span>
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="pageData.score" value="1000" name="group"/><span class="mLeft10 mRight10">1000</span>
+                    </label>
+                </div>
+                <div class="reConOne">
+                    <label for="txt">应付金额：</label><span class="money">  <b ng-bind=" pageFunc.getTotalFee()"></b> 元</span>
+                </div>
+                <div class="reConOne">
+                    <label for="txt">支付方式：</label>
+                    <input type="radio" ng-model="pageData.type" value="1" name="rad"><img class="reImg" alt="" src="/customize/ubi/images/weixin.png" ng-click="pageData.type=1">
+                    <input type="radio" ng-model="pageData.type" value="2" disabled="disabled" name="rad"><img class="reImg" alt="" disabled="disabled" src="/customize/ubi/images/zhifubao.png">
+                </div>
+                <div class="reBut">
+                    <button class="btn btn-primary" ng-click="pageFunc.submit()">充值</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpAside">
+                <div class="reRightCon">
+                <h5>充值说明</h5>
+               <p>充值积分指用户通过付款购买充值交易成功后所获得的奖励回馈。用户所积累的积分可在公开课中抵扣，100积分=100元（无额度上限）。</p>
+            </div>
+            <div class="reRightConOne">
+                <p><i class="iconfont icon-dianhua you"></i>021 53089477</p>
+                <p><i class="iconfont icon-youxiang you"></i>cs@elao360.com</p>
+            </div>
+    
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        function selectFile(obj) {
+            var fileExt = obj.value.substr(obj.value.lastIndexOf(".")).toLowerCase();
+            var keyStr = document.getElementById("key").value;
+            document.getElementById("key").value = keyStr = keyStr.replace("${filename}", "727F7A536D5746D694530995C3A30551" + fileExt);
+            console.log(document.getElementById("key").value);
+        }
+    </script>
+</head>
+<body>
+    <form action="http://test-lj.oss-cn-shanghai.aliyuncs.com" method="post" enctype="multipart/form-data">
+        <label for="file">选择文件:</label>
+        <input type="hidden" name="OSSAccessKeyId" id="OSSAccessKeyId" value="pfQr6tsJS8hnEFwy" />
+        <input type="hidden" name="policy" id="policy" value="eyJleHBpcmF0aW9uIjoiMjAxNS0xMC0yM1QyMTo0ODowMC4wMDBaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoidGVzdC1saiJ9LFsic3RhcnRzLXdpdGgiLCIka2V5IiwiaW1hZ2UvMjAxNTEwMjMvIl0sWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMSwxMDQ4NTc2MF1dfQ==" />
+        <input type="hidden" name="Signature" id="Signature" value="mvkxDPmqism7wnTV6MIdPKda09Q=" />
+        <input type="hidden" name="key" id="key" value="image/20151023/${filename}" />
+        <input type="file" name="file" id="file" onchange="selectFile(this)" />
+        <br />
+        <input type="submit" name="submit" value="确定" />
+    </form>
+    <img src="" />
+</body>
+</html>

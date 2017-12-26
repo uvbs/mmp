@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+
+    <title>订单信息</title>
+    <!--发布路径-->
+    <!--<link href="/lib/ionic/ionic.css" rel="stylesheet"/>-->
+    <!--<link href="/css/global-m.css" rel="stylesheet"/>-->
+    <!--<link href="/lib/layer.mobile/need/layer.css" rel="stylesheet"/>-->
+
+    <!--开发路径-->
+    <link href="/OpenWebApp/lib/ionic/ionic.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/css/global-m.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/lib/layer.mobile/need/layer.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="wrapSubmitOrder " id="wrapSubmitOrder">
+
+    <div class="list pTop45">
+        <div class="item pAll2 font14 listtop">
+            <div class="row">
+                <div class="col txtCenter">订单信息</div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">预约人:</div>
+                <div class="col col-75"><span v-text="userInfo.truename"></span></div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">手机号:</div>
+                <div class="col col-75"><span v-text="userInfo.phone"></span></div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">
+                    <span v-text="orderDetail.category_name+':'"></span>
+                </div>
+                <div class="col col-75 itemtitle">
+                        <!--<span v-if="product.price>0"-->
+                              <!--v-text="product.title+&nbsp;&nbsp;&nbsp;&nbsp;+product.price*timeList.length+'元'">-->
+                        <!--</span>-->
+                        <!--<span v-if="product.price==0" v-text="product.title"></span>-->
+                    <span v-text="product.title"></span>
+                </div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">预约日期:</div>
+                
+                <div class="col col-75">
+                    <div v-for="item in timeList">
+                        <span v-text="item.start_date_show"></span>
+                            -
+                        <span v-text="item.end_date_show"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- <div class="row" v-for="item in timeList" v-show="timeList.length>0"> -->
+                <!-- <div class="col"></div> -->
+
+                <!-- <div class="col col-75"><span v-text="item.alltime"></span></div> -->
+
+            <!-- </div> -->
+
+            <!--<div class="row">-->
+            <!--<div class="col"></div>-->
+            <!--<div class="col col-75">18:00-19:00</div>-->
+            <!--</div>-->
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">增值服务:</div>
+                <div class="col col-75">
+                    <span v-show="added_details.length>0"></span>
+                    <span v-show="added_details.length==0">无</span>
+                </div>
+            </div>
+            <div class="row" v-for="service in added_details" v-show="added_details.length>0">
+                <div class="col"></div>
+                <div class="col col-75 itemtitle"
+                     v-text="service.title+' '+(service.price+service.unit)+'*'+service.count+'&nbsp;&nbsp;&nbsp;&nbsp;'+service.price*service.count+'元'">
+
+                </div>
+            </div>
+        </div>
+        <!--测试-->
+        <!--<div class="item pAll2 font14">-->
+            <!--<div class="row">-->
+                <!--<div class="col txtRight fontBold">订单号:</div>-->
+                <!--<div class="col col-75">-->
+                    <!--<span v-text="orderId"></span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--测试-->
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">订单总价:</div>
+                <div class="col col-75">
+                    <span v-show="orderDetail.totalfee!=0" v-text="orderDetail.totalfee+'元'"></span>
+                    <span v-show="orderDetail.totalfee==0">免费</span>
+                </div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">支付方式:</div>
+                <div class="col col-75">
+                    <span v-if="orderDetail.pay_type=='WEIXIN'">微信</span>
+                </div>
+            </div>
+        </div>
+        <div class="item" v-if="orderDetail.totalfee!=0">
+            <div class="account-wrap">
+                <div class="account-item" v-if="showScore==2">
+                    <div class="floatL font16 ng-binding">使用积分(共有<span v-text="userInfo.totalscore"></span>积分)</div>
+                    <div class="icon iconfont icon-jiahao iconfontfix font18 floatR" v-if="extend" v-on:click="extend=!extend">+
+                    </div>
+                    <div class="icon iconfont icon-jianhao iconfontfix font18 floatR" v-if="!extend" v-on:click="extend=!extend">-
+                    </div>
+                    <div class="Clear"></div>
+                    <div v-if="!extend" style="float:left;height:20px;line-height:20px;margin-top:10px;">
+                        <label class="floatL account-score" for="pointsid">
+                            <input class="account-checkbox" type="checkbox" id="pointsid"
+                                   v-model="isChecked" v-on:click="acountChange()" style="margin-bottom:4px;">
+                        <span
+                                class="font16" v-text="'可用'+scoreNeed+'积分'">
+                        </span>
+                        </label>
+                    </div>
+                    <div v-if="!extend" class="font16 floatR" style="margin-top:15px;">抵￥<span v-text="cashGet"></span>
+                    </div>
+                    <div class="Clear"></div>
+                </div>
+                <div class="account-item">
+                    <div class="floatL font16 ng-binding">使用余额(共有<span v-text="userInfo.account_amount"></span>元)</div>
+                    <div class="icon iconfont icon-jiahao iconfontfix font18 floatR" v-if="acountExtend" v-on:click="acountExtend=!acountExtend">+
+                    </div>
+                    <div class="icon iconfont icon-jianhao iconfontfix font18 floatR" v-if="!acountExtend" v-on:click="acountExtend=!acountExtend">-
+                    </div>
+                    <div class="Clear"></div>
+                    <div v-if="!acountExtend" style="float:left;height:20px;line-height:20px;margin-top:10px;">
+                        <label class="floatL account-score" for="leftmoney">
+                            <input class="account-checkbox" type="checkbox" id="leftmoney"
+                                   v-model="isAcountChecked" v-on:click="acountChange()" style="margin-bottom:4px;">
+                        <span
+                                class="font16" v-text="'可用'+useAcount+'元'">
+                        </span>
+                        </label>
+                    </div>
+                    <div v-if="!acountExtend" class="font16 floatR" style="margin-top:15px;">抵￥<span v-text="useAcount"></span>
+                    </div>
+                    <div class="Clear"></div>
+                </div>
+                <!--<div class="account-item">-->
+                <!--<div class="floatL font16">使用优惠券&nbsp;&nbsp;&nbsp;-->
+                <!--<span class="green font16 ng-binding" style="font-weight:bold;">-->
+                <!--已领取张优惠券-->
+                <!--</span>-->
+                <!--</div>-->
+                <!--<div class="iconfont icon-jiahao font18 floatR" ng-click="showusecard()"></div>-->
+                <!--<div class="iconfont icon-jianhao font18 floatR" ng-click="hideusecard()"></div>-->
+                <!--<div class="Clear"></div>-->
+                <!--<div>-->
+                <!--<label for="nousecoupon" class="card-wrap">-->
+                <!--<div class="card-txt floatL font16" style="line-height: 30px;height:30px;">-->
+                <!--<div>不使用优惠券</div>-->
+                <!--</div>-->
+                <!--<input class="card-radio floatR" type="radio" name="card"-->
+                <!--id="nousecoupon" ng-click="nousecoupon()" ng-model="isnullCP" value="isnull">-->
+
+                <!--<div class="Clear"></div>-->
+                <!--</label>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="account-item" v-if="vm.showCash==2">
+                    <div>
+                        <div class="floatL font16"><strong>支付总金额</strong></div>
+                        <div class="floatR font16 red">￥<span  v-text="totalPay"></span>
+                            <!--<span v-if="!isChecked" v-text="orderDetail.totalfee"></span>-->
+                        </div>
+                        <div class="Clear"></div>
+                    </div>
+                    <div style="margin-top:10px;">
+                        <div class="floatL font16">可获积分</div>
+                        <div class="floatR font16"><span v-text="scoreGet"></span>分</div>
+                        <div class="Clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="bt-wrap margin-bt20">-->
+        <!--<div class="floatL submitorderL">-->
+        <!--<div class="allpaymoneyL"><strong>支付总金额</strong></div>-->
+        <!--<div class="allpaymoneyR"><span class="red font18">￥164</span></div>-->
+        <!--</div>-->
+        <!--<div class="submitorderR" ng-click="submitOrderAndPay()">确认</div>-->
+        <!--</div>-->
+    </div>
+    <div class="bottom pAll2">
+        <div v-if="orderDetail.totalfee!=0" class="button button-block button-balanced" v-on:click="submitOrder()">
+            <!-- <i class="iconfont icon-xuanze"></i> -->
+            确认支付：￥<span v-if="isChecked&&scoreNeed>0" v-text="totalPay+'+'+scoreNeed+'积分'"></span><span v-if="!isChecked||scoreNeed==0" v-text="totalPay"></span>
+        </div>
+        <div v-if="orderDetail.totalfee==0" class="button button-block button-balanced" v-on:click="submitOrder()">
+            确认
+        </div>
+    </div>
+</div>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<!--发布路径-->
+<!--<script src="/lib/vue/vue.min.js"></script>-->
+<!--<script src="/lib/jquery/jquery-2.1.1.min.js"></script>-->
+<!--<script src="/lib/layer.mobile/layer.m.js"></script>-->
+<!--<script src="/Scripts/global-m.js"></script>-->
+<!--<script src="http://file.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>-->
+
+<!--开发路径-->
+<script src="/OpenWebApp/lib/vue/vue.min.js"></script>
+<script src="/OpenWebApp/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="/OpenWebApp/lib/layer.mobile/layer.m.js"></script>
+<script src="/OpenWebApp/Scripts/global-m.js"></script>
+<script src="http://file.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+
+<script>
+    var vm = new Vue({
+        el: '#wrapSubmitOrder',
+        data: {
+            userInfo: {},
+            extend: false, //是否显示使用积分
+            acountExtend:false, //余额折叠
+            scoreNeed: 0, //需要多少积分
+            cashGet: 0, //可以抵用多少钱
+            useAcount:0,  //使用多少余额
+            totalPay: 0, //实际需要付款
+            scoreGet: 0,  //实际付款成功可获得多少积分
+            isChecked: false, //使用积分是否选中
+            isAcountChecked:false, //使用余额是否选中
+            showScore : 1,  //是否显示积分兑换，1为不显示，2为积分兑现金
+            showCash : 1,  //是否显示得多少积分 1为不显示，2为下单得积分
+            orderDetail: {},
+            timeList: [],  //时间段
+            added_details: [],  //增值服务
+            addList: [], //
+            product: {},
+            orderId: '',
+
+            score: 0,//接口获取来的积分
+            cash: 1,  //接口获取来的现金
+            scoreWill: 0, //接口获取来的要得到的比例积分
+            cashWill: 1  //接口获取来的要抵用的比例现金
+            // oldPrice:0,   //选择优惠券之前的总价
+            // isFirstTime:0  //判断是否是第一次选择优惠券
+        },
+        methods: {
+            goUrlChange: goUrlChange,
+            orderPay_wx: orderPay_wx, //微信支付
+            wxConfig: wxConfig,
+            runWxConfig: runWxConfig,
+            submitOrder: submitOrder, //下单
+            // totalChange: totalChange, //是否选中，选中出发事件
+            acountChange: acountChange,
+            getScoreCash: getScoreCash,   //多少积分可获多少现金  tomoney
+            getCashScore: getCashScore,   //支付多少钱可获多少积分  toscore
+            userInfo: userInfo,   //获取用户姓名和手机  getuserinfo
+            init: init
+        }
+    });
+    vm.init();
+    function init() {
+        vm.product = JSON.parse(localStorage.getItem('product'));
+        vm.orderDetail = JSON.parse(localStorage.getItem('dataJson'));
+//        if (vm.orderDetail.order_details && vm.orderDetail.order_details.length > 0) {
+        vm.orderDetail.min_start_date = vm.orderDetail.min_start_date.replace(new RegExp(/(-)/g), '/');
+
+        var date = new Date(vm.orderDetail.min_start_date);
+        var dateStr = date.format('yyyy年MM月dd日');//formatTime(date,'');
+        // debugger;
+        for (var j = 0; j < vm.orderDetail.skus.length; j++) {
+
+            var start = vm.orderDetail.skus[j].start_date.replace(/-/g,'/');
+            var end = vm.orderDetail.skus[j].end_date.replace(/-/g,'/');
+                            
+            // vm.$set('orderDetail.skus[j].start_date_show', new Date(start).format('yyyy年MM月dd日 hh:mm'));
+            // vm.$set('orderDetail.skus[j].end_date_show', new Date(end).format('hh:mm'));
+
+            if(start!=''&&end!=''){
+//                vm.orderDetail.skus[j].start_date_show = new Date(start).format('yyyy年MM月dd日 hh:mm');
+//                vm.orderDetail.skus[j].end_date_show = new Date(end).format('hh:mm');
+            }
+            //用于区分日期，时间段和方块的时间 ，1表示第一种的日期，2表示增值服务，3表示方块
+            if(vm.orderDetail.skus[j].type==1||vm.orderDetail.skus[j].type==3){
+                var starttime = parseInt(start.substring(11, 16)) < 10 ? start.substring(11, 15) : start.substring(10, 16);
+                var endtime = parseInt(end.substring(11, 16)) < 10 ? end.substring(12, 16) : end.substring(11, 16);
+
+                if((start!=''&&end!='')){
+                    var one = {
+                        date: dateStr,
+                        alltime: new Date(start).format('hh:mm') + '-' + new Date(end).format('hh:mm')
+                    };
+                    one.start_date_show = new Date(start).format('yyyy年MM月dd日 hh:mm');
+                    one.end_date_show = new Date(end).format('hh:mm');
+                    vm.timeList.push(one);
+                }
+            }
+            else if(vm.orderDetail.skus[j].type==2){
+                vm.addList.push(vm.orderDetail.skus[j]);
+            }
+//            else if(vm.orderDetail.skus[j].type==3){
+//
+//            }
+
+//            //查找出时间段
+//            if (vm.orderDetail.skus[j].sku_id == vm.product.sku_id) {
+//                var starttime = parseInt(start.substring(11, 16)) < 10 ? start.substring(11, 15) : start.substring(10, 16);
+//                var endtime = parseInt(end.substring(11, 16)) < 10 ? end.substring(12, 16) : end.substring(11, 16);
+//
+//                if((start!=''&&end!='')){
+//                    var one = {
+//                        date: dateStr,
+//                        alltime: new Date(start).format('hh:mm') + '-' + new Date(end).format('hh:mm')
+//                    };
+//                    one.start_date_show = new Date(start).format('yyyy年MM月dd日 hh:mm');
+//                    one.end_date_show = new Date(end).format('hh:mm');
+//                    vm.timeList.push(one);
+//                }
+//            }
+//            else {
+//                vm.addList.push(vm.orderDetail.skus[j]);
+//            }
+        }
+
+        //找到选中的增值服务，创建以下四个字段用于显示到页面上
+        for (var m = 0; m < vm.addList.length; m++) {
+            for (var i = 0; i < vm.product.relation_products.length; i++) {
+                if (vm.addList[m].sku_id == vm.product.relation_products[i].sku_id) {
+                    vm.addList[m].price = vm.product.relation_products[i].price;
+                    vm.addList[m].title = vm.product.relation_products[i].title;
+                    vm.addList[m].unit = vm.product.relation_products[i].unit;
+                    vm.added_details.push(vm.addList[m]);
+                }
+            }
+        }
+
+        //product.title+&nbsp;&nbsp;&nbsp;&nbsp;+product.price*timeList.length+'元'
+        if(vm.product.price>0){
+            vm.product.title=vm.product.title+' '+vm.product.price*vm.timeList.length+'元';
+        }
+//        }
+
+        userInfo();
+        getScoreCash();
+        wxConfig();
+    }
+    //下单
+    function submitOrder() {
+        var score=0;
+        var leftmoney=0;
+        if(vm.isChecked){
+            score=vm.scoreNeed;
+        }
+        if(vm.isAcountChecked&&vm.userInfo.account_amount>0){
+            leftmoney=vm.useAcount;
+        }
+        var url = '/serv/api/booking/order/add.ashx';
+        var dataJson = {
+            pay_type: 'WEIXIN',
+            use_score: score,
+            use_amount:leftmoney,
+            product_id: vm.product.product_id,
+            min_start_date: vm.orderDetail.min_start_date,
+            max_end_date: vm.orderDetail.max_end_date,
+            skus: vm.orderDetail.skus
+        };
+        var dataobj = {
+            type: 'POST',
+            url: url,
+            data: {data: JSON.stringify(dataJson)}
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+//                clearBeforeTimeList();
+                vm.orderId = data.result.order_id;
+
+               // alert('订单号：'+data.result.order_id+',总金额:'+vm.totalPay);
+               // return;
+                // if (vm.orderDetail.totalfee <= 0) {
+                if(vm.totalPay <= 0){
+                    if(vm.orderDetail.totalfee != 0){
+                        alert('预约成功');
+                    }
+                    else{
+                        alert('提交成功，待审核');
+                    }
+                    window.location.href = 'orderDetail.html?orderId=' + vm.orderId + '&type=' + vm.orderDetail.category_type;
+                }
+                else {
+                    orderPay_wx(data.result.order_id);
+                }
+            } else {
+                if(data.msg=='所选时间已有成功的预约'){
+                    alert('所选时间已被预约');
+                }
+                else{
+                    alert('预约失败');
+                }
+//                alert(data.msg);
+            }
+        }, function (data) {
+            alert(data.msg);
+        });
+    }
+
+    function goUrlChange() {
+        window.location.href = 'index.html?type=' + vm.orderDetail.category_type;
+    }
+
+    function orderPay_wx() {
+        var url = '/serv/api/mall/payment.ashx';
+        var urldata = {
+            action: 'brandwcpayrequest',
+            order_id: vm.orderId,
+            order_type: 'mall'
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: urldata
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.errcode == 0) {
+                //拼接微信支付参数
+                var paydata = {
+                    timestamp: data.pay_req.timeStamp,
+                    nonceStr: data.pay_req.nonceStr,
+                    package: data.pay_req.package,
+                    signType: data.pay_req.signType,
+                    paySign: data.pay_req.paySign,
+                    success: function (res) {
+//                        resolve(res)
+//                        goUrlChange('orderDetail.html', vm.orderId);
+                        window.location.href = 'orderDetail.html?orderId=' + vm.orderId + '&type=' + BookingConfig.category_type;
+                    },
+                    cancel: function (res) {
+//                        reject(res)
+                    }
+                };
+                wx.chooseWXPay(paydata);
+            } else {
+                alert(data.errmsg);
+                return;
+            }
+        }, function (data) {
+            if(data.errmsg!='请在微信中打开'){
+                data.errmsg='该商户微信支付还没有配置';
+            }
+            alert(data.errmsg);
+        });
+    }
+
+    /*微信接口*/
+    function wxConfig() {
+        var url = '/serv/wxapi.ashx';
+        var urldata = {
+            action: 'getjsapiconfig',
+            url: location.href.split('#')[0]
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: urldata
+        };
+        ajaxReq(dataobj, function (wxapidata) {
+            runWxConfig(wxapidata);
+        }, function (data) {
+            alert(data.errormsg);
+        });
+    }
+
+    function runWxConfig(configdata) {
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: configdata.appId, // 必填，公众号的唯一标识
+            timestamp: configdata.timestamp, // 必填，生成签名的时间戳
+            nonceStr: configdata.nonceStr, // 必填，生成签名的随机串
+            signature: configdata.signature, // 必填，签名，见附录1
+            jsApiList: [
+                "onMenuShareTimeline",
+                "onMenuShareAppMessage",
+                "onMenuShareQQ",
+                "onMenuShareWeibo",
+                "startRecord",
+                "stopRecord",
+                "onVoiceRecordEnd",
+                "playVoice",
+                "pauseVoice",
+                "stopVoice",
+                "onVoicePlayEnd",
+                "uploadVoice",
+                "downloadVoice",
+                "chooseImage",
+                "previewImage",
+                "uploadImage",
+                "downloadImage",
+                "translateVoice",
+                "getNetworkType",
+                "openLocation",
+                "getLocation",
+                "hideOptionMenu",
+                "showOptionMenu",
+                "hideMenuItems",
+                "showMenuItems",
+                "hideAllNonBaseMenuItem",
+                "showAllNonBaseMenuItem",
+                "closeWindow",
+                "scanQRCode",
+                "chooseWXPay",
+                "openProductSpecificView",
+                "addCard",
+                "chooseCard",
+                "openCard"
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+    }
+
+    /*微信接口 end*/
+
+    //获取用户姓名和手机
+    function userInfo() {
+        var url = '/serv/api/user/info.ashx';
+        var dataJson = {
+            action: 'currentuserinfo'
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: dataJson
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data) {
+                vm.userInfo = data;
+                vm.totalPay = vm.orderDetail.totalfee;
+                getScoreCash();
+            } else {
+                alert('获取用户信息失败');
+            }
+        }, function (data) {
+            alert(data.msg);
+        })
+    }
+    //积分选中逻辑,1.积分够：不显示余额；2.积分不够：显示余额选中不选中，抵用还差的金额；
+    function scoreChoosed() {
+      var totalscore = 0;
+      totalscore = Math.ceil((vm.score / vm.cash) * vm.orderDetail.totalfee);
+      if (totalscore > vm.userInfo.totalscore) { //用户积分不够
+        vm.scoreNeed = vm.userInfo.totalscore;  //需要用掉积分
+        vm.cashGet = (vm.userInfo.totalscore * vm.cash) / vm.score;  //积分抵用金额
+//        var leftCashNeed = vm.orderDetail.totalfee - vm.cashGet; //用积分抵用后还差多少
+        var leftCashNeed=minusNum(vm.orderDetail.totalfee,vm.cashGet);
+        if (vm.isAcountChecked) { //选中了余额,判断余额是否够
+          if (vm.userInfo.account_amount > leftCashNeed) {//余额够
+            vm.useAcount = leftCashNeed;
+            vm.totalPay = 0;
+          }
+          else { //余额不够
+            vm.useAcount = vm.userInfo.account_amount;
+//            vm.totalPay = leftCashNeed - vm.userInfo.account_amount;
+            vm.totalPay=minusNum(leftCashNeed,vm.userInfo.account_amount);
+          }
+        }
+        else { //没有选中余额
+          if (vm.userInfo.account_amount > vm.orderDetail.totalfee) {//够余额
+            vm.useAcount = vm.orderDetail.totalfee;
+          }
+          else {
+            vm.useAcount = vm.userInfo.account_amount;
+          }
+          vm.totalPay = leftCashNeed;
+        }
+      }
+      else { //积分够
+        vm.scoreNeed = totalscore;
+        vm.cashGet = vm.orderDetail.totalfee;
+        if (vm.userInfo.account_amount > vm.orderDetail.totalfee) {//够余额
+          vm.useAcount = vm.orderDetail.totalfee;
+        }
+        else {
+          vm.useAcount = vm.userInfo.account_amount;
+        }
+        vm.totalPay = 0;  //将总金额设置为0,积分抵扣掉了
+        vm.isAcountChecked = false; //将余额设置为不选中
+      }
+      getCashScore();
+    }
+
+    //积分不选中：余额选中不选中情况(积分够与不够都要处理)
+    function scoreNotChoosed() {
+      var totalscore = 0;
+      totalscore = Math.ceil((vm.score / vm.cash) * vm.orderDetail.totalfee);
+      if (totalscore > vm.userInfo.totalscore) { //用户积分不够
+        vm.scoreNeed = vm.userInfo.totalscore;  //需要用掉积分
+        vm.cashGet = (vm.userInfo.totalscore * vm.cash) / vm.score;  //积分抵用金额
+      }
+      else { //积分够
+        vm.scoreNeed = totalscore;
+        vm.cashGet = vm.orderDetail.totalfee;
+      }
+      if (vm.isAcountChecked) { //选中了余额,判断余额是否够
+        if (vm.userInfo.account_amount > vm.orderDetail.totalfee) {//余额够
+          vm.useAcount = vm.orderDetail.totalfee;
+          vm.totalPay = 0;
+        }
+        else { //余额不够
+          vm.useAcount = vm.userInfo.account_amount;
+          vm.totalPay=minusNum(vm.orderDetail.totalfee,vm.userInfo.account_amount);
+//          vm.totalPay = vm.orderDetail.totalfee - vm.userInfo.account_amount;
+        }
+      }
+      else { //没有选中余额
+        if (vm.userInfo.account_amount > vm.orderDetail.totalfee) {//够余额
+          vm.useAcount = vm.orderDetail.totalfee;
+        }
+        else {
+          vm.useAcount = vm.userInfo.account_amount;
+        }
+        vm.totalPay = vm.orderDetail.totalfee;
+      }
+      getCashScore();
+    }
+
+
+    //余额
+    function acountChange(){
+          //判断积分是否选中
+          if (!vm.isChecked) {
+            scoreNotChoosed();
+          }
+          else {
+            scoreChoosed();
+          }
+    }
+
+    // //积分
+    // function totalChange(){
+    //     if(!vm.isAcountChecked||(vm.isAcountChecked&&vm.userInfo.account_amount<vm.orderDetail.totalfee)){
+    //         if(!vm.isChecked){
+    //             vm.totalPay=vm.orderDetail.totalfee;
+    //             getCashScore();
+    //         }
+    //         else{
+    //             getScoreCash();
+    //         }
+    //     }
+    // }
+
+    //多少积分可获多少现金
+    function getScoreCash() {
+        var url = '/serv/api/mall/score.ashx';
+        var dataJson = {
+            action: 'exchangerate'
+        };
+        var dataobj = {
+            type: 'POST',
+            url: url,
+            data: dataJson
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.errcode == 0) {
+            if (data.amount != 0) {
+              vm.showScore = 2;
+              vm.score = data.score;
+              vm.cash = data.amount;
+              acountChange();
+            }
+            else {
+              vm.showScore = 1;
+              vm.totalPay = vm.orderDetail.totalfee;
+            }
+          } else {
+            alert('获取失败');
+            vm.totalPay = vm.orderDetail.totalfee;
+          }
+        }, function (data) {
+            alert(data.msg);
+        })
+    }
+
+    //支付多少钱可获多少积分
+    function getCashScore() {
+        var url = '/serv/api/mall/score.ashx';
+        var dataJson = {
+            action: 'scoregetrate'
+        };
+        var dataobj = {
+            type: 'POST',
+            url: url,
+            data: dataJson
+        };
+        ajaxReq(dataobj, function (data) {
+           if (data.amount != 0) {
+            vm.showCash = 2;
+            vm.scoreWill = data.score;
+            vm.cashWill = data.amount;
+            vm.scoreGet = Math.floor((vm.scoreWill * vm.totalPay) / vm.cashWill);
+          }
+          else {
+            vm.showCash = 1;
+            vm.totalPay = vm.orderDetail.totalfee;
+          }
+        }, function (data) {
+            alert(data.msg);
+        })
+    }
+
+    //js float中相减后面出现多位小数
+    function minusNum(num1, num2) {
+        var sq1, sq2, m;
+        try {
+            sq1 = num1.toString().split(".")[1].length;
+        }
+        catch (e) {
+            sq1 = 0;
+        }
+        try {
+            sq2 = num2.toString().split(".")[1].length;
+        }
+        catch (e) {
+            sq2 = 0;
+        }
+        m = Math.pow(10, Math.max(sq1, sq2));
+        return (num1 * m - num2 * m) / m;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="layout boxMain warpLogin">
+    <div class="loginTopBot">
+        <span>找回密码</span>
+    </div>
+    <div class="loginMainCon">
+        <form ng-submit="pageFunc.submitPwdBack()">
+            <div class="userConOne">
+                <div class="form-horizontal">
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-sm-2 control-label">邮 箱：</label>
+                        <div class="col-sm-7">
+                            <input type="email" class="form-control" ng-model="pageData.userEmail" placeholder="输入邮箱">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group loginTable"> <label for="inputPassword3" class="col-sm-2 control-label">验证码：</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" ng-model="pageData.checkCode" maxlength="4" required placeholder="验证码">
+                        </div>
+                        <div class="col-sm-3">
+                            <img class="checkCode" src="/ValidateCode.aspx?" onclick="this.src=this.src+'?'">
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="javascript:;">看不清？</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary " ng-click="pageFunc.findPwd()">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WXMall.master.cs" Inherits="ZentCloud.JubitIMP.Web.App.Wap.Mall.WXMall" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="/css/wxmall/WXMall.css?v=0.01" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    <div class="alertBg">
+    </div>
+    <div id="AlertContent">
+        商品已在购物车
+    </div>
+    <script src="/Scripts/zepto.min.js" type="text/javascript"></script>
+    <script src="/Ju-Modules/Common/Cookie.Min.js" type="text/javascript"></script>
+    <script src="/Scripts/json2.min.js" type="text/javascript"></script>
+    <script src="/Scripts/StringBuilder.Min.js" type="text/javascript"></script>
+    <script src="/Scripts/wxmall/init.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderScript" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" validateRequest="false" CodeBehind="PayRechargeNotify.aspx.cs" Inherits="ZentCloud.JubitIMP.Web.WxPayNotify.PayRechargeNotify" %>

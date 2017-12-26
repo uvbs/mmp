@@ -1,0 +1,36 @@
+<!doctype html><html ng-app="mmpadmin"><head><meta charset="utf-8"><title>mmpadmin</title><meta name="description" content=""><meta name="viewport" content="width=device-width"><link rel="stylesheet" href="styles/vendor-74b5d40e6d.css"><link rel="stylesheet" href="styles/app-c5d4a48d6b.css"></head><body><script>
+    var ADMIN_CONFIG={
+            "productEditor":{
+                "sku":true,
+            },
+            "orderDetail":{
+                "updateStatu":true
+            },
+            "articleList":{
+                "addBtn":true,
+                "deleteBtn":true,
+                "setLevelBtn":true,
+                "setCatBtn":true
+            }
+
+        };
+
+    if(location.href.match("dev3")||location.href.match("jikuwifi")){
+        ADMIN_CONFIG={
+            "productEditor":{
+                "sku":false,
+            },
+            "orderDetail":{
+                "updateStatu":false
+            },
+            "articleList":{
+                "addBtn":false,
+                "deleteBtn":false,
+                "setLevelBtn":false,
+                "setCatBtn":false
+            }
+        };
+    }
+    </script><!--[if lt IE 10]>
+ <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+ <![endif]--><div ui-view=""></div><script src="scripts/vendor-9365c9bd49.js"></script><script src="scripts/app-dc395f99cb.js"></script></body></html>

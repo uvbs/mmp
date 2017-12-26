@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css" />
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function selected(obj, v) {
+            $("#li1").find("img").attr("src", "images/index1.png");
+            $("#li2").find("img").attr("src", "images/index2.png");
+            $("#li3").find("img").attr("src", "images/index3.png");
+            $("#li4").find("img").attr("src", "images/index4.png");
+            $("#li5").find("img").attr("src", "images/index5.png");
+            $(obj).find("img").attr("src", "images/index" + v + "_1.png");
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="gohome">
+            <a href="index.html">
+                <img src="images/index6.png" /></a></div>
+        <div class="homelogo">
+            <a href="index.html">
+                <img src="images/index7.png" /></a></div>
+        <div class="gomenu">
+            <a href="login.html">
+                <img src="images/index8.png" />
+            </a>
+        </div>
+    </div>
+    <!--Page 1 content-->
+    <div class="swiper-slide sliderbg1">
+        <div class="swiper-container swiper-nested">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <div class="pages_container">
+                            <div class="index_container1">
+                                <div class="image_single">
+                                    <a href="goods_details.html">
+                                        <img src="images/1_01.png" alt="" title="" border="0" /></a></div>
+                                <div class="menu4">
+                                    <ul id="tabsmenu">
+                                        <li id="li1" class="active" onclick="selected(this,1)"><a href="#tab1">
+                                            <img src="images/index1_1.png" alt="" title="" /><span>水果</span></a></li>
+                                        <li id="li2" onclick="selected(this,2)"><a href="#tab2">
+                                            <img src="images/index2.png" alt="" title="" /><span>生鲜</span></a></li>
+                                        <li id="li3" onclick="selected(this,3)"><a href="#tab3">
+                                            <img src="images/index3.png" alt="" title="" /><span>保健</span></a></li>
+                                        <li id="li4" onclick="selected(this,4)"><a href="#tab4">
+                                            <img src="images/index4.png" alt="" title="" /><span>限时半价</span></a></li>
+                                        <li id="li5" onclick="selected(this,5)"><a href="#tab5">
+                                            <img src="images/index5.png" alt="" title="" /><span>最新活动</span></a></li>
+                                    </ul>
+                                </div>
+                                <div id="tab1" class="tabcontent">
+                                    <div class="image_single">
+                                        <a href="goods_details.html">
+                                            <img src="images/1_02.png" alt="" title="" border="0" /></a></div>
+                                    <div class="image_single">
+                                        <a href="goods_details.html">
+                                            <img src="images/1_03.png" alt="" title="" border="0" /></a></div>
+                                </div>
+                                <div id="tab2" class="tabcontent">
+                                </div>
+                                <div id="tab3" class="tabcontent">
+                                </div>
+                                <div id="tab4" class="tabcontent">
+                                </div>
+                                <div id="tab5" class="tabcontent">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="menu1">
+            <ul>
+                <li class="active"><a href="index.html">
+                    <img src="images/home1_1.png" alt="" title="" /><span>首页</span></a></li>
+                <li><a href="menu.html">
+                    <img src="images/home2.png" alt="" title="" /><span>分类</span></a></li>
+                <li><a href="shopcar.html">
+                    <img src="images/home3.png" alt="" title="" /><span>购物车</span></a></li>
+                <li><a href="userinfo.html">
+                    <img src="images/home4.png" alt="" title="" /><span>我的</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
+    <script type="text/javascript" src="js/jquery.tabify.js"></script>
+    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/load.js"></script>
+</body>
+</html>

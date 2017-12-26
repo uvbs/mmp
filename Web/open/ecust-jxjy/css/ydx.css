@@ -1,0 +1,36 @@
+body{
+	background-color: rgba(119, 119, 119, 0.21);
+}
+.selector{
+	margin: 20px auto;
+	width: 90%;
+}
+.selector table{
+	width: 100%;
+}
+.selector td{
+	font-size: 14px;
+	text-align: center;
+	width: 20%;
+	margin-right: 2%;
+	padding-bottom: 20px;
+}
+.selector td div{
+	display: block;
+	margin: 0 auto;
+}
+.item_name{
+	width: 87px;
+}
+.item_ico{
+	width: 87px;
+	height: 87px;
+	background-color: #ffffff;
+	border-radius: 50px;
+	line-height: 82px;
+	border: 1px solid rgba(40, 40, 40, 0.21);
+	margin-bottom: 5px;
+}
+.item_ico img{
+	width: 40px;
+}

@@ -1,0 +1,95 @@
+﻿@import "//at.alicdn.com/t/font_1435717471_914111.css";
+.wrapCouponDetail {
+    /*position: relative;
+    top: -11px;*/
+}
+
+    .wrapCouponDetail .item {
+        border-width: 0px;
+        color: #999;
+    }
+
+    .wrapCouponDetail .item-divider {
+        min-height: 325px;
+    }
+
+        .wrapCouponDetail .item-divider .item {
+            margin-left: -13px;
+            margin-right: -14px;
+            margin-top: 10px;
+            // margin-top: -84px;
+            border-width: 0px;
+        }
+
+    .wrapCouponDetail .couponArea {
+        height: 230px;
+    }
+
+    .wrapCouponDetail item-divider .wrapBtn {
+        text-align: center;
+    }
+
+    .wrapCouponDetail .wrapBtn .button {
+        width: 168px;
+        border-radius: 5px;
+        margin-left: 70px;
+        margin-top: 40px;
+        background-color: #FF7D00;
+        //width: 100px;
+        border-color: #FF7D00;
+    }
+
+    .wrapCouponDetail .couponArea .imgArea {
+        position: relative;
+        top: -10px;
+    }
+
+    .wrapCouponDetail .couponArea .numArea {
+        position: relative;
+        top: -124px;
+        left: 108px;
+        background-color: #fff;
+        // border-bottom:1px #808080 solid;
+    }
+
+    .wrapCouponDetail .couponArea .imgArea .head {
+        height: 204px;
+        background-image: url("/Components/Coupon/m/static/img/bgImg.png");
+        background-size: 359px;
+        background-repeat: repeat;
+        text-align: center;
+        position: relative;
+    }
+
+    .wrapCouponDetail .couponArea .imgArea .content {
+        width: 200px;
+        position: relative;
+        top: -148px;
+        left: 65px;
+    }
+
+    .wrapCouponDetail .couponArea .imgArea .foot {
+        color: #fff;
+        position: relative;
+        top: -140px;
+        left: 75px;
+    }
+
+    .wrapCouponDetail .couponArea .imgArea .head .img {
+        float: left;
+        position: relative;
+        top: 5px;
+        margin-right: 7px;
+        margin-left: 5px;
+    }
+
+    .wrapCouponDetail .couponArea .imgArea .head h5 {
+        position: relative;
+        top: 18px;
+        left: -71px;
+        color: #fff;
+    }
+
+    .wrapCouponDetail .couponArea .imgArea .head .Clear {
+        clear: both;
+    }

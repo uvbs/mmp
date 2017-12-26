@@ -1,0 +1,162 @@
+﻿@import '../../../../common/common1.0.3';
+
+$mainblue:#58aaf0;
+$darkblue:#2a7bdd;
+$maingreen:#04be02;
+$darkgreen:#2a7bdd;
+$maingary:#e0e0e0;
+
+// -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+@mixin iconurl1(){background-image:url(../images/icons.png?v=0.0.2);background-size:50px 50px;}
+@mixin btn($a,$b,$c){width:$a; height:$b;border-radius:5px;background-color: $mcl;display:block;
+	border-bottom: $c solid $mcd;color:#fff;}
+
+ /*开始*/
+
+.box{margin: 0 auto;background-repeat:no-repeat;background-position: bottom center; -moz-user-select: none; /*火狐*/
+   -webkit-user-select: none;  /*webkit浏览器*/
+   -ms-user-select: none;   /*IE10*/
+   -khtml-user-select: none; /*早期浏览器*/
+   user-select: none; position:relative;}
+//list
+body{background-color:#fff;}
+
+/*投票*/
+.toupiaobox{width:100%; border:1px solid $maingary; background-color:#fff;box-sizing:border-box;margin-top: 10px;padding-top:10px;
+	position: relative;
+	.title{font-weight: bold; font-size: 14px;box-sizing:border-box;padding-left:10px;}
+	.note{margin:10px 0 0 0;box-sizing:border-box;padding-left:10px;color:#999;font-size: 12px;}
+	/*投票input*/
+	.radioinput{width:1px; height:1px; position:absolute; top:0px;right:0px;opacity:0;}
+	.mainconcent{@include bb(100%,40px); border-bottom:1px solid $maingary;line-height:40px;box-sizing:border-box;
+		padding:0 10px;position:relative;-webkit-tap-highlight-color: rgba(0,0,0,0.3);
+		.inputicon{@include bb(14px,14px);border-radius:14px;border:1px solid $maingary; float: left;
+			margin:12px 10px 0 0;background-color:#fff;
+			.icon{@include bb(8px,8px);border-radius:8px;background-color:$darkblue;margin:3px;display:none;}
+		}
+		.inputtext{ font-size:14px;float: left; @include ellipsis(230px,40px);}
+		.inputlabel{@include bb(100%,100%);position:absolute;top:0px; left:0px;background-color:transparent;}
+
+		.jindubar{display:none;}
+	}
+	// .mainconcent:hover{background-color:#eee;}
+	.mainconcent:active{background-color:#eee;}
+
+	.radioinput:checked+.mainconcent{.inputicon .icon{display:block;}}
+
+	.button{width:120px;height:40px;display:block;background-color:$maingreen;margin:10px auto;line-height:40px;
+		color: #fff;font-size: 16px;font-weight: bold; border:none;border-radius:6px;text-align: center;
+	}
+	.button:active{background-color:$maingreen;}
+	.toupiaoinfo{display:none;}
+}
+
+/*多选*/
+.duoxuan{
+	.mainconcent .inputicon{border-radius:2px;
+		.icon{border-radius:1px;}
+	}
+}
+
+/*投票完成*/
+.toupiaoover{
+	.mainconcent{border-bottom:none; 
+		.inputicon{display:none;}
+		.jindubar{@include bb(100%,5px);background-color:$maingary;clear:both;position:relative; top:-8px;border-radius:2px;
+			.jindu{height:5px;display:block;border-radius:2px;}
+			.pecent,.peoplenum{@include bb(auto,20px);line-height:20px;position:absolute; bottom:5px;
+				right:50px;font-size: 12px;color:#999;}
+			.pecent{right:5px;}
+		}
+		.inputlabel{display:none;}
+	}
+	.mainconcent:active{background-color:transparent;}
+	.button{display:none;}
+	.toupiaoinfo{@include bb(100%,40px); color:#999; font-size: 14px;text-align:center;line-height:40px;}
+}
+.mainconcent:nth-of-type(1n) .jindu{background-color:#ec6161;}
+.mainconcent:nth-of-type(2n) .jindu{background-color:#7db985;}
+.mainconcent:nth-of-type(3n) .jindu{background-color:#7eade1;}
+.mainconcent:nth-of-type(4n) .jindu{background-color:#eccc63;}
+.mainconcent:nth-of-type(5n) .jindu{background-color:#ec9062;}
+.mainconcent:nth-of-type(6n) .jindu{background-color:#9576d3;}
+
+
+/*结束*/
+
+
+
+
+// #textdialogbox{@include bb(100%,100%);position:fixed;background-color:rgba(0,0,0,0.5);z-index: 9;
+// 	.textdialog{@include bb(100%,240px);position:absolute; top:0px;left:0px;background-color:#f0f0f0;border-radius:5px;
+// 		 overflow:hidden;box-shadow:0 0 8px rgba(0,0,0,0.5);
+// 		textarea{@include bb(100%,200px);position:absolute; top:0px;left:0px;border:none;padding:10px;box-sizing:border-box;
+// 			border-bottom:1px solid #ccc;}
+// 		.button{@include bb(40px,20px);position:absolute; bottom:10px;right:60px;font-size: 12px;color:#666;
+// 			border:1px solid #ccc;border-radius:5px;text-align:center;line-height:20px;}
+// 		.blue{right:10px; background-color:$mainblue;color:#fff;border-color:$darkblue;}
+// 	}
+// }
+// #discussbox{box-sizing:border-box;padding:0 10px;font-size: 12px;padding-top: 10px;
+// 	.discussbtn{@include bb(60px,30px);line-height:30px; float: right;background-color:$mainblue;font-size: 16px;
+// 		color: #fff; border-radius:5px;text-align: center;border:1px solid $darkblue;}
+// 	.commentbox{@include bb(100%,auto);border-bottom:1px solid #ccc;padding:5px 0;}
+// 	.commentbox:last-child{border-bottom:none;}
+// 	.commentbox:after{@include clear();}
+
+// 	.commentcb{text-align: left;position:relative;box-sizing:border-box; min-height:30px;
+// 		.portrait{@include bb(30px,30px); position:absolute;top:0px;left:0px; border-radius:30px;overflow:hidden;
+// 			img{@include bb(30px,30px);}
+// 		}
+// 		.commentc{float:left;padding-left: 35px; box-sizing:border-box;margin-top: 5px;line-height: 20px;
+// 			.peoplename{color:$mainblue;font-size: 14px; font-weight: bold;}
+// 		}
+// 	}
+// 	.commentcb:after{@include clear();}
+// 	.recommentbtn{float: right;color:$mainblue;min-height:20px;position:relative;padding-left: 16px;cursor: pointer;
+// 		.icon{ @include iconurl1();@include icon(13px,13px,0,0);position:absolute; top:1px; left:0px;}
+// 	}
+// 	.recommentbox{background-color:#F4F8FF;clear:both;float: right;width:85%;border-radius:5px;
+// 		.commentcb{ min-height:20px;
+// 			.commentc{margin-top:0px; padding-left:0px;}
+// 		}
+// 	}
+// }
+
+
+
+// #imglist{position:absolute;width:100%;height:100%;overflow:hidden;max-width:360px;
+
+// 		.click2{color:#000;.smallicon{background-image: url("../images/knock2.png");color:#000;}}
+// 		.startanimate11{-webkit-transform: scale(1) rotate(0deg) translate3d(0px,0px,0px);opacity: 0;} 
+// 		.picanimate11{-webkit-animation: picanimate11 4s ease-out 0s;}
+// 		.overanimate11{-webkit-transform: scale(1) rotate(0deg) translate3d(0px,-250px,0px);opacity: 1;}
+// }
+
+// @-webkit-keyframes picanimate11{
+// 	0%{-webkit-transform: scale(1) rotate(0deg) translate3d(0px,0px,0px);opacity: 0;}
+// 	100%{-webkit-transform: scale(1) rotate(0deg) translate3d(0px,-250px,0px);opacity: 1;}
+// }
+
+ 
+@media all and (max-width:319px){
+	.box{width:100%;box-sizing:border-box;}
+}
+
+@media all and (min-width:320px){
+	.box{width:320px;}
+}
+
+@media all and (min-width:360px){
+	.box{width:360px;}
+	.toupiaobox{
+		.mainconcent{
+			.inputtext{@include ellipsis(260px,40px);}
+		}
+
+	}
+
+}
+
+

@@ -1,0 +1,9 @@
+﻿
+<div class="openAsideClass">
+    <h4>课程排行</h4>
+    <ul>
+        <li ng-repeat=" item in pageHotOpenData.openList">
+            <span ng-class="{change:$index<3}">{{$index+1}}</span><a href="javascript:;" ng-bind="item.title" ng-click="pageHotOpenFunc.itemClick(item)"></a>
+        </li>
+    </ul>
+</div>

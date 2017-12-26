@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <input type="file" name="file1" id="file" />
+    <input type="button" value="上传" onclick="upFile()" />
+</body>
+</html>
+<script type="text/javascript" src="/Scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/Scripts/ajaxfileupload2.1.js"></script>
+<script type="text/javascript" src="/Scripts/ajaxImgUpload.js"></script>
+<script type="text/javascript">
+    function upFile() {
+        $.ajaxImgUpload({
+            fileElement: $('#file'),
+            maxWidth: 800,
+            success: function (result) {
+                alert(result.ExStr);
+            }
+        })
+    }
+</script>

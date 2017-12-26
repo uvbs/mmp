@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css" />
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function selected(obj, v) {
+            $("#li1").find("img").attr("src", "images/menu1.png");
+            $("#li2").find("img").attr("src", "images/menu2.png");
+            $("#li3").find("img").attr("src", "images/menu3.png");
+            $("#li4").find("img").attr("src", "images/menu4.png");
+            $("#li5").find("img").attr("src", "images/menu5.png");
+            $(obj).find("img").attr("src", "images/menu" + v + "_1.png");
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div class="gohome">
+            <a href="index.html">
+                <img src="images/index6.png" /></a></div>
+        <div class="homelogo">
+            <a href="index.html">
+                <img src="images/index7.png" /></a></div>
+        <div class="gomenu">
+            <!--<a href="login.html">
+                <img src="images/index8.png" />
+            </a>-->
+        </div>
+    </div>
+    <!--Page 1 content-->
+    <div class="swiper-slide sliderbg2">
+        <div class="swiper-container swiper-nested">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <div class="pages_container">
+                            <div class="index_container1">
+                                <div class="div-search form">
+                                    <div class="top-search radius20">
+                                        <img src="images/search.png" /><input type="text" onblur="if(this.value=='')this.value='搜索类别...';"
+                                            onfocus="if(this.value=='搜索类别...')this.value='';" value="搜索类别..." />
+                                    </div>
+                                </div>
+                                <div id="tab1" class="tabcontent">
+                                    <div class="image_single">
+                                        <a href="menu_item.html">
+                                            <img src="images/5_01.png" alt="" title="" border="0" /></a></div>
+                                    <div class="image_single">
+                                        <a href="menu_item.html">
+                                            <img src="images/5_02.png" alt="" title="" border="0" /></a></div>
+                                    <div class="image_single">
+                                        <a href="menu_item.html">
+                                            <img src="images/5_03.png" alt="" title="" border="0" /></a></div>
+                                    <div class="image_single">
+                                        <a href="menu_item.html">
+                                            <img src="images/5_04.png" alt="" title="" border="0" /></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="menu1">
+            <ul>
+                <li><a href="index.html">
+                    <img src="images/home1.png" alt="" title="" /><span>首页</span></a></li>
+                <li class="active"><a href="menu.html">
+                    <img src="images/home2_1.png" alt="" title="" /><span>分类</span></a></li>
+                <li><a href="shopcar.html">
+                    <img src="images/home3.png" alt="" title="" /><span>购物车</span></a></li>
+                <li><a href="userinfo.html">
+                    <img src="images/home4.png" alt="" title="" /><span>我的</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
+    <script type="text/javascript" src="js/jquery.tabify.js"></script>
+    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/load.js"></script>
+</body>
+</html>

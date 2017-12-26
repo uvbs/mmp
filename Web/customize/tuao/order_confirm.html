@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css" />
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="gohomemenu">
+            <a href="index.html">
+                <img src="images/left.png" /></a></div>
+        <div class="homelogo">
+            <a href="index.html">购物车</a></div>
+    </div>
+    <!--Page 1 content-->
+    <div class="swiper-slide sliderbg2">
+        <div class="swiper-container swiper-nested">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <div class="pages_container">
+                            <div class="index_container1">
+                                <div class="">
+                                    <div class="page_padding9">
+                                        <div class="order_price2">
+                                            <table class="goodslist">
+                                                <tr>
+                                                    <td class="td1">
+                                                        <img src="images/order_02.png" alt="" title="" />
+                                                    </td>
+                                                    <td>
+                                                        <span>澳洲直送 智力车厘子 </span>
+                                                        <br />
+                                                        <span>1斤/500g </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table class="goodslist1">
+                                                <tr>
+                                                    <td>
+                                                        共计3件商品
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="order_s_price_r">商品总金额： <span class="color2">￥123.00</span></span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="order_s_price_r">物流费用： <span class="color2">￥10.0</span></span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="order_s_price_r">应付金额： <span class="color2">￥133.00</span></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="menu_order2">
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" id="paytype1" />优惠卡号<div class="yhkh radius20">
+                                                        41859489</div>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="paytype2" /><img src="images/ka_01.png" /></li>
+                                                <li>
+                                                    <input type="checkbox" id="paytype3" /><img src="images/ka_02.png" /><span class="yhkh2">**8060</span><span
+                                                        class="yhkh1">快捷</span><span class="yhkh1">储蓄卡</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="order_b_btn">
+                                            <a href="javascript:void()" class="form_a green radius6" style="float: right; margin-right: 3%">
+                                                确认支付</a>
+                                        </div>
+                                        <div class="clearfix">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="menu1">
+            <ul>
+                <li><a href="index.html">
+                    <img src="images/home1.png" alt="" title="" /><span>首页</span></a></li>
+                <li><a href="menu.html">
+                    <img src="images/home2.png" alt="" title="" /><span>分类</span></a></li>
+                <li class="active"><a href="shopcar.html">
+                    <img src="images/home3_1.png" alt="" title="" /><span>购物车</span></a></li>
+                <li><a href="userinfo.html">
+                    <img src="images/home4.png" alt="" title="" /><span>我的</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
+    <script type="text/javascript" src="js/jquery.tabify.js"></script>
+    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/load.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //获得文本框对象
+            var t = $("#text_box");
+            //数量增加操作
+            $("#add").click(function () {
+                t.val(parseInt(t.val()) + 1)
+                if (parseInt(t.val()) != 1) {
+                    $('#min').attr('disabled', false);
+                }
+                setTotal();
+            })
+            //数量减少操作
+            $("#min").click(function () {
+                t.val(parseInt(t.val()) - 1);
+                if (parseInt(t.val()) == 1) {
+                    $('#min').attr('disabled', true);
+                }
+                setTotal();
+            })
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="wrapUserScore" style="min-height: {{score.minHeight}}px;">
+    <div class="content has-header">
+        <div class="banner">
+            <div class="thisyear">您的{{score.commName}}</div>
+            <span>{{score.currUseInfo.history_commission_total_amount}}</span>
+            <a class=" botton botton-small payfor" ng-mousedown="go('/App/Distribution/m/Withdraw.aspx')">
+                申请提现
+            </a>
+        </div>
+        <div class="pointList">
+            <ul class="list">
+                <li class="item" ng-repeat="item in score.scoreList">
+                    {{item.time | date:'yyyy-MM-dd HH:mm'}}
+                <span class="item-note">
+                    +{{item.amount}}
+                </span>
+                <!--<span class="item-note" ng-if="item.score<0">-->
+                    <!--{{item.score}}-->
+                <!--</span>-->
+                </li>
+            </ul>
+            <div class="wrapShowMore" ng-if="pageData.scoreData.length<pageData.totalCount">
+                <button class="button button-clear" ng-click="pageFunc.loadMore(false)">查看更多</button>
+            </div>
+        </div>
+    </div>
+</div>

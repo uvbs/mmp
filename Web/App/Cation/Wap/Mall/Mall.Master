@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mall.master.cs" Inherits="ZentCloud.JubitIMP.Web.App.Cation.Wap.Mall.Mall" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="/css/wxmall/wxmall20150110.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="body" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+<script src="/Scripts/jquery2.1.1.js" type="text/javascript"></script>
+<script src="/Ju-Modules/Common/Cookie.Min.js" type="text/javascript"></script>
+<script src="/Scripts/json2.min.js" type="text/javascript"></script>
+<script src="/Scripts/StringBuilder.Min.js" type="text/javascript"></script>
+<script src="/Scripts/messagebox.js" type="text/javascript"></script>
+<script src="/lib/layer.mobile/layer.m.js"></script>
+  <script type="text/javascript">
+      window.alert = function (msg) {
+          layer.open({
+              content: msg,
+              //style: 'background-color:#09C1FF; color:#fff; border:none;',
+              time: 2
+          });
+      }
+
+  </script>
+<asp:contentplaceholder id="bottom" runat="server">
+</asp:contentplaceholder>
+</html>

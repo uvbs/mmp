@@ -1,0 +1,38 @@
+.taitou{
+	height: 40px;
+	width: 40%;
+	margin-top: 5px;
+	line-height: 40px;
+	background-image: url("/mobile/images/taitou_back.png");
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position:right;
+}
+.info{
+	margin: 10px 10%;
+}
+.info ul li{
+	height: 40px;
+	line-height: 40px;
+}
+.info ul li input{
+	margin-top: 15px;
+}
+.applic_btn{
+	margin-top: 40px;
+	text-align: center;
+}
+.applic_btn button{
+	color: white;
+	width: 120px;
+	background-color: #269bd7;
+}
+
+.select_li{
+	width: 80%;
+}
+.select_li select{
+	width: 32%;
+	height: 30px;
+}
+.list-inline>li{padding-right:0px;}

@@ -1,0 +1,1 @@
+java -jar ../../lib/compiler.jar --js=talent-validate-all.js --js_output_file=talent-validate-all.js

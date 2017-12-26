@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>百度地图</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yuDmAsx9cGNUbdEGVwuQgz1f"></script>
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        #baiduMap {
+            height: 95%;
+            width: 100%;
+        }
+
+        #size {
+            display: block;
+            margin: 0.5rem auto 0 auto
+        }
+    </style>
+</head>
+<body>
+<div id="baiduMap"></div>
+<input type="number" id="size">
+<script>
+    pageInit();
+
+    function pageInit() {
+        //基础数据
+        var map = new BMap.Map("baiduMap"); //创建地图对象
+        var point = new BMap.Point(116.331398, 39.897445); //默认坐标为天安门
+        var tag; //定义状态标记，使得同一时间只能创建一个点和圆
+        map.centerAndZoom(point, 12); //暂时切换到默认坐标
+
+        //根据IP切换到当前城市
+        function switchMap(result) { //切换地图函数
+            var cityName = result.name; //获取城市
+            map.setCenter(cityName); //设置地图中心点
+        }
+
+        var myCity = new BMap.LocalCity(); //创建地图坐标对象
+        myCity.get(switchMap); //切换地图
+
+        //鼠标点击效果
+        map.addEventListener("click", function (data) { //定义点击事件与数据
+            var size = document.getElementById('size').value;
+            if (!size) {
+                alert('请填写圆圈的范围');
+                return
+            } else {
+                console.log(data);
+                point = new BMap.Point(data.point.lng, data.point.lat); //将坐标进行刷新
+                var marker = new BMap.Marker(new BMap.Point(data.point.lng, data.point.lat)); // 创建点
+                var circle = new BMap.Circle(point, size, {strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5}); //创建圆
+                if (!tag) { //如果之前没有点击过地图
+                    map.addOverlay(marker); //增加点
+                    map.addOverlay(circle); //增加圆
+                    tag = true; //状态标记为已经点击过
+                } else { //如果之前点击过地图
+                    map.clearOverlays(); //清除之前的数据
+                    map.addOverlay(marker); //增加点
+                    map.addOverlay(circle); //增加圆
+                }
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

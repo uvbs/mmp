@@ -1,0 +1,84 @@
+﻿.mainTop
+        {
+            width: 100%;
+            float: left;
+        }
+        .mainCnt
+        {
+            width: 100%;
+            float: left;
+        }
+        .cntList
+        {
+            margin: 20px;
+            min-height:285px;
+        }
+        .listItem
+        {
+            padding: 10px;
+            line-height: 30px;
+            width: 100%;
+            float: left;
+            font-size: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dddcdc;
+        }
+        .listItem:hover
+        {
+            background-color: #f3f3f3;
+        }
+        
+        .listItem:hover .msgReply
+        {
+            visibility: visible;
+        }
+        
+        .listItemUserInfo
+        {
+            width: 20%;
+            float: left;
+        }
+        .listItemUserInfoNikeName
+        {
+            margin-left: 10px;
+            float: left;
+        }
+        .listItemUserInfo img
+        {
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            border-radius: 10px;
+            height: 30px;
+            width: 30px;
+            float: left;
+        }
+        
+        .listItemMsg
+        {
+            width: 50%;
+            float: left;
+            overflow:hidden;
+        }
+        .listItemMsgTime
+        {
+            width: 20%;
+            float: left;
+        }
+        .listItemMsgOperate
+        {
+            width: 10%;
+            float: left;
+        }
+        .msgReply
+        {
+            visibility: hidden;
+            width: 20px;
+            height: 30px;
+            vertical-align: middle;
+            display: inline-block;
+            line-height: 100px;
+            overflow: hidden;
+            background: url("/img/icons/wxico.png") 0 -2658px no-repeat;
+        }

@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>validate验证框架演示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+<link type="text/css" rel="stylesheet"
+	href="../js/validate/css/validate.css" />
+<script src="./jquery-1.6.4.js" language="javascript"></script>
+<script src="../js/validate/talent-validate-all.js"
+	language="javascript"></script>
+<script src="./demo.js" language="javascript"></script>
+</head>
+<body>
+	<form name="form1">
+		<table border="1px">
+			<tr>
+				<td width="160px">n3<input type="text" value="" name="id3"
+					id='id4' /> <br /> n1<input type="text" value="" name="n1"
+					id="id3" /> <br /> n2<input type="text" value="" name="n2"
+					id='id2' /> <input type="button" class='button' value="验证"
+					onclick="tt.validate()" />
+
+
+				</td>
+			</tr>
+		</table>
+
+
+
+	</form>
+
+
+
+</body>
+<script id="talent_script">
+			//下面这一行代码为4个字段添加了“非空”验证，同时会自动在4个字段上加上红色星号
+			tt.vf.req.addId("id2", "id3", "id4");   
+		</script>
+</html>

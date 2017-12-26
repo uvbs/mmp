@@ -1,0 +1,271 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px;padding:0px; font-family:"微软雅黑"; font-size:14px; color:#000;text-decoration: none;}
+
+#qiaohu{ 
+	width:100%; 
+	margin: 0 auto;
+	padding: 10px;
+	box-sizing:border-box;
+}
+
+.header{
+	width:100%; 
+	/*background-color:#F0C7C8;*/
+}
+
+.header h1{
+	text-align:left; 
+	font-size: 20px;
+}
+
+.header .headerinfo{
+	width: 100%;
+	position: relative;/*相对定位*/
+	top: -12px;
+	line-height: 5px;
+}
+
+.header .headerinfo:after{
+	content: ".";
+	clear: both;/*清除浮动*/
+	height: 0px;
+	display: block;
+	visibility: hidden;
+}
+
+
+
+.header .headerinfo .reading{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-size: 12px;
+}
+
+.header .headerinfo .orange{
+	color:#3db5c6; 
+}
+
+/*内容框*/
+.maincontext{
+	box-sizing:border-box;
+	width: 100%;
+	border: 1px solid #bee2f3;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+.maincontext img{
+	max-width:100%;
+}
+
+.maincontent{
+	width:100%;
+	padding:0px 10px;
+	box-sizing:border-box;
+}
+
+.maincontent .adress{
+	padding: 0px 0px 0px 30px;
+	color: #37bacc;
+	font-size: 16px;
+	display: block;
+	background-image: url(images/adress.png);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+}
+
+.maincontent .time{
+	padding: 0px 0px 0px 30px;
+	font-size: 16px;
+	display: block;
+	background-image: url(images/time.png);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+}
+.maincontent .rule{
+	word-break:break-all;
+	word-wrap:break-word;
+	padding: 0px 10px;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.baomg{
+	width:100%;
+	height:14px;
+	line-height:14px;
+	color:#FFF;
+	padding:10px 0;
+	background:url(images/baombg_03.png) no-repeat;
+	margin-top:10px;
+	/*background-color:#F78C8E;*/
+}
+
+.baomg span{
+	font-size: 14px;
+	color:#FFF;
+	margin-left: 30px;
+	line-height:14px;
+}
+
+.usernum{
+	margin-top:-20px;
+	display:inline-block;
+	float:right;
+}
+
+.usernum span{
+	font-size:14px;
+	color:#ff6363;
+}
+
+.user{
+	width:100%;
+	box-sizing:border-box;
+	border: 1px solid #bee2f3;
+	border-radius: 10px;
+	margin-top: 5px;
+}
+
+.user ul{
+	list-style:none;
+}
+
+.user ul li{
+	width:100%;
+	height:30px;
+	line-height:40px;
+	padding: 0 10px;
+	border-bottom:#bee2f3 1px solid;
+	box-sizing:border-box;
+}
+
+.user ul li img{
+	float:left;
+	margin-top: 2px;
+	width: 25px;
+	height: 25px;
+}
+
+.user ul li .textcenter{
+	float:left;
+	height: inherit;
+	line-height: 30px;
+}
+
+.user ul li .times{
+	float: right;
+	height: inherit;
+	line-height: 30px;
+}
+
+.user ul li:last-child{
+	border-bottom:none;
+}
+
+.user ul li:first-child{
+	/*background-color: #000;*/
+}
+
+
+.footer{
+	width:100%;
+	padding:10px 0px 50px 0;
+
+}
+
+.footer:after{
+	content: ".";
+	clear: both;/*清除浮动*/
+	height: 0px;
+	display: block;
+	visibility: hidden;
+}
+
+.footer .weixinshare{
+	display: block;
+	width: 44%;
+	height: 40px;
+	border-radius: 10px;/*圆角为10像素*/
+	background-color: green;
+	float: left;
+	margin-left: 4%;
+	color: #FFF;
+	font-size: 14px;
+	line-height: 40px;
+	background-repeat: no-repeat;
+	background-size: auto 30px;
+	background-position: 8px center; 
+	box-sizing:border-box;
+	padding-left: 38px;
+	text-align: center;
+}
+
+.footer .green{
+	background-color: #5ddc73;
+	background-image:url(images/weixin.png); 
+}
+
+
+
+.footer .blue{
+	background-color: #69ccff;
+	background-image:url(images/weixin2.png); 
+
+}
+
+.submit{
+	width:100%;
+
+	position:fixed;
+	left:0px; 
+	bottom:0px;
+
+	height: 49px;
+	background-color:#5acbdb; 
+}
+.submit img{
+	float: left;
+
+}
+
+.submit .weixinshare{
+	display: block;
+	margin-top: 5px;
+	width: 70%;
+	height: 40px;
+	border-radius: 10px;/*圆角*/
+	background-color: #3db5c6;
+	float: left;
+	margin-left: 10%;
+	color: #FFF;
+	font-size: 20px;
+	line-height: 40px;
+	box-sizing:border-box;
+	padding-left: 8px;
+	text-align: center;
+}
+
+.submit .return{
+	margin-top:10px;
+	background:url(images/left.png) no-repeat;
+	display:block;
+	width:25px;
+	height:50px;
+	line-height:50px;
+	float:left;
+}
+
+.submit .more{
+	line-height:50px;
+	background:url(images/right.png) no-repeat;
+	display:block;
+	width:25px;
+	height:50px;
+	float:right;
+	margin-top:10px;
+}
+
+

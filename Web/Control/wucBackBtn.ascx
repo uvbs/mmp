@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="wucBackBtn.ascx.cs" Inherits="ZentCloud.JubitIMP.Web.Control.wucBackBtn" %>
+<asp:Button ID="btnBack" runat="server" Text="返回" onclick="btnBack_Click" CausesValidation="false" />

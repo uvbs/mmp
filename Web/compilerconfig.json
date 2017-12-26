@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "Weixin/ArticleTemplate/css/comm.css",
+    "inputFile": "Weixin/ArticleTemplate/css/comm.less"
+  },
+  {
+    "outputFile": "App/Lottery/css/admincomm.css",
+    "inputFile": "App/Lottery/css/admincomm.less"
+  },
+  {
+    "outputFile": "App/Lottery/wap/css/winList.css",
+    "inputFile": "App/Lottery/wap/css/winList.less"
+  },
+  {
+    "outputFile": "App/Lottery/wap/js/winList.es5.js",
+    "inputFile": "App/Lottery/wap/js/winList.js"
+  },
+  {
+    "outputFile": "App/Wap/css/Common.css",
+    "inputFile": "App/Wap/css/Common.less"
+  }
+]

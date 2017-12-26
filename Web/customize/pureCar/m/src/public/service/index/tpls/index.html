@@ -1,0 +1,153 @@
+﻿<div class="wrapServiceIndex">
+	
+	<home-header></home-header>
+
+	<!-- <div class="wrapTabTitle">
+        <div class="row">
+            <div class="col" ng-class="{greenActive:pageData.currTabIndex == 0}" ng-click="pageData.currTabIndex = 0">
+                优质4S售后服务
+            </div>
+            <div class="col" ng-class="{greenActive:pageData.currTabIndex == 1}" ng-click="pageData.currTabIndex = 1">
+                PureCAR售后服务
+            </div>
+        </div>
+    </div> -->
+
+	<div class="row wrapTopMenuList">
+		<div class="col">
+			<div>
+				<i class="iconfont icon-weibiaoti1"></i>
+			</div>
+			<div>
+				<span>
+					违章查询
+				</span>
+			</div>
+		</div>
+		<div class="col">
+			<div>
+				<i class="iconfont icon-iconfontcheliangbaoyang"></i>
+			</div>
+			<div>
+				<span>
+					保养提醒
+				</span>
+			</div>
+		</div>
+		<div class="col" ng-click="pageFunc.showInsuranceDialog()">
+			<div>
+				<i class="iconfont icon-bx"></i>
+			</div>
+			<div>
+				<span>
+					保险提醒
+				</span>
+			</div>
+		</div>
+		<div class="col" ng-click="pageFunc.navigateTo('/service/message')">
+			<div>
+				<i class="iconfont icon-xiaoxi"></i>
+			</div>
+			<div>
+				<span>
+					最新消息
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapAd">
+        
+        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="6" class="wrapAd">
+            <li ng-repeat="img in pageData.adImgs">
+                <img ng-src="{{img.img}}" alt=" " ng-click="go('{{img.url}}')">
+                <div class="title">
+                	<span>
+                		{{img.title}}
+                	</span>
+                </div>
+            </li>
+        </ul>
+        <div rn-carousel-indicators ng-if="pageData.adImgs.length > 1" slides="pageData.adImgs" rn-carousel-index="carouselIndex" class="imgIndex"></div>
+
+    </div>
+
+	<div class="row wrapCenterMenu">
+		<div class="col borderRight1">
+			<ul>
+				<li class="floatL">
+					<i class="iconfont icon-jifen"></i>	
+				</li>
+				<li class="floatL">
+					<div>我的积分</div>
+					<div>0</div>
+				</li>
+			</ul>
+			<div class="Clear"></div>
+		</div>
+		<div class="col" ng-click="pageFunc.navigateTo('/service/orders')">
+			<ul>
+				<li class="floatL">
+					<i class="iconfont icon-dingdan"></i>	
+				</li>
+				<li class="floatL">
+					<div>我的订单</div>
+					<div>0</div>
+				</li>
+			</ul>
+			<div class="Clear"></div>
+		</div>
+	</div>
+
+	<div class="wrapBottomMenu">
+		<div class="row">
+			<div class="col borderRight1 borderBottom1" ng-click="pageFunc.navigateTo('/service/appointment')">
+				<div>
+					<i class="iconfont icon-qiche"></i>
+				</div>
+				<div class="title">
+					<span>
+						预约保养
+					</span>
+				</div>
+			</div>
+			<div class="col borderBottom1" ng-click="pageFunc.navigateTo('/service/coupon')">
+				<div>
+					<i class="iconfont icon-youhuiquan"></i>
+				</div>
+				<div class="title">
+					<span>
+						优惠券
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col borderRight1" ng-click="pageFunc.navigateTo('/service/record')">
+				<div>
+					<i class="iconfont icon-rizhi"></i>
+				</div>
+				<div class="title">
+					<span>
+						车主日志
+					</span>
+				</div>
+			</div>
+			<div class="col" ng-click="pageFunc.navigateTo('/service/traffic')">
+				<div>
+					<i class="iconfont icon-gongwuxiang"></i>
+				</div>
+				<div class="title">
+					<span>
+						车务服务
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapFooterMenu fixedBottom">
+		<span>一键救援</span>
+	</div>
+
+</div>

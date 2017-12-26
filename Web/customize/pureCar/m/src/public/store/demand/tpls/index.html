@@ -1,0 +1,93 @@
+<div class="storeDemandCtrl">
+	<home-header car-model="pageData.carModel"></home-header>
+	
+	<div class="listTitle">车辆信息</div>
+	<div class="list">
+		<label class="item item-select item-icon-left">
+			<div class="icon iconfont icon-shoucangxingxing"></div>
+			<div class="input-label" ng-if="!pageData.carModel.colors">暂无可选颜色</div>
+	    <div class="input-label" ng-if="pageData.carModel.colors">请选择车辆颜色</div>
+			<select ng-required="true" ng-model="pageData.color" ng-if="pageData.carModel.colors"
+				ng-options="color.name for color in pageData.carModel.colors track by color.name">
+			</select>
+		</label>
+		<label class="item item-select item-icon-left">
+			<div class="icon iconfont icon-shijian"></div>
+	    <div class="input-label">请选择购车时间</div>
+			<select ng-required="true" ng-model="pageData.time"
+				ng-options="o for o in ['三个月后', '三个月内', '一个月内', '二周内'] track by o">
+			</select>
+		</label>
+		<label class="item item-select item-icon-left">
+			<div class="icon iconfont icon-jiage"></div>
+	    <div class="input-label">请选择购车方式</div>
+			<select ng-required="true" ng-model="pageData.method"
+				ng-options="o for o in ['新车全款', '新车分期', '置换全款', '置换分期'] track by o">
+			</select>
+		</label>
+		<label class="item item-select item-icon-left">
+			<div class="icon iconfont icon-chepai"></div>
+	    <div class="input-label">牌照</div>
+			<select ng-required="true" ng-model="pageData.license"
+				ng-options="o for o in ['上沪牌', '上沪C', '上外牌'] track by o">
+			</select>
+		</label>
+	</div>
+	
+	<div class="listTitle">购车人信息</div>
+	<div class="list">
+		<label class="item item-icon-left">
+			<div class="icon iconfont icon-yonghu"></div>
+			<input ng-required="true" type="text" class="mLeft6" ng-model="pageData.name" placeholder="请输入姓名">
+		</label>
+		<label class="item item-icon-left">
+			<div class="icon iconfont icon-dianhua"></div>
+			<input ng-required="true" type="text" class="mLeft6" ng-model="pageData.contact" placeholder="请输入联系方式">
+		</label>
+		<label class="item item-icon-left" ng-click="pageFunc.selectAddress()">
+			<div class="icon iconfont icon-address"></div>
+	    {{pageData.area ? (pageData.district.name + ' - ' + pageData.area.name) : '所在区域'}}
+	    <i class="icon-right iconfont icon-xiangyou"></i>
+		</label>
+		<label class="item item-select item-icon-left">
+			<div class="icon iconfont icon-jikediancanicon25"></div>
+	    <div class="input-label">购车偏好</div>
+			<select ng-required="true" ng-model="pageData.preference"
+				ng-options="o for o in ['价格优先', '服务优先', '区域优先'] track by o">
+			</select>
+		</label>
+	</div>
+	
+	<!--<div class="list stores">-->
+		<!--<div class="item" ng-click="pageFunc.showStores()">-->
+			<!--有5家4S店为你服务-->
+			<!--<i class="icon-right iconfont icon-xiangyou"></i>-->
+		<!--</div>-->
+	<!--</div>-->
+
+<!-- 	<div class="comment">
+		<textarea ng-model="pageData.comment" placeholder="备注：诸如期望，优惠等"></textarea>
+	</div> -->
+
+	<div class="button button-block confirmButton" ng-click="pageFunc.submit()">生成报价单</div>
+</div>
+
+<script type="text/ng-template" id="storeDemandSelectColorDialog">
+  <ul class="list">
+  	<li class="item" ng-style="{color: color.value}"
+  		ng-repeat="color in pageData.carModel.colors"
+  		ng-click="pageFunc.confirmColor(color)">{{color.name}}</li>
+  </ul>
+</script>
+
+<script type="text/ng-template" id="storeDemandSelectAddressDialog">
+	<select-address confirm="pageFunc.confirmAddress"></select-address>
+</script>
+
+<script type="text/ng-template" id="storeDemandSuccessDialog">
+	<div class="storeDemandSuccessDialogTitle">提交报价单成功</div>
+	<div class="storeDemandSuccessDialogContent">您的报价单已提交成功，请等待后台工作人员为你处理生成报价单</div>
+	<div class="storeDemandSuccessDialogBtn">
+			<div class="greenBtn" ng-click="pageFunc.closeSuccessDialog()">确定</div>
+	</div>
+</script>

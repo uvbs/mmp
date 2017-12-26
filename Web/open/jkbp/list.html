@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>列表</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="http://jkbp.comeoncloud.net/WuBuHui/css/wubu.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="http://jkbp.comeoncloud.net/open/jkbp/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="http://jkbp.comeoncloud.net/open/jkbp/css/green.css"/>
+    <link type="text/css" rel="stylesheet" href="http://jkbp.comeoncloud.net/open/jkbp/css/swipebox.css" />
+    <link type="text/css" rel="stylesheet" href="http://jkbp.comeoncloud.net/open/jkbp/css/idangerous.swiper.css" />
+    <script type="text/javascript" src="http://jkbp.comeoncloud.net/open/jkbp/js/jquery-1.10.1.min.js"></script>
+    <style type="text/css">
+    .lista{
+        display:inline-block;
+        border-radius:6px;
+        border:1px solid #ddd;
+        margin:5px 2%;
+        width:94%;
+        position:relative;
+        padding-left:2%;
+    }
+    .titlea{
+        font-size:15px;
+        color:#666;
+        height:30px;
+        line-height:30px;
+        width:94%; 
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+    .contenta{
+        font-size:14px;
+        color:#aaa;
+    }
+    .wbtn_h{
+        height:18px;
+        line-height:18px;
+    }
+    .icon_eye_v{
+        vertical-align:middle
+    }
+    .padding1{
+        padding: 1px;
+    }
+    .padding2{
+        padding: 2px;
+    }
+    #footer{
+        position: fixed;
+    }
+    </style>
+</head>
+<body>
+    <!--Page 1 content-->
+    <div id="objList">
+    </div>
+    <p class="loadnote" style="text-align: center;margin-bottom:45px;">
+    </p>
+    <div id="footer">
+        <div class="menu1">
+            <ul>
+                <li><a href="index.html">
+                    <img src="http://jkbp.comeoncloud.net/open/jkbp/images/home1.png" alt="" title="" /><span>首页</span></a></li>
+                <li><a href="TEL:021-54489815">
+                    <img src="http://jkbp.comeoncloud.net/open/jkbp/images/home2.png" alt="" title="" /><span>联系我们</span></a></li>
+                <li><a href="list.html?cateid=472">
+                    <img src="http://jkbp.comeoncloud.net/open/jkbp/images/home3.png" alt="" title="" /><span>园区产品</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://jkbp.comeoncloud.net/open/jkbp/js/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="http://jkbp.comeoncloud.net/open/jkbp/js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="http://jkbp.comeoncloud.net/open/jkbp/js/idangerous.swiper.scrollbar-2.1.js"></script>
+    <script type="text/javascript" src="http://jkbp.comeoncloud.net/open/jkbp/js/jquery.tabify.js"></script>
+    <script type="text/javascript" src="http://jkbp.comeoncloud.net/open/jkbp/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://jkbp.comeoncloud.net/open/jkbp/js/load.js"></script>
+</body>
+<script>
+    $(function () {
+        InitData();
+    });
+    function InitData() {
+        $.ajax({
+            type: 'post',
+            url: "http://jkbp.comeoncloud.net/Serv/WebsiteApi.ashx",
+            dataType:"jsonp",
+            jsonp:"callback",
+            data: { Action: "getarticlelist",  cateid: GetParm("cateid") },
+            success: function (resp) {
+                $(".loadnote").text("　");
+                    var html = "";
+                    $.each(resp, function (Index, Item) {
+                        html += '<a href=\"' + Item.ArticleUrl + '\" class="listbox">';
+                        html +='<div class="textbox">';
+                        html +='<div class="shorttitle titlea">'+Item.ArticleTitle+'</div>';
+                        html +='<p class="contenta">'+Item.ArticleContent.substr(0, 40)+'</p>';
+                        html +='</div>';
+                        html +='<div class="tagbox">';
+                        html +='<span class="wbtn_tag wbtn_red wbtn_h">';
+                        html +='<span class="iconfont icon-eye icon_eye_v"></span>'+Item.Pv;
+                        html +='</span>';
+                        html +='</div>';
+                        html +='<div class="wbtn_fly wbtn_flybr wbtn_greenyellow timetag padding1">'+Item.Time;
+                        html +='</div>';
+                        html +='<div class="wbtn_fly wbtn_flytr wbtn_main padding2">';
+                        html +='文章';
+                        html +='</div>';
+                        html +='</a>'; 
+                    });
+                    $("#objList").html(html);
+                    if (html == "") {
+                        $(".loadnote").text("没有更多");
+                    }
+                } 
+        });
+    };
+    
+
+    //获取Get参数
+    function GetParm(parm) {
+        //获取当前URL
+        var local_url = window.location.href;
+        //获取要取得的get参数位置
+        var get = local_url.indexOf(parm + "=");
+        if (get == -1) {
+            return "";
+        }
+        //截取字符串
+        var get_par = local_url.slice(parm.length + get + 1);
+        //判断截取后的字符串是否还有其他get参数
+        var nextPar = get_par.indexOf("&");
+        if (nextPar != -1) {
+            get_par = get_par.slice(0, nextPar);
+        }
+        return get_par;
+    }
+    //获取参数
+
+    function dealStr(str, maxl) {
+        if (str.length <= maxl) {
+            return str;
+        } else {
+            return str.substr(0, maxl) + "..";
+        }
+    }
+
+    $(document).ready(function () {
+        //处理标题
+        $('.intro_title').text(dealStr($('.intro_title').text(), 5));
+        //处理正文
+        $('.intro_context').text(dealStr($('.intro_context').text(), 10));
+    })
+</script>
+</html>

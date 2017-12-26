@@ -1,0 +1,56 @@
+html #layui_layer_skiniosskinstylecss {
+    display: none;
+    position: absolute;
+    width: 1989px
+}
+
+body .layer-ext-iosskin {
+    width: 300px;
+    height: 622px;
+    border-radius: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #eedeca, inset 0 0 4px #eedeca;
+    left: 0
+}
+
+body .layer-ext-iosskin .preview-title {
+    text-align: center;
+    height: 10%
+}
+
+body .layer-ext-iosskin .preview-title .ico {
+    position: absolute
+}
+
+body .layer-ext-iosskin .preview-title .circle {
+    border-radius: 50%
+}
+
+body .layer-ext-iosskin .preview-title .ico-1 {
+    width: 6px;
+    height: 6px;
+    background-color: #000;
+    left: 50%
+}
+
+body .layer-ext-iosskin .preview-title .ico-2 {
+    width: 50px;
+    height: 6px;
+    background-color: #000;
+    left: 50%;
+    margin-left: -25px;
+    top: 30px;
+    border-radius: 3px
+}
+
+body .layer-ext-iosskin .preview-title .ico-3 {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    left: 50%;
+    margin-left: -45px;
+    top: 28px
+}

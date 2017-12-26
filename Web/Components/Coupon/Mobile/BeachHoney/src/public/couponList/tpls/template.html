@@ -1,0 +1,102 @@
+﻿<style>
+.row,.leftFoot,.rightFoot,h3{font-family: 'Microsoft YaHei' !important;}
+</style>
+<div class="wrapCouponList">
+    <div class="head">
+        <div class="row">         
+                <div class="col" ng-class="{selected:pageData.currTabIndex == 0}" ng-click="pageData.currTabIndex=0">未使用</div>
+                <div class="col" ng-class="{selected:pageData.currTabIndex == 1}" ng-click="pageData.currTabIndex=1">已使用</div>
+                <div class="col" ng-class="{selected:pageData.currTabIndex == 2}" ng-click="pageData.currTabIndex=2">已过期</div>          
+        </div>
+        <div class="Clear"></div>
+    </div>
+    <div class="card" ng-if="pageData.currTabIndex==0"  ng-repeat='item in pageData.listunuse ' ng-click="gouse(item.id)">
+        <div class="ticketList">
+            <div class="top">
+                <div class="ticket">
+                    <img src="/Components/Coupon/Mobile/BeachHoney/static/img/redaifengbao.jpg" class="img" />
+                    <h3>
+                        电子门票
+                    </h3>
+                </div>
+                <div class="num">
+                    {{item.card_number}}
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="foot">
+                <div class="leftFoot">
+                    热带风暴水上乐园
+                </div>
+                <div class="rightFoot">
+                    <!--有效期：{{item.card_validto|formartdate}}-->
+                    【有效日期：2015年8月24日-9月6日】 
+                </div>
+                <div class="Clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" ng-if="pageData.currTabIndex==1" ng-repeat='item in pageData.listused' ng-click="goused(item.id)">
+        <div class="ticketList">
+            <div class="top">
+                <div class="ticket">
+                    <img src="/Components/Coupon/Mobile/BeachHoney/static/img/redaifengbao.jpg" class="img" />
+                    <h3>
+                        电子门票
+                    </h3>
+                </div>
+                <div class="num">
+                    {{item.card_number}}
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="foot">
+                <div class="leftFoot">
+                    热带风暴水上乐园
+                </div>
+                <div class="rightFoot">
+                   <!-- 有效期：{{item.card_validto|formartdate}}-->
+                    【有效日期：2015年8月24日-9月6日】 
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <img class="floatImg" src="/Components/Coupon/Mobile/BeachHoney/static/img/used.png" />  
+        </div>            
+    </div>
+
+    <div class="card" ng-if="pageData.currTabIndex==2" ng-repeat='item in pageData.listoverdate ' ng-click="gooverdate(item.id)">
+        <div class="ticketList">
+            <div class="top">
+                <div class="ticket">
+                    <img src="/Components/Coupon/Mobile/BeachHoney/static/img/redaifengbao.jpg" class="img" />
+                    <h3>
+                        电子门票
+                    </h3>
+                </div>
+                <div class="num">
+                   {{item.card_number}}
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="foot">
+                <div class="leftFoot">
+                    热带风暴水上乐园
+                </div>
+                <div class="rightFoot">
+                   <!--有效期：{{item.card_validto|formartdate}}-->
+                   【有效日期：2015年8月24日-9月6日】 
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <img class="floatImg" src="/Components/Coupon/Mobile/BeachHoney/static/img/overdate.png" /> 
+        </div>             
+    </div>
+
+    <div class="" ng-if="pageData.currTabIndex==1">
+
+    </div>
+    <div class="" ng-if="pageData.currTabIndex==2">
+
+    </div>
+</div>

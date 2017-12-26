@@ -1,0 +1,43 @@
+﻿<div class="wrapNewsDetail">
+    <div class="idDetail">
+        <i class="icon iconfont icon-fanhui fanhui" ng-click="pageFunc.goback()"></i>
+        资讯详情
+    </div>
+    <div class="wrapBanner">
+        <div class="row">
+            <div class="avatar">
+                <img src="{{pageData.article.imgSrc}}" alt="{{pageData.article.title}}" class="img">
+                <!--<img src="/customize/wisdomlife/m/static/img/cctv.png" class="img" />-->
+            </div>
+            <div class="col">
+                <div class="title">{{pageData.article.title}}</div>
+                <div class="color999"><a href="{{pageData.selfDataMedia.k10}}">{{pageData.selfDataMedia.title}}</a>&nbsp;&nbsp;{{pageData.article.createDate | date:'yyyy-MM-dd'}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="article">
+        <p ng-bind-html="pageData.article.content">
+        </p>
+        <img />
+    </div>
+    <div class="follow" ng-if="pageData.selfDataMedia.title">
+        <div class="row " ng-if="pageData.selfDataMedia.title">
+            <div class="col">
+                 <img src="{{pageData.selfDataMedia.imgSrc}}" alt="{{pageData.selfDataMedia.title}}">
+            </div>
+            <div class="col col-50">
+                <div class="title">{{pageData.selfDataMedia.title}}</div>
+                <div class="color999">{{pageData.selfDataMedia.summary}}</div>
+            </div>
+            <div class="col">
+                <a href="{{pageData.selfDataMedia.k10}}" class="button button-positive">关注</a>
+            </div>
+        </div>
+    </div>
+    <div class="sharebtn">
+            <span class="wbtn wbtn_main weixinsharezhidao" ng-click="showweixinshareshade = true">分享给好友</span> <span class="wbtn wbtn_main weixinsharezhidao" ng-click="showweixinshareshade = true">
+                分享到朋友圈</span>
+    </div>
+
+    <div ng-if="showweixinshareshade"  ng-click="pageFunc.hideShareBg()" class="weixinshareshade" style="position: fixed; width: 100%; height: 100%; top: 0px; left: 0px; z-index: 99; background-image: url(http://dev.comeoncloud.net/web/template/template8/styles/images/sharetext.png); background-color: rgba(0, 0, 0, 0.8); background-size: 50%; background-position: 100% 0%; background-repeat: no-repeat;"></div>
+</div>

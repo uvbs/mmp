@@ -1,0 +1,73 @@
+<!doctype html>
+<html ng-app="chunkao">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-app-status-bar-style" content="white">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- 微信jssdk -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+      <link href="http://comeoncloud.comeoncloud.net/lib/ionic/ionic.css" rel="stylesheet" />
+      <link href="http://comeoncloud.comeoncloud.net/lib/layer.mobile/need/layer.css" rel="stylesheet">
+      <link href="/customize/dati/dist/all.css?v=0.0.1.111" rel="stylesheet"/>
+
+      <script src="/customize/dati/dist/bower.js"></script>
+      <script src="http://comeoncloud.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+      <script src="http://comeoncloud.comeoncloud.net/lib/layer.mobile/layer.m.js"></script>
+      <script src="/customize/dati/dist/app.bundle.js?v=0.0.1.111"></script>
+
+
+  </head>
+  <body>
+    <div class="mainview" ui-view></div>
+  </body>
+</html>
+<script type="text/javascript">
+    var setConfig = {AutoID:0};
+    wx.ready(function () {
+        var shareModel = {
+            title: "答题",
+            desc: "",
+            imgUrl: "http://file.comeoncloud.net/img/hb/hb2.jpg"
+        }
+        if (setConfig.Title && setConfig.Title != "") {
+            shareModel.title = setConfig.Title;
+            document.title = shareModel.title;
+        }
+        if (setConfig.Description && setConfig.Description != "") shareModel.desc = setConfig.Description;
+        if (setConfig.Img && setConfig.Img != "") shareModel.imgUrl = setConfig.Img;
+        wxapi.wxshare(shareModel)
+    })
+</script>

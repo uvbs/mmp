@@ -1,0 +1,76 @@
+﻿<div>
+
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+        <h3>活动分类</h3>
+        <div class="cbp-wrap-menulist">
+            <a href="javascript:;" target="_blank" ng-click="pageFunc.leftMenuClick(item)" ng-repeat="item in pageData.cateList">{{item.categoryname}}</a>    
+        </div>
+        
+    </nav>
+
+    <div class="warpHeader bar bar-header item-input-inset" ng-if="pageData.hasSearch == '1'">
+        <i class="icon iconfont icon-iconfontliebiao mLeft6 mRight12 colorBlue" ng-click="pageFunc.leftMenuToggle()"></i> 
+        <label class="item-input-wrapper">
+            <input type="search" placeholder="搜索..." ng-model="pageData.searchKeyword">
+            <i class="icon iconfont icon-sousuo" ng-click="pageFunc.loadData()"></i>
+        </label>
+    </div>
+    <div class="wrapActivityCardList">
+        <div class="card" ng-repeat="item in pageData.activityData">
+
+            <div class="item">
+                <img class="avatar" src="{{item.activityimage}}">
+                <div class="content">
+                    <div class="title whiteSpaceNormal">
+                        {{item.activityname}}
+                    </div>                
+                    <div>
+                        <i class="iconfont icon-shijian"></i>时间：{{item.starttimestr}}
+                        <span class="colorBlue">已报名{{item.signcount}}人</span>
+                        <div class="Clear"></div>  
+                    </div>
+                    <div>
+                        <i class="iconfont icon-address"></i>地址：{{item.address}}
+                    </div>
+                    <!-- <div>
+                        <ul>
+                            <li class="floatL">
+                                <a href="javascript:;" class="tag">标签</a>
+                            </li>
+                            <li class="floatL">
+                                <a href="javascript:;" class="tag">标签</a>
+                            </li>
+                            <li class="floatL">
+                                <a href="javascript:;" class="tag">标签</a>
+                            </li>
+                            <li class="floatL">
+                                <a href="javascript:;" class="tag">标签</a>
+                            </li>
+                        </ul>
+                        <div class="Clear"></div>    
+                    </div> -->
+                </div>
+                <span class="status" ng-if="item.status == 0">进行中</span>
+                <span class="status" style="background-color: #808080;" ng-if="item.status > 0">已结束</span>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.totalCount > pageData.activityData.length">
+            <button class="button button-clear" ng-click="pageFunc.loadData(false)">查看更多</button>
+        </div>
+    </div>
+   <!--  <pageslide ps-open="pageData.sideMenuShow" ps-push="true">
+        <div>            
+            <p>some random content...</p>
+        </div>
+    </pageslide> -->
+    <!-- <div pageslide ps-open="pageData.sideMenuShow" ps-side="left">
+        <div class="wrapLeftSideMenu"  ng-click="pageData.sideMenuShow = false">
+            <ul class="list">
+                <li class="item" ng-repeat="item in [1,2,3,4,5,6,7,8,9,000,111]">
+                  尼玛
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
+</div>

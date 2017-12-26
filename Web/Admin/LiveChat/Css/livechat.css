@@ -1,0 +1,156 @@
+﻿
+.weui-textarea {
+    position: relative;
+}
+
+.send {
+    position: absolute;
+    z-index: 4;
+    bottom: 5px;
+    right: 2px;
+}
+
+.sendBox {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: white;
+}
+
+/**重置标签默认样式*/
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: '微软雅黑';
+}
+
+#container {
+    width: 450px;
+    height: 780px;
+    background: #eee;
+    margin: 80px auto 0;
+    position: relative;
+    box-shadow: 20px 20px 55px #777;
+}
+
+.header {
+    background: #000;
+    height: 40px;
+    color: #fff;
+    line-height: 34px;
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+
+
+
+.content {
+    /*font-size: 20px;
+            width: 435px;
+            height: 662px;
+            overflow: auto;
+            padding: 5px;*/
+    font-size: 14px;
+    margin-bottom: 250px;
+}
+
+    .content li {
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: block;
+        clear: both;
+        overflow: hidden;
+    }
+
+        .content li img {
+            float: left;
+        }
+
+        .content li span {
+            background: #7cfc00;
+            padding: 10px;
+            border-radius: 10px;
+            float: left;
+            margin: 6px 10px 0 10px;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 3px #ccc;
+            word-break: break-all;
+        }
+
+        .content li img.imgleft {
+            float: left;
+        }
+
+.imgleft
+{
+    width: 40px;
+    height: 40px;
+}
+.imgright {
+    width: 40px;
+    height: 40px;
+}
+
+.content li img.imgright {
+    float: right;
+}
+
+.content li span.spanleft {
+    float: left;
+    background: #fff;
+}
+
+.spanleft img {
+    max-width: 300px;
+}
+
+.spanright img {
+    max-width: 300px;
+}
+
+.content li span.spanright {
+    float: right;
+    background: #98E165;
+}
+
+.sys-msg {
+    font-size: 10px;
+    text-align: center;
+    color: #ccc;
+}
+.weui-cells {
+    margin-top:0px!important;
+   
+}
+.weui-cell {
+     padding:0 0 0 0!important;
+}
+
+.product {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    word-break: break-all;
+    background-color:white;
+    width:180px;
+    height:50px;
+    padding:2px;
+}
+.product-img {
+    float:left;
+
+}
+.product-img img {
+    width:50px;
+    height:50px;
+}
+.product-name {
+    float:left;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    width:130px;
+}

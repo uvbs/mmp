@@ -1,0 +1,206 @@
+<div class="layout boxMain warpAsk warpQuesDetails">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle clear">
+                <span class="warpAskaleft">
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText" ng-click="go('#/ask')">问答</span>
+                </span>
+                <div class="warpSearchInput warpAskaright">
+                    <!--  <div class="form-group">
+                     <input ng-model='pageData.searchKeyword' type="search" class="form-control txtSearch" placeholder="搜索活动..." />
+                    <div class="btnSearch" ng-click="pageFunc.loadData(true)"></div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="warpQuMain">
+                <div class="quesTab clear">
+                    <ul>
+                        <li ng-class="{change:pageData.type == 'question'}" ng-click="pageFunc.selectType('question')"><a href="javascript:;">发问题</a></li>
+                        <li ng-class="{change:pageData.type == 'article'}" ng-click="pageFunc.selectType('article')"><a href="javascript:;">发文章</a></li>
+                    </ul>
+                </div>
+                <div class="quesCon">
+                    <form ng-submit="pageFunc.submit()">
+                        <div class="form-group one">
+                            <label> {{pageData.type == 'question'? '问题标题：':'文章标题：'}}</label>
+                            <input type="text" class="form-control" placeholder="请输入标题内容..." ng-model="pageData.article.title" required>
+                        </div>
+                        <div class="quesConCan ">
+                            <label> {{pageData.type == 'question'? '问题详细补充：':'文章详情：'}}</label>
+                            <div class="warpComment">
+                                <div class="ueditor" style="height:400px;" ng-model="pageData.article.content" config="pageData.ueditorConfig" required></div>
+                                <!--ueditorConfig
+                                <div text-angular
+                                     ta-toolbar="[['bold', 'italics', 'underline','strikeThrough','justifyLeft', 'justifyCenter', 'justifyRight', 'insertLink','insertImage']]"
+                                     ng-model="pageData.article.content"
+                                     name="editor1"></div>-->
+                                <!--  <div class="warpOperate">
+
+                                    <button class="btn btn-primary floatR btnComment" ng-click="pageFunc.submitComment()">提交评论</button>
+                                    <div class="checkbox floatR">
+                                        <label>
+                                          <input type="checkbox" ng-model="pageData.commentIncognito"> 匿名
+                                        </label>
+                                    </div>
+                                    <div class="clear"></div>
+                                             </div> -->
+                            </div>
+                        </div>
+                        <div class="three">
+                            <div class="form-horizontal">
+
+                                <div class="form-group bot">
+                                    <label for="select" class="col-sm-2 control-label">地区选择:</label>
+                                    <div class="col-sm-3">
+                                        <select ng-model="pageData.currSelectProvince" class="form-control">
+                                            <option value="0">全国</option>
+                                            <option value="{{item.id}}" ng-repeat="item in pageData.provinceList">
+                                                {{item.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!--<select ng-model="pageData.currselectCity" class="form-control">
+                                            <option value="0">请选择城市</option>
+                                            <option value="" ng-repeat="item in pageData.cityList">
+                                            </option>
+                                        </select>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="four clear">
+                            <div class="form-group ">
+                                <label for="select" class="control-label fourLabel">标签选择:</label>
+                                <div class=" announceMark">
+                                    <div class="markTop clear">
+                                        <ul>
+                                            <li ng-repeat="item in pageData.tagList">
+                                                <a ng-class="{change:item.checked}"
+                                                   href="javascript:;"
+                                                   ng-click="pageFunc.selectTag(item)">
+                                                    {{item.tag}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <span class="showMoreBtn">
+                                            <a href="Javascript:;" ng-if="!pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                                               ng-click="pageData.showMoreTag = true">更多<i class="iconfont icon-unfold "></i></a>
+                                            <a href="Javascript:;" ng-if="pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                                               ng-click="pageData.showMoreTag = false">收起<i class="iconfont icon-xiangshang "></i></a>
+                                        </span>
+                                    </div>
+                                    <div class="markBot" ng-if="pageData.tagOtherList.length > 0 && pageData.showMoreTag">
+                                        <ul class="ul clear">
+                                            <li ng-repeat="item in pageData.tagOtherList">
+                                                <a ng-class="{change:item.checked}"
+                                                   href="javascript:;"
+                                                   ng-click="pageFunc.selectTag(item)">
+                                                    {{item.tag}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="five " ng-if="pageData.type=='question'">
+                            <ul class="clear fiveOne">
+                                <li class="liFirst"><label for="">邀请回答:</label></li>
+                                <li class="liCom" ng-repeat="item in pageData.receivers"><span>{{item.userName}}</span><i class="iconfont icon-guanbi"></i></li>
+                                <li class="liLast hand" ng-click="pageFunc.ShowUsers()">选择邀请人</li>
+                            </ul>
+                            <div class="fiveCon" ng-show="pageData.showUsers">
+                                <div class="warpSearchInput warpAskaright">
+                                    <div class="form-group">
+                                        <input ng-model='pageData.users.keyword' type="search" class="form-control txtSearch" placeholder="" />
+                                        <div class="btnSearch" ng-click="pageFunc.searchData()"></div>
+                                    </div>
+                                </div>
+                                <div class="fiveConImg">
+                                    <div class="imgOneParent">
+                                        <div class="imgOne" ng-repeat="item in pageData.users.dataView">
+                                            <dl>
+                                                <dt>
+                                                    <a href="javascript:;"><img ng-src="{{item.avatar}}" alt=""></a>
+                                                </dt>
+                                                <dd>
+                                                    <p>{{item.userName}}</p>
+                                                    <div class="warpAskRightTop">
+                                                        <button class="btn btn-primary" type="button" ng-show="!item.Invit" ng-click="pageFunc.Invit(item)">邀请回答</button>
+                                                        <button class="btn btn-warning" type="button" ng-show="item.Invit" ng-click="pageFunc.noInvit(item)">取消邀请</button>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="imgUl">
+                                        <ul>
+                                            <li class="hand" ng-click="pageFunc.searchLeft()">上一页</li>
+                                            <li>{{pageData.users.pageIndex}}</li>
+                                            <li class="hand" ng-click="pageFunc.searchNext()">下一页</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="six">
+                            <div class="warpAskRightTop ">
+                                <button class="btn btn-primary " type="submit">立即发布</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpAskRightTop ">
+                <!-- <button class="btn btn-primary askBots ">发问题</button>
+                 <button class="btn btn-primary askBots last">发文章</button> -->
+            </div>
+            <div class="ancuMarkSide">
+                <h5>发布问题的技巧</h5>
+                <h6>1. 如何提一个好问题？</h6>
+                <p>
+                    操作指南：<br />
+                    A，一个好的问题应该包含部分：一个简洁明了的标题，一段细致入微的问题详述。
+                    因为一个简单明了的标题直接决定了易劳平台用户能否在最短的时间内，理解你想表达的是什么，也决定了专家们是否有意愿点进去为你答疑。
+                    因为一段细致入微的问题详述可以帮助用户们正确无误地理解你所面临的问题是什么，这样也能根据实际情况给予你更为专业、更具可操作性的建议，否则你得到的回复可能也只是一段空泛巨化的文字。
+                    <br />
+                    B，如果你提的问题，已经有其他用户提出相关问题/类似问题了，请不用再提重复问题了。<br />
+
+                    C，此外，提问完成之后，积极主动的关注热门标签和专家库用户，会使得你的问题在更短的时间内得到更专业的答复。
+                </p>
+                <h6>2. 如何正确编辑一个好答案？</h6>
+                <p>
+                    操作指南：<br />
+                    A，建议选择自己所擅长、了解的问题作答，不建议在自己完全陌生的领域问题中作答。
+
+                    <br />
+                    B，建议使用规范的语言文字，并尽力保持逻辑清晰、条理清楚。
+                    <br />
+                    C，请避免使用带有攻击性、讽刺性的词汇，比如“SB”、“智商捉急”等等。
+                    <br />
+                    D，尊重版权和出处，如果你所撰写的答案并非你原创，抑或是部分原创，请注明来源出处。
+                    这样既可以规避版权问题被原作者拍砖，也可以便于在线用户深度挖掘答案，便于进一步查证。
+                    <br />
+                    E，用自己的语言文字来表达你的观点。我们既不建议您把其它网站上艰涩难懂的文字直接搬运过来，也不建议您直接转帖两个三链接之后，扬长而去。
+                    <br />
+                    F，尽力保持整洁清晰的排版，这样有利于信息的查阅和传播。
+                    目前最常出现的排版问题有：文字带有其它网站的底色、文字段落之间的字号、字体不一致、段落之间没有间隙。
+                    针对以上问题，提醒用户名首选“微软雅黑”进行文本撰写和粘贴。
+                </p>
+                <h6>3，谢绝一切广告。</h6>
+                <p> 我们相信，任何一个专业的互动平台都需要所有用户的共同付出与维护，感谢各位易劳伙伴们的支持！ </p>
+                <h6>4，如果您在使用易劳平台时，有任何不佳的用户体验或者任何自己无法解决的困难，请及时反馈给我们。</h6>
+                <p>
+                    联系方式：Lisa.wang@elao360.com，搜索易劳平台微信公众号：easylaodongfa，或私信告知elao360（个人微信号）或18916200897，您的意见。
+                    <br />
+                    我们承诺，会重视您的反馈，并尽快解决您的问题，及时予以回复。
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,59 @@
+<div class="serviceAppointmentCtrl">
+	<home-header></home-header>
+	
+	<tabs class="subTab" tabs="['优质4S售后服务','PureCAR售后服务']"
+		current="pageData.serviceType"
+		on-select="pageFunc.setServiceType"></tabs>
+	
+	<div class="list">
+		<label class="item item-input item-icon-left">
+			<div class="iconfont icon-gonglu"></div>
+			<input type="text" class="mLeft6" placeholder="当前里程数">
+		</label>
+		<label class="item item-input item-icon-left">
+			<div class="iconfont icon-yuanchangfuwu"></div>
+			<input type="text" class="mLeft6" placeholder="选择服务">
+		</label>
+		<label ng-if="pageData.serviceType === 0" class="item item-input item-icon-left">
+			<div class="iconfont icon-dianpu"></div>
+			<input type="text" class="mLeft6" placeholder="选择终端" ng-click="pageFunc.selectEndpoint()">
+		</label>
+		<label ng-if="pageData.serviceType === 1" class="item item-input item-icon-left">
+			<div class="iconfont icon-dianpu"></div>
+			<input type="text" class="mLeft6" placeholder="pureCar店铺">
+		</label>
+		<label ng-if="pageData.serviceType === 1" class="item item-input item-icon-left">
+			<div class="iconfont icon-jiage"></div>
+			<input type="text" class="mLeft6" placeholder="总价格">
+		</label>
+	</div>
+	
+	<div class="saleNotice"><i class="iconfont icon-iconfont73"></i>折扣信息</div>
+	
+	<div class="list">
+		<label class="item item-input item-icon-left">
+			<div class="iconfont icon-shijian"></div>
+			<input type="text" class="mLeft6" ng-click="pageFunc.showSelectDateDialog()" placeholder="到店日期">
+			<input type="text" class="mLeft6" ng-click="pageFunc.showSelectHourDialog()" placeholder="到店时间">
+		</label>
+		<label class="item item-input item-icon-left">
+			<div class="iconfont icon-shouyefuwu"></div>
+			<input type="text" class="mLeft6" placeholder="服务顾问">
+		</label>
+		<label ng-if="pageData.serviceType === 1" class="item item-input item-icon-left">
+			<div class="iconfont icon-youhuiquan"></div>
+			<input type="text" class="mLeft6" placeholder="优惠券">
+		</label>
+	</div>
+	
+	<div class="list">
+		<label class="item item-input item-icon-left">
+			<div class="iconfont icon-yonghu"></div>
+			<input type="text" class="mLeft6" placeholder="张三">
+		</label>
+		<label class="item item-input item-icon-left">
+			<div class="iconfont icon-dianhua"></div>
+			<input type="text" class="mLeft6" placeholder="15294739607">
+		</label>
+	</div>
+</div>

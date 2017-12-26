@@ -1,0 +1,29 @@
+<div class="storeOrdersCtrl storeOrderRateCtrl">
+  <div class="fullWidthBlock">
+    <div>
+      <span class="orderTitle">
+        {{pageData.order.title}}
+      </span>
+      <span class="orderStatus" ng-class="{
+          orderStatusProcessing: pageData.order.orderStatus === 0,
+          orderStatusConfirmed: pageData.order.orderStatus === 1,
+          orderStatusFinished: pageData.order.orderStatus === 2
+        }">{{pageData.order.orderStatusText}}</span>
+    </div>
+    <div class="arrivalTime">到店时间: {{pageData.order.arrivalTime}}</div>
+    <div class="orderTime">下单时间: {{pageData.order.orderTime}}</div>
+  </div>
+  
+  <div class="fullWidthBlock">
+    <span class="font16">总体评价: </span>
+    <span><star-rating ng-model="pageData.rating"></star-rating></span>
+  </div>
+  
+  <div class="fullWidthBlock">
+    <textarea ng-model="pageData.comment" placeholder="说说你对这服务还满意吗？给大家分享一下吧~~"></textarea>
+  </div>
+  
+  <div class="text-center submitButtonContainer">
+    <span class="submitButton">提交</span>
+  </div>
+</div>

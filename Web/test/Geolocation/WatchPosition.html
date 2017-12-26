@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <p id="demo">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+    <br />
+    <button onclick="getLocation()">点我</button>
+    <br />
+    <button onclick="shopLocation()">停止</button>
+    <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(showPosition);
+            }
+            else { x.innerHTML = "该浏览器不支持获取地理位置。"; }
+        }
+        function showPosition(position) {
+            x.innerHTML = "纬度: " + position.coords.latitude +
+            "<br>经度: " + position.coords.longitude;
+        }
+        function clearWatch() {
+            navigator.geolocation.clearWatch();
+        }
+    </script>
+</body>
+</html>

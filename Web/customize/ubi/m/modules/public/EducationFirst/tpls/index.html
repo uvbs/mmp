@@ -1,0 +1,63 @@
+<div class="wrapEducationFirst">
+    <div class="wrapAd">
+        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="6" class="wrapAd">
+            <li ng-repeat="img in pageData.adImgs">
+                <img ng-src="{{img.img}}" alt="{{img.title}} ">
+                <div class="leftTile">幼儿英语探索课程（3~6岁）</div>
+            </li>
+        </ul>
+        <div rn-carousel-indicators ng-if="pageData.adImgs.length > 1" slides="pageData.adImgs" rn-carousel-index="carouselIndex" class="imgIndex"></div>
+    </div>
+
+    <div class="row warpCenterMenu">
+        <div class="col-xs-6 widthHalfPercent pAll0005">
+            <div class="row widthHundredPercent pAll0050">
+                <div class="col-xs-12 mapMenu widthHundredPercent" ng-click="pageFunc.go('/m#/newsList/1_0_3_113_0_1_0')">
+                    <div class="content">
+                        <div class="menuTitle">校区分布</div>
+                        <div class="menuIco"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row widthHundredPercent pAll0">
+                <div class="col-xs-12 activityMenu widthHundredPercent pAll0" ng-click="pageFunc.go('/m#/otherMaster/1')">
+                    <div class="content">
+                        <div class="menuTitle">优惠活动</div>
+                        <div class="menuIco"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 widthHalfPercent">
+            <div class="row widthHundredPercent pAll0055">
+                <div class="col-xs-12 sendMsgMenu widthHundredPercent pAll0" onclick="alert('在线咨询')">
+                    <div class="content">
+                        <div class="menuIco">
+
+                        </div>
+                        <div class="menuTitle">在线咨询</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row widthHundredPercent pAll0055">
+                <div class="col-xs-12 updateMenu widthHundredPercent pAll0" onclick="alert('最新动态')">
+                    <div class="content">
+                        <div class="menuIco"></div>
+                        <div class="menuTitle">最新动态</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row widthHundredPercent pAll0055">
+                <div class="col-xs-12 memberMenu widthHundredPercent pAll0" onclick="alert('学员专区')">
+                    <div class="content">
+                        <div class="menuIco"></div>
+                        <div class="menuTitle">学员专区</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footermenu ng-attr-select="0"></footermenu>
+</div>

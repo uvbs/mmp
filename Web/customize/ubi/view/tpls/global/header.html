@@ -1,0 +1,64 @@
+﻿<div class="warpHeader">
+    <div class="top">
+        <div class="layout">
+            <div class="logo">
+                <img src="/customize/ubi/images/logo.png" />
+            </div>
+            <div ng-show="ubiheaderCtrl.pageData.loadComplete">
+                <div class="topNav indexNavTap" id="YesLogin" ng-show="ubiheaderCtrl.pageData.isLogin" ng-mouseleave="ubiheaderCtrl.pageData.isopen =false">
+                    <!--<a href="javascript:" class="dropdown" ng-click="ubiheaderCtrl.pageData.isopen = !ubiheaderCtrl.pageData.isopen">
+                        <img src="{{ubiheaderCtrl.pageData.user.avatar}}" id="headimg" />
+                        <span id="userid" class="overflow_ellipsis shortName" title="{{ubiheaderCtrl.pageData.user.userName}}">{{ubiheaderCtrl.pageData.user.userName}}</span>
+                    </a>-->
+                    <div class="dropdown" ng-click="ubiheaderCtrl.pageData.isopen = !ubiheaderCtrl.pageData.isopen">
+                        <div class="pic">
+                            <img ng-mouseover="ubiheaderCtrl.pageData.isopen = !ubiheaderCtrl.pageData.isopen" src="{{ubiheaderCtrl.pageData.user.avatar}}" id="headimg" />
+                            <div class="redPoint" ng-if="ubiheaderCtrl.pageData.user.unreadcount>0">
+
+                            </div>
+                        </div>
+                        <span ng-mouseover="ubiheaderCtrl.pageData.isopen = !ubiheaderCtrl.pageData.isopen" id="userid" class="overflow_ellipsis shortName" title="{{ubiheaderCtrl.pageData.user.userName}}">{{ubiheaderCtrl.pageData.user.userName}}</span>
+                    </div>
+                    <div class="redPoint" ng-if="ubiheaderCtrl.pageData.user.unreadcount>0">
+
+                    </div>
+                    <div class="indexPicImgParent" ng-show="ubiheaderCtrl.pageData.isopen"><div class="indexPicImg"></div></div>
+                    <div class="tapLi" ng-show="ubiheaderCtrl.pageData.isopen">
+                        <ul>
+                            <li class="indexTop" ng-click="ubiheaderCtrl.pageFunc.goUserspace()"><a href="javascript:;">个人中心</a></li>
+                            <li ng-click="ubiheaderCtrl.pageFunc.goPassword()"><a href="javascript:;">修改密码</a></li>
+                            <li ng-click="ubiheaderCtrl.pageFunc.goInformation()"><a href="javascript:;">消息<span ng-show="ubiheaderCtrl.pageData.user.unreadcount>0">({{ubiheaderCtrl.pageData.user.unreadcount}})</span></a></li>
+                            <li class="indexLast" ng-click="ubiheaderCtrl.pageFunc.logout()"><a href="javascript:;">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="topNav1 NoLogin" id="NoLogin" ng-show="!ubiheaderCtrl.pageData.isLogin">
+                    <form ng-submit="ubiheaderCtrl.pageFunc.login()">
+                        <button type="submit" class="btn btn-primary btn-sm floatR btnLogin" tabindex="3">登录</button>
+                        <div class="warpInput warpInputPwd">
+                            <input id="txtLoginPwd" type="password" class="form-control input-sm" tabindex="2" placeholder="密码" ng-model="ubiheaderCtrl.pageData.loginPwd">
+                            <div class="inputIcon"></div>
+                        </div>
+                        <div class="warpInput warpInputEmail">
+                            <input id="txtLoginId" type="text" class="form-control input-sm" tabindex="1" placeholder="邮箱" ng-model="ubiheaderCtrl.pageData.loginId">
+                            <div class="inputIcon"></div>
+                        </div>
+                    </form>
+                    <div class="clear"></div>
+                    <div class="warpRegBtn">
+                        <span class="btnForgotPwd" ng-click="go('#/passwordback')">忘记密码</span>
+                        <span class="btnReg" ng-click="go('#/register')">我要注册</span>
+                        <span class="jt"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="layout1">
+            <a href="#/index">首页</a> <a href="#/ask">问答与评论</a> <a href="#/activityList">活动</a><a href="#/open">公开课</a>
+            <a href="#/master">专家库</a><a href="#/case">案例分析</a><a href="#/news">新闻资讯</a>
+            <a href="#/regulations">政策搜索</a><a href="#/update">社区</a>
+        </div>
+    </div>
+</div>

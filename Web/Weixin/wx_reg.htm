@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>注册</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <link href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" rel="stylesheet"
+        type="text/css" />
+    <script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.mobile-1.2.1.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+    <style type="text/css">
+        #price
+        {
+            margin: 5px;
+        }
+        #footer
+        {
+            background-color: #999;
+        }
+        p
+        {
+            margin: 0px;
+            background-color: #FFF;
+        }
+        #article
+        {
+            background-color: #FFF;
+            padding: 0px;
+            font-size: 16px;
+            line-height: 30px;
+            margin-top: 0px;
+        }
+        img
+        {
+            margin: 0px;
+            padding: 0px;
+            display: block;
+        }
+        #imgSrc
+        {
+            margin: 0 0px;
+        }
+        #dataline
+        {
+            padding: 10px;
+            background-color: #FFF;
+        }
+        #articl1
+        {
+            padding-top: 10px;
+        }
+        
+        #tuiguang
+        {
+            margin: 0 5px;
+        }
+        #jubit_title
+        {
+            color: #F00;
+            margin-left: 5px;
+        }
+        
+        
+        .field
+        {
+            border-bottom-style: none;
+            padding-top: 0.5em;
+            padding-bottom: 0em;
+            margin-top: 0em;
+            margin-bottom: 0em;
+        }
+        
+        .ui-icon-friend
+        {
+            background-image: url(http://www.jubit.cn/activity/icon/friendquan.png);
+            background-repeat: no-repeat;
+            background-position: 15% center;
+        }
+        .ui-icon-send
+        {
+            background-image: url(http://www.jubit.cn/activity/icon/zhuanfa.png);
+            background-repeat: no-repeat;
+            background-position: 12% center;
+        }
+        .ui-content
+        {
+            border-width: 0;
+            overflow: visible;
+            overflow-x: hidden;
+            padding: 0px;
+        }
+        
+        form
+        {
+            margin-left: 5px;
+        }
+        
+        #sharebtnli
+        {
+            font-size: 16px;
+            height: 12px;
+        }
+    </style>
+</head>
+<body class="ui-mobile-viewport">
+    <div id="viewresume" data-role="page">
+        <div data-role="header" data-theme="b">
+            <h1>
+                注册</h1>
+        </div>
+        <!-- /header -->
+        <div data-role="content" class="ui-content">
+            <p align="center" id="article">
+            </p>
+            <form id="formwxreg" action="/serv/ActivityApiJson.ashx">
+            <div data-role="fieldcontain" class="field">
+                <label for="Name" class="ui-input-text">
+                    姓名:</label>
+                <input type="text" name="Name" id="name" value="" />
+            </div>
+            <div data-role="fieldcontain" class="field">
+                <label for="Phone" class="ui-input-text">
+                    手机:</label>
+                <input type="text" name="Phone" id="phone" value="" />
+            </div>
+            <div data-role="fieldcontain" class="field">
+                <label for="Email">
+                    邮箱:</label>
+                <input type="text" name="Email" id="Email" value="" />
+            </div>
+            <div data-role="fieldcontain" class="field">
+                <label for="Company">
+                    公司:</label>
+                <input type="text" name="Company" id="Company" value="" />
+            </div>
+            <div data-role="fieldcontain" class="field">
+                <label for="Postion">
+                    职位:</label>
+                <input type="text" name="Postion" id="Postion" value="" />
+            </div>
+            <div class="ui-body ui-body-b" style="margin-top: 10px;">
+                <input type="hidden" value="$CCWXOPENID$" name="WeixinOpenID" id="WeixinOpenID" />
+                <input type="hidden" value="$CCWXAID$" name="Aid" id="Aid" />
+                <input type="hidden" value="WXReg" name="Action" id="Action" />
+                <fieldset class="ui-grid-a" style="text-align: center;">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 50%">
+                                <input type="button" data-theme="b" id="btnReg" value="注册">
+                            </td>
+                            <td style="width: 50%">
+                                <input type="reset" data-theme="b" id="Button1" value="重置">
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            </form>
+            <div data-role="popup" id="popupBasic">
+                <div id="divmsg" style="padding: 15px;">
+                    <p>
+                        This is a completely basic popup, no options set.<p>
+                </div>
+            </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        var nexturl = GetParm("nexturl");
+        //alert(nexturl);
+
+        $("#btnReg").live("click", function () {
+
+            var Name = $('#name').val();
+            var Phone = $('#phone').val();
+            if (Name == "" || (Phone == "")) {
+                showporp("请输入姓名、手机号");
+                return false;
+            }
+            try {
+
+                $.mobile.loading('show', { textVisible: true, text: '正在注册...' });
+                var option = {
+                    url: "/Handler/WeiXin/WXRegistration.ashx",
+                    type: "post",
+                    dataType: "text",
+                    success: function (result) {
+                        $.mobile.loading('hide');
+                        var resp = $.parseJSON(result);
+                        //                         var msg = "";
+                        //                         switch (resp.Status) {
+                        //                             case 1:
+                        //                                 msg = "您已经注册过了";
+                        //                                 break;
+                        //                             case 0:
+                        //                                 msg = "注册成功!";
+                        //                                 break;
+
+                        //                             default:
+                        //                                 msg = resp.Msg;
+
+                        //                         }
+
+                        showporp(resp.Msg);
+                        //alert(resp.Status);
+                        if (resp.Status == 1 && nexturl != "") {
+                            //alert(nexturl);
+                            window.location.href = nexturl;
+                        }
+
+                    }
+                };
+                $("#formwxreg").ajaxSubmit(option);
+                return false;
+
+
+            }
+            catch (e) {
+                alert(e);
+            }
+
+
+
+        });
+
+    });
+
+    function showporp(strhtml) {//提示框
+        $("#divmsg").html(strhtml);
+        $("#popupBasic").popup("open");
+    }
+
+    //获取Get参数
+    function GetParm(parm) {
+        //获取当前URL
+        var local_url = window.location.href;
+
+        //获取要取得的get参数位置
+        var get = local_url.indexOf(parm + "=");
+        if (get == -1) {
+            return "";
+        }
+        //截取字符串
+        var get_par = local_url.slice(parm.length + get + 1);
+        //判断截取后的字符串是否还有其他get参数
+        var nextPar = get_par.indexOf("&");
+        if (nextPar != -1) {
+            get_par = get_par.slice(0, nextPar);
+        }
+        return get_par;
+    }
+    //获取参数
+
+</script>
+</html>

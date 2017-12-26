@@ -1,0 +1,112 @@
+﻿.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.headerBar {
+    height: 45px;
+    line-height: 45px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    text-align: center;
+    font-size: 1em;
+
+    .go-back {
+        padding: 0px 5px;
+        position: absolute;
+        left: 0;
+        font-size: 25px;
+    }
+
+    .btnBackHomeRight {
+        padding: 0px 5px;
+        font-size: 25px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+.wrapList {
+    .wrapStatus {
+        .weui-tab {
+            height: 50px;
+
+            .weui-navbar {
+                .weui-navbar__item {
+                }
+            }
+        }
+    }
+
+    .wrapCells {
+        .wrapCard {
+            position: relative;
+            color: #ffffff;
+
+            .cardImg {
+                max-width: 100%;
+                border-radius: 4px !important;
+                box-shadow: 2px 4px 4px 0px #585454;
+            }
+
+            .cardAmount {
+                font-family: 'Microsoft YaHei',Tahoma,Arial;
+                position: absolute;
+                top: 20%;
+                left: 5%;
+                font-size: 3em;
+            }
+
+            .cardName {
+                position: absolute;
+                top: 10%;
+                left: 5%;
+                width: 90%;
+            }
+
+            .cardValid {
+                position: absolute;
+                bottom: 4%;
+                right: 5%;
+                font-size: 13px;
+            }
+
+            .cardNumber {
+                position: absolute;
+                bottom: 12%;
+                right: 5%;
+            }
+
+            .cardStatus {
+                position: absolute;
+                top: 4%;
+                right: 5%;
+                font-size: 13px;
+                display: none;
+            }
+        }
+
+        .weui-cells {
+            margin-top: 0px;
+            padding: 6px;
+
+            .weui-cell {
+                padding: 6px;
+            }
+
+            .weui-cell:before {
+                border: 0px;
+                left: 0px;
+            }
+        }
+
+        .weui-cells:after {
+            border: 0px;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<div class="wrapFooter">
+    <div class="row">
+        <div class="col" ng-repeat="item in pageData.menus" ng-class="{selected:item.selected}" ng-click="pageFunc.click(item)">
+			<span class="iconfont {{item.icon}}">
+			</span>
+            <span class="navtext">{{item.title}}</span>
+        </div>
+    </div>
+</div>

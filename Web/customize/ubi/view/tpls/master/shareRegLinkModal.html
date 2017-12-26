@@ -1,0 +1,16 @@
+﻿<div class="modal-header">
+    <div class="LineHeight20 mLeft20 ThemeColor3">您可以编辑并复制以下信息，分享给您的亲朋好友进行注册，注册成功奖励积分</div>
+</div>
+<div class="modal-body linkMain">
+    <div class="">
+        <textarea  class="linkTxtArea" ng-model="shareLinkData.textContent"></textarea>
+        <div class="linkArea ">
+            <div class="Gray_9 mBottom5">请在浏览器中打开下面的链接进行注册：</div>
+            {{shareLinkData.shareRegLink}}
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary pLeft26 pRight26" clip-copy="shareLinkFn.getTextToCopy()" clip-click="shareLinkFn.showMessage()">复制内容</button>
+    <button class="btn btn-warning" ng-click="$close()">关闭</button>
+</div>

@@ -1,0 +1,57 @@
+﻿<style>
+    body, h5
+    {
+        font-family: 'Microsoft YaHei' !important;
+    }
+    .wrapCouponUse .couponArea .imgArea .foot
+    {
+        text-align: center;
+        left: 0;
+    }
+    .layermbtn span
+    {
+        width: 45%;
+    }
+    .layermchild h3, .layermbtn span
+    {
+        overflow: inherit;
+    }
+    .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p
+    {
+        white-space: normal;
+    }
+    .wrapCouponUse .wrapBtn .button
+    {
+        margin-top: 20px;
+    }
+    .wrapCouponUsed .couponArea .imgArea .foot
+    {
+        left: 0px;
+        text-align: center;
+    }
+</style>
+<div class="wrapCouponUsed">
+    <div class="couponArea">
+        <div class="imgArea">
+            <div class="head">
+                <img src="/Components/Coupon/Mobile/BeachHoney/static/img/redaifengbao.jpg" class="img" />
+                <h5>
+                    热带风暴水上乐园
+                </h5>
+                <div class="Clear">
+                </div>
+            </div>
+            <img src="/Components/Coupon/Mobile/BeachHoney/static/img/content.png" class="content" />
+            <div class="foot">
+                有效期：{{pageData.couponDetail.card_validfrom|formartdate}}&nbsp;至&nbsp;{{pageData.couponDetail.card_validto|formartdate}}
+            </div>
+            <img class="floatImg" src="/Components/Coupon/Mobile/BeachHoney/static/img/used.png" />
+        </div>
+        <div class="numArea">
+            {{pageData.couponDetail.card_number}}
+        </div>
+    </div>
+    <div class="item item-divider colorGrey_9">
+
+    </div>
+</div>

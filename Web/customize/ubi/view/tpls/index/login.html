@@ -1,0 +1,211 @@
+<div class="layout boxMain warpLogin">
+    <div class="loginTopBot">
+        <span class="hand" ng-class="{change:!pageData.isTutor}" ng-click="pageData.isTutor=false;pageData.IsSHowInfo=false">用户注册</span>
+        <span class="hand" ng-class="{change:pageData.isTutor}" ng-click="pageData.isTutor=true;pageData.IsSHowInfo=true">律师注册</span>
+    </div>
+    <div class="loginMainCon">
+        <form ng-submit="pageFunc.register()">
+            <div class="userConOne">
+                <div class="form-horizontal">
+                    <div class="form-group loginTable" ng-if="!pageData.isTutor">
+                        <label for="inputPassword3" class="col-xs-2 control-label">用户昵称：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.userName" placeholder="请输入用户昵称">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable" ng-if="pageData.isTutor">
+                        <label for="inputPassword3" class="col-xs-2 control-label">姓名：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.userName" placeholder="请输入真实姓名">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">邮箱：</label>
+                        <div class="col-xs-7">
+                            <input type="email" class="form-control" required ng-model="pageData.userEmail" placeholder="请输入正确的邮箱">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">密码：</label>
+                        <div class="col-xs-7">
+                            <input type="password" class="form-control" required ng-model="pageData.userPwd" placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable loginBot">
+                        <label for="inputPassword3" class="col-xs-2 control-label">确认密码：</label>
+                        <div class="col-xs-7">
+                            <input type="password" class="form-control" required ng-model="pageData.userPwd2" placeholder="请确认密码">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group loginTable loginImg">
+                        <label for="inputPassword3" class="col-xs-2 control-label"></label>
+                        <div class="col-xs-8" style="display:none;">
+                            <div class="range">弱</div><div class="range">中</div><div class="range">强</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal" ng-if="pageData.isTutor">
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">律所/公司名称：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.company" placeholder="请填写真实信息，以后不可随意更改">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">身份证：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.idCardNo" placeholder="请输入身份证号码">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label  class="col-xs-2 control-label">律师执业证编号：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.LawyerLicenseNo" placeholder="请输入律师执业证编号">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputEmail3" class="col-xs-2 control-label one">免冠半身照：</label>
+                        <div class="col-xs-4 two">
+                            <a ng-href="{{pageData.avatar}}" target="_blank"><img alt="" src="{{pageData.avatar}}"></a>
+                        </div>
+                        <div class="col-xs-6 userImg">
+                            <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv3()">上传免冠半身照</div>
+                            <input id="fileUserPhoto3" class="hidden" type="file" nv-file-select="" uploader="uploader3" />
+                            <p>
+                                支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group loginTable">
+                        <label for="inputEmail3" class="col-xs-2 control-label one">执业证：</label>
+                        <div class="col-xs-4 two">
+                            <a ng-href="{{pageData.licensePhoto}}" target="_blank"><img alt="" src="{{pageData.licensePhoto}}"></a>
+                        </div>
+                        <div class="col-xs-6 userImg">
+                            <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()">上传执业证照片</div>
+                            <input id="fileUserPhoto" class="hidden" type="file" nv-file-select="" uploader="uploader" />
+                            <p>
+                                支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputEmail3" class="col-xs-2 control-label one">身份证正面照：</label>
+                        <div class="col-xs-4 two">
+                            <a ng-href="{{pageData.IDPhoto1}}" target="_blank"><img alt="" src="{{pageData.IDPhoto1}}"></a>
+                        </div>
+                        <div class="col-xs-6 userImg">
+                            <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv1()">上传身份证正面照</div>
+                            <input id="fileUserPhoto1" class="hidden" type="file" nv-file-select="" uploader="uploader1" />
+                            <p>
+                                支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputEmail3" class="col-xs-2 control-label one">身份证反面照：</label>
+                        <div class="col-xs-4 two">
+                            <a ng-href="{{pageData.IDPhoto2}}" target="_blank"><img alt="" src="{{pageData.IDPhoto2}}"></a>
+                        </div>
+                        <div class="col-xs-6 userImg">
+                            <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv2()">上传身份证反面照</div>
+                            <input id="fileUserPhoto2" class="hidden" type="file" nv-file-select="" uploader="uploader2" />
+                            <p>
+                                支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">职位：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.postion" placeholder="请输入职位">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">手机：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.phone" placeholder="请输入手机">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">座机：</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" required ng-model="pageData.tel" placeholder="区号-电话号">
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">地区选择：</label>
+                        <div class="col-xs-3">
+                            <select ng-change="pageFunc.selectProvince()" ng-model="pageData.province" class="form-control">
+                                <option value="0">选择省份</option>
+                                <option value="{{item.id}}" ng-repeat="item in pageData.provinceList">
+                                    {{item.name}}
+                                </option>
+                            </select>
+                            <!-- <select class="form-control" ng-option="p.id as p.name for p in pageData.provinceList"></select> -->
+                        </div>
+                        <div class="col-xs-3">
+                            <select ng-model="pageData.city" class="form-control">
+                                <option value="0">选择城市</option>
+                                <option value="{{item.id}}" ng-repeat="item in pageData.cityList">
+                                    {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">律所/公司地址：</label>
+                        <div class="col-xs-9">
+                            <textarea type="text" class="form-control" rows="3" required ng-model="pageData.companyaddress" placeholder="请输入律所/公司地址"> </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group loginTable">
+                        <label class="col-xs-2 control-label">显示个人信息？</label>
+                        <div class="isShow">
+                            <input type="checkbox" ng-model="pageData.IsSHowInfo">
+                        </div>
+                        <!--<label class="toggle">-->
+                        <!--<input ng-model="pageData.IsSHowInfo" type="checkbox">-->
+                        <!--</label>-->
+                    </div>
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-2 control-label">验证码：</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" ng-model="pageData.checkCode" maxlength="4" required placeholder="验证码">
+                        </div>
+                        <div class="col-xs-3">
+                            <button class="btn checkCode" type="button" ng-click="pageFunc.getEmailCheckCode()" ng-if="pageData.checkCodeTime<=0">获取邮箱验证码</button>
+                            <button class="btn checkCode bgGray" type="button" ng-if="pageData.checkCodeTime>0">{{pageData.checkCodeTime}}秒后再次获取</button>
+                        </div>
+                        <!--<div class="col-xs-3">
+                            <a href="javascript:;">看不清？</a>
+                        </div>-->
+                    </div>
+                    <div class="form-group loginTable">
+                        <label class="col-xs-2 control-label"></label>
+                        <div class="isShow">
+                            <input type="checkbox" ng-model="pageData.isAccept">
+                            <label>阅读并接受</label>
+                            <a href="#/about/168216">《易劳协议》</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group loginTable">
+                        <label for="inputPassword3" class="col-xs-3 control-label"></label>
+                        <div class="col-xs-3">
+                            <button class="btn btn-primary" type="submit">注册</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

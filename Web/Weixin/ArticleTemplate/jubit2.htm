@@ -1,0 +1,286 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--聚比特模板-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>$CCWX-ARTICLETITLE$</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link href="/juactivity/wap/css/activitylist.css" rel="stylesheet" type="text/css" />
+    <link href="/css/jqm/themes/f.css" rel="stylesheet" type="text/css" />
+    <link href="/css/jqm/themes/jquery.mobile.structure-1.3.2.min.css" rel="stylesheet"
+          type="text/css" />
+    <link href="/Weixin/ArticleTemplate/css/comm.css" rel="stylesheet" />
+    <link href="/Weixin/ArticleTemplate/css/style.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .ui-icon-friend {
+            background-image: url(http://www.jubit.cn/activity/icon/friendquan.png);
+            background-repeat: no-repeat;
+            background-position: 15% center;
+        }
+
+        .ui-icon-send {
+            background-image: url(http://www.jubit.cn/activity/icon/zhuanfa.png);
+            background-repeat: no-repeat;
+            background-position: 12% center;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui-mobile-viewport" style="width: 100%; margin: 0 0 0 0;">
+        <div id="viewresume">
+            <div class="ui-content" style="padding: 0px; text-shadow: none;">
+                <div style="width: 100%; margin-left: 0%; margin-right: 0%;">
+                    <table style="width: 100%; background-color: #EC7351">
+                        <tbody>
+                            <tr>
+                                <td valign="top" align="left" style="width: 110px;">
+                                    <img src="$CCWX-ARTICLEIMAGE$" style="width: 100px; height: 100px;" />
+                                </td>
+                                <td valign="top">
+                                    <div style="color: #ffffff; font-family: Helvetica,Arial,sans-serif; font-size: 18px;
+                                        font-weight: normal; line-height: 24px; font-weight: bold;">
+                                        $CCWX-ARTICLETITLE$
+                                    </div>
+                                    <div style="color: #564e4c;">
+                                        <span>
+                                            <img src="/JuActivity/Wap/image/date.gif" style="width: 14px; height: 14px;" />
+                                        </span><span style="color: #564e4c; font-size: 14px; font-weight: normal; line-height: 18px;">
+                                            $CCWX-ARTICLETIME$
+                                        </span>
+                                    </div>
+                                    <div style="text-align: left;">
+                                        <img src="/JuActivity/Wap/image/address.gif" style="width: 14px; height: 14px;" />
+                                        <span style="color: #564e4c; font-size: 14px; font-weight: normal; line-height: 18px;">
+                                            $CCWX-ARTICLEADDRESS$
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%; background-color: #fca572; color: #564e4c; text-align: center">
+                        <tbody>
+                            <tr>
+                                <td valign="middle" style="width: 33.3333%">
+                                    <img src="/JuActivity/Wap/image/haveread.gif" style="width: 10px; height: 10px;" />
+                                    <span style="font-family: Helvetica,Arial,sans-serif; font-size: 12px; font-weight: normal;
+                                        line-height: 18px;">$CCWX-ARTICLEOPENCOUNT$人次阅读</span>
+                                </td>
+                                <td valign="middle" style="width: 33.3333%">
+                                    <img src="/JuActivity/Wap/image/signupcount.gif" style="width: 10px; height: 10px;" />
+                                    <span style="font-family: Helvetica,Arial,sans-serif; font-size: 12px; font-weight: normal;
+                                        line-height: 18px;">
+                                        <label id="lblPraiseCount">
+                                            $CCWX-ARTICLEUPCOUNT$
+                                        </label>
+                                        赞
+                                    </span>
+                                </td>
+                                <td valign="middle" style="width: 33.3333%">
+                                    <img src="/JuActivity/Wap/image/zan.gif" style="width: 10px; height: 10px;" onclick="Praise()" />
+                                    <span onclick="Praise()" style="font-family: Helvetica,Arial,sans-serif; font-size: 12px;
+                                        font-weight: normal; line-height: 18px;">我要赞</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="content" style="margin-left: 5px; margin-right: 5px; margin-top: 5px;">
+                        $CCWX-ARTICLECONTENT$
+                    </div>
+                    $JUTP-TPSignForm$
+                    <div data-role="popup" id="dlgMsg" style="padding: 20px; text-align: center; font-weight: bold;">
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete"
+                           data-iconpos="notext" class="ui-btn-right">Close</a>
+                        <label id="lbDlgMsg">
+                        </label>
+                    </div>
+                    <div style="width: 100%; height: 100%; display: none; background: #000; opacity: 0.7;
+                        position: absolute; top: 0; left: 0; z-index: 999999; text-align: right;" id="sharebg">
+                        &nbsp;
+                    </div>
+                    <div style="position: absolute; z-index: 1000000; right: 0; width: 100%; text-align: right;
+                        display: none;" id="sharebox">
+                        <img src="http://www.jubit.cn/activity/icon/follow1.png" width="100%" />
+                    </div>
+                    <div style="position: absolute; z-index: 1000000; right: 0; width: 100%; text-align: right;
+                        display: none;" id="followbox">
+                        <img src="http://www.jubit.cn/activity/icon/follow2.png" width="100%" />
+                    </div>
+                    <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a id="sendtofriendbtn" class="ui-icon-send" data-inline="true" data-role="button">
+                                    发送给朋友
+                                </a>
+                            </li>
+                            <li id="sharebtnli">
+                                <a id="sharebtn" class="ui-icon-friend" data-inline="true" data-role="button">
+                                    分享到朋友圈
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a id="btnPubToo" data-inline="true" data-role="button" href="/FShare/Wap/UserHub.aspx">
+                                    我也要发布文章活动
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.mobile-1.3.2.js" type="text/javascript"></script>
+<script src="/Scripts/StringBuilder.js" type="text/javascript"></script>
+<script src="/Scripts/Common.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+<script src="/Static/WeixinArticleTemplate/wtpinit.js" type="text/javascript"></script>
+<script src="/Weixin/ArticleTemplate/JS/TheVote.js" type="text/javascript"></script>
+<script src="/Scripts/Common.js"></script>
+<script src="/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+<script type="text/javascript">
+    //赞
+    function Praise() {
+        jQuery.ajax({
+            type: "Post",
+            url: "/Handler/JuActivity/JuActivityHandlerForWap.ashx",
+            data: {
+                Action: "AddJuActivityPraise", JuActivityID: "$CCWX-ARTICLEID$"
+            },
+            dataType: "html",
+            success: function (result) {
+                if (result == "true") {
+                    var oldparisecount = parseInt($("#lblPraiseCount").text());
+                    var newparisecount = oldparisecount + 1;
+                    $("#lblPraiseCount").html(newparisecount);
+
+                }
+
+
+            }
+        })
+
+
+    }
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#sharebtn,#sendtofriendbtn").click(function () {
+            $("#sharebg,#sharebox").show();
+            $("#sharebox").css({ "top": $(window).scrollTop() })
+        });
+        $("#followbtn").click(function () {
+            $("#sharebg,#followbox").show();
+            $("#followbox").css({ "top": $(window).scrollTop() })
+        });
+        $("#sharebg,#sharebox,#followbox").click(function () {
+            $("#sharebg,#sharebox,#followbox").hide();
+            $("#sendtofriendbtn,#sharebtn").removeClass("ui-btn-active");
+        });
+    });
+</script>
+<script type="text/javascript">
+    //var pageData = {
+    //    currUserOpenId: '$CCWX-currOpenerOpenID$',//当前用户的wxopenId
+    //    currUserId: '$CCWX-currUserID$',//当前用户的userId
+    //    title: '$CCWX-ARTICLETITLE$',//标题
+    //    summary: '$CCWX-ARTICLESUMMARY$',//描述
+    //    shareImgUrl: '$CCWX-ARTICLEIMAGE$',//分享缩略图
+    //    shareUrl: window.location.href,//分享链接
+
+    //    tempShareId: CreateGUID(),
+    //    preShareId: GetParm('comeonshareid'),
+    //    callback: callback
+    //};
+
+    var pageData = {
+        currUserOpenId: '$CCWX-currOpenerOpenID$', //当前用户的wxopenId
+        currUserId: '$CCWX-currUserID$', //当前用户的userId
+        title: '$CCWX-ARTICLETITLE$', //标题
+        summary: '$CCWX-ARTICLESUMMARY$', //描述
+        shareImgUrl: '$CCWX-ARTICLEIMAGE$', //分享缩略图
+        shareUrl: window.location.href, //分享链接
+        tempShareId: CreateGUID(),
+        preShareId: GetParm('comeonshareid'),
+        preShareUserId: '$CCWX-shareUserId$'//分享者id
+        //callback: callback
+    };
+
+    //if (pageData.preShareUserId == pageData.currUserId) {
+    //    pageData.tempShareId = pageData.preShareId;
+    //}
+
+    var shareCallBackFunc = {
+        timeline_s: function () {
+            submitShare('timeline_s');
+            shareComeplete('$CCWX-JUACTIVITYID$');
+        },
+        timeline_c: function () {
+            //朋友圈分享取消
+        },
+        message_s: function () {
+            //分享给朋友
+            submitShare('message_s');
+            shareComeplete('$CCWX-JUACTIVITYID$');
+        },
+        message_c: function () {
+            //朋友分享取消
+        }
+    }
+
+    var processUrl = function (url) {
+        url = DelUrlParam(url, 'comeonshareid');
+        url = DelUrlParam(url, 'from');
+        url = DelUrlParam(url, 'isappinstalled');
+        return url;
+    }
+
+    var callback = function (data) { }
+
+    var submitShare = function (WxMsgType) {
+        var reqData = {
+            Action: 'ShareSubmit',
+            url: processUrl(pageData.shareUrl),
+            shareId: pageData.tempShareId,
+            preId: pageData.preShareId,
+            userId: pageData.currUserId,
+            userWxOpenId: pageData.currUserOpenId,
+            wxMsgType: WxMsgType
+        }
+
+        //分享到朋友圈
+        $.ajax({
+            type: 'post',
+            url: '/serv/pubapi.ashx',
+            data: reqData,
+            dataType: 'jsonp',
+            success: function (data) {
+                pageData.tempShareId = CreateGUID();
+            }
+        });
+    }
+
+    //TODO:Url处理
+    //移除原有参数 comeonshareid from isappinstalled
+    pageData.shareUrl = processUrl(pageData.shareUrl);
+    pageData.shareUrl = pageData.shareUrl + '?comeonshareid=' + pageData.tempShareId;
+
+
+    wx.ready(function () {
+        wxapi.wxshare({
+            title: pageData.title,
+            desc: pageData.summary,
+            link: pageData.shareUrl,
+            imgUrl: pageData.shareImgUrl
+        }, shareCallBackFunc)
+    });
+
+</script>

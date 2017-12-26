@@ -1,0 +1,56 @@
+﻿<div class="wrapUserPoints">
+    <div class="banner">
+        <span>{{pageData.userInfo.userTotalScore}}</span><span>积分</span>
+        <div class="payfor" ng-click="pageFunc.buyScore()">
+            积分充值
+            <!--<i class="icon iconfont icon-arrowright"></i>-->
+        </div>
+    </div>
+    <div class="wrapTabTitle" ng-if="!pageData.isBuy">
+        <div class="row">
+            <div class="col" ng-class="{selected:pageData.currTabIndex == 0}" ng-click="pageData.currTabIndex = 0;pageFunc.loadData(true);">
+                全部
+            </div>
+            <div class="col" ng-class="{selected:pageData.currTabIndex == 1}" ng-click="pageData.currTabIndex = 1;pageFunc.loadData(true);">
+                收入
+            </div>
+            <div class="col" ng-class="{selected:pageData.currTabIndex == 2}" ng-click="pageData.currTabIndex = 2;pageFunc.loadData(true);">
+                支出
+            </div>
+            <!--  <div class="col" ng-class="{selected:pageData.currTabIndex == 1}" ng-click="pageData.currTabIndex = 1">
+                 积分充值
+             </div> -->
+        </div>
+    </div>
+    <div class="pointList" ng-if="!pageData.isBuy">
+        <ul class="list">
+            <li class="item" ng-repeat="item in pageData.historys.list">
+                {{item.summary}}
+                <span class="item-note">
+                    {{item.score}}
+                </span>
+            </li>
+        </ul>
+        <div class="wrapShowMore" ng-if="pageData.historys.list.length<pageData.historys.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>
+        </div>
+    </div>
+    <div class="wrapRecharge" ng-if="pageData.isBuy">
+        <div class="list">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">充值积分&nbsp;&nbsp;(100积分 = {{pageData.historys.fee}}元)</span>
+                <input type="text" ng-model="pageData.historys.score" placeholder="请输入您要充值的积分数">
+            </label>
+            <label class="item ">
+                <span>应付金额</span>
+                <span class="colorRed font20 mLeft4 mRight4" ng-bind=" pageFunc.getTotalFee()">20</span><span>元</span>
+            </label>
+        </div>
+        <div class="wrapBtn">
+            <button class="button button-block button-positive" ng-click="pageFunc.submit()">
+                确认支付
+            </button>
+        </div>
+    </div>
+    <backbtn></backbtn>
+</div>

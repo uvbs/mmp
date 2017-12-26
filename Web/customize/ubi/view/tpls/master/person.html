@@ -1,0 +1,438 @@
+<div class="layout boxMain warpMaster warpPerson">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="personTop">
+                <dl>
+                    <dt>
+                        <a href="javascript:;"><img src="{{pageData.userInfo.avatar}}" alt=""></a>
+                    </dt>
+                    <dd>
+                        <h4>{{pageData.userInfo.userName}}   <i ng-show="pageData.userInfo.isTutor" class="iconfont icon-v "></i></h4>
+                        <p ng-if="pageData.userInfo.userProvince==pageData.userInfo.userCity">{{pageData.userInfo.userProvince}}</p>
+                        <p ng-if="pageData.userInfo.userProvince!=pageData.userInfo.userCity">{{pageData.userInfo.userProvince}}  {{pageData.userInfo.userCity}}</p>
+                        <p>
+                            <span ng-show="pageData.userInfo.userCompany!=pageData.isNull">{{pageData.userInfo.userCompany}}</span>
+                            <span ng-show="pageData.userInfo.userPostion!=pageData.isNull">{{pageData.userInfo.userPostion}}</span>
+                        </p>
+                        <p>
+                            <span ng-show="pageData.userInfo.LawyerLicenseNo!=pageData.isNull">律师执业证号：{{pageData.userInfo.LawyerLicenseNo}}</span>
+                            <span ng-show="pageData.userInfo.userEmail!=pageData.isNull">邮箱：{{pageData.userInfo.userEmail}}</span>
+                        </p>
+                        <p>
+                            <span ng-show="pageData.userInfo.userPhone!=pageData.isNull">手机号：{{pageData.userInfo.userPhone}}</span>
+                            <span ng-show="pageData.userInfo.userTel!=pageData.isNull">座机号：{{pageData.userInfo.userTel}}</span>
+                        </p>
+                        <p>
+                           简介：{{pageData.userInfo.userIntroduction}}
+                        </p>
+                        <p class="last">
+                            <span>获得了  </span>         <span><i class="iconfont icon-zan "></i>{{pageData.userInfo.userPraiseCount}}个赞 </span>
+                        </p>
+                    </dd>
+                    <div class="warpOperate perBot" ng-show="!pageData.userInfo.isCurrUser">
+                        <button ng-if="!pageData.userInfo.userIsFollow" class="btn btn-primary  btnComment changeBot" ng-click="pageFunc.submitFollow()">关注</button>
+                        <button ng-if="pageData.userInfo.userIsFollow" class="btn btn-warning  btnComment changeBot" ng-click="pageFunc.submitDisFollow()">取消关注</button>
+                        <div class="clear"></div>
+                    </div>
+                </dl>
+                <div class="perTab Clear">
+                    <ul>
+                        <li ng-class="{change:pageData.defList.check}" ng-click="pageFunc.selectTab(0)"><i class="iconfont icon-circularframehome "></i></li>
+                        <li ng-class="{change:pageData.caseList.check}" ng-click="pageFunc.selectTab(1)">{{pageData.caseList.totalCount}}<br />案例</li>
+                        <li ng-class="{change:pageData.questionList.check}" ng-click="pageFunc.selectTab(2)">{{pageData.questionList.totalCount}}<br />提问</li>
+                        <li ng-class="{change:pageData.articleList.check}" ng-click="pageFunc.selectTab(3)">{{pageData.articleList.totalCount}}<br />文章</li>
+                        <li ng-class="{change:pageData.answerList.check}" ng-click="pageFunc.selectTab(4)">{{pageData.answerList.totalCount}}<br />回答</li>
+                        <li ng-class="{change:pageData.favoriteList.check}" ng-click="pageFunc.selectTab(5)">{{pageData.favoriteList.totalCount}}<br />收藏</li>
+                        <li ng-class="{change:pageData.statusesList.check}" ng-click="pageFunc.selectTab(6)">{{pageData.statusesList.totalCount}}<br />社区动态</li>
+                    </ul>
+                </div>
+                <div ng-show="pageData.defList.check">
+                    <div class="perAska" ng-show="pageData.caseList.totalCount>0">
+                        <h5>案例</h5>
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index>0}" ng-repeat="item in pageData.defList.caseDef">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <h5 class="hand" ng-click="go('#/case/'+item.id)">{{item.title}}</h5>
+                                <p ng-bind-html="item.summary">
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perAska" ng-show="pageData.questionList.totalCount>0">
+                        <h5>提问</h5>
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index>0}" ng-repeat="item in pageData.defList.questionDef">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <p class="hand" ng-click="go('#/ask/'+item.id)">
+                                    {{item.title}}
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perAska" ng-show="pageData.articleList.totalCount>0">
+                        <h5>文章</h5>
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index>0}" ng-repeat="item in pageData.defList.articleDef">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <h5 class="hand" ng-click="go('#/askArticleDetail/'+item.id)">{{item.title}}</h5>
+                                <p ng-bind-html="item.summary">
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perAska" ng-show="pageData.answerList.totalCount>0">
+                        <h5>回答</h5>
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index>0}" ng-repeat="item in pageData.defList.answerDef">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <p ng-bind-html="item.articleName">
+                                </p>
+                                <p>
+                                    <!--<a href="javascript:;" ng-repeat="tag in item.tags">标签</a>-->
+                                </p>
+                                <p class="last"><span>{{item.replyCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perAska" ng-show="pageData.favoriteList.totalCount>0">
+                        <h5>收藏</h5>
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index>0}" ng-repeat="item in pageData.defList.favoriteDef">
+                                <p class="one"><span>{{item.userName}}</span>{{item.time}}</p>
+                                <h5 ng-show="item.type=='Article'" class="hand" ng-click="go('#/askArticleDetail/'+item.id)">{{item.title}}</h5>
+                                <p ng-bind-html="item.summary">
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perAska perAskaList" ng-show="pageData.statusesList.totalCount>0">
+                        <h5>社区动态</h5>
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index>0}" ng-repeat="item in pageData.defList.statusesDef">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <h5 class="hand" ng-click="go('#/update/'+item.categoryId)">{{item.categoryName}}</h5>
+                                <p ng-bind-html="item.summary">
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last">
+                                    <span>{{item.commentCount}}条回答         </span><span>{{item.favoriteCount}}个收藏</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="pageData.caseList.check">
+                    <div class="perAska">
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index > 0 }" ng-repeat="item in pageData.caseList.data">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <p class="hand" ng-click="go('#/case/'+item.id)">
+                                    {{item.title}}
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条评论        </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warpPagination" ng-if="pageData.caseList.totalCount > pageData.caseList.pageSize">
+                        <pagination ng-model="pageData.caseList.pageIndex"
+                                    total-items="pageData.caseList.totalCount"
+                                    items-per-page="pageData.caseList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+                <div ng-show="pageData.questionList.check">
+                    <div class="perAska">
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index > 0 }" ng-repeat="item in pageData.questionList.data">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <p class="hand" ng-click="go('#/ask/'+item.id)">
+                                    {{item.title}}
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warpPagination" ng-if="pageData.questionList.totalCount > pageData.questionList.pageSize">
+                        <pagination ng-model="pageData.questionList.pageIndex"
+                                    total-items="pageData.questionList.totalCount"
+                                    items-per-page="pageData.questionList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+                <div ng-show="pageData.articleList.check">
+                    <div class="perAska">
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index > 0 }" ng-repeat="item in pageData.articleList.data">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <h5 class="hand" ng-click="go('#/askArticleDetail/'+item.id)">{{item.title}}</h5>
+                                <p ng-bind-html="item.summary">
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条评论         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warpPagination" ng-if="pageData.articleList.totalCount > pageData.articleList.pageSize">
+                        <pagination ng-model="pageData.articleList.pageIndex"
+                                    total-items="pageData.articleList.totalCount"
+                                    items-per-page="pageData.articleList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+                <div ng-show="pageData.answerList.check">
+                    <div class="perAska">
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index > 0 }" ng-repeat="item in pageData.answerList.data">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <p ng-bind-html="item.content">
+                                </p>
+                                <p>
+                                    <!--<a href="javascript:;" ng-repeat="tag in item.tags">标签</a>-->
+                                </p>
+                                <p class="last"><span>{{item.replyCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warpPagination" ng-if="pageData.answerList.totalCount > pageData.answerList.pageSize">
+                        <pagination ng-model="pageData.answerList.pageIndex"
+                                    total-items="pageData.answerList.totalCount"
+                                    items-per-page="pageData.answerList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+                <div ng-show="pageData.favoriteList.check">
+                    <div class="perAska">
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index > 0 }" ng-repeat="item in pageData.favoriteList.data">
+                                <p class="one"><span>{{item.userName}}</span>{{item.time}}</p>
+                                <h5 ng-show="item.type=='Article'" class="hand" ng-click="go('#/askArticleDetail/'+item.id)">{{item.title}}</h5>
+                                <p ng-bind-html="item.summary">
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last"><span>{{item.commentCount}}条评论         </span><span>{{item.pv}}人预览</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warpPagination" ng-if="pageData.favoriteList.totalCount > pageData.favoriteList.pageSize">
+                        <pagination ng-model="pageData.favoriteList.pageIndex"
+                                    total-items="pageData.favoriteList.totalCount"
+                                    items-per-page="pageData.favoriteList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+                <div ng-show="pageData.statusesList.check">
+                    <div class="perAska">
+                        <div class="perAskList">
+                            <div class="perListOne" ng-class="{perListTwo:$index > 0 }" ng-repeat="item in pageData.statusesList.data">
+                                <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+                                <h5 ng-click="go('#/update/'+item.categoryId)">{{item.categoryName}}</h5>
+                                <p ng-bind-html="item.summary">
+                                </p>
+                                <p>
+                                    <a href="javascript:;" ng-repeat="tag in item.tags">{{tag}}</a>
+                                </p>
+                                <p class="last">
+                                    <span>{{item.commentCount}}条回复         </span><span>{{item.favoriteCount}}个收藏</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warpPagination" ng-if="pageData.statusesList.totalCount > pageData.statusesList.pageSize">
+                        <pagination ng-model="pageData.statusesList.pageIndex"
+                                    total-items="pageData.statusesList.totalCount"
+                                    items-per-page="pageData.statusesList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+                <div class="warpPersonFans" ng-show="pageData.fansList.check">
+                    <div class="personFansTop">
+                        <span>{{pageData.userInfo.userName}} </span>
+                        被{{pageData.fansList.totalCount}}人关注
+                    </div>
+                    <div class="personFansBot" ng-repeat="item in pageData.fansList.data">
+                        <div class="personBotUl clear">
+                            <div class="personBotLeft">
+                                <img class="hand" ng-src="{{item.avatar}}" ng-click="go('#/userspace/'+item.id)">
+                            </div>
+                            <div class="personBotRight">
+                                <p class="personIf hand" ng-bind="item.userName" ng-click="go('#/userspace/'+item.id)"></p>
+                                <p>
+                                    <span>{{item.info}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <button ng-if="!item.userIsFollow" class="btn btn-primary personBotBtn" ng-click="pageFunc.submitFollowUser(item)">关注</button>
+                        <button ng-if="item.userIsFollow" class="btn btn-warning personBotBtn" ng-click="pageFunc.submitDisFollowUser(item)">取消</button>
+                    </div>
+
+                    <div class="warpPagination" ng-if="pageData.fansList.totalCount > pageData.fansList.pageSize">
+                        <pagination ng-model="pageData.fansList.pageIndex"
+                                    total-items="pageData.fansList.totalCount"
+                                    items-per-page="pageData.fansList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+
+                <div class="warpPersonFans" ng-show="pageData.followUserList.check">
+                    <div class="personFansTop">
+                        <span>{{pageData.userInfo.userName}} </span>
+                        关注了{{pageData.followUserList.totalCount}}人
+                    </div>
+                    <div class="personFansBot" ng-repeat="item in pageData.followUserList.data">
+                        <div class="personBotUl clear">
+                            <div class="personBotLeft">
+                                <img class="hand" ng-src="{{item.avatar}}" ng-click="go('#/userspace/'+item.id)">
+                            </div>
+                            <div class="personBotRight">
+                                <p class="personIf hand" ng-bind="item.userName" ng-click="go('#/userspace/'+item.id)"></p>
+                                <p>
+                                    <span>{{item.info}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <button ng-if="!item.userIsFollow" class="btn btn-primary personBotBtn" ng-click="pageFunc.submitFollowUser(item)">关注</button>
+                        <button ng-if="item.userIsFollow" class="btn btn-warning personBotBtn" ng-click="pageFunc.submitDisFollowUser(item)">取消</button>
+                    </div>
+
+                    <div class="warpPagination" ng-if="pageData.followUserList.totalCount > pageData.followUserList.pageSize">
+                        <pagination ng-model="pageData.followUserList.pageIndex"
+                                    total-items="pageData.followUserList.totalCount"
+                                    items-per-page="pageData.followUserList.pageSize"
+                                    max-size="5"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    first-text="首页"
+                                    last-text="尾页">
+                        </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="perRightList">
+                <ul class="listOne">
+                    <li class="hand" ng-click="pageFunc.selectTab(7)">
+                        粉丝<br>{{pageData.userInfo.followUserCount}}
+                    </li>
+                    <li class="hand last" ng-click="pageFunc.selectTab(8)">
+                        关注<br>{{pageData.userInfo.userFollowCount}}
+                    </li>
+                </ul>
+            </div>
+            <div class="listTwo" ng-show="!pageData.userInfo.isCurrUser">
+                <p ng-if="false"><a href="javascript:;">屏蔽此用户</a></p>
+                <p class="last" ng-if="false"><a href="javascript:;">屏蔽此用户</a></p>
+            </div>
+            <div class="listFour" ng-show="pageData.userInfo.isCurrUser">
+                <ul>
+                    <li ng-click="go('#/edituser/'+pageData.id)"><i class="iconfont icon-gerenziliao "></i>编辑个人资料</li>
+                    <li ng-click="go('#/applylawyer/'+pageData.id)" ng-if="pageData.userInfo.userType==2"><i class="iconfont icon-iconzhuanjia "></i>申请成为律师</li>
+                    <li ng-click="go('#/applyman/'+pageData.id)" ng-if="pageData.userInfo.userType==3 && !pageData.userInfo.isTutor"><i class="iconfont icon-iconzhuanjia "></i>申请成为专家</li>
+                    <li ng-click="go('#/history/'+pageData.id)"><i class="iconfont icon-wodejifen "></i>我的积分({{pageData.userInfo.userTotalScore}})</li>
+                    <li ng-click="go('#/information/'+pageData.id)"><i class="iconfont icon-xiaoxi "></i>消息中心<span ng-show="pageData.userInfo.userUnReadNoticeCount>0">({{pageData.userInfo.userUnReadNoticeCount}})</span></li>
+                    <li ng-click="go('#/password/'+pageData.id)"><i class="iconfont icon-mima "></i>修改密码</li>
+                </ul>
+            </div>
+            <div class="listThree mBottom20">
+                空间被{{pageData.userInfo.viewCount}}次浏览
+            </div>
+            <div class="listThree mBottom20 colorGreen" ng-if="pageData.userInfo.userType==4">
+                律师审核中
+            </div>
+            <!--<div class="copyBtn" ng-show="pageData.userInfo.isCurrUser">-->
+                <!--<button class="btn btn-default shareRegLink" clip-copy="pageData.shareRegLink" clip-click="pageFunc.showMessage()">复制注册分享链接</button>-->
+            <!--</div>-->
+            <div class="Left tabItem ThemeBorderColor4 textC" ng-click="pageFunc.shareLinkOpen(pageData.shareRegLink)" ng-show="pageData.userInfo.isCurrUser">
+                <!--<span class="mTop20 ThemeColor3 InlineBlock ">-->
+                    <!--点击这里获取邀请注册链接-->
+                <!--</span>-->
+                <!--<div class="Gray_c mTop10 LineHeight20">-->
+                    <!--您可以直接复制给您的亲朋好友<br>-->
+                    <!--进行注册，注册成功奖励积分-->
+                <!--</div>-->
+                <img class="inviteImg" src="/customize/ubi/images/invite.png" />
+            </div>
+        </div>
+    </div>
+</div>
+
+

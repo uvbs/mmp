@@ -1,0 +1,41 @@
+﻿@colorThemeGreen: #ff6b45;
+@colorThemeGreenDeep: #ff9830;
+.topbar {
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+
+	.category, .searchbtn {
+		svg {
+			fill: @colorThemeGreen !important;
+		}
+	}
+	.searchbtn:active, .topbar .category:active {
+		background-color: #fff !important;
+	}
+	.search {
+		background-color: #fff;
+		border: 1px solid @colorThemeGreen !important;
+		color: #999;
+	}
+}
+.maincontext {
+	.maincontent {
+		.iconfont {
+			color: @colorThemeGreen;
+		}
+		.title {
+			color: @colorThemeGreen;
+		}
+	}
+}
+.laodmoer {
+	background-color: @colorThemeGreen;
+	border-color: @colorThemeGreen;
+}
+.submit{
+	background-color: @colorThemeGreen;
+	.current{
+		background-color: @colorThemeGreenDeep;
+	}
+}
+

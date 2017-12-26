@@ -1,0 +1,73 @@
+﻿body {
+    font-family: 微软雅黑;
+}
+
+.tdTitle {
+    font-size: 13px;
+}
+
+input[type=text] {
+    height: 30px;
+}
+
+#mainTable {
+    border-spacing: 10px;
+    width: 100%;
+}
+
+#btnSelectTags {
+    margin-top: 15px;
+}
+
+.warpTagSelect {
+    width: 300px;
+    position: relative;
+}
+
+    .warpTagSelect .warpContent {
+        height: 196px;
+        padding-top: 5px;
+        overflow: auto;
+    }
+
+    .warpTagSelect .warpOpeate {
+        text-align: center;
+        padding-top: 5px;
+    }
+
+    .warpTagSelect hr {
+        height: 2px;
+        border: none;
+        border-top: 1px solid #CDCBCB;
+    }
+
+    .warpTagSelect .warpNoData {
+        font-size: 28px;
+        color: #9E9E9E;
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .warpTagSelect .warpTagDataList {
+        padding-top: 20px;
+        position: relative;
+    }
+
+        .warpTagSelect .warpTagDataList .warpTagSelectBtn {
+            position: absolute;
+            top: 0px;
+            z-index: 9999;
+            background-color: #fff;
+            padding: 5px 0px;
+        }
+
+.ulTagList li {
+    width: 120px;
+    float: left;
+    padding: 5px 10px;
+}
+
+    .ulTagList li .tagChk {
+        position: relative;
+        top: 2px;
+    }

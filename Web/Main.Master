@@ -1,0 +1,160 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="ZentCloud.JubitIMP.Web.Main" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/css/theme.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="/MainStyle/Res/easyui/themes/gray/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="/MainStyle/Content/default.css" rel="stylesheet" type="text/css" />
+    <link href="/MainStyle/Res/easyui/themes/icon.css" rel="stylesheet" type="text/css" />
+   
+    <script src="/MainStyle/Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="/MainStyle/Res/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="/MainStyle/Res/easyui/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <style type="text/css">
+        /*拍拍网风格
+.paginator { font: 11px Arial, Helvetica, sans-serif;padding:10px 20px 10px 0; margin: 0px;}
+.paginator a {padding: 1px 6px; border: solid 1px #ddd; background: #fff; text-decoration: none;margin-right:2px}
+.paginator a:visited {padding: 1px 6px; border: solid 1px #ddd; background: #fff; text-decoration: none;}
+.paginator .cpb {padding: 1px 6px;font-weight: bold; font-size: 13px;border:none}
+.paginator a:hover {color: #fff; background: #ffa501;border-color:#ffa501;text-decoration: none;}
+*/
+        /*
+淘宝风格*/
+        .paginator
+        {
+            font: 12px Arial, Helvetica, sans-serif;
+            padding: 10px 20px 10px 0;
+            margin: 0px;
+        }
+        .paginator a
+        {
+            border: solid 1px #ccc;
+            color: #0063dc;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .paginator a:visited
+        {
+            padding: 1px 6px;
+            border: solid 1px #ddd;
+            background: #fff;
+            text-decoration: none;
+        }
+        .paginator .cpb
+        {
+            border: 1px solid #F50;
+            font-weight: 700;
+            color: #F50;
+            background-color: #ffeee5;
+        }
+        .paginator a:hover
+        {
+            border: solid 1px #F50;
+            color: #f60;
+            text-decoration: none;
+        }
+        .paginator a, .paginator a:visited, .paginator .cpb, .paginator a:hover
+        {
+            float: left;
+            height: 16px;
+            line-height: 16px;
+            min-width: 10px;
+            _width: 10px;
+            margin-right: 5px;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 12px;
+            font-family: Arial,SimSun;
+            padding: 0 3px;
+        }
+        
+        /*加载*/
+        #mouse
+        {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background-image: url(/img/load2.gif);
+            background-repeat: no-repeat;
+        }
+    </style>
+    
+    <script language="javascript" src="/DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript">
+        function resizeImg(obj, maxW, maxH) {
+            var imgH = obj.height, imgW = obj.width;
+            if (obj.height > maxH) {
+                obj.height = maxH;
+                obj.width = (imgW * (maxH / imgH));
+                imgH = maxH;
+                imgW = obj.width;
+            }
+            if (obj.width > maxW) {
+                obj.width = maxW;
+                obj.height = (maxW / imgW) * imgH;
+                imgW = maxW;
+                imgH = obj.height;
+            }
+        }
+
+        //验证字符不超过140
+        function CommentLengthValidator(src, args) {
+            if (args.Value.length > 140) {
+                args.IsValid = false;
+            }
+            else {
+                args.IsValid = true;
+            }
+        }
+
+
+        $(function () {
+            $(this).bind('mousemove', function (e) {
+                Mouse(e); //计算显示层的位置
+                $("#mouse").css({ top: toppos, left: leftpos }); //给显示层定义CSS--当前计算出的位置--随时改变位置
+            })
+        });
+
+        var toppos = 0;
+        var leftpos = 0;
+        var Mouse = function (e) {
+            mouse = new MouseEvent(e);
+            leftpos = mouse.x;
+            toppos = mouse.y;
+        }
+        //获取鼠标坐标函数
+        var MouseEvent = function (e) {
+            this.x = e.pageX
+            this.y = e.pageY
+        }
+
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+        <ProgressTemplate>
+            <div id="mouse">
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+    <div id="container">
+        <div id="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

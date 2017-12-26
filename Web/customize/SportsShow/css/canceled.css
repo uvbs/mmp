@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/*重写部分*/
+p {
+    margin: 0 0 5px;
+}
+
+/*自定义部分*/
+.bg {
+    background: url("../images/header/bg.png") top center no-repeat;
+    background-size: cover;
+    padding-bottom: 5%;
+}
+
+.header-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.main-content {
+    border: 2px solid #50adda;
+    border-radius: 10px;
+    background-color: rgba(193, 246, 254, 0.5);
+    padding: 0.5rem 1rem;
+    color: #053f81;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.test-number {
+    font-size: 40px;
+}
+
+.test-result {
+    font-size: 16px;
+}
+
+.margin-bottom-12 {
+    margin-bottom: 3rem;
+}
+
+.margin-top-12 {
+    margin-top: 1.2rem;
+}
+
+.cancel-code {
+    border: 2px solid #63afdb;
+    border-radius: 10px;
+    background-color: rgba(204, 245, 255, 0.5);
+    padding: 0.5rem 1rem;
+}
+
+.cancel-code-befor {
+    border: 2px solid #63afdb;
+    border-radius: 10px;
+    background-color: rgba(204, 245, 255, 0.5);
+    padding: 0 0.5rem;
+}
+
+.code-input {
+    width: 50%;
+    background-color: rgba(204, 245, 255, 0.5);
+}
+
+.code-switch {
+    background-color: #63afdb;
+    position: absolute;
+    top: 0;
+    right: -3%;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+.code-info {
+    font-size: 10px;
+}
+
+.main-hr {
+    border-top: 1px solid #053f81;
+    padding-top: 0.5rem;
+}
+
+.main-footer {
+    padding: 0;
+}
+
+.div-btn {
+    background-color: rgba(44, 150, 209, 0.5);
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #09579d;
+    padding: 0.8rem 0;
+}
+
+.ico-fix {
+    font-size: 24px;
+}
+
+.margin-top {
+    margin-top: 0.8rem !important;
+}
+
+.footer-text {
+    color: #1e82b9;
+    font-weight: bold;
+}
+/*修复问题*/
+.fix-width-50{
+    width: 50%;
+}

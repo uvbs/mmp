@@ -1,0 +1,57 @@
+<div class="layout boxMain warpOpenDetail">
+    <div class="subTitle">
+        <span>
+            <i class="iconfont icon-shipin"></i>
+            <span class="titleText"><span class="hand" ng-click="go('#/open')">公开课</span> > 课程学习</span>
+        </span>
+        <button class="btn btn-primary btnRight" ng-if='!pageData.data.currUserIsFavorite' ng-click="pageFunc.favoriteArticle()">
+            收藏课程
+        </button>
+        <button class="btn btn-warning btnRight" ng-if='pageData.data.currUserIsFavorite' ng-click="pageFunc.disFavoriteArticle()">
+            取消收藏
+        </button>
+    </div>
+    <div class="openDetailCon" ng-show="!pageData.data.isCanView">
+        <h4>
+            该课程消耗{{pageData.data.needScore}}点积分，<a href="javascript:;" ng-click="pageFunc.getOpenClass()">点击购买</a>
+        </h4>
+    </div>
+    <div class="openDetailCon" ng-show="pageData.data.isCanView">
+        <iframe frameborder="0" style="width:100%;height:100%;" ng-src="{{pageData.data.webUrl}}"></iframe>
+    </div>
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="openLeftCon">
+                <h4>
+                    课程介绍
+                </h4>
+                <div ng-if="!pageData.isExpand">
+                    <div class="openLeftConMain" ng-bind-html="pageData.data.title"></div>
+                    <a href="javascript:;" ng-click="pageFunc.showAll()">[点击查看课程介绍详情]</a>
+                </div>
+                <div ng-if="pageData.isExpand">
+                    <div class="openLeftConMain" ng-bind-html="pageData.data.content"></div>
+                    <a href="javascript:;" ng-click="pageFunc.hidePart()">[收起]</a>
+                </div>
+
+                <div>
+                    <comment ng-attr-articleid="{{pageData.articleId}}"></comment>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="openRightCon" ng-if="pageData.data.files.length>0">
+                <h4>
+                    资料下载
+                </h4>
+                <div class="openRightConMain">
+                    <div class="detailBook">
+                        <p ng-repeat="item in pageData.data.files">
+                            <a ng-href="{{item.filePath}}" ng-bind="item.fileName"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

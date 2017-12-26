@@ -1,0 +1,27 @@
+<div class="wrapMyRecommend">
+    <header ng-attr-title="{{myrecommend.title}}" ng-attr-btnshow="0"></header>
+    <div class="content has-header">
+        <div class="row mTop75">
+            <div class="col col-img">
+                <!--<img class="imgStyle" src="http://139.196.16.189:80//uploads/Z3kx0p.jpg">-->
+                <img class="imgStyle" ng-src="{{myrecommend.erweima}}">
+            </div>
+        </div>
+        <div class="row row-recommend">
+            <div class="col col-recommend">
+                推荐码：{{myrecommend.currUseInfo.recommend_id}}
+            </div>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-energized change"  ng-mousedown="pageData.isShowShare=!pageData.isShowShare;">
+                分享邀请链接
+            </button>
+        </div>
+        <div class="row">
+            <div class="col col-invite">
+                已成功邀请:{{myrecommend.currUseInfo.recommend_count}}人
+            </div>
+        </div>
+    </div>
+    <div class="weixinshareshade" ng-if="pageData.isShowShare" ng-mousedown="pageData.isShowShare=!pageData.isShowShare;"></div>
+</div>

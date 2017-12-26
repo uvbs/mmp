@@ -1,0 +1,138 @@
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat;
+}
+.icon-excel{
+	background:url('icons/excel.png') no-repeat;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat;
+}
+.icon-add2{
+	background:url('icons/add2.png') no-repeat;
+}
+.icon-article-add{
+	background:url('icons/article_add.png') no-repeat;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat;
+}
+.icon-delete{
+	background:url('icons/gnomeDelete.png') no-repeat;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat;
+}
+.icon-start{
+	background:url('icons/start.png') no-repeat;
+}
+.icon-stop{
+	background:url('icons/stop.png') no-repeat;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat;
+}
+.icon-groupsfolder{
+	background:url('icons/groups_folder.png') no-repeat;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat;
+}
+.icon-refresh{
+	background:url('icons/refresh.png') no-repeat;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat;
+}
+.icon-send{
+	background:url('icons/send.png') no-repeat;
+}
+.icon-sendClock{
+	background:url('icons/sendClock.png') no-repeat;
+}
+.icon-clock{
+	background:url('icons/clock.png') no-repeat;
+}
+.icon-select{
+	background:url('icons/select.png') no-repeat;
+}
+.icon-setting{
+	background:url('icons/setting.png') no-repeat;
+}
+.icon-userSingel{
+	background:url('icons/userSingel.png') no-repeat;
+}
+.icon-usergroup{
+	background:url('icons/user_group.png') no-repeat;
+}
+.icon-usergroup1{
+	background:url('icons/user_group1.png') no-repeat;
+}
+.icon-usergroup3{
+	background:url('icons/user_group3.png') no-repeat;
+}
+.icon-userAdd{
+	background:url('icons/userAdd.png') no-repeat;
+}
+.icon-groupAdd{
+	background:url('icons/groupAdd.png') no-repeat;
+}
+.icon-list{
+	background:url('icons/list.png') no-repeat;
+}
+.icon-mobileArrow{
+	background:url('icons/mobileArrow.png') no-repeat;
+}
+.icon-mailReplay{
+	background:url('icons/mailReplay.png') no-repeat;
+}
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat 2px 2px;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat 2px 2px;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat 3px 2px;
+}
+/*À©Õ¹*/
+ .langben
+{
+    background: url('../../../favicon.ico') no-repeat;
+}
+.icon-site
+{  
+    background: url('../../../Images/direction.gif') no-repeat;
+}

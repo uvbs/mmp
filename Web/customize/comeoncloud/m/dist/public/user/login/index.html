@@ -1,0 +1,36 @@
+
+<div class="wrapLogin"
+     style="height: {{pageData.height + 'px !important'}}"
+        >
+    <div class="banner">
+        <img src="http://files.comeoncloud.net/hzh/gj.png" alt="">
+    </div>
+
+    <div class="inputList">
+
+        <div class="list">
+            <label class="item item-input">
+                <i class="icon icon-bbgyouxiang iconfont"></i>
+                <input ng-model="pageData.userName" type="text" placeholder="邮箱" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-lock iconfont"></i>
+                <input ng-model="pageData.pwd" type="password" placeholder="密码" ng-trim="true">
+            </label>
+
+
+            <div class="mBottom30 mTop10">
+                没有账号？<a href="javascript:;" class="colorBlue">立即注册</a>
+            </div>
+
+            <div class="operateBtn">
+                <button ng-mousedown="pageFunc.login()" class="button button-full button-positive allRadius20">
+                    登&nbsp;&nbsp;陆
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

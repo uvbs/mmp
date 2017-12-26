@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/*重写部分*/
+p {
+    margin: 0 0 5px;
+}
+
+/*自定义部分*/
+.bg {
+    background: url("../images/header/bg.png") top center no-repeat;
+    background-size: cover;
+    padding-bottom: 5%;
+}
+
+.header-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.margin-top {
+    margin-top: 3rem;
+}
+
+.margin-bottom {
+    margin-bottom: 3rem;
+}
+
+.main-content {
+    border: 2px solid #50adda;
+    border-radius: 10px;
+    background-color: rgba(193, 246, 254, 0.5);
+    padding: 0.5rem 1rem;
+    color: #053f81;
+    font-weight: bold;
+}
+
+.main-content .row {
+    margin-top: 0.25rem;
+}
+
+.btn-info {
+    display: inline-block;
+    height: auto;
+    background-color: #55b7ff;
+    color: #fff;
+    padding: 0.3rem 0;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.btn-selected {
+    background-color: #0d6fb8;
+}
+
+.btn-size-1 {
+    width: 3rem;
+    margin: 0 1.5rem;
+}
+
+.btn-size-2 {
+    width: 5rem;
+    margin: 0.3rem 0.5rem;
+}
+
+.btn-size-3 {
+    width: 10rem;
+    margin: 0 0.5rem;
+}
+
+.tel-input {
+    margin: 0 auto;
+    width: 10rem;
+    border-radius: 6px;
+    background-color: #55b7ff;
+    color: #fff !important;
+    padding: 0 0.5rem !important;
+    text-align: center;
+}
+.tip{
+    position: absolute;
+    bottom:10%;
+    right: 0;
+}
+/*修复问题*/
+.fix-width-80{
+    width: 80%;
+}
+.fix-width-69{
+    width: 69%;
+}

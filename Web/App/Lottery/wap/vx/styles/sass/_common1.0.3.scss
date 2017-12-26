@@ -1,0 +1,87 @@
+﻿@charst "utf-8";
+/* Email zhoulink90@gmail.com */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td,button{margin:0;padding:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+q:before,q:after{content:'';}
+table{table-layout:fixed;border-collapse:collapse;border-spacing:0;}
+th,td{vertical-align:top;}
+i{overflow:hidden;display:inline-block;}
+iframe{background-color:white;}
+input[type="radio"],input[type="checkbox"]{margin-right:2px;#margin-right:0;}
+input{font-size:12px;font-family:Tahoma,Arial, Helvetica, sans-serif;-moz-background-clip:border;-moz-background-inline-policy:continuous;-moz-background-origin:padding;outline-color:-moz-use-text-color;outline-style:none;outline-width:medium;}
+label input{position:relative;top:2px;#top:1px;font-size:12px;}
+textarea{overflow:auto;padding:1px 0 0 1px;font-size:12px;}
+select{font-size:12px;}
+cite{line-height:33px;display:none;text-indent:-999px;}
+body{margin:0px;padding:0px;font-size:12px;color:#333;font-family:Tahoma,Arial, Helvetica, sans-serif,"Hiragino Sans Gb","Microsoft YaHei";background:#fff;}
+
+/*====全局连接-link====*/
+a{color:#333;text-decoration:none;outline:0}
+a:hover,a:active{}
+
+.clear{clear:both;display:block;height:0;overflow:hidden;font-size:0}
+.hide{display:none}
+
+//after清除浮动
+@mixin clear(){
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+//圆角
+@mixin radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+//盒子
+@mixin bb($width,$height) {
+	display:block;
+	width:$width;
+	height:$height;
+}
+
+//文字超出显示...
+@mixin ellipsis($width,$height){width:$width;height:$height;line-height: $height; 
+	text-overflow:ellipsis;white-space: nowrap;overflow:hidden;}
+
+//icon设置
+@mixin iconurl(){
+	background-image:url(../images/icons.png?v=0.0.1);
+	background-size:100px 100px;
+}
+@mixin icon($w,$h,$x,$y){
+	display:inline-block;
+	width:$w;height:$h;
+	background-position:$x $y;
+	background-repeat: no-repeat;
+}
+
+//渐变
+@mixin radial-gradient($a,$b){
+background: -moz-radial-gradient(center center,circle,$a,$b);
+background: -webkit-radial-gradient(center center,circle,$a,$b);
+background: -o-radial-gradient(center center,circle,$a,$b);
+background: -ms-radial-gradient(center center,circle,$a,$b);
+background: radial-gradient(center center,circle,$a,$b);
+}
+@mixin linear-gradient($a,$b){
+background: -moz-linear-gradient($a,$b);
+background: -webkit-gradient(linear,center top,center bottom,from($a),to($b));
+background: -webkit-linear-gradient($a,$b);
+background: -o-linear-gradient($a,$b);
+background: -ms-linear-gradient($a,$b);
+background: linear-gradient($a,$b);
+}
+@mixin linear-gradient2($a,$b,$c,$d){
+background: -moz-linear-gradient($a 0%,$b 50%,$c 50%,$d 100%);
+background: -webkit-gradient(linear,center top,center bottom,color-stop(.0,$a),color-stop(.5,$b),color-stop(.5,$c),color-stop(1,$d));
+background: -webkit-linear-gradient($a 0%,$b 50%,$c 50%,$d 100%);
+background: -o-linear-gradient($a 0%,$b 50%,$c 50%,$d 100%);
+background: -ms-linear-gradient($a 0%,$b 50%,$c 50%,$d 100%);
+background: linear-gradient($a 0%,$b 50%,$c 50%,$d 100%);
+}

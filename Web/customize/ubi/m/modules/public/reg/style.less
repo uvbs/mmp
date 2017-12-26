@@ -1,0 +1,76 @@
+﻿.wrapRegister {
+    .inputList {
+        .list {
+            .item-input {
+                .regPadding {
+                    padding-right: 10px;
+                    border: 0px;
+                }
+
+                .hidden {
+                    display: none !important;
+                }
+
+                .btn-primary {
+                    color: #fff;
+                    background-color: #337ab7;
+                    border-color: #2e6da4;
+                }
+
+                .btn {
+                    display: inline-block;
+                    padding: 6px 12px;
+                    margin-bottom: 0;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1.42857143;
+                    text-align: center;
+                    white-space: nowrap;
+                    vertical-align: middle;
+                    -ms-touch-action: manipulation;
+                    touch-action: manipulation;
+                    cursor: pointer;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    background-image: none;
+                    border: 1px solid transparent;
+                    border-radius: 4px;
+                }
+
+                .toggle input:checked + .track {
+                    border-color: #0c63ee;
+                    background-color: #387ef5;
+                }
+
+                .mailCheck {
+                    width: 300px;
+                    height: 30px;
+                    background-color: #0c63ee;
+                    color: #fff;
+                    text-align: center;
+                    line-height: 30px;
+                    border-radius: 5px;
+                }
+            }
+
+            .accept {
+                position: relative;
+                top: 3px;
+            }
+        }
+    }
+
+    .userImg {
+        position: relative;
+
+        input {
+            position: absolute;
+            left: 0;
+            top: -2px;
+            opacity: 0;
+            z-index: 9999;
+        }
+    }
+}

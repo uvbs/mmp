@@ -1,0 +1,237 @@
+﻿
+<div class="wrapLogin wrapRegister">
+    <div class="banner">
+        <img src="/customize/ubi/images/logo.png" alt="">
+    </div>
+    <div class="wrapTabTitle">
+        <div class="row">
+            <div class="col" ng-class="{blueBg:pageData.currTabIndex == 0}" ng-mousedown="pageData.currTabIndex = 0;pageData.IsSHowInfo=false">
+                用户注册
+            </div>
+            <div class="col" ng-class="{blueBg:pageData.currTabIndex == 1}" ng-mousedown="pageData.currTabIndex = 1;pageData.IsSHowInfo=true">
+                律师注册
+            </div>
+        </div>
+    </div>
+
+    <div class="inputList" ng-show="pageData.currTabIndex == 0">
+
+        <div class="list">
+            <label class="item item-input">
+                <i class="icon icon-userreg iconfont"></i>
+                <input ng-model="pageData.Name" type="text" placeholder="请输入用户昵称" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-bbgyouxiang iconfont"></i>
+                <input ng-model="pageData.Mail" type="text" placeholder="请输入正确的邮箱" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-lock iconfont"></i>
+                <input ng-model="pageData.pwd" type="password" placeholder="请输入密码" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-lock iconfont"></i>
+                <input ng-model="pageData.pwd2" type="password" placeholder="再次请输入密码" ng-trim="true">
+            </label>
+            <label class="item item-input colorGrey_9">
+                <label class="col-xs-2 control-label">是否显示个人信息：</label>
+                <label class="toggle">
+                    <input ng-model="pageData.IsSHowInfo" type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </label>
+
+            <label class="item item-input colorGrey_9">
+                <label for="inputPassword3" class="col-xs-2 control-label">验证码：</label>
+                <input type="text" class="form-control mLeft30 width100" ng-model="pageData.checkCode" maxlength="4" required placeholder="验证码">
+            </label>
+            <label class="item item-input">
+                <div class="mailCheck" ng-mousedown="pageFunc.getEmailCheckCode()" ng-if="pageData.checkCodeTime<=0">获取邮箱验证码</div>
+                <div class="mailCheck bgGray" ng-if="pageData.checkCodeTime>0">{{pageData.checkCodeTime}}秒后再次获取</div>
+            </label>
+
+            <div class="mBottom30 mTop10">
+                <input class="accept" type="checkbox" ng-model="pageData.isAccept">
+                阅读并接受<a href="#/about/168216" class="colorBlue">《易劳协议》</a>
+            </div>
+
+            <div class="mBottom30 mTop10">
+                已有账号？<a href="#/login" class="colorBlue">登陆</a>
+            </div>
+
+            <div class="operateBtn">
+                <button ng-click="pageFunc.register()" class="button button-full button-positive allRadius20">
+                    注&nbsp;&nbsp;册
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="inputList" ng-show="pageData.currTabIndex == 1">
+
+        <div class="list">
+            <label class="item item-input">
+                <i class="icon icon-userreg iconfont"></i>
+                <input ng-model="pageData.Name" type="text" placeholder="请输入真实姓名" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-bbgyouxiang iconfont"></i>
+                <input ng-model="pageData.Mail" type="text" placeholder="请输入邮箱" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-lock iconfont"></i>
+                <input ng-model="pageData.pwd" type="password" placeholder="请输入密码" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-lock iconfont"></i>
+                <input ng-model="pageData.pwd2" type="password" placeholder="再次请输入密码" ng-trim="true">
+            </label>
+            <br />
+            <div>
+                您注册的为<span class="colorBlue">律师用户</span>，为确保权益，请填写一下信息
+            </div>
+
+            <label class="item item-input">
+                <i class="icon icon-shouye iconfont"></i>
+                <input ng-model="pageData.comName" type="text" placeholder="请输入律所/公司名称" ng-trim="true">
+            </label>
+
+            <label class="item item-input">
+                <i class="icon icon-shenfenzhengxinxi iconfont"></i>
+                <!--<input ng-model="pageData.comName" type="text" placeholder="请输入身份证" ng-trim="true">-->
+                <input type="text" class="form-control" required ng-model="pageData.idCardNo" placeholder="请输入身份证号码">
+            </label>
+
+            <label class="item item-input">
+                <i class="icon icon-shenfenzhengxinxi iconfont"></i>
+                <!--<input ng-model="pageData.comName" type="text" placeholder="请输入身份证" ng-trim="true">-->
+                <input type="text" class="form-control" required ng-model="pageData.LawyerLicenseNo" placeholder="律师执业证编号">
+            </label>
+
+            <label class="item item-input colorGrey_9">
+                <label for="inputEmail3" class="col-xs-2 control-label one">免冠半身照：</label>
+                <div class="col-xs-4 two">
+                    <a ng-href="{{pageData.avatar}}" target="_blank"><img class="width150 height100" alt="" src="{{pageData.avatar}}"></a>
+                </div>
+            </label>
+            <label class="item item-input">
+                <div class="col-xs-6 userImg">
+                    <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()">上传免冠半身照</div>
+                    <input id="fileUserPhoto3" type="file" nv-file-select="" uploader="uploader3" />
+                    <p class="colorGrey_9">
+                        支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                    </p>
+                </div>
+            </label>
+
+            <label class="item item-input colorGrey_9">
+                <label for="inputEmail3" class="col-xs-2 control-label one">执业证：</label>
+                <div class="col-xs-4 two">
+                    <a ng-href="{{pageData.licensePhoto}}" target="_blank"><img class="width150 height100" alt="" src="{{pageData.licensePhoto}}"></a>
+                </div>
+            </label>
+            <label class="item item-input">
+                <div class="col-xs-6 userImg">
+                    <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()">上传执业证照片</div>
+                    <input id="fileUserPhoto" type="file" nv-file-select="" uploader="uploader" />
+                    <p class="colorGrey_9">
+                        支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                    </p>
+                </div>
+            </label>
+            <label class="item item-input colorGrey_9">
+                <label for="inputEmail3" class="col-xs-2 control-label one">身份证正面照：</label>
+                <div class="col-xs-4 two">
+                    <a ng-href="{{pageData.IDPhoto1}}" target="_blank"><img class="width150 height100" alt="" src="{{pageData.IDPhoto1}}"></a>
+                </div>
+            </label>
+            <label class="item item-input">
+                <div class="col-xs-6 userImg">
+                    <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()">上传身份证正面照</div>
+                    <input id="fileUserPhoto1" type="file" nv-file-select="" uploader="uploader1" />
+                    <p class="colorGrey_9">
+                        支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                    </p>
+                </div>
+            </label>
+            <label class="item item-input colorGrey_9">
+                <label for="inputEmail3" class="col-xs-2 control-label one">身份证反面照：</label>
+                <div class="col-xs-4 two">
+                    <a ng-href="{{pageData.IDPhoto2}}" target="_blank"><img class="width150 height100" alt="" src="{{pageData.IDPhoto2}}"></a>
+                </div>
+            </label>
+            <label class="item item-input">
+                <div class="col-xs-6 userImg">
+                    <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()">上传身份证反面照</div>
+                    <input id="fileUserPhoto2" type="file" nv-file-select="" uploader="uploader2" />
+                    <p class="colorGrey_9">
+                        支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                    </p>
+                </div>
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-shenfenzhengxinxi iconfont"></i>
+                <input ng-model="pageData.comPosition" type="text" placeholder="请输入公司职位" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-shouji iconfont"></i>
+                <input ng-model="pageData.telePhone" type="text" placeholder="请输入手机号码" ng-trim="true">
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-dianhua iconfont"></i>
+                <input ng-model="pageData.phoneNum" type="text" placeholder="区号-电话号" ng-trim="true">
+            </label>
+            <!--<label class="item item-input item-select">-->
+            <label class="item item-input">
+                <i class="icon icon-chengshi iconfont"></i>
+                <select id="pro" class="pRight10 border0 colorGrey_6" ng-change="pageFunc.selectProvince()" ng-model="pageData.province" ng-options="province.name for province in pageData.provinceList"></select>
+            </label>
+            <label class="item item-input">
+                <i class="icon icon-chengshi iconfont"></i>
+                <!--<select class="regPadding" ng-change="pageFunc.selectProvince()" ng-model="pageData.cityList" ng-options="city.value as city.label for cityList in pageData.cityList">-->
+                <select id="region" class="pRight10 border0 colorGrey_6" ng-model="pageData.city" ng-options="city.name for city in pageData.cityList"></select>
+            </label>
+
+            <label class="item item-input">
+                <i class="icon icon-chengshidingwei iconfont"></i>
+                <input ng-model="pageData.comAddress" type="text" placeholder="请输入律所/公司地址" ng-trim="true">
+            </label>
+            <label class="item item-input colorGrey_9">
+                <label class="col-xs-2 control-label">是否显示个人信息：</label>
+                <label class="toggle">
+                    <input ng-model="pageData.IsSHowInfo" type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </label>
+
+            <label class="item item-input colorGrey_9">
+                <label for="inputPassword3" class="col-xs-2 control-label">验证码：</label>
+                <input type="text" class="form-control mLeft30 width100" ng-model="pageData.checkCode" maxlength="4" required placeholder="验证码">
+                <!--<div class="mailCheck" ng-click="pageFunc.getEmailCheckCode()" ng-if="pageData.checkCodeTime<=0">获取邮箱验证码</div>
+                <div class="mailCheck bgGray" ng-if="pageData.checkCodeTime>0">{{pageData.checkCodeTime}}秒后再次获取</div>-->
+            </label>
+
+            <label class="item item-input">
+                <div class="mailCheck" ng-mousedown="pageFunc.getEmailCheckCode()" ng-if="pageData.checkCodeTime<=0">获取邮箱验证码</div>
+                <div class="mailCheck bgGray" ng-if="pageData.checkCodeTime>0">{{pageData.checkCodeTime}}秒后再次获取</div>    
+            </label>
+            <div class="mBottom30 mTop10">
+                <input class="accept" type="checkbox" ng-model="pageData.isAccept">
+                阅读并接受<a href="#/about/168216" class="colorBlue">《易劳协议》</a>
+            </div>
+
+            <div class="mBottom30 mTop10">
+                已有账号？<a href="#/login" class="colorBlue">登陆</a>
+            </div>
+            <div class="operateBtn">
+                <button ng-mousedown="pageFunc.register()" class="button button-full button-positive allRadius20">
+                    注&nbsp;&nbsp;册
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

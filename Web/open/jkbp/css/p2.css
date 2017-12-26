@@ -1,0 +1,237 @@
+
+
+.sliderbg
+{
+    background-image: url(../images/background1.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+#circularMenu
+{
+      top: 2%;
+    float: right;
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+    position: relative;
+    width: 320px;
+    height: 500px;
+    background-image: url(../images/background2.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+#circularMenu li
+{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border: 0px #000 solid;
+}
+#circularMenu li.t1
+{
+    left: 235px;
+    top: 10px;
+}
+#circularMenu li.t2
+{
+    left: 125px;
+    top: 40px;
+}
+#circularMenu li.t3
+{
+    left: 50px;
+    top: 110px;
+}
+#circularMenu li.t4
+{
+    left: 15px;
+    top: 200px;
+}
+#circularMenu li.t5
+{
+    left: 30px;
+    top: 305px;
+}
+#circularMenu li.t6
+{
+    left: 85px;
+    top: 390px;
+}
+#circularMenu li.t7
+{
+    left: 170px;
+    top: 445px;
+}
+
+
+#circularMenu li a
+{
+    display: none;
+}
+#circularMenu li a
+{
+    display: block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border: 0px #000 solid;
+}
+
+#circularMenu li a:hover
+{
+    text-decoration: none;
+}
+@media screen and (min-height:416px)
+{
+    #circularMenu
+    {
+        top: 3%;
+        width: 260px;
+        height: 416px;
+
+    }
+}
+@media screen and (min-height:480px)
+{
+    #circularMenu
+    {
+        top: 1%;
+        width: 295px;
+        height: 470px;
+
+    }
+    #circularMenu li.t1
+{
+    left: 215px;
+    top: 0px;
+}
+#circularMenu li.t2
+{
+    left: 120px;
+    top: 30px;
+}
+#circularMenu li.t3
+{
+    left: 50px;
+    top: 90px;
+}
+#circularMenu li.t4
+{
+    left: 15px;
+    top: 180px;
+}
+#circularMenu li.t5
+{
+    left: 30px;
+    top: 275px;
+}
+#circularMenu li.t6
+{
+    left: 75px;
+    top: 350px;
+}
+#circularMenu li.t7
+{
+    left: 155px;
+    top: 405px;
+}
+}
+@media screen and (min-height:533px)
+{
+    #circularMenu
+    {
+        top: 6%;
+        width: 320px;
+        height: 520px;
+    }
+}
+@media screen and (min-height:568px)
+{
+    #circularMenu
+    {
+        top: 10%;
+        width: 320px;
+        height: 520px;
+    }
+        #circularMenu li.t1
+{
+    left: 235px;
+    top: 0px;
+}
+#circularMenu li.t2
+{
+    left: 125px;
+    top: 30px;
+}
+#circularMenu li.t3
+{
+    left: 50px;
+    top: 100px;
+}
+#circularMenu li.t4
+{
+    left: 15px;
+    top: 200px;
+}
+#circularMenu li.t5
+{
+    left: 30px;
+    top: 305px;
+}
+#circularMenu li.t6
+{
+    left: 85px;
+    top: 390px;
+}
+#circularMenu li.t7
+{
+    left: 165px;
+    top: 445px;
+}
+}
+@media screen and (min-height:515px)
+{
+    #circularMenu
+    {
+        top:2%;
+        width: 320px;
+        height: 520px;
+    }
+}
+@media screen and (min-height:640px)
+{
+    #circularMenu
+    {
+        top: 8%;
+        width: 320px;
+        height: 520px;
+    }
+}
+
+@media screen and (min-height:667px)
+{
+    #circularMenu
+    {
+        top: 2%;
+        width: 320px;
+        height: 520px;
+    }
+}
+@media screen and (min-height:736px)
+{
+    #circularMenu
+    {
+        top: 14%;
+        width: 320px;
+        height: 520px;
+    }
+}

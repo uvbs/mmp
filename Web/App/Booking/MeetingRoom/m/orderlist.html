@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+
+    <title>我的预约</title>
+    <!--发布路径-->
+    <!--<link href="/lib/ionic/ionic.css" rel="stylesheet"/>-->
+    <!--<link href="/css/global-m.css" rel="stylesheet"/>-->
+    <!--<link href="/lib/layer.mobile/need/layer.css" rel="stylesheet"/>-->
+
+    <!--开发路径-->
+    <link href="/OpenWebApp/lib/ionic/ionic.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/css/global-m.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/lib/layer.mobile/need/layer.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="wrapOrderList pTop90 pBottom25" id="wrapOrderList">
+    <div class="bar bar-header bar-balanced fixed top0 pLeft0 pRight0 height50">
+        <h1 class="title lineHeight50">
+
+            <!-- <i v-on:click="goUrlChange('index.html','')" class="iconfont icon-homeshixin floatL"></i> -->
+            <i onclick="history.go(-1)" class="iconfont icon-fanhui floatL iconfontfixlarge font25"></i>
+            <span v-text="home_title"></span>
+            <i v-on:click="goUrlChange()" class="iconfont icon-homeshixin floatR iconfontfixlarge font30 top48F"></i>
+
+            <div class="clear"></div>
+        </h1>
+        <!--order_status-->
+        <div class="orderlistnav">
+            <span class="floatL" v-bind:class="{'select':orderstatus==''}" v-on:click="goStatusBtn('')">全部</span>
+            <span class="floatL" v-bind:class="{'select':orderstatus=='待付款'}" v-on:click="goStatusBtn('待付款')">待付款</span>
+            <span class="floatL" v-bind:class="{'select':orderstatus=='待审核'}" v-on:click="goStatusBtn('待审核')">待审核</span>
+            <span class="floatL" v-bind:class="{'select':orderstatus=='预约成功'}"
+                  v-on:click="goStatusBtn('预约成功')">预约成功</span>
+            <span class="floatL" v-bind:class="{'select':orderstatus=='预约失败'}"
+                  v-on:click="goStatusBtn('预约失败')">预约失败</span>
+
+            <div class="BKline"></div>
+        </div>
+    </div>
+    <div class="list">
+        <div v-for="item in orderList">
+            <div class="item item-divider font14 pAll0 bgFFF">
+                <div class="row">
+                    <div class="col txtLeft">
+                        订单号：<span v-text="item.order_id"></span>
+                    </div>
+                    <div class="col txtRight" v-text="item.order_time">
+                        <!--{{item.order_time}}-->
+                    </div>
+                </div>
+            </div>
+            <div class="item item-thumbnail-left" v-on:click="goOrderDetail(item)">
+                <img src="{{item.img}}">
+
+                <h2 class="productname" v-text="item.product_name"></h2>
+
+                <div class="price colorYellow" v-if="item.price != 0">￥<span v-text="item.price"></span></div>
+                <div class="price colorYellow" v-if="item.price == 0">免费</div>
+
+                <!--<p>商品简介</p>-->
+            </div>
+            <div class="item pAll0">
+                <div class="row font13">
+                    <div class="col" v-text="item.order_status">
+                        <!--{{item.order_status}}-->
+                    </div>
+                    <div class="col txtRight">
+                        共1件商品，合计：￥<span v-text="item.total_amount"></span>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="item pAll0">-->
+            <!--<div class="row">-->
+            <!--<div class="col txtRight">-->
+            <!--<div class="button button-small button-stable">-->
+            <!--确认收货-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div v-if="totalCount==orderList.length && totalCount>0" class="txtCenter mTop20">
+        没有更多订单了哦~
+    </div>
+    <div v-if="totalCount==0" class="txtCenter mTop20">
+        您暂时还没有{{orderstatus}}订单~
+    </div>
+</div>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<!--发布路径-->
+
+<!--<script src="/lib/vue/vue.min.js"></script>-->
+<!--<script src="/lib/la-datePicker/datePicker.js"></script>-->
+<!--<script src="/lib/jquery/jquery-2.1.1.min.js"></script>-->
+<!--<script src="/lib/layer.mobile/layer.m.js"></script>-->
+<!--<script src="/Scripts/global-m.js?v=1.0.0.1"></script>-->
+<!--<script src="http://file.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>-->
+
+<!--开发路径-->
+<script src="/OpenWebApp/lib/vue/vue.min.js"></script>
+<script src="/OpenWebApp/lib/la-datePicker/datePicker.js"></script>
+<script src="/OpenWebApp/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="/OpenWebApp/lib/layer.mobile/layer.m.js"></script>
+<script src="/OpenWebApp/Scripts/global-m.js"></script>
+<script src="http://file.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+
+<script>
+    var BookingConfig = {};
+//    var BookingConfig = {
+//        "title": "服务预约",
+//        "home_title": "会议室预订",
+//        "order_list_title": "我的订单",
+//        "order_detail_title": "订单详情",
+//        "category_type": "MeetingRoom",
+//        "category_name": "会议室",
+//        "slide_width": 0,
+//        "slide_height": 0,
+//        "is_login": true,
+//        "is_member": true,
+//        "access_level": 1,
+//        "truename": "summer",
+//        "phone": "13365923991",
+//        "apply_url": "/App/Member/Wap/CompleteUserInfo.aspx?referrer=http%3a%2f%2fdev1.comeoncloud.net%2fApp%2fBooking%2fMeetingRoom%2fm%2forderDetail.aspx%3forderId%3d422674%26type%3dMeetingRoom",
+//        "nopms_url": "/Error/NoPmsMobile.htm",
+//        "share_title": "精品会议室",
+//        "share_img": "http://open-files.comeoncloud.net/www/hf/jubit/image/20160411/F1481F67263F4122B91BC0953A1A8519.jpg",
+//        "share_desc": "精品会议室，欢迎您过来",
+//        "share_link": ""
+//    };
+
+
+    var vm = new Vue({
+        el: '#wrapOrderList',
+        data: {
+            pageIndex: 1,
+            pageSize: 5,
+            totalCount: 0,
+            orderList: [],   //会议室列表
+            orderstatus: '',
+            home_title:'我的预约'
+        },
+        methods: {
+            getMeetRoomOrderList: getMeetRoomOrderList,  //获取会议室订单列表
+            goUrlChange: goUrlChange,
+            goOrderDetail: goOrderDetail, //去订单详情
+            goStatusBtn: goStatusBtn,  //
+            init: init
+        }
+    });
+
+    vm.init();
+    function init() {
+        $(function () {
+            $(window).scroll(function () {
+                //当内容滚动到底部时加载新的内容
+                if ($(this).scrollTop() + $(window).height() >= $(document).height()) {
+                    //判断当没有数据的时候不加载
+                    if (vm.totalCount > vm.orderList.length) {
+                        vm.getMeetRoomOrderList(false);
+                    }
+                }
+            });
+        });
+        vm.getMeetRoomOrderList(true);
+        if(BookingConfig.home_title!=''){
+            vm.home_title=BookingConfig.home_title;
+        }
+    }
+    function goOrderDetail(item) {
+        window.location.href = 'orderDetail.html?orderId=' + item.order_id + '&type=' + BookingConfig.category_type;
+    }
+    function goUrlChange() {
+        window.location.href = 'index.html?type=' + BookingConfig.category_type;
+    }
+    //
+    function goStatusBtn(item) {
+        vm.orderstatus = item;
+        getMeetRoomOrderList(true);
+    }
+    //获取会议室订单列表
+    function getMeetRoomOrderList(isNew) {
+        if (isNew) {
+            vm.orderList = [];
+            vm.pageIndex = 1;
+        }
+        else {
+            vm.pageIndex++;
+        }
+        var url = '/serv/api/booking/order/list.ashx';
+        var params = {
+            type: BookingConfig.category_type,
+            rows: vm.pageSize,
+            page: vm.pageIndex,
+            order_status: vm.orderstatus
+        };
+        var dataobj = {
+            type: 'POST',
+            url: url,
+            data: params
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+                vm.totalCount = data.result.totalcount;
+                for (var i = 0; i < data.result.list.length; i++) {
+                    vm.orderList.push(data.result.list[i]);
+                }
+                console.log('会议室订单列表', vm.orderList);
+
+                wx.ready(function () {
+                    var shareModel ={
+                        title: '',
+                        desc: '',
+                        link: '',
+                        imgUrl: '',
+                        type: '',
+                        dataUrl: ''
+                    }
+                    if (BookingConfig.share_title != '' && BookingConfig.share_title != undefined) {
+                        shareModel.title = BookingConfig.share_title;
+                    }
+                    if (BookingConfig.share_img != '' && BookingConfig.share_img != undefined) {
+                        shareModel.imgUrl = BookingConfig.share_img;
+                    }
+                    if (BookingConfig.share_desc != '' && BookingConfig.share_desc != undefined) {
+                        shareModel.desc = BookingConfig.share_desc;
+                    }
+                    if (BookingConfig.share_link != '' && BookingConfig.share_link != undefined) {
+                        shareModel.link = BookingConfig.share_link;
+                    }
+
+                    wxapi.wxshare({
+                        title: shareModel.title,
+                        desc:  shareModel.desc,
+                        link: shareModel.link,
+                        imgUrl: shareModel.imgUrl
+                    }, function (data) {
+
+                    })
+                });
+
+            } else {
+                alert(data.msg);
+            }
+        }, function (data) {
+            alert(data.msg);
+        });
+    }
+</script>
+</body>
+</html>

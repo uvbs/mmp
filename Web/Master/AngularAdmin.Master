@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AngularAdmin.master.cs" Inherits="ZentCloud.JubitIMP.Web.Master.AngularAdmin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title></title>
+    <link type="text/css" href="/lib/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/lib/ngTagsInput/ng-tags-input.min.css" rel="stylesheet" />    
+    <link href="/lib/angularjs/ngDialog/css/ngDialog.min.css" rel="stylesheet" />
+    <link href="/lib/angularjs/ngDialog/css/ngDialog-theme-default.min.css" rel="stylesheet" />
+    <link href="/lib/angularjs/angular-multi-select/isteven-multi-select.css" rel="stylesheet" />
+    <%--<link href="/lib/angularjs/ngDialog/css/ngDialog-custom-width.css" rel="stylesheet" />--%>
+    <link type="text/css" href="/css/master.css" rel="stylesheet" />
+    <script src="/lib/jquery/jquery-2.1.1.min.js"></script>
+    <script src="/lib/angularjs/1.3.15/angular.min.js"></script>
+    <script src="/lib/angularjs/1.3.15/angular-route.min.js"></script>
+    <script src="/lib/angularjs/1.3.15/angular-sanitize.min.js"></script>
+    <script src="/lib/angular-bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="/lib/ueditor/angular-ueditor.min.js"></script>
+    <script src="/lib/angularjs/angularjsUpload/angular-file-upload.min.js"></script>
+    <script src="/lib/ngTagsInput/ng-tags-input.js"></script>
+    <script src="/lib/angularjs/ngDialog/js/ngDialog.min.js"></script>
+    <script src="/lib/angularjs/angular-multi-select/isteven-multi-select.js"></script>
+    <script src="/lib/classie/classie.js"></script>
+    <script src="/lib/layer/2.0/layer.js"></script>
+
+    <script type="text/javascript">
+        var comeonModule = angular.module("comeonModule", ['ui.bootstrap', 'ngSanitize', 'ng.ueditor', 'angularFileUpload', 'ngTagsInput', 'ngDialog', 'isteven-multi-select']);
+    </script>
+
+    <script src="/static-modules/app/admin/js/global.js"></script>
+    <script src="/static-modules/app/admin/js/services.js"></script>
+    <script src="/static-modules/app/admin/js/directives.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body ng-app="comeonModule">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>

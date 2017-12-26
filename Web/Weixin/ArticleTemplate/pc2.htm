@@ -1,0 +1,328 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--活动模板(无微信高级认证)-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <head runat="server">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="format-detection" content="telephone=no" />
+        <title>$CCWX-ARTICLETITLE$</title>
+        <link href="/App/Cation/Wap/Style/styles/css/style.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            body {
+                font-family: "microsoft yahei",arial,\5b8b\4f53;
+            }
+
+            img {
+                max-width: 580px;
+            }
+
+            select {
+                height: 30px;
+                width: 535px;
+                text-align: left;
+            }
+
+            input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+                padding: 0 0px 0 0;
+            }
+
+            .sendinfobox2 {
+                text-align: left;
+            }
+
+                .sendinfobox2 .mainbtn {
+                    text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <div style="width: /*600px;*/ margin: 0 auto; border: 1px solid; border-radius: 5px;
+            border-color: #CCCCCC; margin-top: 20px; margin-bottom: 20px;">
+            <section class="box padding10">
+                <header class="header">
+                    <h1>$CCWX-ARTICLETITLE$</h1>
+                    <div class="headerinfo">
+                        <span class="reading">
+                            阅读
+                            <span class="orange">$CCWX-ARTICLEOPENCOUNT$</span>&nbsp;
+                            分享
+                            <span class="orange">$CCWX-ARTICLSHARETCOUNT$</span>
+                        </span>
+                    </div>
+                </header>
+
+                <div class="maincontext">
+                    <div class="maincontent">
+
+                        <span class="time">$CCWX-ARTICLETIME$</span>
+                        <span class="time">$CCWX-ARTICLEENDTIME$</span>
+                        <span class="adress">$CCWX-ARTICLEADDRESS$</span>
+                    </div>
+                </div>
+                <span class="rule">
+                    <br />$CCWX-ARTICLECONTENT$<br />
+
+                    <div class="sendinfobox2">
+
+                        <form action="" id="formsignin">
+                            <input class="textbox" placeholder="姓名" name="Name" id="txtName" type="text" />
+                            <input class="textbox" placeholder="手机" name="Phone" id="txtPhone" pattern="\d*" type="text" />
+                        </form>
+                        <span class="mainbtn submitbtn" onclick="InsertData()">提交报名</span>
+                    </div>
+                    $CCWX-PERSONNELLIST$
+                </span>
+            </section>
+        </div>
+    </body>
+</head>
+</html>
+
+<script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+<script src="/Plugins/LayerM/layer.m.js" type="text/javascript"></script>
+<script type="text/jscript">
+    var signUpId = '$CCWX-ARTICLSUGID$';
+    var PageIndex = 1;
+    var isLogin = 0;
+    var wxAuthPageMustLogin = 0;
+    var appLoginUrl = '$CCWX-APPLOGINURL$';
+    function LoadRPInfo() {
+        $.ajax({
+            type: 'post',
+            url: "/Handler/OpenGuestHandler.ashx",
+            data: { Action: "GetADInfos", PageIndex: PageIndex, ActivityId: signUpId },
+            dataType: "json",
+            success: function (resp) {
+                var html = "";
+                if (resp.Status == 0) {
+                    if (resp.ExObj == null) {
+                        $("#laodmoer").hide();
+                        return;
+                    }
+
+                    $.each(resp.ExObj, function (index, Item) {
+                        html += '<li><img src=\"' + Item.K1 + '\" />' + Item.Name + '<span class=\"times\">' + Item.K2 + '</span></li>';
+                    });
+                    $("#fenxiang").text(resp.ExInt);
+                    $("#append").before(html);
+                    if (resp.ExStr == null) {
+                        resp.ExStr = "#";
+                    }
+                    $("#theUrl").attr("href", resp.ExStr);
+                    PageIndex++;
+                }
+                else {
+                    $("#laodmoer").hide();
+                }
+            }
+        });
+    };
+    $(function () {
+
+        InitSignUpDataInfo();
+        LoadRPInfo();
+
+        window.alert = window.Alert = function (msg) {
+            layer.open({
+                content: msg,
+                time: 2
+            });
+        };
+    });
+
+    function InsertData() {
+        if (isLogin == 0 && wxAuthPageMustLogin == 1) {
+            GotoLoginPage();
+            return;
+        }
+        var Name = $("#txtName").val();
+        var Phone = $("#txtPhone").val();
+        if (Name == "" || (Phone == "")) {
+            alert("请输入姓名、手机号码");
+            return false;
+        }
+        //                try {
+
+
+        $("#formsignin").ajaxSubmit({
+            url: "/serv/ActivityApiJson.ashx",
+            type: "post",
+            dataType: "json",
+            success: function (resp) {
+                if (resp.Status == 0) {//清空
+                    //$('input:text').val("");
+                    //$('textarea').val("");
+                    alert("报名成功!");
+                    return;
+
+                }
+                else if (resp.Status == 1) {
+                    alert("重复提交!");
+
+                }
+                else {
+                    alert(resp.Msg);
+                }
+
+            }
+        });
+        return false;
+    };
+
+
+    //获取报名字段信息
+    function InitSignUpDataInfo() {
+        $.ajax({
+            type: 'post',
+            url: "/Handler/OpenGuestHandler.ashx",
+            data: { Action: "SignUpDataInfo", signUpId: signUpId, pathname: window.location.pathname },
+            dataType: "json",
+            success: function (resp) {
+                var html = "";
+                if (resp.Status == 0) {
+                    if (resp.ExInt == 1) {//不显示报名列表
+                        $("#divpersionlist").remove();
+
+                    }
+                    //item.FieldName, item.MappingName, tmpValue
+                    $.each(resp.ExObj, function (index, item) {
+
+
+                        //
+                        switch (item.InputType) {
+                            case "combox": //下拉框
+                                //
+                                html += item.MappingName;
+                                html += '&nbsp;<select name=\"' + item.FieldName + '\">';
+                                for (var i = 0; i < item.Options.split(',').length; i++) {
+                                    var optionValue = item.Options.split(',')[i];
+                                    html += '<option value=\"' + optionValue + '\">';
+                                    html += optionValue;
+                                    html += '</option>';
+
+                                }
+                                html += '</select><br/><br/>';
+                                //
+                                break;
+                            case "checkbox": //多选框
+                                //
+                                html += item.MappingName;
+                                html += '<br/>';
+                                for (var i = 0; i < item.Options.split(',').length; i++) {
+                                    var optionValue = item.Options.split(',')[i];
+                                    html += '&nbsp;<input type=\"checkbox\" name=\"' + item.FieldName + '\" value=\"' + optionValue + '\" id=\"cb' + i + '\">';
+
+                                    html += '&nbsp;<label for=\"cb' + i + '\">' + optionValue + '</label>';
+
+
+                                }
+                                //
+
+                                break;
+                            case "text": //文本框
+                                //
+                                if (item.IsMultiline == "1") {
+                                    html += '<textarea rows=\"5\" style=\"width:100%;\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\"  placeholder=\"' + item.MappingName + '\"></textarea>';
+
+                                } else {
+                                    html += '<input class=\"textbox\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\" placeholder=\"' + item.MappingName + '\" type=\"text\">';
+                                }
+                                //
+                                break;
+
+                            default:
+                                if (item.IsMultiline == "1") {
+                                    html += '<textarea rows=\"5\" style=\"width:100%;\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\"  placeholder=\"' + item.MappingName + '\"></textarea>';
+
+                                } else {
+                                    html += '<input class=\"textbox\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\" placeholder=\"' + item.MappingName + '\" type=\"text\">';
+                                }
+                                //
+                                break;
+
+
+
+
+                        }
+                        //
+
+
+                        //
+
+
+
+
+
+                    })
+                    html += '<input id=\"activityID\" type=\"hidden\" value=\"' + signUpId + '\" name=\"ActivityID\" />';
+                    //
+
+
+                    $("#formsignin").append(html);
+                    $("#formsignin").append(resp.ExStr);
+                    LoadUserData();
+                }
+                else {
+                    alert(resp.Msg);
+                }
+            }
+        });
+    };
+
+    ///加载当前用户信息 如果可用
+    function LoadUserData() {
+        $.ajax({
+            type: 'post',
+            url: "/Handler/OpenGuestHandler.ashx",
+            data: { Action: "GetCurrentUserInfo" },
+            dataType: "json",
+            success: function (resp) {
+                if (resp.Status == 1) {
+                    isLogin = 1;
+                    $("#txtName").val(resp.ExObj.TrueName);
+                    $("#txtPhone").val(resp.ExObj.Phone);
+                    $("#formsignin").find("input[type='text'],textarea").each(function () {
+                        var placeholder = $(this).attr("placeholder");
+                        if (placeholder.indexOf("邮箱") >= 0 || placeholder.indexOf("邮件") >= 0 || placeholder.indexOf("email") >= 0 || placeholder.indexOf("Email") >= 0) {
+                            $(this).val(resp.ExObj.Email);
+                        }
+                        if (placeholder.indexOf("公司") >= 0) {
+                            $(this).val(resp.ExObj.Company);
+                        }
+                        if (placeholder.indexOf("职位") >= 0 || placeholder.indexOf("职务") >= 0) {
+                            $(this).val(resp.ExObj.Postion);
+                        }
+
+
+                    });
+
+                }
+
+
+            }
+        });
+
+        $.ajax({
+            type: 'post',
+            url: "/Serv/API/Common/CheckWebsiteCommRelation.ashx",
+            dataType: "json",
+            data: { key: 'WXAuthPageMustLogin' },
+            success: function (resp) {
+                if (resp.status) {
+                    wxAuthPageMustLogin = 1;
+                }
+            }
+        });
+    }
+    function GotoLoginPage() {
+        Alert("您还没有登录，请先登录")
+        setTimeout(function () {
+            document.location.href = appLoginUrl + '?redirect=' + encodeURI(document.location.href);
+        }, 2000);
+    }
+</script>
+

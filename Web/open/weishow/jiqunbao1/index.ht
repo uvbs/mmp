@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="styles/css/style.css?v=0.0.10">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?33646c314200ff2c2ca1692a0d23c357";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <script data-main="src/main.min" src="src/require.min.js"></script>
+
+</head>
+<body>
+<section class="box">
+<!--     <div class="websiteiframebox">
+        <iframe class="websiteiframe" src="http://zhengdao.comeoncloud.net/web/index.aspx" frameborder="0" scrolling="auto" ></iframe>
+    </div> -->
+    <div id="loadingscreen">
+        <span class="loadtext">
+            Loading...
+        </span>
+    </div>
+    <div id="musicbutton" class="musicplay" style="left:0%;"></div>
+    <audio id="myaudio" src="bbb.mp3?v=0.0.1" ></audio>
+    <div id="imglist">
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic1.jpg);" style=""></span>
+            <span class="text bottom5" style="color:#fff;" onclick="touchpic.mchange=2;touchpic.endfun();"><img src="styles/images/pic1btn.png" alt="" width="18%"></span>
+            <!-- <span class="nextbtn"><span class="smallicon"></span></span> -->
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic2.jpg?v=0.0.1);" style=""></span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic3.jpg?v=0.0.1);" style=""></span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic4.jpg?v=0.0.1);" style=""></span>
+            <span class="nextbtn nextbtn2"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic5.jpg?v=0.0.1);" style=""></span>
+            <span class="nextbtn nextbtn2"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic6.jpg?v=0.0.1);" style=""></span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic7.jpg?v=0.0.1);" style=""></span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic8.jpg);" style=""></span>
+            <span class="text" style="bottom:10%;"><img src="styles/images/pic8phone.png" alt="" width="30%"></span>
+            <span class="text" style="bottom:2%;" >
+                <span class="pic8btn" id="sharebtn"><img src="styles/images/pic8btn.png" alt="" ></span>
+                <a class="pic8btn" href="http://weibo.com/p/1008081be706a5df06ceb0a426278e6cf8a491?k=%E6%B2%9F%E9%80%9A%E6%98%AF%E9%87%91&from=501&_from_=huati_topic"><img src="styles/images/pic8btn2.png" alt=""></a>
+            </span>
+            <!-- <span class="nextbtn nextbtn2"><span class="smallicon"></span></span> -->
+        </div>
+    </div>
+    <div id="sharebox" ><img src="styles/images/sharetext.png?v=0.0.1" alt=""></div>
+</section>
+<style>
+    #sharebox{
+        display:none;
+        background-color:rgba(0,0,0,0.7);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    #sharebox img{
+        width: 60%;
+        float: right;
+        margin-right: 5%;
+    }
+    .pic8btn{
+        display:inline-block;
+        width: 35%;
+        margin: 0 5px;
+    }
+    .pic8btn img{
+        width: 100%;
+    }
+</style>
+<script>
+
+require.config({
+    baseUrl:"./src/",
+    shim:{ 
+        wxshare:["jquery"]
+    },
+    paths:{
+        jquery:"commonjs/jquery.min",
+        WeShow:"commonjs/weshow.min",
+        wx:"http://res.wx.qq.com/open/js/jweixin-1.0.0"
+    }
+})
+require(["jquery","WeShow","wx"],function($,WeShow,wx){
+
+    touchpic=new WeShow("#imglist",function(_this,snum){
+        var current=$(".listli:eq("+snum+")");
+        switch(snum){
+            // case 0:
+            //     _this.animation(current.find(".text"),18,function(){
+            //         _this.animation(current.find(".nextbtn"),20,function(){
+            //         })
+            //     });
+            // break;
+            default:
+                _this.animation(current.find(".text"),15,function(){
+                    _this.animation(current.find(".nextbtn"),20)
+                });
+        }
+    });
+
+
+    $.ajax({
+        url: "http://"+location.host+"/serv/wxapi.ashx",
+        data: {
+            action : "getjsapiconfig",
+            url:location.href
+        },
+        dataType : "json",
+        success:function(wxapidata){
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: wxapidata.appId, // 必填，公众号的唯一标识
+                timestamp: wxapidata.timestamp, // 必填，生成签名的时间戳
+                nonceStr: wxapidata.nonceStr, // 必填，生成签名的随机串
+                signature:  wxapidata.signature,// 必填，签名，见附录1
+                jsApiList: [
+                    "onMenuShareTimeline",
+                    "onMenuShareAppMessage",
+                    "onMenuShareQQ",
+                    "onMenuShareWeibo",
+                    "startRecord",
+                    "stopRecord",
+                    "onVoiceRecordEnd",
+                    "playVoice",
+                    "pauseVoice",
+                    "stopVoice",
+                    "onVoicePlayEnd",
+                    "uploadVoice",
+                    "downloadVoice",
+                    "chooseImage",
+                    "previewImage",
+                    "uploadImage",
+                    "downloadImage",
+                    "translateVoice",
+                    "getNetworkType",
+                    "openLocation",
+                    "getLocation",
+                    "hideOptionMenu",
+                    "showOptionMenu",
+                    "hideMenuItems",
+                    "showMenuItems",
+                    "hideAllNonBaseMenuItem",
+                    "showAllNonBaseMenuItem",
+                    "closeWindow",
+                    "scanQRCode",
+                    "chooseWXPay",
+                    "openProductSpecificView",
+                    "addCard",
+                    "chooseCard",
+                    "openCard"
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+        },
+        error:function (errmes) {
+            console.dir(errmes)
+        }
+    })
+
+
+    wxs={
+        title:"集群宝·加拿大荟诗杯全国首届微商创业大赛在线报名",
+        link:location.href,
+        imgUrl:"http://comeoncloud.comeoncloud.net/test/1502/huawei/sharepic.jpg",
+        desc:"集群宝·加拿大荟诗杯全国首届微商创业大赛在线报名"
+    }
+
+    wx.ready(function(){
+        wx.onMenuShareTimeline({
+            title: wxs.title, // 分享标题
+            link: wxs.link, // 分享链接
+            imgUrl: wxs.imgUrl, // 分享图标
+            success: function() {
+                $("#sharebox").hide();
+            },
+            cancel: function() {
+
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: wxs.title, // 分享标题
+            desc: wxs.desc, // 分享描述
+            link: wxs.link, // 分享链接
+            imgUrl: wxs.imgUrl, // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function() {
+                $("#sharebox").hide();
+            },
+            cancel: function() {
+
+            }
+        });
+        wx.onMenuShareQQ({
+            title: wxs.title, // 分享标题
+            desc: wxs.desc, // 分享描述
+            link: wxs.link, // 分享链接
+            imgUrl: wxs.imgUrl, // 分享图标
+            success: function() {
+                $("#sharebox").hide();
+            },
+            cancel: function() {
+
+            }
+        });
+    })
+
+    $("#sharebtn").bind("touchend",function(){
+        // console.log(0)
+        $("#sharebox").show();
+    })
+    $("#sharebox").bind("touchend",function(){
+        $("#sharebox").hide();
+    })
+
+})
+
+</script>
+</body>
+</html>
+
+

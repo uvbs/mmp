@@ -1,0 +1,37 @@
+﻿<div>
+    <div class="wrapCardList wrapAskList wrapAnwser">
+        <div class="card" ng-repeat="item in pageData.dataList">
+            <div class="item">
+                <div class="row">
+                    <div class="col" ng-click="pageFunc.go(item)">
+                        <div class="mBottom6">
+                            <span class="userName">{{item.pubUser.userName}}</span>
+                            <span class="time">{{item.createDate | date:'yyyy-MM-dd'}}回答问题</span>
+                            <span class="viewCount">
+                                <i class="iconfont icon-liulan">
+                                </i>
+                                {{item.pv}}
+                            </span>
+                        </div>
+                        <p ng-bind-html="item.articleName">
+                        </p>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a ng-click="pageFunc.goList(tag)" class="tag">{{tag}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.dataList.length < pageData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadAnswerData(true)">查看更多</button>
+        </div>
+        <div ng-if="pageData.totalCount == 0">
+            没有数据
+        </div>
+    </div>
+    <backbtn></backbtn>
+</div>

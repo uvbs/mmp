@@ -1,0 +1,11 @@
+﻿<div class="warpLeftCard">
+    <div class="title">热门活动</div>
+    <div class="dataList">
+        <div class="item" ng-repeat="item in hotActivityCtrl.pageData.hotActivityData">
+            <div class="itemTitle">
+                <a target="_self" href="#/activity/{{item.activityid}}">{{item.activityname}}</a>
+            </div>
+            <div class="count">{{item.signcount}}人报名</div>
+        </div>
+    </div>
+</div>

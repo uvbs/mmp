@@ -1,0 +1,229 @@
+﻿
+.weui-textarea {
+    position: relative;
+}
+
+.send {
+    position: absolute;
+    z-index: 4;
+    bottom: 5px;
+    right: 2px;
+}
+
+.sendBox {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/**重置标签默认样式*/
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: '微软雅黑';
+}
+
+
+
+.header {
+    background: #000;
+    height: 40px;
+    color: #fff;
+    line-height: 34px;
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+
+/*img {
+    width: 40px;
+    height: 40px;
+}*/
+
+.content {
+    /*font-size: 20px;
+            width: 435px;
+            height: 662px;
+            overflow: auto;
+            padding: 5px;*/
+    font-size: 14px;
+    padding-bottom: 200px;
+    padding-top: 55px;
+}
+
+    .content li {
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: block;
+        clear: both;
+        overflow: hidden;
+    }
+
+
+
+        .content li img {
+            float: left;
+        }
+
+        .content li span {
+            background: #7cfc00;
+            padding: 10px;
+            border-radius: 10px;
+            float: left;
+            margin: 6px 10px 0 10px;
+            max-width: 200px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 3px #ccc;
+            word-break: break-all;
+        }
+
+        .content li img.imgleft {
+            float: left;
+            width: 40px;
+            height: 40px;
+        }
+
+        .content li img.imgright {
+            float: right;
+            width: 40px;
+            height: 40px;
+        }
+
+        .content li span.spanleft {
+            float: left;
+            background: #fff;
+        }
+
+        .content li span.spanright {
+            float: right;
+            background: #98E165;
+        }
+
+
+.spanleft img {
+    max-width: 200px;
+}
+
+.spanright img {
+    max-width: 200px;
+}
+
+.sys-msg {
+    font-size: 10px;
+    text-align: center;
+    color: #ccc;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: #1AAD19;
+    text-align: center;
+    padding-top: 9px;
+}
+
+    .top img {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+.company-name {
+    color: white;
+}
+
+.company-logo {
+    margin-top: 5px;
+}
+
+    .company-logo img {
+        max-width: 20px;
+        max-height: 20px;
+    }
+
+.bottom-left {
+    float: left;
+    width: 10%;
+    text-align: center;
+}
+
+    .bottom-left img {
+        width: 32px;
+        height: 32px;
+        vertical-align: top;
+    }
+
+.bottom-center {
+    float: left;
+    width: 70%;
+}
+
+    .bottom-center input {
+        width: 97%;
+        height: 35px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding-left: 5px;
+        font-size: 14px;
+    }
+
+.bottom-right {
+    float: left;
+    width: 20%;
+}
+
+.weui-btn {
+    width: 99%;
+    line-height: 2.8;
+}
+
+.product {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    word-break: break-all;
+    background-color: white;
+    width: 180px;
+    height: 50px;
+    padding: 2px;
+}
+
+.product-img {
+    float: left;
+}
+
+    .product-img img {
+        width: 50px;
+        height: 50px;
+    }
+
+.product-name {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 130px;
+}
+
+#txtMsg {
+    min-height: 35px;
+    _height: 35px;
+    outline: 0px;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin-right:2px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    line-height: 2.5em;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+}

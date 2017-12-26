@@ -1,0 +1,89 @@
+﻿.wrapSelectCar {
+	.size(100%, 346px);
+	.font14();
+	/*overflow: hidden;*/
+
+	.noCar {
+		text-align: center;
+		padding-top: 30px;
+
+		.txtVIN {
+			border: 1px solid #ABA7A7;
+			width: 86%;
+			min-height: 32px;
+			max-height: 100px;
+			line-height: 32px;
+			text-align: left;
+			margin: 0 auto;
+			padding: 0 10px;
+			white-space: pre-wrap;
+			.allRadius(8px);
+			word-wrap: break-word;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+	}
+	.noCar>div {
+		margin: 16px;
+	}
+	.selectCar {
+		padding: 0 10px;
+
+		.wrapTabTitle {
+			padding: 10px 0;
+
+			.row {
+				color: #646059;
+				font-size: 14px !important;
+				.allRadius(2px);
+				height: 32px;
+
+				.col {
+					.allRadius(2px);
+					height: 32px;
+					line-height: 32px;
+					border-right: 1px solid #fff;
+				}
+			}
+		}
+		.list {
+			padding:4px;
+			max-height: 228px;
+			overflow: auto;
+			.item {
+				background-color: #f0f0f0;
+				padding-top: 4px;
+				padding-bottom: 4px;
+				border-top-color: #BFBDBD;
+				font-size: 14px;
+				height: 38px;	
+				line-height: 38px;
+				.avatar{
+					padding-right: 10px;
+					position: relative;
+					top: 4px;
+				}
+				span{
+					position: relative;
+					top: -4px;
+				}
+				.iconfont.icon-xiangyou {
+					font-size: 16px;
+					color: #B2B2B2;
+				}
+			}
+			.item:hover{
+				background-color: #ddd;
+			}
+		}
+		.wrapBrad {
+		}
+		.wrapSeries{
+			.list{
+				.item{
+
+				}
+			}
+		}
+	}
+}

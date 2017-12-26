@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+
+    接口地址：<input type="text" name="name" style="width:500px;" value="/serv/api/Appointment/MyList.ashx" id="txtAPIUrl" /><br />
+    调用参数：<textarea style="width:100%; height:200px;" id="txtParm"></textarea><br />
+    <a href="javascript:;" id="btnGoGet">调用Get</a><br />
+    <a href="javascript:;" id="btnGo">调用JSONP</a><br />
+    <a href="javascript:;" id="btnGoPost">调用POST</a><br />
+
+    返回结果：<br />
+    <div id="warpResult"></div>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        $('#btnGo').on('click', function () {
+            var url = $.trim($('#txtAPIUrl').val());
+            var parm = $('#txtParm').val();
+            var reqData = JSON.parse(parm);
+            //reqData = { data: JSON.stringify(reqData) };
+            console.log(reqData);
+            $.ajax({
+                type: 'get',
+                url: url,
+                data: reqData,
+                dataType: 'jsonp',
+                success: function (data) {
+                    $('#warpResult').html(JSON.stringify(data));
+                }
+            });
+        });
+        $('#btnGoGet').on('click', function () {
+            var url = $.trim($('#txtAPIUrl').val());
+            var parm = $('#txtParm').val();
+            var reqData = JSON.parse(parm);
+            //reqData = { data: JSON.stringify(reqData) };
+            console.log(reqData);
+            $.ajax({
+                type: 'get',
+                url: url,
+                data: reqData,
+                success: function (data) {
+                    console.log(data);
+                    $('#warpResult').html(JSON.stringify(data));
+                }
+            });
+        });
+        $('#btnGoPost').on('click', function () {
+            var url = $.trim($('#txtAPIUrl').val());
+            var parm = $('#txtParm').val();
+            //var reqData = JSON.parse(parm);
+
+            //var reqData = {
+            //    sidemenu_show: true,
+            //    sidemenu_show_color: "green",
+            //    data_type: "Article",
+            //    data_preid: "711",
+            //    data_cateid: "711",
+            //    search_show: true,
+            //    item_image_show: true,
+            //    item_image_align_left: true,
+            //    item_image_align_right: true,
+            //    item_type_show: true,
+            //    item_describe_show: true,
+            //    item_pv_show: true,
+            //    item_tag_show: true,
+            //    item_createdate_show: true
+            //};
+
+            //console.log(JSON.stringify(reqData));
+            //return;
+
+            //reqData = { data: JSON.stringify(reqData), FieldNameList: "地址"};
+
+            //进行中 status 1 signup_status 1 ctype 0
+            //我发布 status 0,1  signup_status 1 ctype 1
+            //我报名 status 0,1  signup_status 0,1 ctype 2
+            //我完成 status 2  signup_status 2,3 ctype 0
+            //已违约 status -1  signup_status -3 ctype 0
+
+            //url = "/serv/api/Appointment/SignUp.ashx";
+            //var reqData = {
+            //    activity_id: 417515,
+            //    UserLongitude: 121.532019,
+            //    UserLatitude: 31.241348,
+            //    GuaranteeCreditAcount: 320,
+            //    Name: "林凯",
+            //    Phone:"18001451236",
+            //    K1:""
+            //};
+
+
+            //reqData = { data: JSON.stringify(reqData), FieldNameList: "地址"};
+            //var reqData = {
+            //    rows: 10,
+            //    page: 1,
+            //    longitude: 121.532019,
+            //    latitude: 31.241348,
+            //    sort: 3,
+            //    status: "0,1",
+            //    signup_status: "0,1",
+            //    ctype: 2
+            //};
+            
+            //url = "/serv/api/admin/signin/address/add.ashx";
+            //var reqData = {
+            //    address: "公司",
+            //    longitude: 121.411841,
+            //    latitude: 31.166268,
+            //    range: 50
+            //};
+
+            //url = "/serv/api/signin/add.ashx";
+            //var reqData = {
+            //    longitude: 121.412295,
+            //    latitude: 31.166631
+            //};
+            $.ajax({
+                type: 'post',
+                url: url,
+                data: parm,
+                success: function (data) {
+                    console.log(data);
+                    $('#warpResult').html(JSON.stringify(data));
+                }
+            });
+        });
+        ///serv/pubapi.ashx
+        //$.ajax({
+        //    type: 'post',
+        //    url: 'http://preview.comeoncloud.net/serv/pubapi.ashx?appid=appid&appsecret=appsecret&action=getnewslist&pageindex=1&pagesize=10&sort=time',
+        //    dataType: 'jsonp',
+        //    data: {},
+        //    success:function(data){
+
+        //    }
+        //});
+        //function func(data) {
+        //    console.log(data);
+        //}
+
+        //$.ajax({
+        //    type: 'post',
+        //    url: 'http://preview.comeoncloud.net/serv/pubapi.ashx?appid=appid&appsecret=appsecret&action=login&userid=test&pwd=test!comeoncloud',
+        //    dataType: 'jsonp',
+        //    data: {},
+        //    success: function (data) {
+
+        //    }
+        //});
+
+        //$.ajax({
+        //    type: 'post',
+        //    url: 'http://preview.comeoncloud.net/serv/pubapi.ashx?appid=appid&appsecret=appsecret&action=islogin',
+        //    dataType: 'jsonp',
+        //    data: {},
+        //    success: function (data) {
+
+        //    }
+        //});
+
+        //$.ajax({
+        //    type: 'post',
+        //    url: '/serv/pubapi.ashx',
+        //    dataType: 'jsonp',
+        //    data: { action: 'getArticleList',pageIndex:1,pageSize:20 },
+        //    success: function (data) {
+        //        console.log(data);
+        //    }
+        //});
+
+        //$.ajax({
+        //    type: 'post',
+        //    url: 'http://preview.comeoncloud.net/serv/pubapi.ashx?appid=appid&appsecret=appsecret&action=getHotTags',
+        //    dataType: 'jsonp',
+        //    data: {},
+        //    success: function (data) {
+        //        console.log(data);
+        //    }
+        //});
+
+        //getArticleList
+
+    </script>
+
+</body>
+</html>

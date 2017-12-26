@@ -1,0 +1,279 @@
+<div class="layout boxMain warpAsk warpQuesDetails">
+	<div class="row">
+		<div class="col-xs-9">
+			<div class="subTitle clear">
+                <span class="warpAskaleft">
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText">问答 > 问题详情</span>
+                </span>
+                 <div class="warpSearchInput warpAskaright">
+                     <div class="form-group">
+                     <input ng-model='pageData.searchKeyword' type="search" class="form-control txtSearch" placeholder="搜索活动..." />
+                    <div class="btnSearch" ng-click="pageFunc.loadData(true)"></div>
+                    </div>
+            	</div>
+            </div>
+            <div class="warpQuMain">
+		<div class="quesTab clear">
+			<ul>
+				<li class="change"><a href="javascript:;">发问题</a></li>
+				<li><a href="javascript:;">发文章</a></li>
+			</ul>
+		</div>
+		<div class="quesCon">
+			<div class="form-group one">
+   				<label for="exampleInputEmail1">问题标题：</label>
+   				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="标题内容...">
+ 			</div>
+ 			<div class="quesConCan ">
+ 				<label >问题详细补充（选填）：</label>
+ 			 		<div class="warpComment">
+               			 <div 
+                text-angular 
+                ta-toolbar="[['bold', 'italics', 'underline','strikeThrough','justifyLeft', 'justifyCenter', 'justifyRight', 'insertImage', 'insertLink']]"
+                ng-model="pageData.currComment"
+                name="editor1"
+                >	</div>
+               <!--  <div class="warpOperate">
+                   
+                   <button class="btn btn-primary floatR btnComment" ng-click="pageFunc.submitComment()">提交评论</button>
+                   <div class="checkbox floatR">
+                       <label>
+                         <input type="checkbox" ng-model="pageData.commentIncognito"> 匿名
+                       </label>
+                   </div>
+                   <div class="clear"></div>
+                            </div> -->
+            	</div>
+ 			</div>
+ 			<div class="three">
+ 				<form class="form-horizontal">
+ 				
+   				<div class="form-group bot">
+                        <label for="select" class="col-sm-2 control-label">地区选择:</label>
+                         <div class="col-sm-3">
+                            <select class="form-control" id="select">
+                                <option>请选择城市</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                         </div>
+                         <div class="col-sm-3">
+                            <select class="form-control" id="select">
+                                <option>请选择城市</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                         </div>
+                    </div>
+ 			 </form>
+
+ 			</div>
+ 			<div class="four clear">
+ 					<div class="form-group ">
+                        <label for="select" class="control-label fourLabel">标签选择:</label>
+                        <div class=" announceMark">
+                            <div class="markTop clear">
+                                <ul>
+                                    <li ><a class="change" href="javascript:;">标签1</a></li>
+                                    <li><a href="javascript:;">标签2</a></li>
+                                    <li><a href="javascript:;">标签3</a></li>
+                                    <li><a href="javascript:;">标签4</a></li>
+                                    <li><a href="javascript:;">标签5</a></li>
+                                    <li><a href="javascript:;">标签6</a></li>
+                                    <li><a href="javascript:;">标签7</a></li>
+                                    <li><a href="javascript:;">标签8</a></li>
+                                    <li><a href="javascript:;">标签9</a></li>
+                                </ul>
+                                <span><a href="Javascript">更多 <i class="iconfont icon-xiangshang "></i></a></span>
+                            </div>
+                            <div class="markBot">
+                                <ul class="ul clear">
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                   <li>标签1</li>
+
+                                </ul>
+                                 <ul class="ul  clear">
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                </ul>
+                                 <ul class="ul  clear">
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                </ul>
+                                 <ul class="ul  clear">
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                </ul>
+                                 <ul class="ul clear">
+                                    <li>标签1</li>
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li> 
+                                    <li>标签1</li> 
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                    <li>标签1</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+ 			</div>
+			<div class="five ">
+				<ul class="clear fiveOne">
+					<li><label for="">邀请回答:</label></li>
+					<li>如果<i class="iconfont icon-guanbi"></i></li>
+					<li>如果<i class="iconfont icon-guanbi"></i></li>
+					<li>如果<i class="iconfont icon-guanbi"></i></li>
+					<li>选择邀请人</li>
+				</ul>
+				<div class="fiveCon">
+					  <div class="warpSearchInput warpAskaright">
+                   		  <div class="form-group">
+                   		  <input ng-model='pageData.searchKeyword' type="search" class="form-control txtSearch" 		placeholder="" />
+                   		 <div class="btnSearch" ng-click="pageFunc.loadData(true)"></div>
+                   		 </div>
+           			</div>
+           			<div class="fiveConImg">
+                    	<div class="imgOne">
+                    		<dl>
+                    			<dt>
+                    				<a href="javascript:;"><img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt=""></a>
+                    			</dt>
+                    			<dd>
+                    				<p>如果如果</p>
+                    				<div class="warpAskRightTop ">
+                						<button class="btn btn-primary ">邀请回答</button>
+            						</div>
+                    			</dd>
+                    		</dl>
+                    	</div>
+                    	<div class="imgOne">
+                    		<dl>
+                    			<dt>
+                    				<a href="javascript:;"><img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt=""></a>
+                    			</dt>
+                    			<dd>
+                    				<p>如果如果</p>
+                    				<div class="warpAskRightTop ">
+                						<button class="btn btn-primary ">邀请回答</button>
+            						</div>
+                    			</dd>
+                    		</dl>
+                    		<dl>
+                    			<dt>
+                    				<a href="javascript:;"><img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt=""></a>
+                    			</dt>
+                    			<dd>
+                    				<p>如果如果</p>
+                    				<div class="warpAskRightTop ">
+                						<button class="btn btn-primary ">邀请回答</button>
+            						</div>
+                    			</dd>
+                    		</dl>
+                    	</div>
+                    	<div class="imgOne">
+                    		<dl>
+                    			<dt>
+                    				<a href="javascript:;"><img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt=""></a>
+                    			</dt>
+                    			<dd>
+                    				<p>如果如果</p>
+                    				<div class="warpAskRightTop ">
+                						<button class="btn btn-primary ">邀请回答</button>
+            						</div>
+                    			</dd>
+                    		</dl>
+                    		<dl>
+                    			<dt>
+                    				<a href="javascript:;"><img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt=""></a>
+                    			</dt>
+                    			<dd>
+                    				<p>如果如果</p>
+                    				<div class="warpAskRightTop ">
+                						<button class="btn btn-primary ">邀请回答</button>
+            						</div>
+                    			</dd>
+                    		</dl>
+                    	</div>
+                    	<div class="imgUl">
+                    		<ul>
+                    			<li>上一页</li>
+                    			<li>下一页</li>
+                    		</ul>
+                    	</div>
+                    </div>
+                   
+				</div>
+				 <div class="six">
+                    	<div class="warpAskRightTop ">
+                				<button class="btn btn-primary ">发布问题</button>
+            			</div>
+                    </div>
+			</div>
+		</div>
+	</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="warpAskRightTop ">
+                <button class="btn btn-primary askBots ">发问题</button>
+                 <button class="btn btn-primary askBots last">发文章</button>
+            </div>
+            <div class="ancuMarkSide">
+               <h5>发布规则</h5>
+               <p>  近日，MG名爵首款SUV车型锐腾以11.97万元—17.97万元价格上市，从现场经销商的欢呼声中，记者感受到上汽乘用车在新车定价上更加务实了。</p>
+               <p>不仅如此而已，锐腾作为上汽乘用车旗下高性能城市SUV，“8秒破百”使其在性能和配置上甚至有超越本田CRV、别克昂科威等合资中级SUV的可能，但最终却以较低的价格将市场对手锁定在韩系主流SUV和自主SUV上。</p>
+               <p> 对此，上汽乘用车相关负责人告诉《证券日报》记者，毕竟自主品牌市场号召力势微，锐腾现有的核心配置发动机与通用是共用的，但公司却只能将价格下移至韩系小型SUV的价格，以及一部分主流的自主紧凑级SUV。</p>
+               <p>
+                   上汽集团副总裁、上汽乘用车公司总经理王晓秋毫不掩饰其野心，上汽未来会理顺产品的投放周期，尤其是瞄准市场增长最快的领域，在销量上谋求进一步突破。
+               </p>
+           </div>
+		</div>
+	</div>
+	
+</div>

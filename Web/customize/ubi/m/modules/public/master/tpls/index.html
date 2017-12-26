@@ -1,0 +1,34 @@
+<div class="wrapMaster pBottom72">
+    <div class="warpHeader bar bar-header item-input-inset">
+        目前全站共有{{pageData.totalAllCount}}位专家
+    </div>
+    <div class="wrapHeaderFilter row" ng-if="pageData.id==undefined">
+        <div class="col" ng-class="{selected:item.checked}" ng-repeat="item in pageData.tabs" ng-click="pageFunc.tabClick(item)">
+            {{item.name}}
+        </div>
+    </div>
+    <div class="wrapCardList wrapAskList">
+        <div class="card"  ng-repeat="item in pageData.list" ng-click="pageFunc.go(item)">
+            <div class="item">
+                <div class="row">
+                    <div class="col">
+                        <div class="mBottom6">
+                            <img class="avatarImg" src="{{item.avatar}}">
+                            <h2 class="pLeft16">{{item.userName}}</h2>
+                        </div>
+                        <p ng-bind-html="item.digest" class="hand pTop10 pBottom10">
+                        </p>
+                    </div>
+                </div>
+                <!--<a href="javascript:;" class="floatR askFollow" ng-if="!item.currUserIsFollow">关注</a>-->
+                <!--<a href="javascript:;" class="floatR askFollow" ng-if="item.currUserIsFollow">取消关注</a>-->
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.list.length < pageData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadData()">查看更多</button>
+        </div>
+        <div class="textC" ng-if="pageData.totalCount == 0">
+            没有数据
+        </div>
+    </div>
+</div>

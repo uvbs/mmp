@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="styles/css/style.css?v=0.0.1">
+    <script src="src/commonjs/weixinshare.min.js"></script>
+    <script data-main="src/main.min" src="src/require.min.js"></script>
+    <script>
+    WeixinShare.init({
+        imgUrl:"http://zhengdao.comeoncloud.net/FileUpload/CompanyWebsite/7e90f98e-1054-45c6-bc92-5e7b82ba84c8.jpg",
+        descContent:"酒窖俱乐部集合世界各地的葡萄酒酒庄资源，以非盈利模式为会员提供超价值的权益和服务。",
+        shareTitle:"正道红酒俱乐部",
+    })
+    </script>
+</head>
+<body>
+<section class="box">
+    <div class="websiteiframebox">
+        <iframe class="websiteiframe" src="http://zhengdao.comeoncloud.net/web/index.aspx" frameborder="0" scrolling="auto" ></iframe>
+    </div>
+    <div id="loadingscreen">
+        <span class="loadtext">
+            Loading...
+
+
+        </span>
+    </div>
+    <div id="musicbutton" class="musicplay"></div>
+    <audio id="myaudio" src="bbb.mp3" ></audio>
+    <div id="imglist">
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic1.jpg);" style=""></span>
+            <span class="text" style="color:#fff;"><h2>正道酒窖</h2>酒窖俱乐部</span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic2.jpg);" style=""></span>
+            <span class="text" style="color:#fff;"><h2>正道红酒俱乐部</h2>集合世界各地的葡萄酒酒庄资源</span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic3.jpg);" style=""></span>
+            <span class="text" style="color:#fff;"><h2>正道红酒俱乐部</h2>为会员提供超价值的权益和服务。</span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="img" data-original="background-image:url(styles/images/pic4.jpg);" style=""></span>
+            <span class="text" style="color:#fff;"><h2>正道酒窖</h2></span>
+            <span class="nextbtn"><span class="smallicon"></span></span>
+        </div>
+        <div class="listli">
+            <span class="blackpage"></span>
+        </div>        
+    </div>
+</section>
+<script>
+require.config({
+    baseUrl:"./src/",
+    paths:{
+        jquery:"commonjs/jquery.min",
+        WeShow:"commonjs/weshow.min"
+    }
+})
+require(["WeShow"],function(WeShow,AudioPlay){
+
+    touchpic=new WeShow("#imglist",function(_this,snum){
+        var current=$(".listli:eq("+snum+")");
+        switch(snum){
+            case 0:
+                _this.animation(current.find(".img"),1,function(){
+                    _this.animation(current.find(".text"),2,function(){
+                        _this.animation(current.find(".nextbtn"),99)
+                    });
+                });
+            break;
+            case 2:
+                _this.animation(current.find(".img"),5,function(){
+                    _this.animation(current.find(".text"),2,function(){
+                        _this.animation(current.find(".nextbtn"),99)
+                    });
+                });
+            break;
+            case 3:
+                _this.animation(current.find(".img"),1,function(){
+                    _this.animation(current.find(".text"),2,function(){
+                        _this.animation(current.find(".nextbtn"),99,function(){
+                        })
+                    });
+                });
+            break;
+            case 4:
+                _this.animation(current.find(".blackpage"),15,function(){
+                    _this.maininitstate++;
+                    if(_this.maininitstate==2){
+                        _this.container.css({"-webkit-transition":"opacity 1s ease-out","opacity":"0"})
+                        var picanimate1end=function(){
+                            _this.container[0].removeEventListener("webkitTransitionEnd",picanimate1end,false);
+                            _this.container.remove();
+                        }
+                        _this.container[0].addEventListener("webkitTransitionEnd",picanimate1end,false);
+                    }
+
+                });
+            break;  
+            default:
+                _this.animation(current.find(".img"),1,function(){
+                    _this.animation(current.find(".text"),2,function(){
+                        _this.animation(current.find(".nextbtn"),99)
+                    });
+                });
+        }
+    });
+})
+
+
+//     //图片加载
+//     var img1=new Image()
+//     img1.src="styles/images/pic1.jpg"
+//     img1.onload=function(){
+//         // alert("imageload")
+//         loadnum.loadcent(50);
+//     }
+
+//})
+</script>
+</body>
+</html>
+
+

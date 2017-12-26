@@ -1,0 +1,250 @@
+<div class="create-order-new">
+  <div class="header-bar">
+    <go-back></go-back>
+    <div class="header-title">订单信息</div>
+    <div class="bug-car" ui-sref="shopBasket">
+			<svg class="icon" aria-hidden="true">
+			    <use xlink:href="#icon-gouwuche"></use>
+			</svg>
+      <div class="card_nums" ng-if="vm.is_shownums">{{shop_nums}}</div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+  <div ng-show="!vm.is_no_express" class="wrapAddress themeBorderColor">
+    <div class="order-item-title" ng-if="vm.isShowAddress">
+      寄送地址：
+    </div>
+    <div select-address isgivegift="{{vm.isShowAddress}}" address-info="addressData" customize='false' address-id='vm.addressId'>
+    </div>
+  </div>
+  <div ng-show="!vm.is_no_express" class="wrapAddressBlock">&nbsp;</div>
+  <div ng-show="vm.is_no_express && vm.is_need_name_phone">
+    <div class="order-item-title">
+        <span class="floatL">姓名 ：</span>
+        <input class="floatL width200 mTop3" type="text" ng-model="addressData.consigneename" />
+        <div class="clear-both"></div>
+    </div>
+    <div class="order-item-title">
+        <span class="floatL">手机 ：</span>
+        <input class="floatL width200 mTop3" type="text" maxlength="11" ng-model="addressData.phone" />
+        <div class="clear-both"></div>
+    </div>
+  </div>
+  <div style="padding-left: 4px;margin:0 12px; height: 60px;margin-top:10px;">
+    留言 ：<textarea style="width: 100%;border-bottom: 1px solid #ebebeb;margin-bottom: 10px;" ng-model="vm.remark"></textarea>
+  </div>
+
+  <div class="order-item-title">
+    支付方式 ：
+    <!--<span ng-if="vm.chat">微信支付</span><span  ng-if="!vm.chat">支付宝支付</span>-->
+  </div>
+  <div class="product-item-detail" ng-if="vm.chat">
+    <div class="pay-img floatL">
+      <img src="assets/images/chat.png">
+    </div>
+    <div class="pay-txt floatL">微信</div>
+    <div class="clear-both"></div>
+  </div>
+  <!--<div class="product-item-detail" ng-if="!vm.chat">-->
+    <!--<div class="pay-img">-->
+      <!--<img src="assets/images/zhifubao.png">-->
+    <!--</div>-->
+    <!--<div class="pay-txt">支付宝</div>-->
+    <!--<div class="clear-both"></div>-->
+  <!--</div>-->
+  <div class="order-item-title">
+    商品：
+  </div>
+  <div class="product-item-detail" ng-repeat="item in vm.orderProducts">
+    <div class="product-item-img">
+      <img ng-src="{{item.img_url}}">
+    </div>
+    <div class="product-item-txt">
+      <div class="font14 width200 overflow_ellipsis">{{item.title}}</div>
+      <div class="font14">{{item.properties}}</div>
+      <div class="font13">数量：{{item.num}}</div>
+      <div class="product-num-wrap" ng-if="vm.groupType==undefined">
+        <svg class="icon product-num-del" aria-hidden="true" ng-click="vf.delNum(item)">
+          <use xlink:href="#icon-jian"></use>
+        </svg>
+        <input type="input" class="product-num" ng-model="item.num" ng-change="vf.checknum(item)"
+               onkeyup="if(this.value.length==1){this.value=this.value.replace(/[\D0]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"
+               onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[[\D0]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+        <svg class="icon product-num-add" aria-hidden="true" ng-click="vf.addNum(item)">
+          <use xlink:href="#icon-jia"></use>
+        </svg>
+      </div>
+      <div class="product-item-price">
+              <div class="line-through txtRight">{{item.quote_price * item.num|currency:"￥":2}}</div>
+              <div>
+                <span ng-show="item.price">{{item.price * item.num|currency:"￥":2}}</span>
+                <span ng-show="item.score">
+                  <span ng-show="item.price">+</span>
+                  <span>{{item.score * item.num}}</span>
+                  <span>积分</span>
+                </span>
+              </div>
+          </div>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+
+  <!--新加功能-->
+  <div class="account-wrap">
+    <div class="account-item">
+      <div>
+        <div class="floatL font16">{{vm.totalnum}} 件商品</div>
+        <div class="floatR font16">
+          <span ng-show="vm.realProductTotalPrice">{{vm.realProductTotalPrice|currency:"￥":2}}</span>
+          <span ng-show="vm.realProductTotalScore">
+            <span ng-show="vm.realProductTotalPrice">+</span>
+            <span>{{vm.realProductTotalScore}}</span>
+            <span>积分</span>
+          </span>
+
+        </div>
+        <div class="clear-both"></div>
+      </div>
+      <div style="margin-top:12px;">
+        <div class="floatL font16">预计的运费</div>
+        <div class="floatR font16">{{vm.showFreight|currency:"￥":2}}</div>
+        <div class="clear-both"></div>
+      </div>
+    </div>
+    <div class="account-item" ng-if="vm.showScore==2 && vm.is_cashpay_only==0">
+      <div class="floatL font16">使用{{score_show_name}}抵金额 (共有{{vm.userInfo.totalscore}}{{score_show_name}})</div>
+      <svg class="icon font18 floatR" aria-hidden="true" ng-click="vm.extend=!vm.extend" ng-show="vm.extend">
+        <use xlink:href="#icon-jiahao"></use>
+      </svg>
+      <svg class="icon font18 floatR" aria-hidden="true" ng-click="vm.extend=!vm.extend" ng-show="!vm.extend">
+        <use xlink:href="#icon-jianhao"></use>
+      </svg>
+      <div class="clear-both"></div>
+      <div ng-show="!vm.extend" style="float: left; height: 20px; line-height: 20px; margin-top: 10px;">
+        <label class="floatL account-score" for="pointsid" ng-show="!vm.extend">
+          <input class="account-checkbox" type="checkbox" id="pointsid"
+        ng-model="vm.isChecked" ng-change="vf.acountChange()" style="margin-bottom:4px;">
+          <span class="font16">可用{{vm.scoreNeed}}{{score_show_name}}</span>
+        </label>
+      </div>
+      <div class="font16 floatR" ng-show="!vm.extend" style="margin-top: 10px;">抵{{vm.cashGet}}元</div>
+      <div class="clear-both"></div>
+    </div>
+    <div class="account-item" ng-if="vm.groupConfig.is_enable_account_amount_pay">
+      <div class="floatL font16">使用{{vm.groupConfig.account_amount_pay_showname}} (共有{{vm.userInfo.account_amount}}元)</div>
+      <svg class="icon font18 floatR" aria-hidden="true" ng-click="vm.acountExtend=!vm.acountExtend" ng-show="vm.acountExtend">
+        <use xlink:href="#icon-jiahao"></use>
+      </svg>
+      <svg class="icon font18 floatR" aria-hidden="true" ng-click="vm.acountExtend=!vm.acountExtend" ng-show="!vm.acountExtend">
+        <use xlink:href="#icon-jianhao"></use>
+      </svg>
+      <div class="clear-both"></div>
+      <div ng-show="!vm.acountExtend" style="float: left; height: 20px; line-height: 20px; margin-top: 10px;">
+        <label class="floatL account-score" for="leftmoney" ng-show="!vm.acountExtend">
+          <input class="account-checkbox" type="checkbox" id="leftmoney"
+                 ng-model="vm.isAcountChecked" ng-change="vf.acountChange()" style="margin-bottom:4px;">
+          <span class="font16">可用{{vm.useAcount}}元</span>
+        </label>
+      </div>
+      <div class="font16 floatR" ng-show="!vm.acountExtend" style="margin-top: 10px;">抵{{vm.useAcount}}元</div>
+      <div class="clear-both"></div>
+    </div>
+    <div class="account-item coupon-item" ng-show="vm.is_cashpay_only==0">
+      <check-coupon
+        order-total-price="vm.realProductTotalPrice"
+        order-skus="vm.orderSkus"
+        checked-coupon-info="checkedCouponInfo"
+        order-type="vm.currOrderType"
+        group-type="vm.groupType"
+        ></check-coupon>
+    </div>
+    <div class="account-item" ng-if="vm.showCash==2">
+      <div>
+        <div class="floatL font16"><strong>支付总金额</strong></div>
+        <div class="floatR font16 red"  ng-show="vm.isCouponFreight">{{vm.totalPay | currency:'￥':'2'}}</div>
+        <div class="floatR font16 red"  ng-show="!vm.isCouponFreight">{{vm.totalPay+vm.freight | currency:'￥':'2'}}</div>
+        <div class="clear-both"></div>
+      </div>
+      <div>
+        <div class="floatL font16"><strong>支付总{{score_show_name}}</strong></div>
+
+        <div class="floatR font16 red" ng-show="vm.isChecked">{{vm.scoreNeed + vm.realProductTotalScore}}分</div>
+        <div class="floatR font16 red" ng-show="!vm.isChecked">{{vm.realProductTotalScore}}分</div>
+
+        <div class="clear-both"></div>
+      </div>
+      <div style="margin-top:10px;">
+        <div class="floatL font16">可获{{score_show_name}}</div>
+        <div class="floatR font16">{{vm.scoreGet}}分</div>
+        <div class="clear-both"></div>
+      </div>
+    </div>
+  </div>
+  <!--新加功能end-->
+
+  <!--<div style="margin:0 2px;border-bottom: 1px solid #ebebeb;">-->
+    <!--&lt;!&ndash; order-products-tags="orderProductsTags" &ndash;&gt;-->
+    <!--<check-coupon-->
+      <!--order-total-price="orderProducts.productsTotalPrice"-->
+      <!--order-skus="orderSkus"-->
+      <!--checked-coupon-info="checkedCouponInfo"-->
+      <!--></check-coupon>
+  <!--</div>-->
+  <!--<div class="order-item-title">-->
+    <!--预计产生的运费：{{freight|currency:"￥":2}}-->
+  <!--</div>-->
+
+</div>
+
+<div class="bt-wrap-new">
+  <div class="submitorderL">
+    <div class="allpaymoneyL"><strong>支付</strong></div>
+    <div class="allpaymoneyR">
+      <span class="red font18">
+         <span ng-show="vm.isCouponFreight">
+           {{vm.totalPay | currency:'￥':'2'}}
+         </span>
+         <span ng-show="!vm.isCouponFreight">
+           {{vm.totalPay+vm.freight | currency:'￥':'2'}}
+         </span>
+
+        <span ng-show="vm.isChecked && (vm.scoreNeed + vm.realProductTotalScore)">+{{vm.scoreNeed + vm.realProductTotalScore}}{{score_show_name}}</span>
+        <span ng-show="!vm.isChecked && vm.realProductTotalScore">+{{vm.realProductTotalScore}}{{score_show_name}}</span>
+
+      </span>
+
+                <!--<span class="red font18" ng-if="!checkedCouponInfo"-->
+                      <!--ng-bind="vm.totalPay | currency:'￥':'2'">-->
+                <!--</span>-->
+      <!--&lt;!&ndash; 满减券  此处用了各种券也可以用积分抵现金用&ndash;&gt;-->
+                <!--<span class="red font18"-->
+                      <!--ng-if="checkedCouponInfo.cardcoupon_type==3&&(vm.totalPay>=checkedCouponInfo.buckle_amount)"-->
+                      <!--ng-bind="vm.totalPay - checkedCouponInfo.buckle_sub_amount | currency:'￥':'2'">-->
+                <!--</span>-->
+      <!--&lt;!&ndash; 折扣券 &ndash;&gt;-->
+                <!--<span class="red font18" ng-if="checkedCouponInfo.cardcoupon_type==0"-->
+                      <!--ng-bind="vm.totalPay*checkedCouponInfo.discount/10 | currency:'￥':'2'">-->
+                <!--</span>-->
+      <!--&lt;!&ndash; 现金券 &ndash;&gt;-->
+                <!--<span class="red font18"-->
+                      <!--ng-if="checkedCouponInfo.cardcoupon_type==1&&vm.totalPay>=checkedCouponInfo.deductible_amount"-->
+                      <!--ng-bind="vm.totalPay - checkedCouponInfo.deductible_amount | currency:'￥':'2'">-->
+                <!--</span>-->
+      <!--&lt;!&ndash; 现金券 &ndash;&gt;-->
+                <!--<span class="red font18"-->
+                      <!--ng-if="checkedCouponInfo.cardcoupon_type==1&&vm.totalPay<checkedCouponInfo.deductible_amount"-->
+                      <!--ng-bind="vm.totalPay - orderProducts.productsTotalPrice | currency:'￥':'2'">-->
+                <!--</span>-->
+      <!--&lt;!&ndash; 免邮券 &ndash;&gt;-->
+                <!--<span class="red font18" ng-if="checkedCouponInfo.cardcoupon_type==2"-->
+                      <!--ng-bind="vm.totalPay - vm.freight | currency:'￥':'2'">-->
+                <!--</span>-->
+    </div>
+  </div>
+  <div class="submitorderR themeBackground" ng-if="!vm.isCanClick" ng-click="vf.submitOrderAndPay()">
+    确认
+  </div>
+  <div class="submitorderR bgGrayCCC" ng-if="vm.isCanClick">
+    正在处理中...
+  </div>
+</div>

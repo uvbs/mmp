@@ -1,0 +1,60 @@
+﻿<div class="waprArticleList">
+    <header>
+        {{pageData.title}}
+    </header>
+    <section class="warpDataList pTop5">
+        <div class="row" ng-click="go(item)" ng-repeat="item in pageData.dataList">
+            <div class="col-xs-4 warpImg">
+                <img src="{{item.imgurl}}" width="100%" height="50" />
+            </div>
+            <div class="col-xs-8 warpInfo">
+                <div class="title overflow_ellipsis Width100PT">{{item.title}}</div>
+                <div class="summary overflow_ellipsis Width100PT">{{item.digest}}</div>
+                <div class="count"><span>{{item.pv}}阅</span></div>
+            </div>
+        </div>
+        <!-- <div class="row" ng-click="go()">
+            <div class="col-xs-4 warpImg">
+                <img src="img/20127209313848.jpg" width="100%" height="50" />
+            </div>
+            <div class="col-xs-8 warpInfo">
+                <div class="title overflow_ellipsis Width100PT">能被你值得一生推的电影是啥</div>
+                <div class="summary overflow_ellipsis Width100PT">能被你值得一生推的电影是啥能被你值得一生推的电影是啥能被你值得一生推的电影是啥</div>
+                <div class="count"><span>8000阅</span><span class="mLeft10">1000评</span></div>
+            </div>
+        </div>
+        <div class="row" ng-click="go()">
+            <div class="col-xs-4 warpImg">
+                <img src="img/20127209313848.jpg" width="100%" height="50" />
+            </div>
+            <div class="col-xs-8 warpInfo">
+                <div class="title overflow_ellipsis Width100PT">能被你值得一生推的电影是啥</div>
+                <div class="summary overflow_ellipsis Width100PT">能被你值得一生推的电影是啥能被你值得一生推的电影是啥能被你值得一生推的电影是啥</div>
+                <div class="count"><span>8000阅</span><span class="mLeft10">1000评</span></div>
+            </div>
+        </div>
+        <div class="row" ng-click="go()">
+            <div class="col-xs-4 warpImg">
+                <img src="img/20127209313848.jpg" width="100%" height="50" />
+            </div>
+            <div class="col-xs-8 warpInfo">
+                <div class="title overflow_ellipsis Width100PT">能被你值得一生推的电影是啥</div>
+                <div class="summary overflow_ellipsis Width100PT">能被你值得一生推的电影是啥能被你值得一生推的电影是啥能被你值得一生推的电影是啥</div>
+                <div class="count"><span>8000阅</span><span class="mLeft10">1000评</span></div>
+            </div>
+        </div>
+        <div class="row" ng-click="go()">
+            <div class="col-xs-4 warpImg">
+                <img src="img/20127209313848.jpg" width="100%" height="50" />
+            </div>
+            <div class="col-xs-8 warpInfo">
+                <div class="title overflow_ellipsis Width100PT">能被你值得一生推的电影是啥</div>
+                <div class="summary overflow_ellipsis Width100PT">能被你值得一生推的电影是啥能被你值得一生推的电影是啥能被你值得一生推的电影是啥</div>
+                <div class="count"><span>8000阅</span><span class="mLeft10">1000评</span></div>
+            </div>
+        </div> -->
+        <div class="warpShowMore" ng-show="pageData.dataList.length < pageData.totalCount">
+            <button type="button" class="btn btn-default btnLoadMore" ng-click="pageFunc.loadData()">点击加载更多数据</button>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,58 @@
+.storeUserhomeCtrl {
+	.userAvatarItem {
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+	.userAvatar {
+		border-radius: 50% !important;
+		border: 1px solid @colorPrimary;
+		width: 60px;
+		vertical-align: middle;
+	}
+	.serviceTypeItem {
+		padding-top: 5px;
+		padding-bottom: 5px;
+		& > * {
+			vertical-align: middle;
+		}
+	}
+	.serviceTypeTitle {
+		line-height: 36px;
+	}
+	.serviceTypeToggle {
+		.track {
+			width: 99px;
+			background-color: #ccc !important;
+			border-color: #ccc !important;
+			vertical-align: middle;
+			line-height: 27px;
+			&:after {
+				content: '用车';
+				margin-left: 57px;
+			}
+		}
+		.handle {
+			line-height: 27px;
+			width: 50px;
+			text-align: center;
+			color: @colorPrimary;
+			&:after {
+				content: '购车'
+			}
+		}
+		input[type=checkbox]:checked {
+			& + .track {
+				&:after {
+					content: '购车';
+					margin-left: 12px;
+				}
+				.handle {
+					transform: translate3d(45px, 0, 0) !important;
+					&:after {
+						content: '用车'
+					}
+				}
+			}
+		}
+	}
+}

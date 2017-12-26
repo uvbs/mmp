@@ -1,0 +1,359 @@
+﻿
+<script type="text/javascript" src="/game/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/game/js/animo.js"></script>
+<link rel="stylesheet" type="text/css" href="/game/css/animate_animo.css" />
+<style type="text/css">
+    #main-bg {
+        width: 650px;
+        height: 650px;
+        margin: 0 auto;
+        padding: 0;
+        background: url(/game/images/es1.jpg) no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .ul-list {
+        margin: 0 auto;
+        padding: 0;
+        width: 640px;
+        height: 640px;
+        padding-top: 5px;
+    }
+
+        .ul-list li {
+            list-style-type: none;
+            width: 128px;
+            height: 128px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 0;
+            float: left;
+        }
+
+    .active {
+        box-shadow: 0 0 20px 10px rgba(237, 25, 24, 1), inset 0 0 0 1px rgba(237, 25, 24, 1);
+    }
+
+    .wrapper-result {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0, 0.3);
+        margin: 0 auto;
+        padding: 0;
+        display: none;
+        z-index: 9999;
+    }
+
+    #result {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+        min-height: 15em;
+        height: auto;
+        border: 3px solid salmon;
+        border-radius: 2em;
+        margin-top: 15em;
+        background: #fff;
+        padding-bottom: 1em;
+    }
+
+    .result-header {
+        text-align: center;
+        font-size: 1.5em;
+        color: #da4f49;
+    }
+
+    .result-content {
+        padding: 0 1em;
+        font-size: 2em;
+        padding-bottom: 0.5em;
+        text-align: center;
+        padding-top: 2em;
+        color: #da4f49;
+    }
+
+    .share-tip {
+        width: 100%;
+    }
+
+        .share-tip img {
+            width: 100%;
+            height: auto;
+        }
+
+    .tool-button {
+        margin: 0 auto;
+        position: absolute;
+        text-align: center;
+        top: 430px;
+        width: 650px;
+    }
+
+        .tool-button span {
+            display: inline-block;
+            width: 5em;
+            height: 2em;
+            line-height: 2em;
+            background: #da4f49;
+            border-radius: 1em;
+            color: #ffffff;
+            padding: 0.1em 0.5em;
+            font-size: 1.5em;
+        }
+
+    .again {
+        text-align: center;
+    }
+
+        .again span {
+            display: inline-block;
+            width: 5em;
+            height: 2em;
+            line-height: 2em;
+            background: #da4f49;
+            border-radius: 1em;
+            color: #ffffff;
+            margin: 0 auto;
+            padding: 0.2em 1.5em;
+            font-size: 1.5em;
+        }
+
+    .help-message {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        text-align: center;
+        padding: 0;
+    }
+
+    .help-image {
+        margin: 0 auto;
+        width: 50px;
+        height: auto;
+        display: block;
+    }
+
+    #windmill {
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        margin-top: -500px;
+        margin-left: 150px;
+    }
+
+    #ad {
+        margin: 0 auto;
+        text-align: center;
+        width: 650px;
+    }
+
+    #info {
+        display: none;
+    }
+
+    #tip img {
+        width: 100%;
+        display: inline;
+    }
+
+    #mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-color: #333;
+        -moz-opacity: 0.9;
+        opacity: 0.9;
+        z-index: 1;
+    }
+
+    h2 {
+        width: 650px;
+        margin: 10px auto 20px;
+        text-align: center;
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    #username {
+        border-radius: 1em;
+        border: 2px solid #848484;
+        display: inline-block;
+        font-size: 24px;
+        height: 35px;
+        line-height: 30px;
+        padding: 8px 0.5em;
+        width: 6em;
+        margin-right: 20px;
+    }
+</style>
+<div id="ceshuResult">
+</div>
+<div id="ad">
+    $AD$
+</div>
+<br />
+<h2>
+    测测你将来拥有什么车
+</h2>
+<script type="text/javascript">
+    var number;
+    var game_id;
+    //设置游戏id
+    game_id = 37;
+    var resultText = '测测你将来拥有什么车';
+    var result_arr = ['劳斯莱斯', '捷豹', '玛莎拉蒂', '五菱荣光', '阿斯顿马丁', '悍马', '夏利', '奥迪', '兰博基尼', '宾利', '红旗轿车', '捷达王', '保时捷', '雪佛兰科鲁兹', '长城精灵', '奇瑞QQ'];
+    if ($.cookie("S552200" + game_id) == undefined) {
+        set_game_number();
+    } else {
+        number = $.cookie("S552200" + game_id);
+    }
+    var cycle = ["number-1", "number-2", "number-3", "number-4", "number-5", "number-10", "number-15", "number-20", "number-25", "number-24", "number-23", "number-22", "number-21", "number-16", "number-11", "number-6"];
+    var cycle_number = 3;
+    var step_number = cycle.length * cycle_number;
+    var total_step;
+    var loop;
+    var begin_number;
+    $(function () {
+        init_list();
+        $('#windmill').animo({ animation: "spinner", iterate: "infinite" });
+        $(".number-3").addClass("active");
+        $("#start-button").click(function () {
+            start_game();
+        });
+        $("#start-again").click(function () {
+            start_game();
+        });
+        $("#restart-button").click(function () {
+            restart_game();
+        });
+        $(".wrapper-result").click(function () {
+            $(this).hide();
+        });
+    })
+    function restart_game() {
+        set_game_number();
+        start_game();
+    }
+    function set_game_number() {
+        number = Math.floor(Math.random() * 16) + 1;
+        $.cookie("S552200" + game_id, number, { expires: 3 });
+    }
+    function start_game() {
+        begin_number = 1;
+        name = $("#username").val();
+        if (name == "" || name.length == 0) {
+            alert("请输入姓名!");
+            return false
+        }
+        number = 0;
+        for (var a = 0; a < name.length; a++) {
+            number = number + name.charCodeAt(a);
+        }
+        number = number + parseInt(game_id);
+        number = (number % 16) + 1;
+        total_step = parseInt(step_number) + parseInt(number);
+        console.log("number:" + number);
+        clearInterval(loop);
+        $(".active").removeClass("active");
+        $(".number-1").addClass("active");
+        loop = setInterval(go_loop, begin_number * 20);
+    }
+    function go_loop() {
+        total_step = total_step - 1;
+        if (total_step <= 0) {
+            clearInterval(loop);
+            show_result();
+            return
+        }
+        var current_elem = $(".active").attr("class");
+        var current_class = current_elem.split(" ")[0];
+        var current_index = cycle.indexOf(current_class);
+        var next_index = get_array_next_by_index(cycle, current_index);
+        if (next_index == 0) {
+            begin_number = begin_number + 1;
+            clearInterval(loop);
+            loop = setInterval(go_loop, (begin_number * begin_number) * 20);
+        }
+        $(".active").removeClass("active");
+        $("." + cycle[next_index]).addClass("active");
+    }
+    function go_loop_forever() {
+        var current_elem = $(".active").attr("class");
+        var current_class = current_elem.split(" ")[0];
+        var current_index = cycle.indexOf(current_class);
+        var next_index = get_array_next_by_index(cycle, current_index);
+        $(".active").removeClass("active");
+        $("." + cycle[next_index]).addClass("active");
+    }
+    function show_result() {
+        var result_text = result_arr[number - 1];
+        var username = $("#username").val();
+        $(".result-content").html("'" + username + "'" + result_text);
+        $("#infos").text("'" + username + "'" + result_text);
+        $("#info").text("'" + username + "'" + result_text);
+        resultText = "'" + username + "'" + result_text + "测测你将来拥有什么车";
+        $(".wrapper-result").show();
+    }
+    function get_array_next_by_index(arr, n) {
+        var l = arr.length;
+        var next_index = 0;
+        if (n < l - 1) {
+            next_index = n + 1;
+        }
+        return next_index;
+    }
+    function get_array_prev_by_index(arr, n) {
+        var l = arr.length;
+        var prev_index = l; if (n > 0) {
+            prev_index = n - 1;
+        }
+        return prev_index;
+    }
+    function init_list() {
+        for (var i = 1; i <= 25; i++) {
+            var elem = $('<' + 'li class="number-' + i + '"><' + '/li>');
+            $(".ul-list").append(elem);
+        }
+    }
+</script>
+<div class="wrapper-result">
+    <div id="result">
+        <div class="result-content">
+        </div>
+        <div id="info">
+        </div>
+        <div style="text-align:center;padding-bottom:2em;font-size:1.8em;">
+            <img src="/game/images/1.gif" /> 好牛呀！点右上角分享给好友们!
+        </div>
+    </div>
+</div>
+<div id="main-bg">
+    <ul class="ul-list"></ul>
+    <img id="windmill" src="/game/images/wanhuir.png" alt="" />
+    <div class="tool-button">
+        <input id="username" type="text" placeholder="输入名字" name="username" /> <span id="start-button"> 开始测试 </span>
+    </div>
+</div>
+<div id="infos" style="display:none;">
+</div>
+<p style="text-align:center;color:#000;margin-top:50px;margin-bottom:30px;font-weight:bolder;font-size:22px;">
+    更多惊喜，请关注<a href="http://mp.weixin.qq.com/s?__biz=MzA3MDExNDUyNw==&mid=200482909&idx=1&sn=deced89bf5505af4d968df8e25a520be#rd" target="_blank">至云之家</a>
+</p>
+<script type="text/javascript">
+    var imgUrl = "$SHAREIMAGE$";
+    var shareLink = "$SHAREURL$";
+    wx.ready(function () {
+        wxapi.wxshare({
+            title: resultText,
+            desc: '测测你将来拥有什么车？',
+            link: shareLink,
+            imgUrl: imgUrl
+        })
+    })
+</script>

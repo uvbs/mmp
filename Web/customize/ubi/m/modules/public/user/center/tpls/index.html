@@ -1,0 +1,100 @@
+﻿<div class="wrapUserIndex">
+    <div class="list">
+        <div class="userInfo">
+            <div class="avatar" style="background-image: url({{pageData.userInfo.avatar}}); ">
+                <i ng-show="pageData.userInfo.isTutor" class="iconfont icon-v colorYellow"></i>
+            </div>
+
+            <div class="userName">{{pageData.userInfo.userName}}</div>
+        </div>
+        <div class="item row state">
+            <!-- <div class="col">
+                <div>{{pageData.userInfo.viewCount}}</div>
+                <div>累计访问</div>
+            </div>
+            <div class="col col-10 line"><span>&nbsp;</span></div> -->
+            <div class="col" ng-click="go('#/myFollow/{{pageData.userInfo.id}}')">
+                <div>{{pageData.userInfo.userFollowCount}}</div>
+                <div>关注</div>
+            </div>
+            <div class="col col-10 line"><span>&nbsp;</span></div>
+            <div class="col" ng-click="go('#/myFans/{{pageData.userInfo.id}}')">
+                <div>{{pageData.userInfo.followUserCount}}</div>
+                <div>粉丝</div>
+            </div>
+        </div>
+        <div class="item item-divider colorGrey_9">空间被{{pageData.userInfo.userPraiseCount}}次浏览</div>
+        <div class="item item-divider colorGrey_9">获得了{{pageData.userInfo.viewCount}}个赞</div>
+        <div class="item item-divider"></div>
+        <a class="item item-icon-right" href="#/edituser">
+            我的信息
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/userPoints">
+            我的积分
+            <span class="item-note">
+                {{pageData.userInfo.userTotalScore}}
+            </span>
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <!-- <div class="item item-divider"></div>
+        <a class="item item-icon-right" href="#/myAsk">
+            消息中心
+            <i class="icon iconfont icon-arrowright"></i>
+        </a> -->
+        <a class="item item-icon-right" href="#/myAsk/{{pageData.userInfo.id}}/true">
+            我的提问
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/myAnswer/{{pageData.userInfo.id}}">
+            我的回答
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/myAsk/{{pageData.userInfo.id}}/false">
+            我的文章
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/userCaseList/{{pageData.userInfo.id}}">
+            我的案例
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/myUpdate">
+            我的动态
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/favoriteArticle/{{pageData.userInfo.id}}">
+            我的收藏
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <div class="wrapBtn logout">
+            <button class="button button-block button-positive button-energized" ng-mousedown="pageFunc.goToLink()">
+                分享给朋友
+            </button>
+        </div>
+
+        <!--<a class="item item-icon-right" href="#/shareRegLink/{{pageData.userInfo.id}}">-->
+            <!--分享给朋友-->
+            <!--<i class="icon iconfont icon-arrowright"></i>-->
+        <!--</a>-->
+        <!--<a class="item item-icon-right" href="#/followAsk">
+            关注的问题
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>-->
+        <!--<a class="item item-icon-right" href="javascript:;">
+            我的活动
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>-->
+
+        <div class="wrapBtn logout" ng-if="pageData.isShowApplyMan">
+            <button class="button button-block button-positive" ng-mousedown="pageFunc.applyTutor()">
+                申请为专家
+            </button>
+        </div>
+        <div class="wrapBtn logout">
+            <button class="button button-block button-positive" ng-mousedown="pageFunc.logout()">
+                退出登录
+            </button>
+        </div>
+    </div>
+    <footermenu ng-attr-select="2"></footermenu>
+</div>

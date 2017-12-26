@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<title>注册成功</title>
+    <link href="../css/wubu.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="wbtn_red">
+<img src="../img/guanzhu.png" width="100%" alt="">
+<div class="wcontainer tuijianbox">
+	<img src="" alt="" width="80%" id="xxlc">
+</div>
+
+<!-- 
+<div class="footerbar">
+	<div class="col-xs-2 ">
+		<a class="wbtn wbtn_main" type="button" href="#">
+			<span class="iconfont icon-back"></span>
+		</a>
+	</div>
+	<div class="col-xs-10">
+		<span class="wbtn wbtn_line_main" id="jointhisdiscuss">
+			<span class="iconfont icon-34 smallicon"></span>
+			回答话题
+		</span>
+	</div>
+</div>
+ -->
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script>
+var WeixinShare={appid:"",imgUrl:"imgUrl",imgHidth:"200px",imgHeight:"200px",shareUrl:document.location.href,descContent:"descContent",shareTitle:"shareTitle",shareFriend:function(){var i=this;WeixinJSBridge.invoke("sendAppMessage",{appid:i.appid,img_url:i.imgUrl,img_width:i.imgWidth,img_height:i.imgHeight,link:i.shareUrl,desc:i.descContent,title:i.shareTitle},function(){})},shareTimeline:function(){var i=this;WeixinJSBridge.invoke("shareTimeline",{img_url:i.imgUrl,img_width:i.imgWidth,img_height:i.imgHeight,link:i.shareUrl,desc:i.descContent,title:i.timelineTitle?i.timelineTitle:i.shareTitle},function(){})},shareWeibo:function(){var i=this;WeixinJSBridge.invoke("shareWeibo",{content:i.descContent,url:i.shareUrl},function(){})},init:function(i){var e=this;for(key in i)this[key]=i[key];document.addEventListener("WeixinJSBridgeReady",function(){WeixinJSBridge.on("menu:share:appmessage",function(){e.shareFriend()}),WeixinJSBridge.on("menu:share:timeline",function(){e.shareTimeline()}),WeixinJSBridge.on("menu:share:weibo",function(){e.shareWeibo()})},!1)}};
+WeixinShare.init({
+	imgUrl:"http://www.comeoncloud.com.cn/WuBuHui/img/ccc.jpg",
+	shareTitle:"注册成功",
+	descContent:"欢迎关注五步会",
+	timelineTitle:"欢迎关注五步会"
+})
+var u = navigator.userAgent
+	u = u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1
+if(u){
+	$("#xxlc").attr("src","../img/ios.jpg")
+}else{
+	$("#xxlc").attr("src","../img/az.jpg")
+}
+</script>
+</html>

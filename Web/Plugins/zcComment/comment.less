@@ -1,0 +1,222 @@
+@charset "utf-8";
+@import "//at.alicdn.com/t/font_1457694627_302776.css";
+
+blockquote, body, button, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, th, ul {
+  margin: 0;
+  padding: 0
+}
+
+fieldset, img {
+  border: 0
+}
+
+address, caption, cite, code, dfn, em, th, var {
+  font-style: normal;
+  font-weight: 400
+}
+
+ol, ul {
+  list-style: none
+}
+
+caption, th {
+  text-align: left
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #666;
+  font-family: Tahoma, Arial, Helvetica, sans-serif, "Hiragino Sans Gb", "Microsoft YaHei";
+  background: #eee
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  outline: 0
+}
+
+
+.wrapIndependentComment {
+  background-color: #fff;
+  .title {
+    font-size: 18px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+  }
+  h2 {
+    font-size: 14px;
+  }
+  .wrapList {
+    margin: 12px;
+    padding-bottom: 120px;
+    position: relative;
+    padding-top: 1px;
+    padding-left: 0;
+    .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .item {
+      border-color: #ddd;
+      background-color: #fff;
+      color: #444;
+      position: relative;
+      z-index: 2;
+      display: block;
+      margin: -1px;
+      padding: 16px;
+      border-width: 1px;
+      border-style: solid;
+      font-size: 16px;
+      img:first-child {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        max-width: 40px;
+        max-height: 40px;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px !important;
+        border: 0;
+        -webkit-user-drag: none;
+      }
+      a {
+        text-decoration: none;
+        outline: 0;
+      }
+      .colorBlue {
+        color: #4996e3 !important;
+      }
+      .item p {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 2px;
+        white-space: normal !important
+      }
+      .content {
+        margin: 6px 0;
+        position: relative;
+        p{
+          white-space: normal!important;
+        }
+      }
+      .whiteSpaceNormal {
+        white-space: normal !important;
+      }
+      .operateBtns {
+        color: #999;
+        text-align: right;
+        font-size: 15px;
+        i {
+          margin-right: 8px;
+          margin-left: 16px;
+        }
+        .colorDDD {
+          color: #ddd !important;
+        }
+        .iconfont {
+          font-family: "iconfont" !important;
+          font-size: 16px;
+          font-style: normal;
+          -webkit-font-smoothing: antialiased;
+          -webkit-text-stroke-width: 0.2px;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+      }
+      .wrapSubList{
+        .subItem {
+          white-space: normal !important;
+          color: #666;
+          font-size: 13px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          .colorBlue {
+            color: #4996e3 !important;
+          }
+        }
+        .colorBlue {
+          color: #4996e3 !important;
+        }
+        .font13 {
+          font-size: 13px !important;
+        }
+
+
+      }
+
+    }
+    .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content{
+      padding-left: 72px;
+      min-height: 72px;
+    }
+    .wrapShowMore {
+      text-align: center;
+      .button-clear {
+        color: #4996e3 !important;
+        border-color: transparent;
+        background: none;
+        box-shadow: none;
+        transition: opacity 0.1s;
+        padding: 0 6px;
+        max-height: 42px;
+      }
+      .button {
+        color: #444;
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        padding: 0 12px;
+        min-width: 52px;
+        min-height: 47px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        vertical-align: top;
+        text-align: center;
+        text-overflow: ellipsis;
+        font-size: 16px;
+        line-height: 42px;
+        cursor: pointer;
+      }
+    }
+  }
+  .wrapAddIndepentComment {
+    height: 60px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #fff;
+    line-height: 60px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+//    z-index: 999;
+    z-index: 8;
+    font-size: 16px;
+    padding: 0 12px;
+    color: #4996e3;
+  }
+}
+
+.weui_dialog_confirm{
+  .weui_mask{
+    z-index: 10;
+  }
+  .weui_dialog{
+    .weui_dialog_bd{
+      .areastyle{
+        width: 95%;
+        min-height: 100px;
+        padding: 5px;
+      }
+    }
+  }
+}

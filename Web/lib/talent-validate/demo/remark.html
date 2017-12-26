@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>talent-validate快速入门</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+
+
+<link type="text/css" rel="stylesheet"
+	href="../Styles/SyntaxHighlighter.css" />
+<script src="../Scripts/shCore.js" language="javascript"></script>
+<script src="../Scripts/shBrushJScript.js" language="javascript"></script>
+<script src="../Scripts/shBrushJava.js" language="javascript"></script>
+<script src="../Scripts/shBrushCss.js" language="javascript"></script>
+
+<link type="text/css" rel="stylesheet"
+	href="../js/validate/css/validate.css" />
+<script src="./jquery-1.6.4.js" language="javascript"></script>
+<script src="../js/validate/talent-validate-all.js"
+	language="javascript"></script>
+
+</head>
+<body>
+
+	<li>本框架的动画效果是直接从http://daneden.github.io/animate.css/上抠下来的(抠的代码在validate.css的133~166行)
+
+		<pre class="CSS" name="code">
+			.animated {
+			  animation-duration: 1s;
+			  animation-fill-mode: both;
+			}
+			.animated.infinite {
+			  animation-iteration-count: infinite;
+			}
+			.animated.hinge {
+			  animation-duration: 2s;
+			}
+			.animated.flipOutX,.animated.flipOutY,.animated.bounceIn,.animated.bounceOut {
+			  animation-duration: .75s;
+			}
+			@keyframes swing {
+			  20% {
+			    transform: rotate3d(0, 0, 1, 15deg);
+			  }
+			  40% {
+			    transform: rotate3d(0, 0, 1, -10deg);
+			  }
+			  60% {
+			    transform: rotate3d(0, 0, 1, 5deg);
+			  }
+			  80% {
+			    transform: rotate3d(0, 0, 1, -5deg);
+			  }
+			  to {
+			    transform: rotate3d(0, 0, 1, 0deg);
+			  }
+			}
+			.swing {
+			  transform-origin: top center;
+			  animation-name: swing;
+			}
+		</pre>
+	</li>
+	<li>本文档用了http://www.h-ui.net/框架</li>
+</body>
+<script>
+	dp.SyntaxHighlighter.ClipboardSwf = '../Scripts/clipboard.swf';
+	dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+</html>

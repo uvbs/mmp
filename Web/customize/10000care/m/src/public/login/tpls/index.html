@@ -1,0 +1,48 @@
+﻿<div class="wrapLogin">
+	<div class="row">
+		<div class="col col-50 txtRight pRight10" ng-click="pageFunc.changeLoginType(1)">
+			<i class="iconfont icon-yuan" ng-show="pageData.loginType == 1"></i>
+			<i class="iconfont icon-iconfontxuanzequan" ng-show="pageData.loginType != 1"></i>
+			<span>爱心企业</span>
+		</div>
+		<div class="col col-50 pLeft10" ng-click="pageFunc.changeLoginType(0)">
+			<i class="iconfont icon-yuan" ng-show="pageData.loginType == 0"></i>
+			<i class="iconfont icon-iconfontxuanzequan" ng-show="pageData.loginType != 0"></i>
+			<span>阳光基地</span>
+		</div>
+	</div>
+	<div class="row mTop40">
+		<div class="col">
+			<div class="wrapInputDark">
+				<div class="row">
+					<div class="col col-20">
+						<i class="iconfont icon-jikediancanicon26"></i>
+					</div>
+					<div class="col col-80">
+						<input type="text" ng-model="pageData.userId">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mTop10">
+		<div class="col">
+			<div class="wrapInputDark">
+				<div class="row">
+					<div class="col col-20">
+						<i class="iconfont icon-mima"></i>
+					</div>
+					<div class="col col-80">
+						<input type="password" ng-model="pageData.pwd">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mTop40">
+		<div class="col wrapLoginBtn">
+			<!-- <img src="/customize/10000care/m/static/img/care/login/loginbtn.png" alt="立即登陆"> -->
+			<a href="javascript:;" class="btnLogin" ng-click="pageFunc.login()">立即登陆</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,1596 @@
+﻿body {
+    color: #555555;
+    padding: 0px;
+    margin: 0px;
+    background-color:#ffffff !important;
+    overflow:auto;
+}
+
+.app-inner {
+    /*min-height: 800px;*/
+    height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    margin: 0px 0px 0px 0px;
+    padding:0px 0px 20px 0px;
+    background-color: #FFFFFF;
+}
+
+    .app-inner .app-design .app-preview {
+        /*position: relative;*/
+        float: left;
+        width: 350px;
+        border: 1px solid #e5e5e5;
+        border-bottom-width: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background: #fff;
+        border-radius: 18px 18px 0 0;
+    }
+
+        .app-inner .app-design .app-preview input[disabled] {
+            cursor: default;
+            background-color: transparent;
+        }
+
+        .app-inner .app-design .app-preview .app-header {
+            height: 70px;
+            background: url("/img/component/iphone_head.png") no-repeat center center;
+        }
+
+        .app-inner .app-design .app-preview .app-config .app-field {
+            cursor: pointer;
+            background-color: transparent;
+        }
+
+            .app-inner .app-design .app-preview .app-config .app-field h1 {
+                padding: 28px 60px 0 60px;
+                line-height: 25px;
+                font-size: 16px;
+                margin: 0px;
+                color: #fff;
+                font-weight: bold;
+                text-align: center;
+                background: url("/img/component/titlebar.png") no-repeat;
+            }
+
+                .app-inner .app-design .app-preview .app-config .app-field h1 span {
+                    display: inline-block;
+                    width: 200px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                .app-inner .app-design .app-preview .app-config .app-field h1 .control-group {
+                    margin: 0;
+                    width: 100%;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    min-height: 30px;
+                }
+
+            .app-inner .app-design .app-preview .app-config .app-field:hover {
+                background-color: #f2f2f2;
+            }
+
+                .app-inner .app-design .app-preview .app-config .app-field:hover .actions {
+                    display: inline-block;
+                }
+
+            .app-inner .app-design .app-preview .app-config .app-field.editing {
+                background-color: transparent;
+            }
+
+        .app-inner .app-design .app-preview .app-fields .app-field {
+            position:relative;
+            cursor: move;
+            -webkit-user-select: none;
+        }
+
+            .app-inner .app-design .app-preview .app-fields .app-field:hover .handlers {
+                display: block;
+            }
+
+            .app-inner .app-design .app-preview .app-fields .app-field:hover .sort {
+                display: block;
+            }
+
+            .app-inner .app-design .app-preview .app-fields .app-field:last-child {
+                border-bottom: none;
+            }
+
+                .app-inner .app-design .app-preview .app-fields .app-field:last-child .component-border {
+                    border-bottom: 0 none;
+                }
+
+            .app-inner .app-design .app-preview .app-fields .app-field:hover .actions {
+                display: inline-block;
+            }
+
+        .app-inner .app-design .app-preview .app-fields .component-border {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-bottom: 1px dashed #CCC;
+        }
+
+        .app-inner .app-design .app-preview .app-fields .sort {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -10px;
+            cursor: move;
+        }
+
+        .app-inner .app-design .app-preview .app-fields .sort-handler {
+            width: 17px;
+            height: 20px;
+            display: inline-block;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAAG+rSzqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzlENzE5RUE3NUMwMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEMEM4N0U3QURGQTMxMUUyQThEN0NFNzBCQ0FFREE3RiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEMEM4N0U3OURGQTMxMUUyQThEN0NFNzBCQ0FFREE3RiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDE4MDExNzQwNzIwNjgxMTgwODM5RDcxOUVBNzVDMDMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDE4MDExNzQwNzIwNjgxMTgwODM5RDcxOUVBNzVDMDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7q/jo3AAABBElEQVR42mJcv379fzY2NgaG////MyxYsICBiQEKAAKIcevWrf9BDJbXr18zghhwKYAAYgQpvn//PozPwALk/BcVFYULwJXCAEAAwU2Da9HU1GREETh06BCqls+fP6NqWbt2LSNeFQABxHjv3j0Ud2A4A+TyhQsX4lZw/vz5//z8/PhN2LZtG04FTBs2bAA5CicGCCCMoEAGv379wvQWMgBGBiJGsIGPHz9ihiWGIxkIAHBI4rUCXzDD4pMRnzdBvsBvAtAKygIKIMAIxiY+APYlSDMhn+INR0LJBR8AhxLML2S7AJ7FyXQBwUyFD4BjAb24IDkWQAxCSZqi5E4wEAc8IQEAu+Gged/S5OIAAAAASUVORK5CYII=");
+        }
+
+        .app-inner .app-design .app-preview .actions {
+            position: absolute;
+            display: none;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 320px;
+            border: 2px dashed rgba(255, 0, 0, 0.5);
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+
+            .app-inner .app-design .app-preview .actions .actions-wrap {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                z-index: 5;
+            }
+
+            .app-inner .app-design .app-preview .actions span {
+                display: inline-block;
+                background-color: rgba(0, 0, 0, 0.3);
+                color: #fff;
+                padding: 0 5px;
+                margin-left: 1px;
+                font-size: 12px;
+            }
+
+                .app-inner .app-design .app-preview .actions span:hover {
+                    color: #ddd;
+                    cursor: pointer;
+                }
+
+        .app-inner .app-design .app-preview .editing .actions {
+            display: inline-block;
+        }
+
+        .app-inner .app-design .app-preview .control-group {
+            margin: 0;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            min-height: 24px;
+        }
+
+            .app-inner .app-design .app-preview .control-group .custom-image-swiper {
+                width: 100%;
+                position: relative;
+            }
+
+                .app-inner .app-design .app-preview .control-group .custom-image-swiper .title {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    margin: 0 auto;
+                    text-align: left;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    padding: 5px 15px;
+                    z-index: 10;
+                    background-color: rgba(51, 51, 51, 0.8);
+                    color: #fff;
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+
+                .app-inner .app-design .app-preview .control-group .custom-image-swiper .swiper-slide a {
+                    display: block;
+                    position: relative;
+                    text-align: center;
+                    width: 322px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .custom-image-swiper .swiper-slide a img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .custom-image-swiper .swiper-container {
+                    margin: 0 auto;
+                    position: relative;
+                    overflow: hidden;
+                    -webkit-backface-visibility: hidden;
+                    -moz-backface-visibility: hidden;
+                    -ms-backface-visibility: hidden;
+                    -o-backface-visibility: hidden;
+                    backface-visibility: hidden;
+                    z-index: 1;
+                }
+
+            .app-inner .app-design .app-preview .control-group .custom-search {
+                padding: 10px;
+            }
+
+                .app-inner .app-design .app-preview .control-group .custom-search form {
+                    margin: 0;
+                    position: relative;
+                    border: 1px solid #c0c0c0;
+                    background: #fff;
+                    border-radius: 4px;
+                    overflow: hidden;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .custom-search form .custom-search-input {
+                        margin: 0;
+                        padding: 0 10px 0 40px;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        border-radius: 0;
+                        height: 35px;
+                        width: 100%;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        border: 0px none;
+                        outline: none;
+                        font-size: 14px;
+                        line-height: 20px;
+                        -webkit-box-shadow: 0 0 0 0;
+                        box-shadow: 0 0 0 0;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .custom-search .custom-search-button {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border: 0px none;
+                    height: 35px;
+                    line-height: 35px;
+                    width: 37px;
+                    padding: 0;
+                    color: #fff;
+                    font-size: 14px;
+                    text-indent: -9999px;
+                    background: #fff url("/img/component/search_icon.png") center center no-repeat;
+                    background-size: 16px 16px;
+                    border-radius: 5px 0 0 5px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .custom-search .custom-search-icon {
+                    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABqUlEQVR42r3WzyvDcRzH8Y+vOHDkpBwpB46k3MwOfu0wLvgDyEEp/8DOrjat5MSJs7i4O7CaWClqshxELphf81QO65Vv7+++37ZXPVprfT7Py7e+c5VKxY+HMWSQwzMYn3xHBjF4cLXy+2ESFwiyC0xGDbdiE2G2idagYY0eIMoOJB4onMV/u0IKcQxgBIs4wjd02VrCE9C9YxXNcD6GcQPdRJCwh3M5WEYcLoBO6IN4Ds8Kx6BbM2KqB69yR8wKp+XANVrgarQu92xY4RM5kIILoVfuObXCJTkwChfSQ9U9j1b4U8L9EcL56ous8BOqNxQhXARj3GuFcxJeDhntwFfVPWdWOCPh45DhJbknbYXjYJEesHYU5Y64FfZwKYdu0RUw2oQdOX8Jzwr/moaugD4j2oZd6KZqeTttQVdGBoNogvvTjRWUoNsL8z4+hN/eUMQzrJWRtMIa30aY7UNfq0krrBIoIMgKSMDhM2jc+pc5jizyeAHjk+/IYlye3gWf+IwRjsKOa7ge5qHxD8xIuLFxCTc0nqhHTM1B46W6RjWu4UaZxR3uMfUDvUqknv4oBC4AAAAASUVORK5CYII=") no-repeat center center;
+                    background-size: 15px;
+                    height: 15px;
+                    width: 15px;
+                    display: inline-block;
+                    position: absolute;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    color: transparent;
+                }
+
+            .app-inner .app-design .app-preview .control-group .custom-nav {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+                .app-inner .app-design .app-preview .control-group .custom-nav li {
+                    height: 44px;
+                    background: url("/img/component/bottom_line.png") left top no-repeat;
+                    background-size: 100% 1px;
+                    background-position: left bottom;
+                    margin: 0 10px;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .custom-nav li:last-child {
+                        background-image: none;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .custom-nav li:first-child {
+                        background: url("/img/component/bottom_line.png") left top no-repeat;
+                        background-size: 100% 1px;
+                        background-position: left bottom;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .custom-nav a {
+                    display: block;
+                    height: 100%;
+                    color: #333;
+                    line-height: 44px;
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .custom-nav a:hover {
+                        background-position: 0 15px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .custom-nav a:hover .right-arrow {
+                            background-position: 0 0;
+                        }
+
+                .app-inner .app-design .app-preview .control-group .custom-nav .custom-nav-title {
+                    overflow: hidden;
+                    display: inline-block;
+                    width: 280px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .app-inner .app-design .app-preview .control-group .custom-nav .right-arrow {
+                    padding-right: 0px;
+                    float: right;
+                }
+
+            .app-inner .app-design .app-preview .control-group .sc-goods-list {
+                font-size: 12px;
+                padding: 5px;
+                list-style: none;
+                margin: 0;
+            }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list a {
+                    text-decoration: none;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-card {
+                    position: relative;
+                    margin: 0 5px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .link {
+                    display: block;
+                    background: #fff;
+                    min-height: 100px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .photo-block {
+                    text-align: center;
+                    overflow: hidden;
+                    position: relative;
+                    background-color: #f8f8f8;
+                    background-size: 6px 6px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .photo-block img {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        vertical-align: bottom;
+                        max-width: 100%;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .info {
+                    position: relative;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .info p {
+                        margin: 0px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .info p.goods-title {
+                            line-height: 1.3;
+                            overflow: hidden;
+                            color: #333;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .info p.goods-sub-title {
+                            word-break: break-all;
+                            line-height: 16px;
+                            padding-top: 0px;
+                            color: #666;
+                            white-space: normal;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .info p.goods-price {
+                            font-weight: bold;
+                            padding: 0px;
+                        }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list .info p.goods-price > em {
+                                font-style: normal;
+                                color: #ff6600;
+                            }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .info p.goods-price-taobao {
+                            color: #999;
+                            font-size: 12px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .info.info-no-title p.goods-title {
+                        display: none !important;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .info.info-no-price p.goods-price {
+                        opacity: 0;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .info.info-no-price p.goods-price-taobao {
+                        display: none !important;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .buy-tag-space {
+                    height: 14px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .more-link {
+                    color: #07d;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .more-link:link,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .more-link:hover,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .more-link:visited,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .more-link:active {
+                        color: #07d;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .empty-list .desc {
+                    margin-top: 50px;
+                    margin-bottom: 50px;
+                    font-size: 16px;
+                    color: #999;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .empty-list .tag-home {
+                    padding: 0;
+                    width: 138px;
+                    height: 28px;
+                    line-height: 28px;
+                    font-size: 14px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy {
+                    position: absolute;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn1,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn2,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn3,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn4 {
+                        background-image: url("/img/component/showcase-1416814739063.png");
+                        background-repeat: no-repeat;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn1 {
+                        right: 10px;
+                        bottom: 8px;
+                        height: 25px;
+                        width: 30px;
+                        background-position: 0 0;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn1.ajax-loading {
+                            right: 12px;
+                            bottom: 10px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn2 {
+                        right: 10px;
+                        bottom: 8px;
+                        height: 20px;
+                        width: 20px;
+                        background-position: 0 -88px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn2.ajax-loading {
+                            right: 12px;
+                            bottom: 10px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn3 {
+                        right: 1px;
+                        bottom: 8px;
+                        height: 25px;
+                        width: 40px;
+                        background-position: 0 -25px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn3.ajax-loading {
+                            right: 12px;
+                            bottom: 10px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn4 {
+                        right: 10px;
+                        bottom: 8px;
+                        height: 20px;
+                        width: 37px;
+                        background-position: 0 -68px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.btn4.ajax-loading {
+                            right: 22px;
+                            bottom: 10px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-buy.ajax-loading {
+                        background-image: url("/img/component/loading.gif");
+                        width: 16px;
+                        height: 16px;
+                        background-size: 16px 16px;
+                        background-position: top left;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .buy-response {
+                    position: absolute;
+                    right: 0px;
+                    bottom: 0px;
+                    height: 70px;
+                    width: 70px;
+                    opacity: 0;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-wish {
+                    position: absolute;
+                    top: 0px;
+                    right: 10px;
+                    width: 34px;
+                    height: 23px;
+                    background-position: 0px -9px;
+                    background-repeat: no-repeat;
+                    background-size: 34px 74px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-wish.added-wish {
+                        background-position: 0px -41px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list .goods-wish.btn-wish {
+                        background-image: url("/img/component/wish_list.png");
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list .wish-response {
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    width: 50px;
+                    height: 50px;
+                    opacity: 0;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card {
+                    margin: 10px 0;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card .info {
+                        padding-left: 4px;
+                        margin-top: 10px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card .info .goods-title {
+                            margin-bottom: 5px;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card .info .goods-price {
+                            float: left;
+                            margin: 0 10px 10px 0;
+                        }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-wish {
+                    top: 5px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic .photo-block img {
+                    position: relative;
+                    max-height: 500px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic {
+                    width: 50%;
+                    float: left;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic .photo-block {
+                        height: 143px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic .info {
+                        font-size: 13px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic .info .goods-title {
+                            height: 32px;
+                            overflow: hidden;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic .info .goods-price-taobao {
+                            display: none;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic .goods-buy.btn3 {
+                        right: 1px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic .goods-buy.btn3.ajax-loading {
+                            right: 12px;
+                        }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .photo-block {
+                    width: 100%;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .info {
+                    position: absolute;
+                    height: 22px;
+                    bottom: 0;
+                    right: 10px;
+                    margin: 5px 0;
+                    padding-left: 0px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    background: rgba(0, 0, 0, 0.4);
+                    background-clip: border-box;
+                    border-radius: 2px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .info .goods-title {
+                        float: left;
+                        margin: 0;
+                        padding-left: 10px;
+                        max-width: 70%;
+                        line-height: 22px;
+                        color: #fff;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .info .photo-block {
+                        width: 100%;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .info .goods-price {
+                        color: #fff;
+                        margin: 0px;
+                        float: right;
+                        max-width: 70px;
+                        overflow: hidden;
+                        line-height: 22px;
+                        height: 22px;
+                        padding: 0 5px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .info .goods-price em {
+                            color: white;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .info .goods-price-taobao,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.normal .info .goods-buy {
+                        display: none;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.normal .photo-block img {
+                    max-width: 100%;
+                    max-height: 192px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.normal .link {
+                    position: relative;
+                    margin: 5px;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.normal .info {
+                    width: auto;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.normal .info .goods-title {
+                        display: none;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal {
+                    width: 100%;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal .link {
+                        margin: 5px 0;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal .photo-block {
+                        min-height: 100px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal .info {
+                        left: 10px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal .info.info-no-title {
+                            left: auto;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .link,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .info {
+                        background-color: #f9f9f9;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .info {
+                        position: relative;
+                        height: auto;
+                        left: 0px;
+                        right: 0px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .info .goods-title {
+                            color: #333;
+                            font-size: 14px;
+                            font-weight: bold;
+                            min-width: 10px;
+                            min-height: 22px;
+                            padding-left: 0px;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .info .goods-sub-title {
+                            clear: both;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .info .goods-price {
+                            position: absolute;
+                            right: 0px;
+                            top: 0px;
+                        }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .info .goods-price em {
+                                color: #f60;
+                                font-size: 14px;
+                            }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.normal.has-sub-title .info.info-no-title.info-price {
+                            padding-top: 22px;
+                        }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card {
+                    margin: 8px 0;
+                    width: 100%;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .link {
+                        margin: 0px 4px;
+                        -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                        -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-top: 2px solid #e5e5e5;
+                        border-right: 2px solid #e5e5e5;
+                        border-bottom: 2px solid #e5e5e5;
+                        border-left: 2px solid #e5e5e5;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .photo-block {
+                        min-height: 100px;
+                        margin: 4px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .info {
+                        margin-left: 4px;
+                        padding-right: 8px;
+                        min-height: 34px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .info .goods-title {
+                            font-size: 14px;
+                            font-weight: bold;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            width: 85%;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .info .goods-sub-title {
+                            width: 100%;
+                            margin-bottom: 6px;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .info .goods-price {
+                            font-size: 15px;
+                            margin-top: 2px;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .info .goods-price-taobao {
+                            line-height: 17px;
+                            padding-top: 2px;
+                            padding-bottom: 8px;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .info .info.info-no-price {
+                            min-height: 28px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.info-title.info-no-price.btn1 {
+                        bottom: 9px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.info-title.info-no-price.btn1.ajax-loading {
+                            bottom: 13.5px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.info-title.info-no-price.btn2 {
+                        bottom: 8px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.info-title.info-no-price.btn2.ajax-loading {
+                            bottom: 11.5px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.info-title.info-no-price.btn4.ajax-loading {
+                        bottom: 10.5px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn1 {
+                        bottom: 10px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn1.ajax-loading {
+                            bottom: 16.5px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn2 {
+                        bottom: 12px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn2.ajax-loading {
+                            bottom: 14.5px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn3 {
+                        bottom: 10px;
+                        right: 1px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn3.ajax-loading {
+                            bottom: 13px;
+                            right: 10px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn4 {
+                        bottom: 10px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card .goods-buy.btn4.ajax-loading {
+                            bottom: 13.5px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card.has-sub-title .info.info-no-price .goods-sub-title {
+                        padding-bottom: 35px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.big-pic.card.has-sub-title .info.btn0 .goods-sub-title {
+                        padding-bottom: 0px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card {
+                    max-height: 230px;
+                    margin: 4px 0;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .link {
+                        -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                        -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-top: 2px solid #e5e5e5;
+                        border-right: 2px solid #e5e5e5;
+                        border-bottom: 2px solid #e5e5e5;
+                        border-left: 2px solid #e5e5e5;
+                        margin: 0 4px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .photo-block img {
+                        max-height: 100%;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .info {
+                        min-height: 25px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .info .goods-price {
+                            margin-top: 5px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .goods-buy.btn2 {
+                        bottom: 8px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .goods-buy.btn2.ajax-loading {
+                            bottom: 8px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .goods-buy.btn4 {
+                        right: 12px;
+                        bottom: 8px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.card .goods-buy.btn4.ajax-loading {
+                            right: 16px;
+                            bottom: 8px;
+                        }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .photo-block img {
+                    max-height: 192px;
+                    max-width: 100%;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion {
+                    max-height: 220px;
+                    margin: 0;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .link {
+                        -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                        -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-top: 2px solid #e5e5e5;
+                        border-right: 2px solid #e5e5e5;
+                        border-bottom: 2px solid #e5e5e5;
+                        border-left: 2px solid #e5e5e5;
+                        margin: 4px;
+                        position: relative;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .info {
+                        height: 40px;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        padding-top: 4px;
+                        margin-top: 0px;
+                        background-color: #fff;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .info .goods-title {
+                            display: none;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .info .goods-price {
+                            font-size: 16px;
+                            line-height: 16px;
+                            margin-bottom: 3px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .info .goods-price em {
+                                color: #ff495b;
+                            }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .info .goods-price-taobao {
+                            display: block;
+                            clear: left;
+                            text-decoration: line-through;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            line-height: 12px;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .goods-buy,
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .buy-response {
+                        right: 0px;
+                        bottom: 0px;
+                        width: 47px;
+                        height: 40px;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        padding: 7px 10px;
+                        color: white;
+                        font-size: 13px;
+                        line-height: 13px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic .goods-card.small-pic.promotion .goods-buy {
+                        background: #ff495b;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.waterfall .goods-card.small-pic {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.waterfall .goods-card.small-pic .link {
+                        -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                        -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-top: 2px solid #e5e5e5;
+                        border-right: 2px solid #e5e5e5;
+                        border-bottom: 2px solid #e5e5e5;
+                        border-left: 2px solid #e5e5e5;
+                        margin: 4px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.waterfall .goods-card.small-pic .photo-block {
+                        height: auto;
+                        min-height: 100px;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.waterfall .goods-card.small-pic .photo-block img {
+                            position: relative;
+                            height: auto;
+                        }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.waterfall .goods-card.small-pic .info .goods-title {
+                        height: auto;
+                        max-height: 32px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.waterfall .goods-card.small-pic .info .goods-price {
+                        margin-top: 5px;
+                        margin-bottom: 11px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-2 .goods-card.big-pic.card {
+                    margin: 4px 0;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-2 .goods-card.big-pic {
+                    float: left;
+                }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 {
+                    padding: 5px 15px 0 15px;
+                    background-color: #fff;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic {
+                        -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                        -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-image: url("/img/component/border-line.png") 2 stretch;
+                        border-bottom: 2px solid #e5e5e5;
+                    }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .goods-title {
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: #222;
+                            line-height: 1.6;
+                            margin-bottom: 2px;
+                            word-break: break-all;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .sub-goods-title {
+                            font-size: 12px;
+                            color: #888;
+                            line-height: 1.6;
+                            margin-bottom: 8px;
+                            word-break: break-all;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .photo-block {
+                            float: none;
+                            background-color: #fff;
+                            margin: 0 0 20px 0;
+                            height: auto;
+                            display: -webkit-box;
+                            display: -webkit-flex;
+                            display: -moz-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                        }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .photo-block .photo-block-sep {
+                                width: 4px;
+                            }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .photo-block .phote-block-item {
+                                -webkit-box-sizing: border-box;
+                                -moz-box-sizing: border-box;
+                                box-sizing: border-box;
+                                position: relative;
+                                -webkit-box-flex: 1;
+                                -webkit-flex: 1;
+                                -moz-box-flex: 1;
+                                -ms-flex: 1;
+                                flex: 1;
+                            }
+
+                                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .photo-block .phote-block-item img {
+                                    max-width: 100%;
+                                    max-height: 100%;
+                                }
+
+                                .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .photo-block .phote-block-item:before {
+                                    content: ' ';
+                                    display: block;
+                                    padding-top: 100%;
+                                }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .goods-operate {
+                            position: relative;
+                            margin: 0 45px 10px 0;
+                            padding-right: 16px;
+                            height: 16px;
+                        }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .goods-operate .goods-price {
+                                color: #999;
+                                font-size: 12px;
+                            }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .goods-operate .goods-share {
+                                width: 20px;
+                                height: 16px;
+                                background-position: 0 0;
+                                background-repeat: no-repeat;
+                                background-size: 51px 30px;
+                                background-image: url("/img/component/showcase_e270134134.png");
+                            }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic .goods-buy.btn1 {
+                            right: 5px;
+                            bottom: 7px;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic:last-child,
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic:last-of-type {
+                            margin-bottom: 0px;
+                            border-bottom: none;
+                            -webkit-border-image: none;
+                            -moz-border-image: none;
+                            border-image: none;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic.single-pic .photo-block {
+                            display: block;
+                        }
+
+                        .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic.single-pic .phote-block-item {
+                            text-align: left;
+                        }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic.single-pic .phote-block-item img {
+                                position: static;
+                                max-height: 175px;
+                            }
+
+                            .app-inner .app-design .app-preview .control-group .sc-goods-list.pic.size-4 .goods-card.multi-pic.single-pic .phote-block-item:before {
+                                content: ' ';
+                                display: none;
+                                padding-top: 0;
+                            }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card .photo-block {
+                    float: left;
+                    margin-right: 13px;
+                    width: 125px;
+                    height: 125px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card .photo-block img {
+                        max-width: 125px;
+                        max-height: 125px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card .info {
+                    height: 125px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card .info .goods-title {
+                        font-size: 14px;
+                        max-height: 52px;
+                        margin-bottom: 12px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card .info .goods-price {
+                        font-size: 15px;
+                        margin-bottom: 8px;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card .info .goods-wish {
+                        left: 88px;
+                        right: auto;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card .info .wish-response {
+                        left: 76px;
+                        right: auto;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn1 {
+                    bottom: 2px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn1.ajax-loading {
+                        bottom: 6.5px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn2 {
+                    bottom: 3px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn2.ajax-loading {
+                        bottom: 5.5px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn3 {
+                    bottom: 0px;
+                    right: -7px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn3.ajax-loading {
+                        bottom: 3px;
+                        right: 10px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn4 {
+                    bottom: 3px;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-buy.btn4.ajax-loading {
+                        bottom: 6.5px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card.normal {
+                    -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                    -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                    border-image: url("/img/component/border-line.png") 2 stretch;
+                    border-bottom: 2px solid #e5e5e5;
+                    padding: 10px 0;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card.normal .link {
+                        background: none;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card.normal .goods-title {
+                        padding-top: 2px;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card.card {
+                    padding: 5px 0px 5px 5px;
+                    margin: 8px;
+                    -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                    -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                    border-image: url("/img/component/border-line.png") 2 stretch;
+                    border-top: 2px solid #e5e5e5;
+                    border-right: 2px solid #e5e5e5;
+                    border-bottom: 2px solid #e5e5e5;
+                    border-left: 2px solid #e5e5e5;
+                    background: #fff;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .sc-goods-list.list .goods-card.card .goods-title {
+                        padding: 5px 6px 0 0;
+                    }
+
+            .app-inner .app-design .app-preview .control-group .custom-tabs {
+                overflow: hidden;
+            }
+
+            .app-inner .app-design .app-preview .control-group .tabber {
+                width: 100%;
+                color: #333;
+                font-size: 14px;
+                background-color: #fff;
+                overflow: visible;
+                padding: 0px;
+                margin: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                -webkit-border-image: url("/img/component/border-line.png") 2 stretch;
+                -moz-border-image: url("/img/component/border-line.png") 2 stretch;
+                border-image: url("/img/component/border-line.png") 2 stretch;
+                border-top: 2px solid #e5e5e5;
+                border-bottom: 2px solid #e5e5e5;
+            }
+
+                .app-inner .app-design .app-preview .control-group .tabber button,
+                .app-inner .app-design .app-preview .control-group .tabber a {
+                    float: left;
+                    width: 50%;
+                    height: 40px;
+                    line-height: 40px;
+                    border: 0px none;
+                    outline: 0px none;
+                    background-color: #fff;
+                    text-align: center;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                .app-inner .app-design .app-preview .control-group .tabber a {
+                    -webkit-tap-highlight-color: transparent;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .tabber button:hover,
+                    .app-inner .app-design .app-preview .control-group .tabber a:hover {
+                        text-decoration: none;
+                    }
+
+                    .app-inner .app-design .app-preview .control-group .tabber button:active,
+                    .app-inner .app-design .app-preview .control-group .tabber a:active {
+                        position: relative;
+                        top: 1px;
+                        line-height: 39px;
+                        color: #22C415;
+                        border-bottom: 1px solid #22C415;
+                    }
+
+                .app-inner .app-design .app-preview .control-group .tabber.red {
+                    color: #333;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .tabber.red button.active,
+                    .app-inner .app-design .app-preview .control-group .tabber.red a.active {
+                        color: #ed5050;
+                        border-bottom: 1px solid #ed5050;
+                    }
+
+            .app-inner .app-design .app-preview .control-group .custom-notice {
+                padding: 0 10px;
+                height: 37px;
+                line-height: 37px;
+                color: #f90;
+                background: #ffc;
+                border-top: 1px solid #f2f2f2;
+                border-bottom: 1px solid #f2f2f2;
+                word-break: break-all;
+                font-size: 12px;
+            }
+
+                .app-inner .app-design .app-preview .control-group .custom-notice .custom-notice-inner {
+                    overflow: hidden;
+                }
+
+                    .app-inner .app-design .app-preview .control-group .custom-notice .custom-notice-inner .custom-notice-scroll {
+                        width: 20000px;
+                    }
+
+        .app-inner .app-design .app-preview .app-entry {
+            width: 322px;
+            margin: 0 auto;
+            border: 1px solid #c5c5c5;
+            background: #f9f9f9;
+            /*position:relative;*/
+        }
+        .app-inner .app-design .app-preview .app-entry .js-fields-region {
+            min-height: 380px;
+            position:relative;
+        }
+        .app-inner .app-design .app-preview .swiper-pagination {
+            margin: 0;
+            text-align: center;
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            z-index: 1;
+        }
+
+            .app-inner .app-design .app-preview .swiper-pagination .swiper-pagination-switch {
+                display: inline-block;
+                margin: 7px 2px 0;
+                width: 5px;
+                height: 5px;
+                background: url("/img/component/pagination.png") no-repeat scroll -1px -1px;
+                cursor: pointer;
+            }
+
+            .app-inner .app-design .app-preview .swiper-pagination .swiper-active-switch {
+                background-position: -1px -8px;
+            }
+
+.clearfix:after,
+.clearfix:before {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.right-arrow {
+    padding-right: 15px;
+    background: url("/img/component/arrow.png") no-repeat scroll 0 0;
+    background-size: 15px 30px;
+    width: 15px;
+    height: 15px;
+    margin-top: 15px;
+}
+
+.form-div {
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 10px 0px 10px 10px;
+}
+
+    .form-div .form-table {
+        font-size: 14px;
+        width: 100%;
+    }
+    
+        .form-div .form-table td {
+        }
+        .form-div .form-table input[type=text], textarea {
+              width: 98%;
+          border: 1px solid rgb(238, 238, 238);
+          height: 25px;
+          padding: 1px 5px;
+        }
+
+        .form-div .form-table input[type=radio], input[type=checkbox] {
+            position: relative;
+            top: 2px;
+        }
+
+        .form-div .form-table select {
+            width: 100%;
+        }
+
+        .form-div .form-table label {
+            font-size: 13px;
+            cursor:pointer;
+        }
+        .form-div .form-table input[type=color] {
+            margin-left:8px;
+            display: inline;
+            height: 20px;
+        }
+
+.component-table {
+    width: 100%;
+}
+
+.left-col {
+    width: 285px;
+    vertical-align: top;
+    /*padding: 5px 5px 60px 0px;*/
+}
+
+.main-col {
+    width: 370px;
+    /*padding:5px 0px 60px 0px;*/
+
+}
+.right-col {
+    vertical-align: top;
+    /*padding: 5px 5px 60px 5px;*/
+}
+.right-col .right-inner {
+    height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    margin: 0px 0px 0px 0px;
+    padding:0px 15px 70px 2px;
+}
+.right-col .slider{
+    visibility:inherit;
+    overflow:inherit;
+}
+.m-top {
+    margin-top: 5px;
+}
+
+.component-model-button {
+    /*color: #f90;*/
+    /*background: #ffc;*/
+    /*padding: 5px;*/
+    /*border: 1px solid #eee;*/
+    /*cursor: pointer;*/
+    /*margin-bottom:2px;*/
+    /*position:relative;*/
+}
+.component-model-button-disabled{
+    color: #a8a8a8;
+    background: #f3f3f3 !important;
+    cursor: default !important;
+}
+
+    .component-model-button span {
+    }
+    .component-model-button i {
+        /*position:absolute;*/
+        /*right:5px;*/
+        /*margin-top: 0px;*/
+        /*padding-right:0px;*/
+    }
+.font-small{font-size:12px;}
+.color_warning{color: #f90;}
+.color_error{color: red;}
+.toolBarBgPosition{
+    /*position:absolute;*/
+    bottom: 0px;
+    width: 320px;
+}
+.toolBarPosition{
+    position:inherit;
+    bottom: 0px;
+    width: 320px;
+}
+.headerbarBgPosition .bar{
+    position:inherit !important;
+}
+.submitDiv{
+    position: fixed;
+      left: 0px;
+      width: 90px;
+      bottom: 10%;
+      z-index: 1;
+}
+.submitDiv button{
+    width: 60px;
+    padding: 5px 0px 5px 4px;
+    margin: 15px 0px 0px 0px;
+    height: 60px;
+    line-height: 20px;
+    letter-spacing: 3px;
+}
+.deleteDiv{
+    text-align:center; 
+    padding:5px;
+}
+.deleteDiv button{
+    width:100px;
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    margin:0px 10px;
+}
+.layermbtn span{
+    height:39px;
+}
+
+        .app-inner .app-design .app-preview .app-fields.ui-sortable{
+            min-height:360px;
+        }
+        .app-inner .app-design .app-preview .app-fields .ui-sortable-placeholder {
+            background:rgb(255, 255, 224) !important;
+            border: 1px dashed rgba(253, 155, 0, 0.5) !important;
+            width:100%;
+        }
+
+.wrapHeader .info-center .info-head .person-text{
+    width:auto;
+}
+.editBody{
+    position:absolute;
+    left:0px;
+    top:0px;
+    height: 100%; 
+    width: 100%;
+}
+.topIcon {
+  float: right;
+  margin-right: 11px;
+  position:inherit;
+  /* z-index: 10; */
+  /* right: 11px; */
+  /* bottom: 148px; */
+  width: 36px;
+  height: 50px;
+  line-height: 50px;
+  display: inherit;
+}

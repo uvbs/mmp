@@ -1,0 +1,140 @@
+﻿<div class="layout boxMain warpNews">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <i class="iconfont icon-circularmap"></i>
+                    <span class="titleText">新闻资讯</span>
+                </span>
+            </div>
+            <div class="warpSearchInput ">
+                <div class="form-group">
+                    <input ng-model='pageData.keyword' type="search" class="form-control txtSearch" placeholder="搜索..." />
+                    <div class="btnSearch" ng-click="pageFunc.search()"></div>
+                </div>
+            </div>
+            <!--<div class="boxMainText">
+                <div class="warpCaseSelect">
+                    <div class="caseSelectTop clear ">
+                        <ul>
+                            <li><span>地区选择：</span></li>
+                            <li ng-repeat="item in pageData.provinceList">
+                                <a ng-class="{change:pageData.currSelectProvince.id == item.id}"
+                                   href="javascript:;"
+                                   ng-click="pageFunc.selectProvince(item)">
+                                    {{item.name}}
+                                </a>
+                            </li>
+                        </ul>
+                        <span class="moreRight hand" ng-if="pageData.showMoreProvince && pageData.provinceOtherList.length > 0"
+                              ng-click="pageData.showMoreProvince = false">
+                            收起
+                            <i class="iconfont icon-xiangshang "></i>
+                        </span>
+                        <span class="moreRight hand" ng-if="!pageData.showMoreProvince && pageData.provinceOtherList.length > 0"
+                              ng-click="pageData.showMoreProvince = true">
+                            更多
+                            <i class="iconfont icon-unfold "></i>
+                        </span>
+                    </div>
+                    <div class="caseSelectBot clear" ng-if="pageData.provinceOtherList.length > 0 && pageData.showMoreProvince">
+                        <ul>
+                            <li ng-repeat="item in pageData.provinceOtherList">
+                                <a ng-class="{change:pageData.currSelectProvince.id == item.id}"
+                                   href="javascript:;"
+                                   ng-click="pageFunc.selectProvince(item)">
+                                    {{item.name}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="caseSelectTop clear ">
+                        <ul>
+                            <li><span>标签选择：</span></li>
+                            <li ng-repeat="item in pageData.tagList">
+                                <a ng-class="{change:pageData.currSelectTag.tag == item.tag}"
+                                   href="javascript:;"
+                                   ng-click="pageFunc.selectTag(item,1)">
+                                    {{item.tag}}
+                                </a>
+                            </li>
+                        </ul>
+                        <span class="moreRight hand" ng-if="pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                              ng-click="pageData.showMoreTag = false">
+                            收起
+                            <i class="iconfont icon-xiangshang "></i>
+                        </span>
+                        <span class="moreRight hand" ng-if="!pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                              ng-click="pageData.showMoreTag = true">
+                            更多
+                            <i class="iconfont icon-unfold "></i>
+                        </span>
+                    </div>
+                    <div class="caseSelectBot clear" ng-if="pageData.tagOtherList.length > 0 && pageData.showMoreTag">
+                        <ul>
+                            <li ng-repeat="item in pageData.tagOtherList">
+                                <a ng-class="{change:pageData.currSelectTag.tag == item.tag}"
+                                   href="javascript:;"
+                                   ng-click="pageFunc.selectTag(item,1)">
+                                    {{item.tag}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>-->
+            <div class="boxMainText">
+                <div class="newsMainCon">
+                    <dl class="caseMainOne" ng-repeat="article in pageData.articles">
+                        <dd>
+                            <h5 ng-click="go('#/news/' + article.id)">{{article.title}}</h5>
+                            <div class="money"><span>{{article.pubUser.userName}} </span> &nbsp&nbsp 发表于{{article.createDate | date:'yyyy-MM-dd'}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>{{article.commentCount}}评</b></div>
+                            <p>
+                                <div ng-bind-html="article.summary"></div>
+                                <a href="javascript:;" ng-click="go('#/news/' + article.id)">[阅读全文]</a>
+                                <ul class="clear">
+                                    <li ng-repeat="tag in article.tags">
+                                        <a ng-click="pageFunc.selectTag(tag)">
+                                            {{tag}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </p>
+                            
+                        </dd>
+                    </dl>
+                </div>
+                <div class="warpPagination" ng-if="pageData.totalCount > pageData.pageSize">
+                    <pagination ng-model="pageData.pageIndex"
+                                total-items="pageData.totalCount"
+                                items-per-page="pageData.pageSize"
+                                max-size="5"
+                                boundary-links="true"
+                                rotate="false"
+                                previous-text="上一页"
+                                next-text="下一页"
+                                first-text="首页"
+                                last-text="尾页">
+                    </pagination>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpCaseAside">
+                <!--<div class="warpSearchInput ">
+                    <div class="form-group">
+                        <input ng-model='pageData.keyword' type="search" class="form-control txtSearch" placeholder="搜索..." />
+                        <div class="btnSearch" ng-click="pageFunc.search()"></div>
+                    </div>
+                </div>-->
+                <smalldailycase></smalldailycase>
+                <smallhotarticle ng-attr-cateid="{{pageData.currCate}}" ng-attr-routename="news"></smallhotarticle>
+                <smallhottags ng-attr-cateid="{{pageData.currCate}}"></smallhottags>
+                <!-- <div class="caseAsideImg">
+                    <a href="javascript:;"><img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt=""></a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

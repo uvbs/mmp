@@ -1,0 +1,32 @@
+/* Flex images slider
+/*-----------------------------------------------------------------------------------*/
+.flex-container a:active,
+.icons_nav a:active {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+
+
+.panels_slider {width: 100%; height:100%; margin: 0; padding: 0;}
+.panels_slider .slides > li {display: none;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.panels_slider .slides img {max-width: 100%; width:800px; display: block;text-align:center; top:50%; margin:0 auto}
+
+
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
+html[xmlns] .slides {display: block;} 
+* html .slides {height: 1%;}
+
+.no-js .slides > li:first-child {display: block;}
+
+.icons_nav { position: relative;zoom: 1;}
+.icons_nav .slides {zoom: 1;}
+.icons_nav .slides > li {position: relative; }
+.flex-container {zoom: 1; position: relative;}
+
+.panels_slider ol.flex-control-nav {width: 100%;  margin-top:10px;  text-align: center;}
+.images_slider ol.flex-control-nav {width: 100%; position: absolute; bottom:0%; text-align: center; background:url(../images/nav_bg.png) repeat-x top; padding:15px 0 15px 0;}
+.flex-control-nav li {margin: 0 0 0 5px; display: inline-block; zoom: 1; *display: inline;}
+.flex-control-nav li:first-child {margin: 0;}
+.flex-control-nav li a {width: 12px; height: 12px; display: block; background: url(../images/bg_control_nav.png) no-repeat 0 0; cursor: pointer; text-indent: -9999px;}
+.flex-control-nav li a:hover {background-position: 0 -12px;}
+.flex-control-nav li a.active {background-position: 0 -41px; cursor: default;}

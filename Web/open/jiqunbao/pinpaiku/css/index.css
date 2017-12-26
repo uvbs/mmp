@@ -1,0 +1,42 @@
+#main{
+	position:  absolute;
+	text-align:center;   
+	margin:0 auto;
+	width:100%;
+}
+.pin{
+	padding: 10px 0 0 10px;
+	float: left;
+    text-align:center;
+    margin:0 auto;
+
+}
+.box{
+	padding: 5px;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 6px #ccc;
+	border-radius: 5px;
+
+}
+.box img{
+	width:150px;
+	height: auto;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 6px #ccc;
+	border-radius: 3px;
+}
+
+.glass_text{
+	width: 150px;
+	height:auto;
+	bottom: 0px;
+	font-size: 14px;
+	text-align: left;
+	padding-top:10px;
+	padding-left
+
+}
+.glass_text p{
+	margin: 0;
+	line-height:16px;
+}

@@ -1,0 +1,1 @@
+﻿var handlerUrl = '/Components/Coupon/Handler/API.ashx';

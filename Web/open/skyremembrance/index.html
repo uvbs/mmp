@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>天空的记忆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style type="text/css">
+        body {
+            background-image: url('img/bg.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin: 0px;
+            
+        }
+        .warpRoot {
+           
+        }
+        .warpMain {
+            background-image: url('img/main.png?v=1.0');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 99%;
+            position: relative;
+            opacity: 0.9;
+            top: -38px;
+        }
+        #warpImgs {
+            /*height: 100px;
+            width: 1000px;
+            position: absolute;
+            background-color: #fff;
+            bottom: 142px;
+            left: -166px;
+            background: rgba(203, 203, 203, 0.37);
+            z-index: -1;
+            transform: rotate(-21deg);*/
+            height: 100px;
+            width: 2000px;
+            position: fixed;
+            background-color: #fff;
+            bottom: -68px;
+            left: -1200px;
+            background: rgba(203, 203, 203, 0.37);
+            z-index: -1;
+            transform: rotate(-21deg);
+            -webkit-transform: rotate(-21deg);
+        }
+            #warpImgs ul {
+                list-style: none;
+                margin: 0px;
+            }
+                #warpImgs ul li {
+                    float: left;
+                    padding: 22px 12px;
+                    animation: leftToRigth 20s linear 0s infinite alternate;
+                    -webkit-animation: leftToRigth 20s linear 0s infinite alternate;
+                }
+                    #warpImgs ul li img {
+                        width: 46px;
+                        height: 60px;
+                        border-radius: 8px;
+                    } 
+        .clear {
+            clear: both;
+        }
+
+        @keyframes leftToRigth {
+            from {
+                transform: translateX(0px);
+                -webkit-transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(1200px);
+                -webkit-transform: translateX(1200px);
+            }
+        }
+
+        @-webkit-keyframes leftToRigth /* Safari and Chrome */
+        {
+            from {
+                transform: translateX(0px);
+                -webkit-transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(1200px);
+                -webkit-transform: translateX(1200px);
+            }
+        }
+
+        @keyframes light {
+            from {
+                opacity: 0.4;
+                transform: rotate(0deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(30deg);
+            }
+        }
+
+        @-webkit-keyframes light /* Safari and Chrome */
+        {
+            from {
+                opacity: 0.4;
+                transform: rotate(0deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: rotate(30deg);
+            }
+        }
+
+        #warpRoot .btn {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            z-index:20;
+        }
+            #warpRoot .btn:hover {
+                background: rgba(140, 140, 140, 0.81);
+                border-radius: 18px;
+            }
+        .imgLight {
+            z-index:10;
+            position: absolute;
+            width: 140px;
+            animation: light 1s ease 0s infinite alternate;
+            -webkit-animation: light 1s ease 0s infinite alternate;
+        }
+        .lightTop {
+            width: 180px;
+        }
+        #warpFooter {
+            position: absolute;
+            text-align: center;
+            bottom: 6%;
+            font-size: 16px;
+            color: #fff;
+            /*font-weight: bolder;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="warpRoot" class="warpRoot">
+        <div id="warpMain" class="warpMain">
+            <div class="btn btnProduct" onclick="navOnclick(this)">
+            </div>
+            <div class="btn btnAbout" onclick="navOnclick(this)">
+            </div>
+            <div class="btn btnMember" onclick="navOnclick(this)">
+            </div>
+            <div class="btn btnShop" onclick="navOnclick(this)">
+            </div>
+            <div class="btn btnStatus" onclick="navOnclick(this)">
+            </div>
+            <div class="btn btnCenter" onclick="navOnclick(this)">
+            </div>
+            <img class="imgLight lightBottom" src="img/lightBottom.png" />
+            <img class="imgLight lightTop" src="img/lightTop.png" />
+        </div>
+        <div id="warpImgs">
+            <ul>
+                <li>
+                    <img src="img/201272093116934.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209313848.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093327752.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209345144.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093750169.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093835920.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093116934.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209313848.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093327752.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209345144.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093750169.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093835920.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093116934.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209313848.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093327752.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209345144.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093750169.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093835920.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093116934.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209313848.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093327752.jpg" />
+                </li>
+                <li>
+                    <img src="img/20127209345144.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093750169.jpg" />
+                </li>
+                <li>
+                    <img src="img/201272093835920.jpg" />
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="warpFooter"><span>天空的记忆（上海）影视传播有限公司</span></div>
+    </div>
+    <script src="/open/skyremembrance/lib/zepto/zepto.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var h = $(window).height(), w = $(window).width();//获取页面的高度
+            $('.warpRoot,.warpMain').css({
+                'height': h + 'px',
+            });
+
+            $('#warpFooter').css({
+                'width': w + 'px',
+            });
+
+            var ox = 640, oy = 1070;//原始宽高
+            var ry = (w / ox) * oy;//真实高度
+
+            function getTop(otop) {
+                return parseInt(ry * (otop / oy));
+            }
+
+            function getLeft(oleft) {
+                return parseInt(w * (oleft / ox));
+            }
+
+            $('#warpRoot .btnProduct').css({
+                'top': getTop(325) + 'px',
+                'left': getLeft(260) + 'px',
+            });
+            $('#warpRoot .btnAbout').css({
+                'top': getTop(470) + 'px',
+                'left': getLeft(90) + 'px',
+            });
+            $('#warpRoot .btnMember').css({
+                'top': getTop(660) + 'px',
+                'left': getLeft(155) + 'px',
+            });
+            $('#warpRoot .btnShop').css({
+                'top': getTop(660) + 'px',
+                'left': getLeft(370) + 'px',
+            });
+            $('#warpRoot .btnStatus').css({
+                'top': getTop(470) + 'px',
+                'left': getLeft(425) + 'px',
+            });
+            $('#warpRoot .btnCenter').css({
+                'top': getTop(515) + 'px',
+                'left': getLeft(260) + 'px',
+            });
+
+            $('.lightTop').css({
+                'top': getTop(22) + 'px',
+                'left': getLeft(1) + 'px',
+            });
+
+            $('.lightBottom').css({
+                'top': getTop(550) + 'px',
+                'left': getLeft(370) + 'px',
+            });
+
+            //$(document).on('click', '.btn', function () {
+            //    navOnclick(this);
+            //});
+
+        }
+
+
+        function navOnclick(obj) {
+            var $this = $(obj);
+            if ($this.hasClass('btnProduct')) {
+                window.location.href = 'app.html#/articleList/506/影视作品';
+                return;
+            }
+            if ($this.hasClass('btnAbout')) {
+                window.location.href = 'app.html#/about';
+                //window.location.href = 'http://skyremembrance.comeoncloud.net/47c3a/details.chtml';
+                return;
+            }
+            if ($this.hasClass('btnMember')) {
+                window.location.href = '/App/Cation/Wap/Mall/MyCenter.aspx';
+                return;
+            }
+            if ($this.hasClass('btnShop')) {
+                window.location.href = '/App/Cation/wap/mall/index.aspx';
+                return;
+            }
+            if ($this.hasClass('btnStatus')) {
+                window.location.href = 'app.html#/update';
+                // window.location.href = 'app.html#/articleList/502/最新动态';
+                return;
+            }
+            if ($this.hasClass('btnCenter')) {
+                window.location.href = 'app.html#/film';
+                return;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

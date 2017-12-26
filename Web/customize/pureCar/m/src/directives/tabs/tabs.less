@@ -1,0 +1,43 @@
+.pcarTabs.titleTab {
+	width: 100%;
+	display: inline-table;
+	
+	.pcarTab {
+		display: table-cell;
+		box-sizing: border-box;
+		background: white;
+		border-bottom: 2px solid white;
+		border-left: 1px solid #ccc;
+		text-align: center;
+		font-size: 16px;
+		padding: 8px 12px;
+		
+		&:nth-child(1) {
+			border-left: none;
+		}
+		
+		&.current {
+			color: @colorPrimary;
+			border-bottom-color: @colorPrimary;
+		}
+	}
+}
+
+.pcarTabs.subTab {
+	width: 100%;
+	padding: 10px;
+	
+	.pcarTab {
+		display: inline-block;
+		font-size: 14px;
+		line-height: 12px;
+		padding: 5px 8px;
+		margin-right: 20px;
+		border-radius: 3px;
+		
+		&.current {
+			color: white;
+			background: @colorPrimary;
+		}
+	}
+}

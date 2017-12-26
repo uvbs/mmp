@@ -1,0 +1,48 @@
+﻿<div class="wrapInternetDetail">
+<div ng-if='pageData.currObj == null'>
+	<div class="row">
+		<div class="col col-33">
+			<div class="logo">
+				<img src="/customize/10000care/m/static/img/care/comm/kblogo.png">
+			</div>	
+		</div>
+		<div class="col txtLeft">
+			<div class="font20 mTop10">公司名称公司名称公司名称</div>
+			<div class="font16 mTop10">项目名称项目名称</div>
+			<div class="font16 mTop10">联系人：哈哈<span class="font12"> (13888888888)</span></div>
+		</div>
+	</div>
+	<hr />
+	<div class="content mTop10">
+	<img src="/customize/10000care/m/static/img/care/comm/c1.png" class="contentImg">
+	<p class="mTop10">
+		回想2年前刚开始接触手机项目，接到PSD稿后，发现视觉设计师们喜欢用微软雅黑作为中文字体进行设计，于是我写页面的时候也定义 font-family 为微软雅黑，后来发到线上后，细心的产品经理发现页面的字体不是微软雅黑，要求马上修改，我就惊呆了，还跟产品争执一番。雅黑字体问题虽然解决了，但也带来了影响，一来消耗用户的流量，二来对页面的打开速度造成了延迟。各个手机系统有自己的默认字体，且都不支持微软雅黑，如无特殊需求，手机端无需定义中文字体，使用系统默认。
+	</p>
+	</div>
+</div>
+<div ng-if='pageData.currObj != null'>
+	<div class="row">
+		<div class="col col-33">
+			<div class="logo">
+				<img src="{{pageData.currObj.logo}}">
+			</div>	
+		</div>
+		<div class="col txtLeft">
+			<div class="font20 mTop10">{{pageData.currObj.companyName}}</div>
+			<div class="font16 mTop10">{{pageData.currObj.projectName}}</div>
+			<div class="font16 mTop10">联系人:{{pageData.currObj.linker}}
+            <!--<span class="font12"> ({{pageData.currObj.phone}})</span>--> 
+            </div>
+		</div>
+	</div>
+	<hr />
+	<div class="content mTop10">
+	<img src="{{pageData.currObj.adimg}}" class="contentImg">
+	<p class="mTop10">
+		{{pageData.currObj.content}}
+        
+	</p>
+        <br /><br />
+	</div>
+</div>
+</div>

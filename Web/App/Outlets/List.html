@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-app-status-bar-style" content="default"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>服务网点</title>
+    <link href="http://file.comeoncloud.net/lib/ionic/ionic.css" rel="stylesheet"/>
+    <link href="http://file.comeoncloud.net/lib/layer.mobile/need/layer.css" rel="stylesheet"/>
+    <link href="http://file.comeoncloud.net/css/global-m.css" rel="stylesheet"/>
+    <!--<link href="../../css/global-m.css" rel="stylesheet"/>-->
+    <link href="Outlets.css?v=1.0.0" rel="stylesheet"/>
+    <script src="http://file.comeoncloud.net/lib/zepto/zepto.min.js"></script>
+    <script src="http://file.comeoncloud.net/lib/vue/vue.min.js"></script>
+    <script src="http://file.comeoncloud.net/lib/layer.mobile/layer.m.js" charset="utf-8"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="http://file.comeoncloud.net/Scripts/global-m.js" charset="utf-8"></script>
+    <script src="http://file.comeoncloud.net/Scripts/StringBuilder.Min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=224bd7222ce22c01673ff105ffb93fda"></script>
+</head>
+<body v-bind:class="{wrapQQBrowser:isQQBrowser}">
+<div class="offer-view wrapOffer">
+    <!--<button type="button" class="button button-full"  v-on:click="getLocation()">获取坐标</button>-->
+    <div class="amb" v-if="filterAddressShowNum != 0" v-on:click="hideFilterAddressPanel()">
+    </div>
+    <div class="ambAddress" v-if="filterAddressShowNum != 0">
+        <div class="bar bar-header item-input-inset bgColor5BD5BE ZIndex999" >
+            <label class="item-input-wrapper cur-address lineHeight28"  @click="toSelectMapAddress()">
+                <i class="icon iconfont icon-place"></i>
+                <div class="divSpanCurAddress">
+                    <span v-text="curAddress"></span>
+                </div>
+            </label>
+        </div>
+        <div class="ambCurAddressPanel">
+            <div v-if="1==2">
+                经度:<span class="colorRed" v-text="curLongitude"></span>，纬度:<span class="colorRed" v-text="curLatitude"></span>
+            </div>
+            <div class="ambCurAddressConfrim pAll5">
+                <button class="button button-small" @click="addLocalAddress()">记录地址</button>
+                <!--<button class="button button-small" @click="toSelectMapAddress()">地图选址</button>-->
+            </div>
+        </div>
+        <div class="ambLogAddressPanel">
+            <div class="ambLogAddressList">
+                <div class="ambLogAddress"
+                     :class="{'selectedLogAddress':$index==curSelectLogIndex}"
+                     v-for="localAddress in localAddressList"
+                        @click="selectLocalAddress($index)">
+                    <div class="ambLogAddressContent">
+                        <div class="ambLogAddressContentSpan">
+                            <i class="icon iconfont icon-place"></i><span v-text="localAddress.address"></span>
+                        </div>
+                    </div>
+                    <div class="ambDelAddressConfrim" @click="deleteLocalAddress($index)">
+                        <i class="icon iconfont icon-guanbi font12 colorRed"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ambAddressConfrim" v-if="filterAddressShowNum != 0">
+            <button class="button button-small width70" @click="confrimSelectLogAddress()">确定</button>
+            <button class="button button-small width70" @click="closeSelectLogAddress()">关闭</button>
+        </div>
+    </div>
+    <div class="wrapHeader">
+        <div class="bar bar-header item-input-inset bgColor5BD5BE ZIndex999" >
+            <label class="item-input-wrapper cur-address lineHeight28" v-if="filterAddressShowNum == 0" @click="showFilterAddressPanel()">
+                <i class="icon iconfont icon-place"></i>
+                <div class="divSpanCurAddress">
+                    <span v-text="curAddress"></span>
+                </div>
+            </label>
+        </div>
+        <div class="bar bar-header item-input-inset bgColor5BD5BE">
+            <label class="item-input-wrapper keyword">
+                <input type="text" v-model="keyword" placeholder="输入关键字查询..."/>
+                <i class="icon iconfont icon-sousuo" v-on:click="getDataList(true)"></i>
+            </label>
+        </div>
+    </div>
+    <div class="wrapFilter">
+        <div class="row">
+            <div class="col"
+                 v-on:click="openFilterPanel(1)">
+                <span v-text="curCateText">所有类型</span>
+                <i class="iconfont icon-arrowdown arrowdown"></i>
+            </div>
+            <div class="col"
+                 v-on:click="openFilterPanel(2)">
+                <span v-text="curAreaText">所有地区</span>
+                <i class="iconfont icon-arrowdown arrowdown"></i>
+            </div>
+            <div class="col"
+                 v-on:click="openFilterPanel(3)">
+                <span v-text="curTagText">网点类型</span>
+                <i class="iconfont icon-arrowdown arrowdown"></i>
+            </div>
+        </div>
+        <div class="wrapFilterList" v-if="filterListShowNum == 1">
+            <div class="list">
+                <div class="item font12"
+                     v-for="cate in cateList"
+                     v-on:click="setFilter(1,cate)"
+                     v-bind:class="{'selected':cate.value == curCate}"
+                     v-text="cate.text">
+                </div>
+            </div>
+        </div>
+        <div class="wrapFilterList" v-if="filterListShowNum == 2">
+            <div class="list">
+                <div class="item font12"
+                     v-for="area in areaList"
+                     v-on:click="setFilter(2,area)"
+                     v-text="area.text"
+                     v-bind:class="{'selected':area.value == curArea}">
+                </div>
+            </div>
+        </div>
+        <div class="wrapFilterList" v-if="filterListShowNum == 3">
+            <div class="list">
+                <div class="item font12"
+                     v-for="tag in tagList"
+                     v-on:click="setFilter(3,tag)"
+                     v-text="tag.text"
+                     v-bind:class="{'selected':tag.value == curTag}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list wrapDataList">
+        <div class="mb" v-if="filterListShowNum != 0" v-on:click="hideFilterPanel()">
+        </div>
+        <!--<div class="item item-divider item-divider-reset">-->
+            <!--<i class="iconfont icon-place"></i>服务网点-->
+        <!--</div>-->
+
+        <div class="item item-reset"
+             v-for="row in list"
+             v-on:click="goInfo(row)">
+            <!--<img class="leyeImg" v-bind:src="row.img"/>-->
+            <!--<img class="leyeImg" src="http://open-files.comeoncloud.net/www/jikuwifi/jubit/image/20160321/77DCB685C7CD42FDAF17ED795DA85C8F.jpg@140h_140w_1e_1c">-->
+            <div class="wrapItem">
+                <div class="titleArea" v-text="row.title"></div>
+                <p><span class="metre" v-text="row.distance|distance"></span>
+
+                    <span class="font12 whitespace address" v-text="row.address"></span></p>
+                <i class="iconfont icon-arrowright arrowright"></i>
+            </div>
+        </div>
+
+        <!--<a class="ui-form-field ui-node-img" href="http://open-files.comeoncloud.net/www/jikuwifi/jubit/image/20160321/77DCB685C7CD42FDAF17ED795DA85C8F.jpg@140h_140w_1e_1c">-->
+        <!--<span class="ui-form-field-inner">-->
+        <!--<span class="ui-node-cot">-->
+        <!--<span class="ui-node-title fz-28 display-block">临汾路专卖店</span>-->
+        <!--<span class="ui-node-date fz-24 display-block c-gray">-->
+        <!--<span>7.93km</span>-->
+        <!--上海市闸北区临汾路597号-->
+        <!--</span>-->
+        <!--</span>-->
+        <!--<span class="ui-input-operation">-->
+        <!--<i class="iconfont icon-arrowright ui-icon-24"></i>-->
+        <!--</span>-->
+        <!--</span>-->
+        <!--</a>-->
+
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm;
+    $(function () {
+        Vue.filter('distance', function (value) {
+            if (!value || value == "") return "";
+            if (value < 0) return "";
+            var m = value * 1000;
+            if (m < 10) return "<10m";
+            if (m < 1000) return Math.round(m) + "m";
+            return Math.round(value * 100) / 100 + "km";
+        })
+        vm = new Vue({
+            el: 'body',
+            data: {
+                first: 0,
+                isQQBrowser: navigator.userAgent && navigator.userAgent.indexOf('MQQBrowser') > 0,
+                list: [],
+                page: 1,
+                rows: 10,
+                total: 0,
+                layerIndex: -1,
+                keyword: '',
+                curCate: '',
+                curCateText: '所有类型',
+                curArea: '',
+                curAreaText: '所有地区',
+                curTag: '',
+                curTagText: '网点类型',
+                filterAddressShowNum:0,
+                filterListShowNum: 0,
+                cateList: [{value: '', text: '所有类型'}],
+                areaList: [
+                    {value: '', text: '所有地区'},
+                    {value: '市中心', text: '市中心'},
+                    {value: '静安', text: '静安'},
+                    {value: '徐汇', text: '徐汇'},
+                    {value: '长宁', text: '长宁'},
+                    {value: '黄浦', text: '黄浦'},
+                    {value: '浦东', text: '浦东'},
+                    {value: '杨浦', text: '杨浦'},
+                    {value: '虹口', text: '虹口'},
+                    {value: '普陀', text: '普陀'},
+                    {value: '闵行', text: '闵行'},
+                    {value: '松江', text: '松江'},
+                    {value: '奉贤', text: '奉贤'},
+                    {value: '宝山', text: '宝山'},
+                    {value: '嘉定', text: '嘉定'},
+                    {value: '青浦', text: '青浦'},
+                    {value: '金山', text: '金山'},
+                    {value: '崇明', text: '崇明'}],
+                tagList: [{ value: '', text: '网点类型' }],
+                curLongitude: 0,
+                curLatitude: 0,
+                curAddress: '',
+                curSelectLogIndex:-1,
+                localAddressList:[],
+                shareInfo: {
+                    title: '服务网点', // 分享标题
+                    desc: '上海服务网点', // 分享描述
+                    link: '', // 分享链接
+                    imgUrl: '', // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                },
+                geolocation: null,
+                geocoder:null,
+                mapObj: null,
+                isShowShade:false  //是否显示阴影
+            },
+            methods: {
+                init: init,
+                showFilterAddressPanel:showFilterAddressPanel,
+                hideFilterAddressPanel:hideFilterAddressPanel,
+                openFilterPanel: openFilterPanel,
+                hideFilterPanel:hideFilterPanel,
+                setFilter: setFilter,
+                goInfo: goInfo,
+                getDataList: getDataList,
+                getLocation: getLocation,
+                confrimSelectLogAddress:confrimSelectLogAddress,
+                closeSelectLogAddress:closeSelectLogAddress,
+                addLocalAddress:addLocalAddress,
+                deleteLocalAddress:deleteLocalAddress,
+                selectLocalAddress:selectLocalAddress,
+                toSelectMapAddress:toSelectMapAddress
+            }
+        });
+        vm.init();
+    });
+    function init() {
+        vm.layerIndex = layer.open({type: 2, shadeClose: false});
+        if (RegExp("MicroMessenger").test(navigator.userAgent)) {
+            WXInit();
+        }
+        AddressLogInit();
+        getLocation();
+        getCateList();
+        getTagList();
+    }
+    function AddressLogInit(){
+        var localAddressList = localStorage.getItem('addressList');
+        if(localAddressList != null) vm.localAddressList = JSON.parse(localAddressList);
+    }
+    function toSelectMapAddress(){
+        window.location.href="ShowMap.html?address="+encodeURIComponent(vm.curAddress) +"&longitude="+vm.curLongitude+"&latitude="+vm.curLatitude;
+    }
+    function addLocalAddress(){
+        vm.localAddressList.unshift({longitude: vm.curLongitude, latitude: vm.curLatitude,address:vm.curAddress});
+        localStorage.setItem('addressList',JSON.stringify(vm.localAddressList));
+    }
+    function deleteLocalAddress(index){
+        vm.localAddressList.splice(index,1);
+        localStorage.setItem('addressList',JSON.stringify(vm.localAddressList));
+    }
+    function selectLocalAddress(index){
+        vm.curSelectLogIndex = index;
+    }
+    function WXInit() {
+        $.ajax({
+            url: "http://" + location.host + "/serv/wxapi.ashx",
+            data: {
+                action: "getjsapiconfig",
+                url: location.href
+            },
+            dataType: "json",
+            success: function (wxapidata) {
+                if (wxapidata.appId && wxapidata.timestamp &&
+                        wxapidata.nonceStr && wxapidata.signature) {
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: wxapidata.appId, // 必填，公众号的唯一标识
+                        timestamp: wxapidata.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: wxapidata.nonceStr, // 必填，生成签名的随机串
+                        signature: wxapidata.signature,// 必填，签名，见附录1
+                        jsApiList: [
+                            "onMenuShareTimeline",
+                            "onMenuShareAppMessage",
+                            "onMenuShareQQ",
+                            "onMenuShareWeibo",
+                            "startRecord",
+                            "stopRecord",
+                            "onVoiceRecordEnd",
+                            "playVoice",
+                            "pauseVoice",
+                            "stopVoice",
+                            "onVoicePlayEnd",
+                            "uploadVoice",
+                            "downloadVoice",
+                            "chooseImage",
+                            "previewImage",
+                            "uploadImage",
+                            "downloadImage",
+                            "translateVoice",
+                            "getNetworkType",
+                            "openLocation",
+                            "getLocation",
+                            "hideOptionMenu",
+                            "showOptionMenu",
+                            "hideMenuItems",
+                            "showMenuItems",
+                            "hideAllNonBaseMenuItem",
+                            "showAllNonBaseMenuItem",
+                            "closeWindow",
+                            "scanQRCode",
+                            "chooseWXPay",
+                            "openProductSpecificView",
+                            "addCard",
+                            "chooseCard",
+                            "openCard"
+                        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+                    WXReadly();
+                }
+            },
+            error: function (errmes) {
+            }
+        })
+    }
+    function WXReadly() {
+        //重新配置
+        wx.ready(function () {
+            //重写朋友分享
+            wx.onMenuShareTimeline({
+                title: vm.shareInfo.title, // 分享标题
+                link: vm.shareInfo.link, // 分享链接
+                imgUrl: vm.shareInfo.imgUrl, // 分享图标
+                success: function () {
+                },
+                cancel: function () {
+                }
+            });
+            //重写朋友圈分享
+            wx.onMenuShareAppMessage({
+                title: vm.shareInfo.title, // 分享标题
+                desc: vm.shareInfo.desc, // 分享描述
+                link: vm.shareInfo.link, // 分享链接
+                imgUrl: vm.shareInfo.imgUrl, // 分享图标
+                type: vm.shareInfo.type, // 分享类型,music、video或link，不填默认为link
+                dataUrl: vm.shareInfo.dataUrl, // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                },
+                cancel: function () {
+                }
+            });
+            //重写QQ分享
+            wx.onMenuShareQQ({
+                title: vm.shareInfo.title, // 分享标题
+                desc: vm.shareInfo.desc, // 分享描述
+                link: vm.shareInfo.link, // 分享链接
+                imgUrl: vm.shareInfo.imgUrl, // 分享图标
+                success: function () {
+                },
+                cancel: function () {
+                }
+            });
+            //重写微博分享
+            wx.onMenuShareWeibo({
+                title: vm.shareInfo.title, // 分享标题
+                desc: vm.shareInfo.desc, // 分享描述
+                link: vm.shareInfo.link, // 分享链接
+                imgUrl: vm.shareInfo.imgUrl, // 分享图标
+                success: function () {
+                },
+                cancel: function () {
+                }
+            });
+        });
+    }
+    function getLocation() {
+        var sessionCurAddress = sessionStorage.getItem('curAddress');
+        if(sessionCurAddress == null){
+            AMap.plugin(['AMap.Geolocation'], function () {
+                vm.geolocation = new AMap.Geolocation({
+                    enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                    convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                    maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+//                showButton: true,        //显示定位按钮，默认：true
+//                buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+//                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+//                showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+//                showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+//                panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
+//                zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                    timeout: 3000          //超过10秒后停止定位，默认：无穷大
+                });
+                AMap.event.addListener(vm.geolocation, 'complete', onComplete);//返回定位信息
+                AMap.event.addListener(vm.geolocation, 'error', onError);      //返回定位出错信息
+                vm.geolocation.getCurrentPosition();
+            });
+            AMap.service('AMap.Geocoder',function(){//回调函数
+                //实例化Geocoder
+                vm.geocoder = new AMap.Geocoder();
+            })
+        }
+        else{
+            var curAddressJson = JSON.parse(sessionCurAddress);
+            vm.curAddress = curAddressJson.curAddress;
+            vm.curLongitude = curAddressJson.curLongitude;
+            vm.curLatitude = curAddressJson.curLatitude;
+            getDataList(true);
+        }
+    }
+    function onComplete(data) {
+        //解析定位结果
+        vm.curLongitude = data.position.getLng();
+        vm.curLatitude = data.position.getLat();
+        getCurAddress();
+        getDataList(true);
+    }
+    function onError(data) {    //解析定位错误信息
+        switch (data.info) {
+            case 'PERMISSION_DENIED':
+                alert('浏览器拒绝定位');
+                break;
+            case 'POSITION_UNAVAILBLE':
+                alert('浏览器无法获取当前位置');
+                break;
+            case 'NOT_SUPPORTED':
+                alert('当前浏览器不支持定位功能');
+                break;
+            case 'TIMEOUT':
+                alert('定位超时');
+                break;
+            case 'UNKNOWN_ERROR':
+            default:
+                alert('未知错误');
+                break;
+        }
+        getDataList(false);
+    }
+
+    function getCurAddress(){
+        vm.geocoder.getAddress([vm.curLongitude, vm.curLatitude], function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+                //获得了有效的地址信息:
+                 vm.curAddress = result.regeocode.formattedAddress
+            }else{
+                //获取地址失败
+                vm.curAddress = "当前地址";
+            }
+            var curAddressJson = {
+                curAddress:vm.curAddress,
+                curLongitude:vm.curLongitude,
+                curLatitude:vm.curLatitude,
+            }
+            sessionStorage.setItem('curAddress',JSON.stringify(curAddressJson));
+        });
+    }
+    function scrollLoadData() {
+        $(window).scroll(function () {
+            //当内容滚动到底部时加载新的内容
+            if (document.body.scrollTop + $(window).height() >= $('.wrapOffer').height()) {
+                //判断当没有数据的时候不加载
+                if (vm.total > vm.list.length) {
+                    getDataList(false);
+                }
+            }
+        });
+    }
+    function getDataList(isNew) {
+        if (vm.layerIndex == -1) {
+            vm.layerIndex = layer.open({type: 2, shadeClose: false});
+        }
+        if (isNew) {
+            vm.page = 1;
+            vm.list = [];
+            if (vm.first == 0) {
+                vm.first = 1;
+                scrollLoadData();
+            }
+        }
+        else {
+            vm.page++;
+        }
+//        vm.curLongitude=121.405595;
+//        vm.curLatitude=31.160545;
+        var dataobj = {
+            type: 'Post',
+            url: '/serv/api/outlets/list.ashx',
+            data: {
+                type: 'Outlets',
+                page: vm.page,
+                rows: vm.rows,
+                cate_id: vm.curCate,
+                k1: vm.curArea,
+                tags: vm.curTag,
+                keyword: vm.keyword,
+                longitude: vm.curLongitude,
+                latitude: vm.curLatitude,
+                range: 500
+            }
+        };
+        ajaxReq(dataobj, function (data) {
+            layer.close(vm.layerIndex);
+            vm.layerIndex = -1;
+            if (data.status) {
+                vm.total = data.result.totalcount;
+                for (var i = 0; i < data.result.list.length; i++) {
+                    vm.list.push(data.result.list[i]);
+                }
+            } else {
+                alert('加载网点失败');
+            }
+        }, function (data) {
+            layer.close(vm.layerIndex);
+            vm.layerIndex = -1;
+            alert('加载网点失败');
+        }, false)
+
+    }
+    //类型
+    function getCateList() {
+        var dataobj = {
+            type: 'Post',
+            url: '/serv/api/article/category/selectlist.ashx',
+            data: {
+                type: 'Outlets'
+            }
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+                vm.cateList = vm.cateList.concat(data.result);
+            } else {
+                alert('加载类型失败');
+            }
+        }, function (data) {
+            alert('加载类型失败');
+        }, false)
+    }
+    //获取业务类型
+    function getTagList() {
+        var dataobj = {
+            type: 'Post',
+            url: '/serv/api/mall/tag/list.ashx',
+            data: {
+                tag_type: 'Outlets'
+            }
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+                for (var i = 0; i < data.result.list.length; i++) {
+                    vm.tagList.push({value: data.result.list[i].tag_name, text: data.result.list[i].tag_name});
+                }
+            } else {
+                alert('加载业务类型失败');
+            }
+        }, function (data) {
+            alert('加载业务类型失败');
+        }, false)
+    }
+    function showFilterAddressPanel(){
+        if(vm.filterAddressShowNum == 1){
+            hideFilterAddressPanel();
+            return;
+        }
+        $("html").addClass("sidebar-move");
+        vm.filterAddressShowNum = 1;
+    }
+    function hideFilterAddressPanel(){
+        $("html").removeClass("sidebar-move");
+        vm.curSelectLogIndex = -1;
+        vm.filterAddressShowNum = 0;
+    }
+    function confrimSelectLogAddress(){
+        if(vm.curSelectLogIndex!=-1 && vm.curSelectLogIndex < vm.localAddressList.length){
+           var nLocalAddress =  vm.localAddressList[vm.curSelectLogIndex];
+            vm.curLongitude = nLocalAddress.longitude;
+            vm.curLatitude = nLocalAddress.latitude;
+            vm.curAddress = nLocalAddress.address;
+            getDataList(true);
+        }
+        hideFilterAddressPanel();
+    }
+    function closeSelectLogAddress(){
+        hideFilterAddressPanel();
+    }
+    function openFilterPanel(num) {
+        if(vm.filterListShowNum == num){
+            hideFilterPanel();
+            return;
+        }
+        $("html").addClass("sidebar-move");
+        vm.filterListShowNum = num;
+    }
+    function hideFilterPanel(){
+        $("html").removeClass("sidebar-move");
+        vm.filterListShowNum = 0;
+    }
+    function setFilter(num, item) {
+        if (num == 1) {
+            vm.curCate = item.value;
+            vm.curCateText = item.text;
+        }
+        else if (num == 2) {
+            vm.curArea = item.value;
+            vm.curAreaText = item.text;
+        }
+        else if (num == 3) {
+            vm.curTag = item.value;
+            vm.curTagText = item.text;
+        }
+        getDataList(true);
+        $("html").removeClass("sidebar-move");
+        vm.filterListShowNum = 0;
+    }
+    function goInfo(row) {
+        window.location.href = "Info.html?id=" + row.id;
+    }
+</script>

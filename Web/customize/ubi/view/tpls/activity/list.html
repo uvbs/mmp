@@ -1,0 +1,96 @@
+﻿<div class="layout boxMain warpActivityList ">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <img src="/customize/ubi/images/icon/icon_activity.png" class="titleIco" />
+                    <span class="titleText">活动</span>
+                </span>
+            </div>
+            <div class="boxMainText mainCenter">
+                <a href="#/activity" class="btnChangeView">切换到日历视图</a>
+                <div class="warpCateFilter" ng-show="pageData.cateList.length > 1">
+                    <div class="floatL filterTitle">
+                        <ul class="cateList">
+                            <li><span class="first">分类筛选：</span></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="floatL filterList">
+                        <ul class="cateList">
+                            <li ng-repeat="item in pageData.cateList">
+                                <a href="javascript:;" class="cate" ng-click="pageFunc.selectCate(item)" ng-class="{selected:item.categoryid == pageData.currSelectCate.categoryid}">
+                                    {{item.categoryname}}
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="warpDataList">
+                    <div class="dataItem" ng-repeat="item in pageData.activityData">
+                        <div class="content">
+                            <div class="aimg mBottom4 hand" style="background-image:url({{item.activityimage}})" ng-click="pageFunc.gotoDetail(item)">
+
+                            </div>
+                            <div class="pLeft3">
+                                <div class="atitle mBottom4">
+                                    <a target="_self" href="#/activity/{{item.activityid}}">{{item.activityname}}</a>
+                                </div>
+                                <div class="tags mBottom4">
+                                    <a href="javascript:;" class="tagItem" ng-repeat="tag in item.tags">{{tag}}</a>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="mBottom4">
+                                    <span>时间：{{item.starttimestr}}</span>
+                                </div>
+                                <div class="mBottom4">
+                                    <span>地点：{{item.address}}</span>
+                                </div>
+                                <div>
+                                    <span>已报名{{item.signcount}}人</span>
+                                </div>
+                                <div class="status" ng-class="{statusOver:item.status!=0}">
+                                    <span ng-show="item.status == 0">
+                                        进行中
+                                    </span>
+                                    <span ng-show="item.status == 1">
+                                        已结束
+                                    </span>
+                                    <span ng-show="item.status == 2">
+                                        已满员
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="warpPagination" ng-show="pageData.totalCount > pageData.pageSize">
+                    <pagination ng-model="pageData.pageIndex"
+                                total-items="pageData.totalCount"
+                                items-per-page="pageData.pageSize"
+                                max-size="5"
+                                boundary-links="true"
+                                rotate="false"
+                                previous-text="上一页"
+                                next-text="下一页"
+                                first-text="首页"
+                                last-text="尾页">
+                    </pagination>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpSearchInput">
+                <div class="form-group">
+                    <input ng-model='pageData.searchKeyword' type="search" class="form-control txtSearch" placeholder="搜索活动..." />
+                    <div class="btnSearch" ng-click="pageFunc.loadData(true)"></div>
+                </div>
+            </div>
+            <hotactivity></hotactivity>
+        </div>
+    </div>
+</div>

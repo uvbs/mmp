@@ -1,0 +1,33 @@
+<div class="wrapAddCard">
+    <div class="content">
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">开户银行名称</span>
+                <input type="text" placeholder="招商银行" ng-model="addcard.dataInfo.account_name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">银行账号</span>
+                <input type="text" placeholder="12312414" ng-model="addcard.dataInfo.bank_account">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">开户名</span>
+                <input type="text" placeholder="王二小" ng-model="addcard.dataInfo.bank_name">
+            </label>
+        </div>
+        <div class="row">
+            <div class="col pLeft70 pRight10">
+                <button class="button button-block button-positive change">
+                    取消
+                </button>
+            </div>
+            <div class="col pRight70 pLeft10">
+                <button class="button button-block button-positive change" ng-if="addcard.bankCardId=='add'" ng-mousedown="addcard.addCard()">
+                    提交
+                </button>
+                <button class="button button-block button-positive change" ng-if="addcard.bankCardId!='add'" ng-mousedown="addcard.updateBankCard()">
+                    修改
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

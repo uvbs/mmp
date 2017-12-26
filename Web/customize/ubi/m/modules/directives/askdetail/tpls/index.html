@@ -1,0 +1,24 @@
+﻿<div class="wrapArticleContent">
+    <div class="title">
+        {{pageData.article.title}}
+    </div>
+    <div class="tags">
+        <ul>
+            <li class="floatL" ng-repeat="tag in pageData.article.tags">
+                <a class="tag" href="javascript:;">{{pageData.article.tag}}</a>
+            </li>
+        </ul>
+        <div class="Clear"></div>
+    </div>
+    <div class="pubInfo">
+        <span class="userName">{{pageData.article.pubUser.userName}}</span>发表于<span class="time">{{pageData.article.createDate | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="content" ng-bind-html="pageData.article.content"></div>
+    <div class="operateBtns">
+        <i class="iconfont icon-shoucangjia" ng-click="pageFunc.favoriteArticle()" ng-hide="pageData.article.currUserIsFavorite"></i>
+        <i class="iconfont icon-shoucangjia colorBlue" ng-click="pageFunc.disFavoriteArticle()" ng-show="pageData.article.currUserIsFavorite"></i>
+        <!--
+        <i class="iconfont icon-xiaoxiguanli"></i><span class="count">100</span> -->
+    </div>
+    <comment ng-attr-optype="1"></comment>
+</div>

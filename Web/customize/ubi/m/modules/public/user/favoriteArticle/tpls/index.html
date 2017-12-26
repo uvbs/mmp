@@ -1,0 +1,43 @@
+﻿<div>
+    <!--<div class="warpHeader bar bar-header item-input-inset">
+        <label class="item-input-wrapper">
+            <input type="search" ng-model="pageData.searchKeyword" placeholder="搜索...">
+            <i class="icon iconfont icon-sousuo" ng-click="pageFunc.search()"></i>
+        </label>
+    </div>-->
+    <div class="wrapCardList wrapAskList wrapFavourite">
+        <div class="card" ng-repeat="item in pageData.dataList">
+            <div class="item">
+                <div class="row">
+                    <div class="col" ng-click="pageFunc.go(item)">
+                        <div class="mBottom6">
+                            <span class="userName">{{item.userName}}</span>
+                            <span class="time">{{item.createDate | date:'yyyy-MM-dd'}}{{item.isQuestion? '提问':'发表'}}</span>
+                            <span class="viewCount">
+                                <i class="iconfont icon-liulan">
+                                </i>
+                                {{item.pv}}
+                            </span>
+                        </div>
+                        <p ng-bind-html="item.summary" class="hand">
+                        </p>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a ng-click="pageFunc.goList(tag)" class="tag">{{tag}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.dataList.length < pageData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadFavoriteData(true)">查看更多</button>
+        </div>
+        <div ng-if="pageData.totalCount == 0">
+            没有数据
+        </div>
+    </div>
+    <backbtn></backbtn>
+</div>

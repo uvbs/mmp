@@ -1,0 +1,166 @@
+/*----------------- 验证不通过时,错误提示的样式 ---------------*/
+.t_v_ErrMsg {
+	font-size: 10pt;
+	line-height: 15px;
+	color: #B92D1E;
+	text-decoration: none;
+	padding: 4px;
+	padding-left: 22px;
+	margin: 2px;
+	margin-bottom: 0px;
+	background: url(./img/error.png) no-repeat 4px 4px;
+	background-color: #fffff7;
+	border: 1px solid #fc0;
+	border-radius: 5px;
+	
+	/*不换行*/
+	white-space: nowrap;
+	
+	/**让宽度自适应**/
+	display: inline-block;
+	z-index: 100;
+}
+
+.t_v_ErrMsg_hover {
+	background-color: #FFF5FA;
+	color: #800080;
+	border: 1px solid #F8B3D0;
+	z-index: 100;
+}
+
+/*----------------- 验证通过时,提示信息的样式 ---------------*/
+.t_v_TipMsg {
+	font-family: Tahoma, 宋体;
+	font-size: 9pt;
+	line-height: 15px;
+	font-weight: normal;
+	color: #090;
+	margin: 2px 2px 0px 2px;
+	padding: 2px 4px 2px 8px;
+	padding-left: 22px;
+	background: url(./img/success.png) no-repeat 4px 2px;
+	border-radius: 5px;
+	white-space: nowrap;
+	background-color: #efe;
+	border: 1px solid #ada;
+	z-index: 100;
+}
+
+.t_v_TipMsg_hover {
+	background-color: #dfd;
+	color: #080;
+}
+
+/*----------------- 验证不通过时,输入框的样式 ---------------*/
+.t_v_ErrInput {
+	background-color: #fffff7;
+	border: 1px solid #fc0;
+}
+
+.t_v_ErrInput:hover {
+	background-color: #FFF5FA;
+	border: 1px solid #F8B3D0;
+}
+
+.t_v_ErrInput_1 {
+	background-color: #FFF5FA;
+	border: 1px solid #F8B3D0;
+}
+
+/*----------------- 验证通过时,输入框的样式 ---------------*/
+.t_v_SucInput {
+	border: 1px solid #ada;
+	background-color: #efe;
+}
+
+.t_v_SucInput_1 {
+	border: 1px solid #ada;
+	background-color: #dfd;
+}
+/*----------------- 必输项的星号样式 ---------------*/
+.t_v_ReqStar {
+	color: #FF0000;
+	font-family: Tahoma, 宋体;
+	font-size: 10pt;
+	font-weight: normal;
+	border-radius: 5px;
+}
+
+.t_v_ComparedValue {
+	font-family: Tahoma, 宋体;
+	background-color: #D7F2C6;
+	font-size: 9pt;
+	padding: 1px 4px 1px 4px;
+	font-weight: bold;
+	border: 1px dashed #9BDF70;
+	border-radius: 5px;
+}
+
+/**
+ * 错误提示信息的关闭按钮
+ */
+.t_v_Close {
+	margin-left: 15px;
+	font-family: Verdana;
+	font-size: 12pt;
+	padding: 0px 2px;
+	cursor: pointer;
+	display: inline-block;
+	-webkit-text-size-adjust: none;
+	color: #eb0;
+}
+
+.t_v_Close:hover {
+	color: #9932CC;
+}
+
+.t_v_Close_hover {
+	color: #9932CC;
+}
+/**
+ * 成功提示信息的关闭按钮
+ */
+.t_v_CloseTip {
+	color: #090;
+}
+
+.t_v_CloseTip:hover {
+	color: #0d0;
+}
+
+
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+.animated.hinge {
+  animation-duration: 2s;
+}
+.animated.flipOutX,.animated.flipOutY,.animated.bounceIn,.animated.bounceOut {
+  animation-duration: .75s;
+}
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+.swing {
+  transform-origin: top center;
+  animation-name: swing;
+}

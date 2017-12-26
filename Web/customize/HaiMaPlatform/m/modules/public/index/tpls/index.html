@@ -1,0 +1,107 @@
+﻿<div class="wrapIndex">
+    <div class="wrapAd">
+        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="6" class="wrapAd">
+            <li ng-repeat="img in pageIndexData.adImgs">
+                <img ng-src="{{img.img}}" alt="{{img.title}} ">
+                <div class="leftTile">标题标题标题</div>
+            </li>
+        </ul>
+        <div rn-carousel-indicators ng-if="pageIndexData.adImgs.length > 1" slides="pageIndexData.adImgs" rn-carousel-index="carouselIndex" class="imgIndex"></div>
+    </div>
+    <div class="wrapMenuList">
+        <div class="row">
+            <div class="col">
+                <div class="content regulations" ng-click="pageIndexFunc.go('/m#/newsList/1_0_3_113_0_1_0')">
+                    <div>
+                        <i class="iconfont icon-zhishiku"></i>
+                    </div>
+                    <div>
+                        <span class="colorLightBlack">知识库</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="content news" ng-click="pageIndexFunc.go('#/onlineClass')">
+                    <div>
+                        <i class="iconfont icon-zaixianketang"></i>
+                    </div>
+                    <div>
+                        <span class="colorLightBlack">在线课堂</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="content case" ng-click="pageIndexFunc.go('/m#/newsList/1_1_3_114_1_0_1')">
+                    <div>
+                        <i class="iconfont icon-xianxiajixun"></i>
+                    </div>
+                    <div>
+                        <span class="colorLightBlack">线下集训</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="content master" ng-click="pageIndexFunc.go('#/eliteStyle')">
+                    <div>
+                        <i class="iconfont icon-jingyingfengcai"></i>
+                    </div>
+                    <div>
+                        <span>精英风采</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="content openVideo">
+                    <div>
+                        <i class="iconfont icon-jingyingdasai1"></i>
+                    </div>
+                    <div>
+                        <span>精英大赛</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="content update">
+                    <div>
+                        <i class="iconfont icon-jifenshangcheng"></i>
+                    </div>
+                    <div>
+                        <span>积分商城</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapTabTitle">
+        <div class="row">
+            <div class="col fontSize barTitle" ng-class="{selected:pageIndexData.currSelectTabIndex==item.id}" ng-repeat="item in pageIndexData.dataViews" ng-click="pageIndexFunc.tabClick(item)">
+                {{item.name}}
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapCardList wrapNewsList">
+        <div class="card" ng-repeat="item in pageIndexData.dataViews[pageIndexData.currSelectTabIndex-1].list" ng-click="pageIndexData.goDetail(item.id)">
+            <div class="Content">
+                <div class="leftContent">
+                    <img class="avatar" ng-src="{{item.imgSrc}}">
+                </div>
+                <div class="rightContent">
+                    <h4>
+                        {{item.title}}
+                    </h4>
+                    <summary>{{item.summary}}</summary>
+                    <span class="relativeTop4">{{item.createDate}}</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageIndexData.dataViews[pageIndexData.currSelectTabIndex-1].list.length<pageIndexData.dataViews[pageIndexData.currSelectTabIndex-1].totalCount">
+            <button class="button button-clear" ng-click="pageIndexFunc.loadData()">查看更多</button>
+        </div>
+    </div>
+
+    <footermenu ng-attr-select="0"></footermenu>
+</div>

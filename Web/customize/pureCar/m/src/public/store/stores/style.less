@@ -1,0 +1,76 @@
+.storeStoresCtrl {
+  .headerBar {
+    width: 100%;
+    height: 50px;
+    background: white;
+    border-bottom: 1px solid #e6e6e6;
+    position: relative;
+
+    & > * {
+      display: inline-block;
+    }
+    .icon-fenlei {
+      line-height: 50px;
+      vertical-align: middle;
+      font-size: 44px;
+      color: @colorPrimary;
+      padding: 0 10px;
+      position: absolute;
+      left: 0;
+    }
+    .searchBox {
+      position: relative;
+      padding-left: 70px;
+      box-sizing: border-box;
+      width: 100%;
+      padding-right: 10px;
+
+      .inputContainer {
+        height: 40px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 5px;
+        border: 1px solid @colorPrimary;
+        border-radius: 8px;
+        padding-right: 60px;
+
+        input {
+          width: 100%;
+          height: 100%;
+          border: none;
+          box-sizing: border-box;
+          padding: 5px;
+        }
+      }
+      .iconfont {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 32px;
+        line-height: 50px;
+        color: @colorPrimary;
+        padding: 0 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .list > .insetBlock {
+    padding-bottom: 0;
+    & > .floatL {
+      width: 60%;
+      & > div {
+        width: 100%;
+      }
+      .storeName {
+        font-size: 16px;
+      }
+    }
+    & > .floatR {
+      box-sizing: border-box;
+      width: 80px;
+      padding: 8px;
+      text-align: center;
+      margin-top: 4px;
+    }
+  }
+}

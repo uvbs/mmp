@@ -1,0 +1,229 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}body{font-family:Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;}.page-url{margin-top:10px;border-top:1px solid #E5E5E5;text-align:center;}.page-url-link{font-size:14px;line-height:2.5;text-decoration:none;text-shadow:0 1px white;-webkit-text-shadow:0 1px #fff;-moz-text-shadow:0 1px #fff;color:#CACACA;}.fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}.fn-clear{zoom:1;}
+
+ *{margin:0; padding:0;}
+body{font-size:12px; font-family:"ËÎÌå";}
+#con{width:100%; height:100%;text-align:center;}
+#con_1 #con_v{width:530px; padding:520px 0 0 60px;font-size:24px; line-height:40px; font-family:"Î¢ÈíÑÅºÚ";text-align:left;}
+#con_1 h2{width:530px; font-size:24px;line-height:40px; font-family:"Î¢ÈíÑÅºÚ"; font-weight:normal;text-align:right; overflow:hidden;}
+#con_1 #con_11{width:392px;margin:20px auto;}
+
+
+
+
+#checked {
+	font-family: "Lucida Grande", Verdana, Arial, sans-serif, Helvetica;
+	width: 300px;
+	position: absolute;left:0px;top:0px;
+	margin: 0px auto;
+}
+.labelBox {
+	margin-bottom: 20px;
+	background: -webkit-linear-gradient(19% 75% 90deg,#3095C7, #14539C); 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#14539C), to(#3095C7));
+	background: -moz-linear-gradient(19% 75% 90deg,#3095C7, #14539C); 
+	background: -ms-linear-gradient(19% 75% 90deg,#3095C7, #14539C); 
+	background: -o-linear-gradient(19% 75% 90deg,#3095C7, #14539C); 
+	background: linear-gradient(19% 75% 90deg,#3095C7, #14539C); 
+	border-radius: 4px;
+	border: 1px solid #555555;
+	width: 80px;
+	position: relative;
+	height: 32px;
+}
+
+.labelBox::before,
+.labelBox::after {
+	content:"ON";
+	padding-left: 9px;
+	line-height: 32px;
+	color: #fff;
+	font-size: 14px;
+	text-shadow: #093b5c 0 -1px 1px;
+}
+.labelBox::after {
+	content:"OFF";
+	padding-left: 12px;
+}
+.check { 
+	display: block;
+	width: 40px;
+	height: 30px;
+	border-radius: 3px;
+	background: #fff -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A1A1A1), to(#FFFFFF));
+	background: -webkit-linear-gradient(19% 75% 90deg,#FFFFFF, #A1A1A1);
+	background: -moz-linear-gradient(19% 75% 90deg,#FFFFFF, #A1A1A1);
+	background: -ms-linear-gradient(19% 75% 90deg,#FFFFFF, #A1A1A1);
+	background: -o-linear-gradient(19% 75% 90deg,#FFFFFF, #A1A1A1);
+	background: -moz-linear-gradient(19% 75% 90deg,#FFFFFF, #A1A1A1);
+	border: 1px solid #e5e5e5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+input[type=checkbox] {
+	border: 0 none !important;
+	clip: rect(1px,1px,1px,1px);
+	height: 1px !important;
+	overflow: hidden !important;
+	position: absolute !important;
+	width: 1px !important;
+}
+@-webkit-keyframes labelON {
+	0% {
+		top: 0px;
+    left: 0px;
+	}
+	
+	100% { 
+		top: 0px;
+    left: 38px;
+	}
+}
+
+@-moz-keyframes labelON {
+	0% {
+		top: 0px;
+    left: 0px;
+	}	
+	100% { 
+		top: 0px;
+    left: 38px;
+	}
+}
+@-o-keyframes labelON {
+	0% {
+		top: 0px;
+    left: 0px;
+	}
+	
+	100% { 
+		top: 0px;
+    left: 38px;
+	}
+}
+
+@-ms-keyframes labelON {
+	0% {
+		top: 0px;
+    left: 0px;
+	}	
+	100% { 
+		top: 0px;
+    left: 38px;
+	}
+}
+
+@keyframes labelON {
+	0% {
+		top: 0px;
+    left: 0px;
+	}	
+	100% { 
+		top: 0px;
+    left: 38px;
+	}
+}
+@-webkit-keyframes labelOFF {
+	0% {
+		top: 0px;
+    left: 38px;
+	}
+	
+	100% { 
+		top: 0px;
+    left: 0px;
+	}
+}
+@-moz-keyframes labelOFF {
+	0% {
+		top: 0px;
+    left: 38px;
+	}
+	
+	100% { 
+		top: 0px;
+    left: 0px;
+	}
+}
+@-o-keyframes labelOFF {
+	0% {
+		top: 0px;
+    left: 38px;
+	}
+	
+	100% { 
+		top: 0px;
+    left: 0px;
+	}
+}
+@-ms-keyframes labelOFF {
+	0% {
+		top: 0px;
+    left: 38px;
+	}
+	
+	100% { 
+		top: 0px;
+    left: 0px;
+	}
+}
+@keyframes labelOFF {
+	0% {
+		top: 0px;
+   	left: 38px;
+	}
+	
+	100% { 
+		top: 0px;
+   	left: 0px;
+	}
+}
+input[type=checkbox]:checked + label.check {
+	top: 0px;
+	left: 38px;	
+	-webkit-animation: labelON 0.2s ease-in 0s 1;
+	-moz-animation: labelON 0.2s ease-in 0s 1;
+	-o-animation: labelON 0.2s ease-in 0s 1;
+	-ms-animation: labelON 0.2s ease-in 0s 1;
+	animation: labelON 0.2s ease-in 0s 1;
+  box-shadow: #244766 -1px 0px 3px;
+}
+
+input[type=checkbox] + label.check {
+	top: 0px;
+	left: 0px;
+	-webkit-animation: labelOFF 0.2s ease-in 0s 1;
+	-moz-animation: labelOFF 0.2s ease-in 0s 1;
+	-o-animation: labelOFF 0.2s ease-in 0s 1;
+	-ms-animation: labelOFF 0.2s ease-in 0s 1;
+	animation: labelOFF 0.2s ease-in 0s 1;
+	box-shadow: #244766 1px 0px 3px;		
+}
+.zq2 .info {color: #fff;}
+label.info {
+	position: absolute;
+	color: #000;
+	top:0px;
+	left: 20px;
+	line-height: 32px;
+	width: 160px;font-size:18px;
+}
+input
+{
+     border:#ccc 1px solid;  
+        border-radius: 5px; /* css 3±ê×¼ */  
+        -moz-border-radius: 5px;  /* mozilla */  
+        -webkit-border-radius: 5px;  /* webkit */  
+    
+    
+}
+textarea
+{
+     border:#ccc 1px solid;  
+        border-radius: 5px; /* css 3±ê×¼ */  
+        -moz-border-radius: 5px;  /* mozilla */  
+        -webkit-border-radius: 5px;  /* webkit */  
+    
+}
+
+

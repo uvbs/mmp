@@ -1,0 +1,1 @@
+(function(e){e.fn.bottomLoad=function(t,n){var r=e(this);if(typeof t=="function"){var n=t;t=0}return e(window).bind("scroll",function(){var i=r.outerHeight()+t-e(window).height(),s=e("body")[0].scrollTop,o=i-s;o<=10&&o>=0&&typeof n=="function"&&(e(window).unbind("scroll"),n())}),e(this)}})(jQuery);

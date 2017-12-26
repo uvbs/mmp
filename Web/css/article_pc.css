@@ -1,0 +1,265 @@
+﻿
+a{text-decoration : none}
+.appMsgList 
+.msgContentWrap{background-color:#fefefe}
+.appMsgList .msgListContainer{padding:0 5px}
+.appMsgList .msgOpBar{position:absolute;top:0;right:0}
+.appMsgList .msgOpBar .icon18{margin-left:10px}
+.appMsgList .appMsgItem{padding:20px 0;position:relative}
+.appMsgList .singleMsgList .msgOpBar{margin-top:10px}
+.appMsgList .singleMsgList .appMsgItem{ border-bottom:1px solid #ddd }
+.appMsgList .mutilMsgList .msgContentWrap
+{
+box-shadow:0 1px 1px #ddd;
+-moz-box-shadow:0 1px 1px #ddd;
+-webkit-box-shadow:0 1px 1px #ddd;
+border:1px solid #d3d3d3;
+margin-top:10px
+}
+.appMsgList .mutilMsgList .msgBox{padding:5px}
+.appMsgList .mutilMsgList .msgBox .appmsgContentArea{width:470px}
+.appMsgList .mutilMsgList .msgBox .appmsgImgArea{width:204px;height:134px}
+.appMsgList .mutilMsgList .msgBox .appmsgImgArea img{width:204px;height:134px}
+.appMsgList .mutilMsgList .otherMsgBox{padding:5px;border-top:1px solid #d3d3d3}
+.appMsgList .mutilMsgList .msgOpBar{margin-top:5px}
+.appMsgList button{margin:0}
+.appMsgList button.msgAddBtn{margin-right:0}
+.appMsgList .btnGreen{margin-right:5px}
+.appMsgList .appMsgEditItem{box-shadow:0 1px 1px #ddd;
+                            -moz-box-shadow:0 1px 1px #ddd;
+                            -webkit-box-shadow:0 1px 1px #ddd;
+                            border-radius:3px;
+                            -moz-border-radius:3px;
+                            -webkit-border-radius:3px;
+                            border:1px solid #d3d3d3;
+                            background-color:#EEE;
+                            background-color:#f4f4f4;
+                            background-image:-moz-linear-gradient(top,#f9f9f9 0,#f0f0f0 100%);background-image:-webkit-gradient(linear,0 0,0 100%,from(#f9f9f9),to(#f0f0f0));background-image:-webkit-linear-gradient(top,#f9f9f9 0,#f0f0f0 100%);
+                            background-image:-o-linear-gradient(top,#f9f9f9 0,#f0f0f0 100%);background-image:linear-gradient(to bottom,#f9f9f9 0,#f0f0f0 100%);background-color:#f4f4f4;background-image:-moz-linear-gradient(top,#f9f9f9 0,#f0f0f0 100%);background-image:-webkit-gradient(linear,0 0,0 100%,from(#f9f9f9),to(#f0f0f0));
+                            background-image:-webkit-linear-gradient(top,#f9f9f9 0,#f0f0f0 100%);background-image:-o-linear-gradient(top,#f9f9f9 0,#f0f0f0 100%);
+                            background-image:linear-gradient(to bottom,#f9f9f9 0,#f0f0f0 100%);padding:5px;margin:15px 0}
+.appMsgList .appMsgEditItem .capital{cursor:pointer;padding:5px 10px}
+.appMsgList .appMsgEditItem .capital h4{width:400px}
+.appMsgList .appMsgEditItem .capital a{width:30px}
+.appMsgList .appMsgEditItem label{width:34px;height:30px;
+                                  line-height:30px;
+                                  text-align:right;
+                                  text-align:right;
+                                  padding:0 8px 0 2px}
+.appMsgList .appMsgEditItem .descArea a{display:block;
+                                        display:block;
+                                        margin-left:45px
+                                        }
+.appMsgList .appMsgEditItem .descArea label,.appMsgList .appMsgEditItem .descArea div{display:none;display:none;display:none}
+.appMsgList .appMsgEditItem .descAreaShow a{display:none;display:none;display:none}
+.appMsgList .appMsgEditItem .descAreaShow label,.appMsgList .appMsgEditItem .descAreaShow div{display:block;display:block}
+.appMsgList .appMsgEditItem .inputArea{width:662px}
+.appMsgList .appMsgEditItem .inputArea .title,.appMsgList .appMsgEditItem .inputArea .desc,.appMsgList .appMsgEditItem .inputArea .url,.appMsgList .appMsgEditItem .inputArea .appMsgContent{font-size:14px;font-size:14px;color:#666;color:#666;width:640px;min-width:640px;max-width:640px;padding:2px 10px;border:1px solid #d3d3d3}
+.appMsgList .appMsgEditItem .inputArea .desc{height:60px}
+.appMsgList .appMsgEditItem .inputArea .appMsgContent{height:150px}
+.appMsgList .appMsgEditItem .funcBar{width:640px;padding:5px 10px;border:1px solid #d3d3d3;background-color:#FFF;position:relative;position:relative}
+
+.appMsgList .appMsgEditItem .funcBar .iconImgSelect{height:28px;line-height:28px;margin-right:25px;font-size:14px;font-size:14px;color:#666;color:#666}
+.appMsgList .appMsgEditItem .funcBar .upload-btn{display:inline-block;line-height:28px;font-size:14px;font-size:14px;color:#666;color:#666;background-position:0 -251px}
+.appMsgList .appMsgEditItem .preview{border:1px solid #d3d3d3;border-top:0;background-color:#FFF;padding:5px;width:650px}
+.appMsgList .appMsgEditItem .detail,.appMsgList .appMsgEditItem .pickup{display:none;display:none;display:none}
+.appMsgList .appMsgEditing .detail{display:block;display:block}
+.appMsgList .appMsgEditing .pickup{display:inline-block}
+.appMsgList .appMsgEditing h4,.appMsgList .appMsgEditing .unfold{display:none;display:none;display:none}
+.msgSendPage .cLine{margin-bottom:20px}
+.msgSendPage .content-disabled select{background-image:none}
+.msgSendPage .content-disabled .chooseMedia{cursor:default}
+.msgSendPage .content-disabled .chooseMedia:hover{background:0}
+.msgSendPage .content-disabled .chooseMedia.selected:hover{background-color:#eaeaea}
+.msgSendPage .content-disabled .functionBar,.msgSendPage .content-disabled .editArea{background-color:#efefef}
+.msgSendPage .content-disabled .iconEmotion{cursor:default;color:#6d6d6d}
+.msgSendPage .content-disabled .iconEmotion:hover{color:#6d6d6d;cursor:default;text-decoration:none}
+.appMsgPreview .txt{padding:5px;border:1px solid #AAA;width:306px;line-height:24px;height:24px;color:#000;color:#000;margin-top:5px;margin-bottom:5px}
+.msg-item-wrapper .pv-tips
+{
+position:absolute;
+right:0;top:0;
+min-width:100px;
+line-height:1.8em;
+background:black;
+z-index:100;
+opacity:.7;
+filter:alpha(opacity=70);
+border-radius:5px;
+text-align:center;
+color:white;
+font:14px Arial;
+line-height:1.8em;
+font-weight:bold;
+padding:.2em 1em;
+display:none
+                           
+ }
+
+
+.msg-item-wrapper.msg-opr-show .pv-tips{display:block}
+
+.msgSenderPlugin .msg-item-wrapper{margin-bottom:2px}
+
+.msg-item-wrapper{position:relative;
+                  margin-top:70px;
+                  margin-bottom:26px;
+                
+                  background-color:#fff;
+                  box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  -moz-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  border-radius:30px;
+                  -webkit-border-radius:15px;
+                  -moz-border-radius:5px;
+                  margin-left:3%;
+                  margin-right:3%;
+
+border:#909090 1px solid;
+background:#fff;
+color:#333;
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";  /* For IE 8 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');  /* For IE 5.5 - 7 */
+-moz-box-shadow: 2px 2px 10px #909090;/* for firefox */
+-webkit-box-shadow: 2px 2px 10px #909090;/* for safari or chrome */
+box-shadow:2px 2px 10px #909090;/* for opera or ie9 */
+                  
+                  }
+                  
+                  .msg-item-wrappertop{position:relative;
+                  margin-top:20px;
+                  margin-bottom:26px;
+                
+                  background-color:#fff;
+                  box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  -moz-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  border-radius:30px;
+                  -webkit-border-radius:15px;
+                  -moz-border-radius:5px;
+                  margin-left:3%;
+                  margin-right:3%;
+
+border:#909090 1px solid;
+background:#fff;
+color:#333;
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";  /* For IE 8 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');  /* For IE 5.5 - 7 */
+-moz-box-shadow: 2px 2px 10px #909090;/* for firefox */
+-webkit-box-shadow: 2px 2px 10px #909090;/* for safari or chrome */
+box-shadow:2px 2px 10px #909090;/* for opera or ie9 */
+                  
+                  }
+                  
+.progressBar { 
+
+background: white url(image/loading.gif) no-repeat 10px 10px; 
+display: block; 
+width: 28px; 
+height: 28px; 
+margin-left:45%;
+display:none;
+} 
+
+
+
+.msg-item
+{
+    
+          border-bottom:1px solid #ccc;
+          box-shadow:0 2px 2px rgba(0,0,0,0.1);
+          -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+          -moz-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+          border-radius:5px 5px 0 0;
+          -webkit-border-radius:5px 5px 0 0;
+          -moz-border-radius:5px 5px 0 0;
+        
+          
+          }
+
+.msg-t
+{
+    margin:6px 14px 0;line-height:28px;max-height:56px;overflow:hidden;font-size:16px;font-weight:400;letter-spacing:1px
+ }
+.msg-t a{color:#333}
+.msg-t1{margin:6px 14px 0;line-height:28px;max-height:56px;font-size:16px;font-weight:400;letter-spacing:1px}
+.msg-t1 a{color:#333}
+
+.cover .msg-t a{color:#fff}
+
+.msg-meta{margin:0 14px 6px;font-size:13px}
+
+.msg-text{margin:0 14px;font-size:14px;line-height:1.6;padding-bottom:8px;text-align:left}
+
+.multi-msg .msg-meta{margin:0 14px;line-height:28px}
+
+.cover{margin:0 14px 12px;position:relative;font-size:0;height:160px;overflow:hidden}
+.cover .msg-t{position:absolute;
+              bottom:0;
+              width:100%;
+              overflow:hidden;
+              margin:0;
+              color:#fff;
+              background:rgba(0,0,0,0.6)!important;
+              filter:progid:dximagetransform.microsoft.gradient(GradientType=0,startColorstr='#82000000',endColorstr='#82000000')}
+.cover .i-title{display:block;padding-left:4px;padding-right:4px}
+.cover img{width:100%}
+.cover .default-tip{font-size:22px;color:#aaa;line-height:160px}
+.sub-msg-item{padding:12px 14px;overflow:hidden;zoom:1;border-top:1px solid #c6c6c6}
+.sub-msg-item .msg-t
+{
+   
+                     margin-right:85px;
+                     margin-top:0;
+                     padding-left:4px;
+                     padding-top:12px;
+                     line-height:24px;
+                     max-height:48px;
+                     font-size:14px;
+                     overflow:hidden}
+.thumb{float:right;font-size:0}
+.thumb img{width:150px;height:150px;border:1px solid #b2b8bd}
+
+.msg-mask{display:none;position:absolute;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6)!important;filter:progid:dximagetransform.microsoft.gradient(GradientType=0,startColorstr='#60000000',endColorstr='#60000000')}
+.msg-selected-tip{width:100%;height:100%;position:absolute;background:transparent url('../images/selected-icon.png') no-repeat 50% 50%}
+.msg-selected .msg-mask{display:block}
+.msg-hover-mask{display:none;position:absolute;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6)!important;filter:progid:dximagetransform.microsoft.gradient(GradientType=0,startColorstr='#60000000',endColorstr='#60000000')}
+.msg-hover .msg-hover-mask{display:block}
+.sub-msg-opr{top:0;left:100%;height:100%;width:100%;background-color:#e5e5e5;background:rgba(229,229,229,0.85);filter:progid:dximagetransform.microsoft.gradient(GradientType=0,startColorstr='#85E5E5E5',endColorstr='#85E5E5E5') alpha(opacity=85)}
+
+.msg-item-wrapper-expert
+{
+
+
+position:relative;
+                  margin-top:10px;
+                  margin-bottom:10px;
+                  background-color:#fff;
+                  box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  -moz-box-shadow:0 2px 2px rgba(0,0,0,0.1);
+                  border-radius:30px;
+                  -webkit-border-radius:15px;
+                  -moz-border-radius:5px;
+                  margin-left:2%;
+                  margin-right:2%;
+
+border:#909090 1px solid;
+background:#fff;
+color:#333;
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";  /* For IE 8 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');  /* For IE 5.5 - 7 */
+-moz-box-shadow: 2px 2px 10px #909090;/* for firefox */
+-webkit-box-shadow: 2px 2px 10px #909090;/* for safari or chrome */
+box-shadow:2px 2px 10px #909090;/* for opera or ie9 */
+    
+    
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<div class="zcSelectData">
+    <div class="divAddProduct" ng-click="vmFunc.showDataDiv()">
+        新增商品
+    </div>
+    <div class="selectResult">
+    	<ul class="selectResultUl">
+            <li class="selectResultLi" data-id="{{product.product_id}}" ng-if="goodList.length>0" ng-repeat="product in goodList">
+                <img class="selectResultImg" ng-src="{{product.img_url}}" />
+                <img class="selectResultDel" src="/img/delete.png" ng-click="vmFunc.delLi(product)">
+            </li>
+    	</ul>
+    </div>
+
+    <div class="dialogSelectDataDiv" ng-if="vm.showDataDiv">
+        <div class="headDiv">
+            <span>商品</span>
+            <svg class="icon close" aria-hidden="true" ng-click="vm.showDataDiv=false">
+                <use xlink:href="#icon-cha"></use>
+            </svg>
+        </div>
+        <div class="searchDiv">
+            <form ng-submit="vmFunc.search()">
+                <select class="serchSelect" ng-model="vm.cate" ng-options="model.cate_id as model.cate_name for model in cates" ng-change="vmFunc.search()">
+                    <option value="">--分类--</option>
+                </select>
+                <select class="serchSelect" ng-model="vm.tag" ng-options="model as model for model in tags" ng-change="vmFunc.search()">
+                    <option value="">--标签--</option>
+                </select>
+                <input type="text" class="txtKeyword" placeholder="ID/名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.search()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '商品'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-50 colHead">名称</div>
+                <div class="col-20 colHead">价格</div>
+                <div class="col-15 colHead"></div>
+            </div>
+        </div>
+        <div class="listSelectDiv">
+            <div class="row rowList" ng-repeat="mall in vm.data track by $index"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5"><img ng-src="{{mall.img_url}}" width="50" height="50"/></div>
+                <div class="col-50 colList height60">
+                    <span class=" textOverflow3" title="{{mall.title}}" ng-bind="mall.title"></span>
+                </div>
+                <div class="col-20 colList height60 pTop15">
+                    <span class="" title="{{mall.price| currency:'￥'}}" ng-bind="mall.price| currency:'￥'"></span>
+                </div>
+                <div class="col-20 colList height60 pTop15">
+                    <button type="button" class="button button-small button-calm" ng-if="vm.select_id_list.indexOf(mall.product_id)<0" ng-click="vmFunc.select(mall)">
+                        选择
+                    </button>
+                    <button type="button" class="button button-small button-assertive" ng-if="vm.select_id_list.indexOf(mall.product_id)>=0" ng-click="vmFunc.select(mall)">
+                        取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogSelectDataBgDiv" ng-if="vm.showDataDiv">
+        &nbsp;
+    </div>
+</div>

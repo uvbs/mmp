@@ -1,0 +1,63 @@
+<div class="layout boxMain warpApplyman ">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle clear">
+                <span class="warpAskaleft">
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span class="hand" ng-click="go('#/userspace/'+pageData.id)">个人中心</span> > 申请律师</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-3 inforRightBot">
+        </div>
+    </div>
+    <div class="warpBig">
+        <div class="applyMainCon">
+            <div class="applyMainOne">
+                <div class="topA">
+                    申请律师说明
+                    <span></span>
+                </div>
+                <div class="applyConA">
+                    <h4>1.完善用户基本资料</h4>
+                    <p ng-class="{colorRed:!pageData.data.isOk}">
+                        请先在编辑个人资料中，完善个人资料，必须填写：手机，座机，公司（律师事务所），公司地址。
+                    </p>
+                    <h4>2.完善本页资料</h4>
+                    <p>
+                        填写身份证，上传律师执业证。
+                    </p>
+                </div>
+            </div>
+            <div class="form-horizontal" ng-if="pageData.data.isOk">
+                <div class="form-group loginTable">
+                    <label for="inputPassword3" class="col-xs-2 control-label">身份证：</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" required ng-model="pageData.data.idCardNo" placeholder="请输入身份证号码">
+                    </div>
+                </div>
+                <div class="form-group loginTable">
+                    <label for="inputEmail3" class="col-xs-2 control-label one">执业证：</label>
+                    <div class="col-xs-4 two">
+                        <a ng-href="{{pageData.data.lawyerLicensePhoto}}" target="_blank"><img alt="" src="{{pageData.data.lawyerLicensePhoto}}"></a>
+                    </div>
+                    <div class="col-xs-6 userImg">
+                        <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()">上传执业证照片</div>
+                        <input id="fileUserPhoto" class="hidden" type="file" nv-file-select="" uploader="uploader" />
+                        <p>
+                            支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="applyB" ng-if="pageData.data.isOk">
+                <button class="btn btn-primary caseExBot" ng-click="pageFunc.submitApply()">申请律师</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>

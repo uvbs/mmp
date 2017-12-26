@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>网点详情</title>
+    <link href="http://file.comeoncloud.net/lib/ionic/ionic.css" rel="stylesheet" />
+    <link href="http://file.comeoncloud.net/lib/layer.mobile/need/layer.css" rel="stylesheet" />
+    <link href="http://file.comeoncloud.net/css/global-m.css" rel="stylesheet" />
+    <link href="Outlets.css" rel="stylesheet" />
+    <script src="http://file.comeoncloud.net/lib/zepto/zepto.min.js"></script>
+    <script src="http://file.comeoncloud.net/lib/vue/vue.min.js"></script>
+    <script src="http://file.comeoncloud.net/lib/layer.mobile/layer.m.js" charset="utf-8"></script>
+    <script src="http://file.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.min.js" charset="utf-8"></script>
+    <script src="http://file.comeoncloud.net/Scripts/global-m.js" charset="utf-8"></script>
+    <script src="http://file.comeoncloud.net/Scripts/StringBuilder.Min.js" charset="utf-8"></script>
+</head>
+<body v-bind:class="{wrapQQBrowser:isQQBrowser}">
+<div class="wrapOffer">
+    <div class="wrapInfo">
+        <div class="list mBottom0">
+            <div class="item item-divider item-reset-detail">
+                <h2 class="whitespace" v-text="info.title"></h2>
+                <p><span class="font12 whitespace" v-text="info.tags"></span></p>
+            </div>
+        </div>
+        <div class="list">
+            <div class="item" v-if="info.img!=''&&info.img!=null">
+                <img class="full-image" v-bind:src="info.img">
+            </div>
+            <div class="item item-icon-left item-icon-right item-reset-two font14" v-if="info.longitude && info.longitude>0"
+               v-on:click="showMap()">
+                <i class="icon iconfont icon-place place"></i>
+                <span class="color5BD5BE" v-text="info.address"></span>
+                <i class="icon iconfont icon-arrowright arrow"></i>
+            </div>
+            <div class="item item-icon-left item-icon-right item-reset-two" v-if="info.k4!=''">
+                <i class="icon iconfont icon-leftphoneshi place"></i>
+                <a class="color5BD5BE" href="tel:{{info.k4}}" v-text="info.k4"></a>
+                <!--<a class="color5BD5BE" href="tel:13365923991">13365923991</a>-->
+            </div>
+        </div>
+        <div class="list">
+            <div class="item item-reset-service">
+                服务时间
+            </div>
+            <div class="item whitespace font14 item-reset-main" v-text="info.server_time">
+
+            </div>
+        </div>
+        <div class="list">
+            <div class="item item-reset-service">
+                主要办理业务
+            </div>
+            <div class="item whitespace font14 item-reset-main" v-text="info.server_msg">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm;
+    $(function () {
+        vm = new Vue({
+            el: 'body',
+            data: {
+                isQQBrowser: navigator.userAgent && navigator.userAgent.indexOf('MQQBrowser') > 0,
+                info: {},
+                id:GetParm('id')
+            },
+            methods: {
+                init: init,
+                showMap:showMap
+            }
+        });
+        vm.init();
+    });
+    function init() {
+        loadInfo();
+    }
+    function initMapComponent(){
+    }
+    function loadInfo(){
+        var dataobj = {
+            type: 'Post',
+            url: '/serv/api/outlets/get.ashx',
+            data: {
+                id: vm.id
+            }
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+                vm.info = data.result;
+            } else {
+                alert('加载网点失败');
+            }
+        }, function (data) {
+            alert('加载网点失败');
+        })
+    }
+    function showMap(){
+        var strHtml = new StringBuilder();
+        strHtml.AppendFormat('http://m.amap.com/navi/?dest={0},{1}', vm.info.longitude, vm.info.latitude)
+        strHtml.AppendFormat('&destName={0}', encodeURIComponent(vm.info.title));
+        if(vm.info.k4 && vm.info.k4!="null")strHtml.AppendFormat('||电话：{0}', encodeURIComponent(vm.info.k4));
+        if(vm.info.address && vm.info.address!="null")strHtml.AppendFormat('||地址：{0}', encodeURIComponent(vm.info.address));
+        strHtml.AppendFormat('&key={0}',zymmp.gaodeCompentKey);
+        window.location.href = strHtml.ToString();
+    }
+</script>

@@ -1,0 +1,625 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>新闻详情</title>
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/swfobject_modified.js" type="text/javascript"></script>
+    <!--引入 fontawesom-4.2.0-->
+    <link rel="stylesheet" type="text/css" href="plugin/wangEditor/fontawesome-4.2.0/css/font-awesome.min.css">
+    <link href="plugin/wangEditor/fontawesome-4.2.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css" />
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="fontawesome-4.2.0/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--引入wangEditor.css-->
+    <link href="plugin/wangEditor/css/wangEditor-1.1.0-min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function openPopup() {
+            $('#filter').css("display", "block");
+            $('#pageone').css("display", "block");
+
+        }
+        function closePopup() {
+            $('#filter').css("display", "none");
+            $('#pageone').css("display", "none");
+
+        }
+        function open_userPop(obj) {
+            $("#" + obj).css("display", "block");
+        }
+        function close_userPop(obj) {
+            $("#" + obj).css("display", "none");
+            
+
+        }
+        function open_MoreBack() {
+//            $("#B-user-3").css("display", "block");
+        }
+    </script>
+</head>
+<body>
+    <div class="top">
+        <div class="layout">
+            <div class="logo">
+                <img src="images/logo.png" />
+            </div>
+            <div class="topNav1">
+                <table>
+                    <tr>
+                        <td align="right" style="width: 350px">
+                            <div class="form_input2 radius6">
+                                <table>
+                                    <tr>
+                                        <td valign="middle" align="center" style="width: 30px">
+                                            <img src="images/email.png" style="width: 20px; vertical-align: middle" />
+                                        </td>
+                                        <td valign="middle">
+                                            <input type="text" name="user" id="Text1" value="" placeholder="输入邮箱" class="login-text2" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="form_input2 radius6">
+                                <table>
+                                    <tr>
+                                        <td valign="middle" align="center" style="width: 30px">
+                                            <img src="images/pwd.png" style="width: 20px; vertical-align: middle" />
+                                        </td>
+                                        <td valign="middle">
+                                            <input type="text" name="pwd" id="Text2" value="" placeholder="输入密码" class="login-text2" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td align="right">
+                            <a href="javascript:" class="form_input3 blue radius6">登录</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right" class="topNav1_re">
+                            <a href="#">忘记密码</a> <a href="#">我要注册<img src="images/right_r.png" /></a>
+                        </td>
+                    </tr>
+                </table>
+                <!--<a href="#">
+                    <img src="images/uesr_logo.png" />哆啦A梦</a>-->
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="layout">
+            <a href="index.html">首页</a> <a href="#">政策法规</a> <a href="news_list.html">新闻资讯</a>
+            <a href="#">案例分析</a> <a href="#">问答</a> <a href="#">专家库</a> <a href="#">公开课</a>
+            <a href="#">社区</a> <a href="#">活动</a>
+        </div>
+    </div>
+    <div class="layout boxMain">
+        <div class="boxMainLeft">
+            <h2>
+                <span><a href="news_list.html">
+                    <img src="images/bar1.png" />新闻资讯</a>>新闻详情</span></h2>
+            <div class="boxMainText_C">
+                <span class="boxMainTextTit">关于贯彻落实扩大小型微利企业减半征收企业所得税范围有关问题公告的解读</span>
+                <div class="boxMainTextSpan">
+                    <span class="c_blue">逗比青年</span> <span>发表于2015-3-24</span> <span>(108)评</span><span
+                        style="float: right">108人收藏此文章，<a href="" class="c_blue">我要收藏</a></span></div>
+                <hr />
+                <p>
+                    近日，国家税务总局印发了《关于贯彻落实扩大小型微利企业减半征收企业所得税范围有关问题的公告》（国家税务总局公告2015年第17号）。 现解读如下：</p>
+                <br />
+                <br />
+                <p>
+                    一、主要背景</p>
+                <br />
+                <br />
+                <p>
+                    为进一步支持小型微利企业发展，发挥小型微利企业促进就业、改善民生、维护社会稳定的作用，在2014年将小型微利企业减半征收企业所得税政策范围由年应纳税所得额6万元提高到10万元的基础上，国务院对小微企业优惠持续加力，国务院第83次常务会议研究决定，将小微企业减半征税范围扩大到年应纳税所得额20万元以下纳税人。3月13日，财政部、税务总局发布了《关于小型微利企业所得税优惠政策有关问题的通知》（财税〔2015〕34号），明确了税收优惠政策规定。为把小型微利企业税收优惠政策全面落实到位，方便纳税人享受优惠，便于基层税务机关操作。同时，为征纳双方提供一份内容全面、便于查询、容易操作的完整版文件，减少“文件套文件”现象，本公告在《国家税务总局关于扩大小型微利企业减半征收企业所得税范围有关问题的公告》（国家税务总局公告2014年第23号）基础上，适应税收政策调整，对一些具体管理操作问题进一步做了明确规定。
+                </p>
+                <br />
+                <br />
+                <p>
+                    二、核定征税的小型微利企业可否享受优惠政策？</p>
+                <br />
+                <br />
+                <p>
+                    小型微利企业，无论采取查账征收还是核定征收所得税方式，均可按规定享受小型微利企业所得税优惠政策。包括企业所得税减按20%征收，以及自2015年1月1日至2017年12月31日，年应纳税所得额低于20万元（含20万元）的，其所得减按50%计入应纳税所得额，并按20%税率缴纳企业所得税。
+                </p>
+                <br />
+                <br />
+                <p>
+                    三、小型微利企业从什么时候开始，能够享受所得税优惠政策？
+                </p>
+                <br />
+                <br />
+                <p>
+                    2014年之前，小型微利企业统一在汇算清缴时享受优惠政策，季度预缴环节不享受优惠。本公告按照原有作法，允许小型微利企业在季度、月份预缴环节提前享受优惠政策，在汇算清缴环节再多退少补。这样，让小微企业提前享受税收优惠红利，有效缓解资金紧张，减少贷款压力，增强其流动性。
+                </p>
+                <div class="Share">
+                    <!-- JiaThis Button BEGIN -->
+                    <div class="jiathis_style">
+                        <a class="jiathis_button_qzone"></a><a class="jiathis_button_tsina"></a><a class="jiathis_button_tqq">
+                        </a><a class="jiathis_button_weixin"></a><a class="jiathis_button_renren"></a><a
+                            class="jiathis_button_xiaoyou"></a><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis"
+                                target="_blank"></a>
+                    </div>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1410416683851686"
+                        charset="utf-8"></script>
+                    <!-- JiaThis Button END -->
+                </div>
+            </div>
+            <br />
+            <div id='txtDiv' style='border: 1px solid #cccccc; height: 200px;'>
+                <p>
+                    请输入内容...</p>
+            </div>
+            <div class="PL_btn">
+                <a href="javascript:" class="form_input1 blue radius6" onclick="openPopup()">发表评论</a></div>
+            <div class="boxMainText_PL">
+                <h4>
+                    评论(234)</h4>
+                <div class="list">
+                    <div class="listL">
+                        <img src="images/user1.png" onmouseover="open_userPop('user1')" onmouseout="close_userPop('user1')"/></div>
+                    <div class="listR">
+                        <div class="user_pop" id="user1" onmouseover="open_userPop('user1')"  onmouseout="close_userPop('user1')">
+                            <div class="user_pop_h">
+                                <img src="images/user1.png" />
+                                <div class="user_pop_t">
+                                    <h3>
+                                        面朝大海</h3>
+                                    <p>
+                                        把诗意的理性献给你把诗意的 理性献给你</p>
+                                </div>
+                            </div>
+                            <div class="user_pop_c">
+                                <table>
+                                    <tr>
+                                        <td class="td1">
+                                            关注300
+                                        </td>
+                                        <td class="td2">
+                                            粉丝185
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <div style="margin-left: 70px; margin-top: 15px">
+                                                <a href="javascript:" class="form_input1 blue radius6">关注他</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="user_pop_b">
+                            </div>
+                        </div>
+                        <a href="javascript:" onmouseover="open_userPop('user1')" onmouseout="close_userPop('user1')">面朝大海</a> 1分钟前
+                        <p>
+                            谢邀！运动从出生开始，别小看那些还不会走路、爬行、甚至连翻身都不会的小婴儿，他们那小手小脚就没有停过 运动量比大人可大多了，不信你模仿着动动试试，早累趴下了。很重要的一点是，家长是否给孩子提供一个安全的
+                            环境，且不干涉孩子自由地发展运动能力。</p>
+                        <div class="listBtn">
+                            <span class="pl01">添加回复</span><span class="pl02">230个赞</span><span class="pl03">举报</span><span
+                                class="pl04">收藏</span></div>
+                        <div class="boxMainText_PL">
+                            <textarea style="width: 100%; height: 100px"></textarea>
+                            <div class="PL_btn">
+                                <span class="PL_btn_span">
+                                    <input type="checkbox" id="niming" />匿名 <span>取消</span></span> <a href="javascript:"
+                                        class="form_input3 blue radius6" onclick="openPopup()">回复</a></div>
+                            <div class="list">
+                                <div class="listL">
+                                    <img src="images/user1.png" onmouseover="open_userPop('user1-1')" onmouseout="close_userPop('user1-1')"/></div>
+                                <div class="listR">
+                                    <div class="user_pop" id="user1-1" onmouseover="open_userPop('user1-1')"  onmouseout="close_userPop('user1-1')">
+                                        <div class="user_pop_h">
+                                            <img src="images/user1.png" />
+                                            <div class="user_pop_t">
+                                                <h3>
+                                                    面朝大海</h3>
+                                                <p>
+                                                    把诗意的理性献给你把诗意的 理性献给你</p>
+                                            </div>
+                                        </div>
+                                        <div class="user_pop_c">
+                                            <table>
+                                                <tr>
+                                                    <td class="td1">
+                                                        关注300
+                                                    </td>
+                                                    <td class="td2">
+                                                        粉丝185
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" align="center">
+                                                        <div style="margin-left: 70px; margin-top: 15px">
+                                                            <a href="javascript:" class="form_input1 blue radius6">关注他</a></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="user_pop_b">
+                                        </div>
+                                    </div>
+                                    <a href="javascript:" onmouseover="open_userPop('user1-1')" onmouseout="close_userPop('user1-1')">面朝大海</a> 1分钟前
+                                    <p>
+                                        谢邀！运动从出生开始，别小看那些还不会走路、爬行、甚至连翻身都不会的小婴儿，他们那小手小脚就没有停过 运动量比大人可大多了，不信你模仿着动动试试，早累趴下了。很重要的一点是，家长是否给孩子提供一个安全的
+                                        环境，且不干涉孩子自由地发展运动能力。</p>
+                                    <div class="listBtn">
+                                        <span class="pl01">添加回复</span><span class="pl02">230个赞</span><span class="pl03">举报</span><span
+                                            class="pl04">收藏</span></div>
+                                </div>
+                            </div>
+                            <div class="list">
+                                <div class="listL">
+                                    <img src="images/user2.png" onmouseover="open_userPop('user1-2')" onmouseout="close_userPop('user1-2')"/></div>
+                                <div class="listR">
+                                    <div class="user_pop" id="user1-2" onmouseover="open_userPop('user1-2')" onmouseout="close_userPop('user1-2')">
+                                        <div class="user_pop_h">
+                                            <img src="images/user1.png" />
+                                            <div class="user_pop_t">
+                                                <h3>
+                                                    面朝大海</h3>
+                                                <p>
+                                                    把诗意的理性献给你把诗意的 理性献给你</p>
+                                            </div>
+                                        </div>
+                                        <div class="user_pop_c">
+                                            <table>
+                                                <tr>
+                                                    <td class="td1">
+                                                        关注300
+                                                    </td>
+                                                    <td class="td2">
+                                                        粉丝185
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" align="center">
+                                                        <div style="margin-left: 70px; margin-top: 15px">
+                                                            <a href="javascript:" class="form_input1 blue radius6">关注他</a></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="user_pop_b">
+                                        </div>
+                                    </div>
+                                    <a href="javascript:" onmouseover="open_userPop('user1-2')" onmouseout="close_userPop('user1-2')">春暖花开</a> 2分钟前
+                                    <p>
+                                        真的将心理学运用到教养小孩儿的每一个小细节，华生好像当年也是以这个角度去观察了自己的 小孩O(∩_∩)O~</p>
+                                    <div class="listBtn">
+                                        <span class="pl01">添加回复</span><span class="pl02">230个赞</span><span class="pl03">举报</span><span
+                                            class="pl04">收藏</span></div>
+                                </div>
+                            </div>
+                            <div class="list" id="B-user-3" style="display: none">
+                                <div class="listL">
+                                    <img src="images/user2.png" onmouseover="open_userPop('user1-3')" onmouseout="close_userPop('user1-3')"/></div>
+                                <div class="listR">
+                                    <div class="user_pop" id="user1-3" onmouseover="open_userPop('user1-3')" onmouseout="close_userPop('user1-3')">
+                                        <div class="user_pop_h">
+                                            <img src="images/user1.png" />
+                                            <div class="user_pop_t">
+                                                <h3>
+                                                    面朝大海</h3>
+                                                <p>
+                                                    把诗意的理性献给你把诗意的 理性献给你</p>
+                                            </div>
+                                        </div>
+                                        <div class="user_pop_c">
+                                            <table>
+                                                <tr>
+                                                    <td class="td1">
+                                                        关注300
+                                                    </td>
+                                                    <td class="td2">
+                                                        粉丝185
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" align="center">
+                                                        <div style="margin-left: 70px; margin-top: 15px">
+                                                            <a href="javascript:" class="form_input1 blue radius6">关注他</a></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="user_pop_b">
+                                        </div>
+                                    </div>
+                                    <a href="javascript:" onmouseover="open_userPop('user1-3')" onmouseout="close_userPop('user1-3')">春暖花开</a> 2分钟前
+                                    <p>
+                                        真的将心理学运用到教养小孩儿的每一个小细节，华生好像当年也是以这个角度去观察了自己的 小孩O(∩_∩)O~</p>
+                                    <div class="listBtn">
+                                        <span class="pl01">添加回复</span><span class="pl02">230个赞</span><span class="pl03">举报</span><span
+                                            class="pl04">收藏</span></div>
+                                </div>
+                            </div>
+                            <div class="more_btn">
+                                <a href="javascript:" class="pl_input1 grad radius6"  onclick="open_MoreBack()">显示更多回复</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="listL">
+                        <img src="images/user2.png" onmouseover="open_userPop('user2')" onmouseout="close_userPop('user2')"/></div>
+                    <div class="listR">
+                        <div class="user_pop" id="user2"  onmouseover="open_userPop('user2')" onmouseout="close_userPop('user2')">
+                            <div class="user_pop_h">
+                                <img src="images/user1.png" />
+                                <div class="user_pop_t">
+                                    <h3>
+                                        面朝大海</h3>
+                                    <p>
+                                        把诗意的理性献给你把诗意的 理性献给你</p>
+                                </div>
+                            </div>
+                            <div class="user_pop_c">
+                                <table>
+                                    <tr>
+                                        <td class="td1">
+                                            关注300
+                                        </td>
+                                        <td class="td2">
+                                            粉丝185
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <div style="margin-left: 70px; margin-top: 15px">
+                                                <a href="javascript:" class="form_input1 blue radius6">关注他</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="user_pop_b">
+                            </div>
+                        </div>
+                        <a href="javascript:" onmouseover="open_userPop('user2')" onmouseout="close_userPop('user2')">春暖花开</a> 2分钟前
+                        <p>
+                            真的将心理学运用到教养小孩儿的每一个小细节，华生好像当年也是以这个角度去观察了自己的 小孩O(∩_∩)O~</p>
+                        <div class="listBtn">
+                            <span class="pl01">添加回复</span><span class="pl02">230个赞</span><span class="pl03">举报</span><span
+                                class="pl04">收藏</span></div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="listL">
+                        <img src="images/user1.png" onmouseover="open_userPop('user3')" onmouseout="close_userPop('user3')"/></div>
+                    <div class="listR">
+                        <div class="user_pop" id="user3"   onmouseover="open_userPop('user3')" onmouseout="close_userPop('user3')">
+                            <div class="user_pop_h">
+                                <img src="images/user1.png" />
+                                <div class="user_pop_t">
+                                    <h3>
+                                        面朝大海</h3>
+                                    <p>
+                                        把诗意的理性献给你把诗意的 理性献给你</p>
+                                </div>
+                            </div>
+                            <div class="user_pop_c">
+                                <table>
+                                    <tr>
+                                        <td class="td1">
+                                            关注300
+                                        </td>
+                                        <td class="td2">
+                                            粉丝185
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <div style="margin-left: 70px; margin-top: 15px">
+                                                <a href="javascript:" class="form_input1 blue radius6">关注他</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="user_pop_b">
+                            </div>
+                        </div>
+                        <a href="javascript:"onmouseover="open_userPop('user3')" onmouseout="close_userPop('user3')">春暖花开</a> 2分钟前
+                        <p>
+                            谢邀！运动从出生开始，别小看那些还不会走路、爬行、甚至连翻身都不会的小婴儿，他们那小手小脚就没有停过 运动量比大人可大多了，不信你模仿着动动试试，早累趴下了。很重要的一点是，家长是否给孩子提供一个安全的
+                            环境，且不干涉孩子自由地发展运动能力。</p>
+                        <div class="listBtn">
+                            <span class="pl01">添加回复</span><span class="pl02">230个赞</span><span class="pl03">举报</span><span
+                                class="pl04">收藏</span></div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="listL">
+                        <img src="images/user1.png" onmouseover="open_userPop('user4')" onmouseout="close_userPop('user4')"/></div>
+                    <div class="listR">
+                        <div class="user_pop" id="user4" onmouseover="open_userPop('user4')" onmouseout="close_userPop('user4')">
+                            <div class="user_pop_h">
+                                <img src="images/user1.png" />
+                                <div class="user_pop_t">
+                                    <h3>
+                                        面朝大海</h3>
+                                    <p>
+                                        把诗意的理性献给你把诗意的 理性献给你</p>
+                                </div>
+                            </div>
+                            <div class="user_pop_c">
+                                <table>
+                                    <tr>
+                                        <td class="td1">
+                                            关注300
+                                        </td>
+                                        <td class="td2">
+                                            粉丝185
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <div style="margin-left: 70px; margin-top: 15px">
+                                                <a href="javascript:" class="form_input1 blue radius6">关注他</a></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="user_pop_b">
+                            </div>
+                        </div>
+                        <a href="javascript:" onmouseover="open_userPop('user4')" onmouseout="close_userPop('user4')">春暖花开</a> 2分钟前
+                        <p>
+                            谢邀！运动从出生开始，别小看那些还不会走路、爬行、甚至连翻身都不会的小婴儿，他们那小手小脚就没有停过 运动量比大人可大多了，不信你模仿着动动试试，早累趴下了。很重要的一点是，家长是否给孩子提供一个安全的
+                            环境，且不干涉孩子自由地发展运动能力。</p>
+                        <div class="listBtn">
+                            <span class="pl01">添加回复</span><span class="pl02">230个赞</span><span class="pl03">举报</span><span
+                                class="pl04">收藏</span></div>
+                    </div>
+                </div>
+                <div class="more_btn">
+                    <a href="javascript:" class="pl_input1 grad radius6">显示更多评论</a></div>
+            </div>
+        </div>
+        <div class="boxMainRight" style=" margin-top:40px">
+            <div class="boxMainAL" style="padding: 20px">
+                <div class="boxMainRightTit">
+                    <h3>
+                        每日案例</h3>
+                </div>
+                <div class="boxMainALTit">
+                    <a href="#">
+                        <h4>
+                            中石油确认将以股权引资...</h4>
+                    </a>
+                </div>
+                <div class="boxMainALCon">
+                    <div class="boxMainALConLeft">
+                        <a href="#">
+                            <img src="images/new_i2.png" /></a></div>
+                    <div class="boxMainALConRight">
+                        <a href="#">中石油将在新疆开展混合所...</a>
+                        <div class="boxMainALBtn">
+                            <a class="boxMainALInput blue radius6">查看详情</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="boxMainRightTit">
+                <h3>
+                    热门文章</h3>
+            </div>
+            <div class="boxMainnewUl">
+                <ul class="newUl">
+                    <li><a href="#">市局关于印发《上海市税收票证管理办法》的通知</a> <span>1天前</span></li>
+                    <li><a href="#">关于《国家税务总局关于非居民企业间接转让财产企业所得税若干问题的公告》及政策解读</a> <span>2天前</span></li>
+                    <li><a href="#">关于《国家税务总局关于部分税务行政审批事项 取消后有关管理问题的公告》的解读</a> <span>3天前</span></li>
+                    <li><a href="#">关于《国家税务总局关于部分税务行政审批事项 取消后有关管理问题的公告》的解读</a> <span>4天前</span></li>
+                    <li><a href="#">OCS7500 关于《国家税务总局关于部分税务行政审批事项取消后有关管理问题的公告》的解读</a> <span>5天前</span></li>
+                    <li><a href="#">OCS7500 关</a> <span>6天前</span></li></ul>
+            </div>
+            <div class="boxMainRightTit">
+                <h3>
+                    热门标签</h3>
+            </div>
+            <div class="boxMaintagUl">
+                <ul class="tagUl">
+                    <li><a href="#" class="blue1 radius8">标签1</a></li><li><a href="#" class="blue1 radius8">
+                        标签1</a></li><li><a href="#" class="blue1 radius8">标签1</a></li><li><a href="#" class="blue1 radius8">
+                            标签2</a></li><li><a href="#" class="blue1 radius8">标签2</a></li><li><a href="#" class="blue1 radius8">
+                                标签1</a></li><li><a href="#" class="blue1 radius8">标签1</a></li><li><a href="#" class="blue1 radius8">
+                                    标签3</a></li><li><a href="#" class="blue1 radius8">标签5</a></li><li><a href="#" class="blue1 radius8">
+                                        标签1</a></li></ul>
+                <img src="images/new_i3.png"  width="250px"//>
+            </div>
+        </div>
+    </div>
+    <div class="foot">
+        <a href="#">关于我们</a> <a href="#">加入易劳</a> <a href="#">合作机构</a> <a href="#">帮助中心
+        </a><a href="#">免责声明 </a><a href="#">联系我们</a>
+        <br />
+        © 2015 PEO Group. HR730 project. All Rights Reserved. 粤ICP备1306</div>
+    <div id="filter" class="filter-div">
+    </div>
+    <div id="pageone" class="popup">
+        <a href="javascript:" onclick="closePopup()" class="popupCloseimg">
+            <img src="images/delete-black.png" style="width: 30px;" /></a>
+        <table width="100%">
+            <tr>
+                <td class="popupHeader">
+                    <h3>
+                        用户登录</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="popupContent">
+                        <div class="login-from">
+                            <div class="form_input radius6">
+                                <table>
+                                    <tr>
+                                        <td valign="middle" align="center" style="width: 30px">
+                                            <img src="images/email.png" style="width: 20px; vertical-align: middle" />
+                                        </td>
+                                        <td valign="middle">
+                                            <input type="text" name="user" id="user" value="" placeholder="输入邮箱" class="login-text" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="form_input radius6" style="margin-bottom: 20px; margin-top: 20px">
+                                <table>
+                                    <tr>
+                                        <td valign="middle" align="center" style="width: 30px">
+                                            <img src="images/pwd.png" style="width: 20px; vertical-align: middle" />
+                                        </td>
+                                        <td valign="middle">
+                                            <input type="text" name="pwd" id="pwd" value="" placeholder="输入密码" class="login-text" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="form_code radius6" style="margin-bottom: 20px; margin-top: 10px">
+                                <table width="100%">
+                                    <tr>
+                                        <td valign="middle" align="center">
+                                            <input type="text" name="code" id="code" value="" placeholder="输入验证码" class="login-code" />
+                                        </td>
+                                        <td align="right">
+                                            <a href="#">
+                                                <img src="images/icon-code.png" style="width: 100px; vertical-align: middle" /><span>看不清?</span></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="margin-bottom: 20px; margin-top: 10px">
+                                <table width="100%">
+                                    <tr>
+                                        <td valign="middle" align="center">
+                                            没有账号？ <a href="regist.html" class="regist_submit radius6">马上注册</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <a href="index.html" class="form_submit radius6 blue">立即登录</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+<!--引入 jquery.js-->
+<script src="plugin/wangEditor/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<!--引入 wangEditor.js-->
+<script src="plugin/wangEditor/js/wangEditor-1.1.0-min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#spanTime').text((new Date()).toString());
+        //一句话，即可把一个div 变为一个富文本框！o(∩_∩)o 
+        var $editor = $('#txtDiv').wangEditor();
+        //显示 html / text
+        var $textarea = $('#textarea'),
+                $btnHtml = $('#btnHtml'),
+                $btnText = $('#btnText'),
+                $btnHide = $('#btnHide');
+        $textarea.hide();
+    });
+    </script>
+</html>

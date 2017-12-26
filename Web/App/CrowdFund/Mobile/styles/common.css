@@ -1,0 +1,27 @@
+﻿.page_title{
+	text-align: center;
+}
+.return_ico{
+	margin-top:-5px;
+}
+.return_ico img{
+	width: 30px;
+	height: 30px;
+	color: #269bd7;
+}
+nav{
+	margin: 0 0;
+	padding: 0 0;
+}
+
+.commen_button button,
+.commen_button button:hover,
+.commen_button button:visited,
+.commen_button button:link,
+.commen_button button:focus
+{
+	color: white;
+	background-color: #33B0FB;
+}
+.commen_button{margin-bottom:50px;}
+.clear{height:70px;}

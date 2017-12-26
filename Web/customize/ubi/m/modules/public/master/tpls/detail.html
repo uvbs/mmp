@@ -1,0 +1,68 @@
+﻿<div class="wrapUserIndex">
+    <div class="list">
+        <div class="userInfo">
+            <div class="avatar" style="background-image: url({{pageData.userInfo.avatar}}); ">
+                <i ng-show="pageData.userInfo.isTutor" class="iconfont icon-v colorYellow"></i>
+            </div>
+
+            <div class="userName">{{pageData.userInfo.userName}}</div>
+            <div class="userIntroduce" ng-if="pageData.userIntro" title="{{pageData.userInfo.userIntroduction}}">
+                {{pageData.userInfo.userIntroduction}}
+            </div>
+            <div class="userIntroduce" ng-if="!pageData.userIntro">
+                这个人很懒，什么都没有留下
+            </div>
+        </div>
+        <div class="item row state">
+            <!-- <div class="col">
+                <div>{{pageData.userInfo.viewCount}}</div>
+                <div>累计访问</div>
+            </div>
+            <div class="col col-10 line"><span>&nbsp;</span></div> -->
+            <div class="col" ng-click="pageFunc.goMyFollow()">
+                <div>{{pageData.userInfo.userFollowCount}}</div>
+                <div>关注</div>
+            </div>
+            <div class="col col-10 line"><span>&nbsp;</span></div>
+            <div class="col" ng-click="pageFunc.goMyFans()">
+                <div>{{pageData.userInfo.followUserCount}}</div>
+                <div>粉丝</div>
+            </div>
+        </div>
+        <div class="item item-divider colorGrey_9">空间被{{pageData.userInfo.viewCount}}次浏览</div>
+        <div class="item item-divider colorGrey_9">获得了{{pageData.userInfo.userPraiseCount}}个赞</div>
+        <div class="item item-divider"></div>
+        <a class="item item-icon-right" href="#/userCaseList/{{pageData.userInfo.id}}">
+            案例
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/userArticleList/{{pageData.userInfo.id}}">
+            文章 
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/myAsk/{{pageData.userInfo.id}}/true">
+            提问
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/myAnswer/{{pageData.userInfo.id}}">
+            回答
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <!-- <a class="item item-icon-right" href="javascript:;">
+            回答 
+            <i class="icon iconfont icon-arrowright"></i>
+        </a> -->
+    </div>
+    <div class="wrapBtn">
+        <button class="button button-block button-positive" ng-if="!pageData.userInfo.userIsFollow" ng-click="pageFunc.submitFollowUser(pageData.userInfo)">
+            关注TA
+        </button>
+        <button class="button button-block button-energized" ng-if="pageData.userInfo.userIsFollow" ng-click="pageFunc.submitDisFollowUser(pageData.userInfo)">
+            取消关注
+        </button>
+    </div>
+
+    <backbtn></backbtn>
+
+    <!-- <footermenu></footermenu> -->
+</div>

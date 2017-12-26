@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns:gs="http://www.gensee.com/ec">
+<head>
+    <meta charset="utf-8" />
+    <title>Example Page</title>
+    <link href="http://easylaodongfa.gensee.com/webcast/static/sdk/css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://easylaodongfa.gensee.com/webcast/static/sdk/js/gssdk.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript" src="js/webplayer.common.js"></script>
+    <script type="text/javascript" src="js/webplayer.live.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <style type="text/css">
+        .videoDiv {
+            height: 400px;
+        }
+
+        .docDiv {
+            height: 198px;
+            padding: 1px;
+        }
+    </style>
+    <script type="text/javascript">
+ //1. 根据组获得通讯通道
+ var channel = GS.createChannel("testgroup");
+ //2. 通过通道监听互动调查事件
+ channel.bind("onVote", function (event) {
+ alert(event.data);
+ });
+ //2. 通过通道监听问答事件
+ channel.bind("onQA", function (event) {
+ alert(event.data.question);
+ });
+ //3.通过通道留言
+ channel.send("submitLeaveMessage", {
+ "content": "what's your name?"
+ });
+    </script>
+</head>
+<body>
+    <h2 align="center">Test Page</h2><br>    <!--测试按钮-->
+    <div style="position: absolute; left: 5px; top: 5px; z-index: 99;">
+        <button onclick="callName();">点名</button>
+        <button onclick="lotteryShow();">抽奖</button>
+        <button onclick="$('.lottery-result-container').show();">批量抽奖结果</button>
+        <button onclick="accessoryShow();">附件</button>
+        <button onclick="voteShow();">投票调查</button>
+        <button onclick="voteResultShow();">调查结果</button>
+        <button onclick="switchVideoToPPT(1);">文档为主</button>
+        <button onclick="switchVideoToPPT(2);">视频为主</button>
+        <button onclick="$('#webVoiceWorking').show();">web语音邀请</button> <b style="color: #ffffff">→</b>
+        <button onclick="webVoiceDeviceAccredit();">允许</button>
+    </div>
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span6 videoDiv">
+                <!-- Video Widget -->
+                <!--<gs:video-vod id="videoComponent" site="192.168.0.168" ctx="webcast" ownerid="f8625298d18042fbbba7a8" uid="55831" uname="user5623" authcode="333333" />-->
+                <gs:video-vod site="easylaodongfa.gensee.com" ctx="training" ownerid="v2xRv0XKA2" video="true" py="1" />
+                <gs:doc site="easylaodongfa.gensee.com" ctx="training" ownerid="v2xRv0XKA2" />
+            </div>
+            <div class="span6">
+                <div class="docDiv">
+                    <!-- Doc Widget -->
+                    <!--<gs:doc site="www.gensee.com" ownerid="f8625298d18042fbbba7a8d4f75555ca"
+                            group="testgroup" />-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    switchVideoToPPT(1);
+</script>

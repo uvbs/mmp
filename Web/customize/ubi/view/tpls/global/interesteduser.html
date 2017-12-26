@@ -1,0 +1,13 @@
+﻿<div class="warpRightInter">
+    <h4>可能感兴趣的人</h4>
+    <dl class="clear" ng-repeat="item in interesteduserData.users">
+        <dt>
+            <img class="hand" ng-src="{{item.avatar}}" ng-click="go('#/userspace/' + item.id)" alt="">
+        </dt>
+        <dd>
+            <p class="hand" ng-bind="item.userName" ng-click="go('#/userspace/' + item.id)"></p>
+            <button ng-if="!item.userIsFollow" class="btn btn-primary askBot" ng-click="interesteduserFunc.submitFollow(item)">关注</button>
+            <button ng-if="item.userIsFollow" class="btn btn-warning askBot" ng-click="interesteduserFunc.submitDisFollow(item)">取消</button>
+        </dd>
+    </dl>
+</div>

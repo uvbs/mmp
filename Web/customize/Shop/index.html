@@ -1,0 +1,18 @@
+<html ng-app="shop"><head><meta charset="utf-8"><title></title><meta name="description" content=""><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-app-status-bar-style" content="white"><meta name="format-detection" content="telephone=no"><meta name="full-screen" content="yes"><meta name="x5-fullscreen" content="true"><link href="http://static-files.socialcrmyun.com/lib/dropload-gh-pages/dropload.css" rel="stylesheet"><link href="http://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css" rel="stylesheet"><link href="http://static-files.socialcrmyun.com/lib/ionic/ionic.css" rel="stylesheet"><link href="http://static-files.socialcrmyun.com/lib/layer.mobile/need/layer.css" rel="stylesheet"><link href="http://static-files.socialcrmyun.com/lib/LCalendar/css/LCalendar.min.css" rel="stylesheet"><link rel="stylesheet" href="styles/vendor-c433b2fdc9.css"><link rel="stylesheet" href="styles/app-d8d813dfa0.css"></head><body><!--[if lt IE 10]>
+ <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+ <![endif]--><div id="loadingToast" style="display: none;"><div class="weui-mask_transparent"></div><div class="weui-toast"><i class="weui-loading weui-icon_toast"></i><p class="weui-toast__content">数据加载中</p></div></div><div ui-view="" ng-class="{wrapQQBrowser:isQQBrowser}"></div><script>
+    var MALLCONFIG='$$$MallConfig$$$';
+    var HONGWAREDOMAIN='http://o2oswapi.hongware.com';
+    function claimArrivalTimeInput() {
+      // this.type="date";
+      var _this = this;
+      setTimeout(function () {
+        $(_this).trigger("click");
+        var setDate = new Date();
+        // setDate = LADatePicker.dateAdd('d',1,setDate);
+        var claimArrivalTimeInput = document.getElementById("claimArrivalTimeInput");
+        claimArrivalTimeInput.valueAsDate=setDate;
+      },100);
+    }
+
+    </script><script src="scripts/vendor-d5746071b9.js"></script><script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/js-base64/base64.min.js" charset="utf-8"></script><script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script><script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/la-datePicker/datePicker.js"></script><script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/layer.mobile/layer.m.js"></script><script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/LCalendar/js/LCalendar.js"></script><script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/dropload-gh-pages/dropload.js"></script><script type="text/javascript" src="http://static-files.socialcrmyun.com/Scripts/global-m.js?v=2017050803" charset="utf-8"></script><script type="text/javascript" src="http://comeoncloud.comeoncloud.net/jsonConfig/iconFontJs/font_1495631125132.js"></script><script src="scripts/app-f3d9c7cc11.js"></script></body></html>

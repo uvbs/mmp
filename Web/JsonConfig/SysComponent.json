@@ -1,0 +1,66 @@
+﻿{
+    "PersonalCenter": {
+        "ComponentModelId": "13",
+        "ComponentName": "个人中心",
+        "ComponentType": "page",
+        "IsWXSeniorOAuth": 1,
+        "ComponentConfig": {
+            "data_title": "个人中心",
+            "pageinfo": { "title": "个人中心", "bg_img": "", "bg_color": "#FFFFFF" },
+            "userinfo": {
+                "show": 1,
+                "style": 1,
+                "bgcolor": "#e45050",
+                "btn_text": "账号管理",
+                "btn_url": "/customize/shop/?v=1.0#/userMange",
+                "border_color": "#FFFFFF"
+            },
+            "navs_1": [
+                {
+                    "nav_list": "个人中心-我的订单",
+                    "title": "我的订单",
+                    "col_count": 4,
+                    "style": 1
+                }
+            ],
+            "navs_2": [
+                {
+                    "nav_list": "个人中心-我的资产",
+                    "col_count": 4,
+                    "style": 1,
+                    "border_show": 1
+                }
+            ],
+            "navs_3": [
+                {
+                    "nav_list": "个人中心-财富中心",
+                    "title": "财富中心",
+                    "col_count": 4,
+                    "style": 2,
+                    "border_show": 0
+                }
+            ],
+            "navs_4": [
+                {
+                    "nav_list": "个人中心-帮助中心",
+                    "title": "帮助中心",
+                    "col_count": 4,
+                    "style": 2,
+                    "border_show": 0
+                }
+            ],
+            "foottool_list": "底部导航"
+        }
+    },
+    "MallHome": {
+        "ComponentModelId": "13",
+        "ComponentName": "商城首页",
+        "ComponentType": "page",
+        "ComponentConfig": {
+            "first_edit":1,
+            "slides": [ { "slide_list": "", "show_type": 1, "size_width": 640, "size_height": 300 } ],
+            "malls": [ ],
+            "foottool_list": "底部导航"
+        }
+    }
+}

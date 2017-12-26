@@ -1,0 +1,206 @@
+﻿<div class="wrapIndex">
+	<div class="wrapMenuList">
+		<div class="row">
+			<div class="col">
+				<div class="content regulations" ng-click="go('#/regulations')">
+					<div>
+						<i class="iconfont icon-zhengcefagui"></i>
+					</div>
+					<div>
+						<span>政策法规</span>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+                <div class="content news" ng-click="go('#/news')">
+                    <div>
+                        <i class="iconfont icon-xinwenzixun"></i>
+                    </div>
+                    <div>
+                        <span>新闻资讯</span>
+                    </div>
+                </div>
+			</div>
+			<div class="col">
+				<div class="content case" ng-click="go('#/case')">
+					<div>
+						<i class="iconfont icon-anlifenxi"></i>
+					</div>
+					<div>
+						<span>案例分析</span>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="content ask" ng-click="go('#/ask')">
+					<div>
+						<i class="iconfont icon-wenda"></i>
+					</div>
+					<div>
+						<span>问答</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="content master" ng-click="go('#/master')">
+					<div>
+						<i class="iconfont icon-zhuanjiaku"></i>
+					</div>
+					<div>
+						<span>专家库</span>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="content openVideo" ng-click="go('#/open')">
+					<div>
+						<i class="iconfont icon-gongkaike"></i>
+					</div>
+					<div>
+						<span>公开课</span>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="content update" ng-click="go('#/update')">
+					<div>
+						<i class="iconfont icon-shequ"></i>
+					</div>
+					<div>
+						<span>社区</span>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="content activity" ng-click="go('/App/Cation/Wap/ActivityLlists.aspx')">
+					<div>
+						<i class="iconfont icon-huodong"></i>
+					</div>
+					<div>
+						<span>活动</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="wrapAd">
+        <!-- <div class="row">
+            <div class="col col-50">
+                <img ng-src="{{pageIndexData.dailyCase.thumImg}}" alt=" ">
+            </div>
+            <div class="col">
+                <h5 ng-bind="pageIndexData.dailyCase.title"></h5>
+                <p class="colorGrey_9 summary" ng-bind="pageIndexData.dailyCase.summary">
+                </p>
+            </div>
+        </div> -->
+
+        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="6" class="wrapAd">
+            <li ng-repeat="img in pageIndexData.adImgs">
+                <img ng-src="{{img.img}}" alt="{{img.title}} " ng-click="go('{{img.url}}')">
+            </li>
+        </ul>
+        <div rn-carousel-indicators ng-if="pageIndexData.adImgs.length > 1" slides="pageIndexData.adImgs" rn-carousel-index="carouselIndex" class="imgIndex"></div>
+
+    </div>
+	<div class="wrapTabTitle">
+		<div class="row">
+            <div class="col {{item.active?item.activeCss:''}}"
+                 ng-repeat="item in pageIndexData.dataViews"
+                 ng-click="pageIndexFunc.tabClick(item)">
+                {{item.name}}
+            </div>
+
+		</div>
+	</div>
+    <div class="wrapCardList wrapNewsList" ng-if="pageIndexData.currSelectTabIndex == 1">
+        <div class="card" ng-repeat="item in pageIndexData.dataViews[0].list">
+            <div class="item" ng-click="pageIndexFunc.go(item.id)">
+                <div class="row">
+                    <!-- <div>
+                        <img class="avatar" ng-src="{{item.imgSrc}}">
+                    </div> -->
+                    <div class="col">
+                        <h2 ng-bind="item.title"></h2>
+                        <summary ng-bind-html="item.summary"></summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a href="javascript:;" class="tag" ng-bind="tag"></a>
+                        </li>
+                        <li class="floatR">
+                            <span ng-bind="item.createDate"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageIndexData.dataViews[0].list.length<pageIndexData.dataViews[0].totalCount">
+            <button class="button button-clear" ng-click="pageIndexFunc.loadData()">查看更多</button>
+        </div>
+    </div>
+
+    <div class="wrapCardList wrapAskList" ng-if="pageIndexData.currSelectTabIndex == 2">
+        <div class="card" ng-repeat="item in pageIndexData.dataViews[1].list">
+            <div class="item" ng-click="pageIndexFunc.goAsk(item.id)">
+                <div class="row">
+                    <div class="col">
+                        <div class="mBottom6">
+                            <span class="userName" ng-bind="item.pubUser.userName"></span>
+                            <span class="time" ng-bind="item.createDate"></span>
+                            <span class="viewCount">
+                                <i class="iconfont icon-liulan">
+                                </i>
+                                {{item.followCount}}
+                            </span>
+                        </div>
+                        <h2 ng-bind="item.title" ng-if="pageIndexFunc.isArticle(item)"></h2>
+                        <summary ng-bind-html="item.summary"></summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a href="javascript:;" class="tag" ng-bind="tag"></a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:;" class="floatR askType" ng-bind="pageIndexFunc.getTypeName(item)"></a>
+                <a href="javascript:;" class="floatR askFollow">关注</a>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageIndexData.dataViews[1].list.length<pageIndexData.dataViews[1].totalCount">
+            <button class="button button-clear" ng-click="pageIndexFunc.loadData()">查看更多</button>
+        </div>
+    </div>
+
+    <div class="wrapCardList wrapUpdateList" ng-if="pageIndexData.currSelectTabIndex == 3">
+        <div class="card" ng-repeat="item in pageIndexData.dataViews[2].list">
+            <div class="item" ng-click="pageIndexFunc.goUpdate(item.id)">
+                <div class="row">
+                    <div>
+                        <img class="avatar" ng-src="{{item.imgSrc}}">
+                    </div>
+                    <div class="col">
+                        <div class="whiteSpaceNormal font14">
+                            <span class="userName">{{item.pubUser.userName}}：</span><span ng-bind-html="item.summary"></span>
+                        </div>
+                        <div>
+                            <span class="time">{{item.categoryName}} {{item.createDate}} ({{item.commentCount}}评论)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageIndexData.dataViews[2].list.length<pageIndexData.dataViews[2].totalCount">
+            <button class="button button-clear" ng-click="pageIndexFunc.loadData()">查看更多</button>
+        </div>
+    </div>
+
+	<footermenu ng-attr-select="0"></footermenu>
+
+</div>

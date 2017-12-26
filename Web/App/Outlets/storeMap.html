@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="storeMap">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-app-status-bar-style" content="white">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="renderer" content="webkit"/>
+	<title>地图</title>
+	<link rel="stylesheet" type="text/css" href="http://comeoncloud.comeoncloud.net/plugins/layerm/need/layer.css">
+	<link rel="stylesheet" type="text/css" href="all.css">
+	<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="storeMap.js"></script>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=2e6ef645133fc21bdf127f72ece6bb45"></script>
+	<script type="text/javascript" src="http://comeoncloud.comeoncloud.net/plugins/layerm/layer.m.js"></script>
+	<style type="text/css">
+		*{ padding: 0; margin: 0; }
+	    #tip{ z-index: 2; right: 0; }
+	</style>
+</head>
+<body ng-controller="mapController">
+<div class="map">
+	<!-- <div id="tip" class="tip"></div> -->
+	<!-- <div id="tip2"></div> -->
+	<div class="header">
+		<span><</span>
+		<em ng-class="{ 'active' : page.current == 1 }" ng-click="actions.setCurrent(1)">门店地图</em>
+		<em ng-class="{ 'active' : page.current == 2 }" ng-click="actions.setCurrent(2)">门店列表</em>
+		<div class="headerCity">
+			<span ng-click="vm.isShow=true">{{vm.currentCity}}</span>
+			<div class="site" ng-show="vm.isShow">
+				<select  ng-model="vm.province" ng-options="province.name for province in vm.provinceList" ng-change="vf.getCity();">
+                </select>
+				<select ng-model="vm.city" ng-options="city.name for city in vm.cityList"></select>
+                <!-- <select ng-model="vm.district" ng-options="district.name for district in vm.districtList"></select> -->
+                <i ng-click="vf.setPostion()">确定</i>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="container" tabindex="0" ng-show="page.current == 1"></div>
+	<div class="storeMapList" ng-show="page.current == 2">
+		<ul>
+			<li ng-repeat="item in vm.storeMapList" ng-click="vf.goProductList(item);">
+				<em><img ng-src="{{item.img}}"></em>
+				<h3>
+					<p>{{item.title}}</p>
+					<span>{{item.distance}}km</span>
+				</h3>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript"></script>
+</html>

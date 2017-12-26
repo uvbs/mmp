@@ -1,0 +1,34 @@
+<div class="wrapUserNavs">
+    <!--商会易购样式，导航横排-->
+    <div class="navRow">
+        <div class="my-orders" ng-repeat="data in pageData.navData.navs" ng-if="data.style==1">
+            <div class="all-order-wrap" ng-if="data.title!=undefined">
+                <div class="all-order">{{data.title}}</div>
+                <div class="clear-both"></div>
+            </div>
+            <div class="row sorts" ng-repeat="row in data.row_list track by $index">
+                <!--style="background-color: {{data.nav_list[$index + $parent.$index *data.col_count].bg_color}};"-->
+                <a class="col sort borderbottom" ng-class="{borderright:data.border_show==1}"
+                     ng-repeat="col in data.col_list track by $index" href="{{data.nav_list[$index + $parent.$index *data.col_count].url}}">
+                    <!--ng-if="data.nav_list[$index +$parent.$index * data.col_count]"-->
+                    <span class="{{data.nav_list[$index + $parent.$index *data.col_count].ico}} sort-img" style="color:{{data.nav_list[$index + $parent.$index *data.col_count].ico_color}}">
+                    </span>
+                    <br>
+                    <!--ng-if="data.nav_list[$index + $parent.$index * data.col_count]"-->
+                    <span  ng-bind="data.nav_list[$index +$parent.$index * data.col_count].title"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--易劳样式，导航竖排-->
+    <div class="navCol">
+        <div class="list" ng-repeat="data in pageData.navData.navs"  ng-if="data.style==2">
+            <div class="item item-divider first-divider"><span ng-if="data.title!=undefined" ng-bind="data.title"></span></div>
+            <a class="item item-icon-left item-icon-right itemreset" style="background: {{nav.bg_color}};color:{{nav.color}}" href="{{nav.url}}" ng-repeat="nav in data.nav_list">
+                <i class="icon {{nav.ico}}" style="color:{{nav.ico_color}}"></i>
+                {{nav.title}}
+                <i class="icon iconfont icon-arrowright"></i>
+            </a>
+        </div>
+    </div>
+</div>

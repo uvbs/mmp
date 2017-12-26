@@ -1,0 +1,84 @@
+﻿<div class="wrapCompanyEdit page">
+	<div class="row">
+		<div class="col">
+			<div >企业名称:</div>
+			<div class="wrapInputDark">
+				<input type="text" placeholder="请输入企业名称" ng-model="pageData.user.CompanyName">
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class=" pTop9">所属区:</div>
+			<div class="wrapInputDark  selectDark">
+				<select ng-model="pageData.user.Area">
+					<option value="1">徐汇区</option>
+					<option value="2">徐汇区</option>
+					<option value="3">徐汇区</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class=" pTop9">地址:</div>
+			<div class="wrapInputDark ">
+				<input type="text" placeholder="请输入地址" ng-model="pageData.user.Address">
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class=" pTop9">电话:</div>
+			<div class="wrapInputDark ">
+				<input type="text" placeholder="请输入电话" ng-model="pageData.user.Tel">
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class=" pTop9">手机:</div>
+			<div class="wrapInputDark ">
+				<input type="text" placeholder="请输入手机" ng-model="pageData.user.Phone">
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class=" pTop9">QQ:</div>
+			<div class="wrapInputDark ">
+				<input type="text" placeholder="请输入QQ" ng-model="pageData.user.QQ">
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class=" pTop9">负责人:</div>
+			<div class="wrapInputDark ">
+				<input type="text" placeholder="请输入负责人" ng-model="pageData.user.Contacts">
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class=" pTop9">营业执照号码:</div>
+			<div class="wrapInputDark ">
+				<input type="text" placeholder="请输入营业执照号码" ng-model="pageData.user.BusinessLicenseNumber">
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col">
+			<div class="">企业介绍:</div>
+			<div class="wrapInputDark textareaDark">
+				<!-- <input type="text" placeholder="项目介绍"> -->
+				<textarea placeholder="请输入企业介绍" ng-model="pageData.user.Introduction"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row  pBottom32 pTop9">
+		<div class="col wrapLoginBtn">
+			<a href="javascript:;" class="btnLogin" ng-click="pageFunc.save()">保存更改</a>
+		</div>
+	</div>
+</div>

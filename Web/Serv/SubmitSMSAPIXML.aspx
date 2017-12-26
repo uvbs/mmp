@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SubmitSMSAPIXML.aspx.cs" Inherits="ZentCloud.JubitIMP.Web.Serv.SubmitSMSAPIXML" %>

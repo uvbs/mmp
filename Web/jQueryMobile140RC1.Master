@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="jQueryMobile140RC1.master.cs"
+    Inherits="ZentCloud.JubitIMP.Web.jQueryMobile140RC1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link href="/css/jqm/1.4.0rc/jquery.mobile.theme-1.4.0-rc.1.css" rel="stylesheet"
+        type="text/css" />
+    <script src="/Ju-Modules/jquery/jquery/1.10.1/jquery.js" type="text/javascript"></script>
+    <%--<script src="/Scripts/jqScrollTo1.4.6.js" type="text/javascript"></script>--%>
+    <script src="/Scripts/jquery.mobile-1.4.0-rc.1.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

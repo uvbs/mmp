@@ -1,0 +1,11 @@
+﻿
+<div class="modal-header">
+    <h3 class="modal-title txtCenter" ng-bind="ModalData.title"></h3>
+</div>
+<div class="modal-body txtCenter">
+    <img alt="正在加载" width="220" height="220" ng-if="!ModalData.isOk" ng-src="{{ModalData.url}}" />
+    <div class="colorGreen font20" ng-if="ModalData.isOk" style="height:220px;">充值完成</div>
+</div>
+<div class="modal-footer txtCenter">
+    <span class="btn btn-warning pLeft26 pRight26" ng-click="ModalFn.cancel()">取消</span>
+</div>

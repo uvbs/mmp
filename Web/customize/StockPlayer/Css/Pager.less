@@ -1,0 +1,58 @@
+﻿.pagination {
+    margin: 5px 5px 0 0;
+    display: inline-block;
+    height:30px;
+    line-height:30px;
+    overflow: hidden;
+    clear: both;
+
+    a {
+    height:30px;
+    line-height:28px;
+        float: left;
+        padding: 0px 5px;
+        border: solid 1px #D6D6D6;
+        border-radius:5px;
+        margin: 0px 4px;
+        text-decoration: none;
+        min-width: 40px;
+    }
+
+    span {
+    height:30px;
+    line-height:28px;
+        float: left;
+        padding: 0px 5px;
+        border-radius:5px;
+        margin: 0px 4px;
+        min-width: 1em;
+        text-align: center;
+        min-width: 40px;
+    }
+
+    .current {
+        color: #ff8e00;
+        border: solid 1px #ff8e00;
+    }
+    .next,.prev{
+        min-width:75px;
+    }
+    span.current.next {
+        color: #D6D6D6;
+        border-color: #D6D6D6;
+        background: #fff;
+    }
+
+    span.current.prev {
+        color: #D6D6D6;
+        border-color: #D6D6D6;
+        background: #fff;
+    }
+
+    a.next {
+        border: 1px solid #999;
+        background: #fff;
+        margin-right: 5px;
+        padding: 0 5px;
+    }
+}

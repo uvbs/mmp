@@ -1,0 +1,172 @@
+
+<div class="wrapEliteStyle">
+    <div class="eliteCate">
+       <div class="row">
+           <div class="col borderBottom borderRight" ng-class="{selected:pageData.currPageIndex==1}" ng-click="pageData.currPageIndex=1">
+               积分排行榜
+           </div>
+           <div class="col borderBottom borderRight" ng-class="{selected:pageData.currPageIndex==2}" ng-click="pageData.currPageIndex=2">
+               业绩之星
+           </div>
+           <div class="col borderBottom" ng-class="{selected:pageData.currPageIndex==3}" ng-click="pageData.currPageIndex=3">
+               精英分享
+           </div>
+       </div>
+   </div>
+    <div class="pageOne"  ng-if="pageData.currPageIndex==1">
+        <div class="topThree">
+            <div class="row">
+                <div class="col">
+                    <div class="content regulations">
+                        <div>
+                        </div>
+                        <div>
+                            <span class="colorLightBlack">杨阳洋</span><br/>
+                            <span class="font24 colorFF9D8F">5560</span>
+                        </div>
+                        <div class="rankNum">
+                            1
+                        </div>
+                        <div class="medal">
+                            <i class="icon iconfont icon-iconfontlicaishipingxuan sfsiconjiangbei colorFF9D8F"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content regulations">
+                        <div>
+                        </div>
+                        <div>
+                            <span class="colorLightBlack">杨阳洋</span><br/>
+                            <span class="font24 colorFF9300">4560</span>
+                        </div>
+                        <div class="rankNum">
+                            2
+                        </div>
+                        <div class="medal">
+                            <i class="icon iconfont icon-iconfontlicaishipingxuan sfsiconjiangbei colorFF9300"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content regulations">
+                        <div>
+                        </div>
+                        <div>
+                            <span class="colorLightBlack">杨阳洋</span><br/>
+                            <span class="font24 color008DF6">4320</span>
+                        </div>
+                        <div class="rankNum">
+                            3
+                        </div>
+                        <div class="medal">
+                            <i class="icon iconfont icon-iconfontlicaishipingxuan sfsiconjiangbei color008DF6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rank">
+            <div class="list">
+                <a class="item item-icon-left item-icon-right" href="#" ng-repeat="item in [0,1,2,3]">
+                    <div class="icon leftIcon">4</div>
+                    <img class="avterImg" src="/img/hb/hb5.jpg"/>
+                <span class="nameArea">
+                    某某某
+                </span>
+                    <div class="icon rightIcon">3960</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="pageTwo" ng-if="pageData.currPageIndex==2">
+        <div class="topThree">
+            <div class="row">
+                <div class="col">
+                    <div class="content regulations">
+                        <div>
+                        </div>
+                        <div>
+                            <span class="colorLightBlack">杨阳洋</span><br/>
+                            <span class="font24 colorFF9D8F">5560</span>
+                        </div>
+                        <div class="rankNum">
+                            1
+                        </div>
+                        <div class="medal">
+                            <i class="icon iconfont icon-iconfontlicaishipingxuan sfsiconjiangbei colorFF9D8F"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content regulations">
+                        <div>
+                        </div>
+                        <div>
+                            <span class="colorLightBlack">杨阳洋</span><br/>
+                            <span class="font24 colorFF9300">4560</span>
+                        </div>
+                        <div class="rankNum">
+                            2
+                        </div>
+                        <div class="medal">
+                            <i class="icon iconfont icon-iconfontlicaishipingxuan sfsiconjiangbei colorFF9300"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content regulations">
+                        <div>
+                        </div>
+                        <div>
+                            <span class="colorLightBlack">杨阳洋</span><br/>
+                            <span class="font24 color008DF6">4320</span>
+                        </div>
+                        <div class="rankNum">
+                            3
+                        </div>
+                        <div class="medal">
+                            <i class="icon iconfont icon-iconfontlicaishipingxuan sfsiconjiangbei color008DF6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rank">
+            <div class="list">
+                <a class="item item-icon-left item-icon-right" href="#" ng-repeat="item in [0,1,2,3]">
+                    <div class="icon leftIcon">4</div>
+                    <img class="avterImg" src="/img/hb/hb5.jpg"/>
+                <span class="nameArea">
+                    某某某
+                </span>
+                    <div class="icon rightIcon">3960</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="pageThree" ng-if="pageData.currPageIndex==3">
+        <div class="card" ng-repeat="item in pageData.article" ng-click="pageFunc.go(item.id)">
+            <div class="Content">
+                <div class="leftContent">
+                    <img class="avatar" ng-src="{{item.imgSrc}}">
+                </div>
+                <div class="rightContent">
+                    <h4>
+                        {{item.title}}
+                    </h4>
+                    <summary>{{item.summary}}</summary>
+                    <span class="relativeTop4">{{item.createDate}}</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.article.length<pageData.totalCount">
+        <button class="button button-clear" ng-click="pageFunc.loadData(false)">查看更多</button>
+        </div>
+    </div>
+    <!--<div class="wrapShowMore">-->
+    <!--<button class="button button-clear" ng-click="pageIndexFunc.loadMore()">查看更多</button>-->
+    <!--</div>-->
+    <footermenu></footermenu>
+</div>

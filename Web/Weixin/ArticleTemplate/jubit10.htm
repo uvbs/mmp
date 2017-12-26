@@ -1,0 +1,522 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--活动模板免费-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>$CCWX-ARTICLETITLE$</title>
+    <link href="/Weixin/ArticleTemplate/css/comm.css" rel="stylesheet" />
+    <link href="/App/Cation/Wap/Style/styles/css/style.css" rel="stylesheet" type="text/css" />
+    <!-- <script data-main="/Weixin/ArticleTemplate/JS/main" src="/lib/requirejs/require.js"></script>-->
+    <style type="text/css">
+        body {
+            font-family: "microsoft yahei",arial,\5b8b\4f53;
+        }
+
+        .footer {
+            padding: 10px 0px 20px 0;
+        }
+
+        select {
+            height: 30px;
+            width: 100%;
+            text-align: left;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            padding: 0 0px 0 0;
+        }
+
+        .sendinfobox2 {
+            text-align: left;
+        }
+
+            .sendinfobox2 .mainbtn {
+                text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <section class="box padding10">
+        <header class="header">
+            <h1>$CCWX-ARTICLETITLE$</h1>
+            <div class="headerinfo">
+                <span class="reading">
+                    阅读
+                    <span class="orange">$CCWX-ARTICLEOPENCOUNT$</span>&nbsp;
+                    <!--分享
+                    <span class="orange">$CCWX-ARTICLSHARETCOUNT$</span>-->
+                </span>
+            </div>
+        </header>
+        <div class="maincontext">
+            <div class="maincontent">
+                <span class="time">$CCWX-ARTICLETIME$</span>
+                <span class="time">$CCWX-ARTICLEENDTIME$</span>
+                <span class="adress">$CCWX-ARTICLEADDRESS$</span>
+            </div>
+        </div>
+        <span class="rule">
+            <br />$CCWX-ARTICLECONTENT$<br />
+
+            <div class="sendinfobox2" id="formsignin1">
+
+                <form action="" id="formsignin">
+                    <input id="hdIsSignIn" name="AutoSignIn" value="0" type="hidden" />
+                    <input id="hdShareUserID" name="ShareUserID" value="" type="hidden" />
+                    <input id="hdShareID" name="ShareID" value="" type="hidden" />
+                    <input class="textbox" placeholder="姓名(必填)" name="Name" id="txtName" type="text" />
+                    <input class="textbox" placeholder="手机(必填)" name="Phone" id="txtPhone" pattern="\d*" type="text" />
+                </form>
+                <div style="text-align: center;">
+                <span class="mainbtn submitbtn" onclick="InsertData()">提交报名</span>
+                </div>
+            </div>
+
+            $CCWX-PERSONNELLIST$
+            <!-- 可见区域 -->
+            $CCWX-VISIBLEAREA$
+
+            <div class="footer">
+                <span class="weixinshare green weixinsharebtn">分享给好友</span>
+                <span class="weixinshare blue weixinsharebtn">分享到朋友圈</span>
+            </div>
+
+
+            $CCWX-SHAREUSERINFO$
+        </span>
+    </section>
+    $CCWX-RELATIONARTICLE$
+    <!--$CCWX-OTHERARTICLE$-->
+    $CCWX-ARTICLEBOTTOM$
+</body>
+</html>
+
+<script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+<script src="/Scripts/Common.js"></script>
+<script src="/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+<script src="/Plugins/LayerM/layer.m.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+    var pageData = {
+        currUserOpenId: '$CCWX-currOpenerOpenID$', //当前用户的wxopenId
+        currUserId: '$CCWX-currUserID$', //当前用户的userId
+        title: '$CCWX-ARTICLETITLE$', //标题
+        summary: '$CCWX-ARTICLESUMMARY$', //描述
+        shareImgUrl: '$CCWX-ARTICLEIMAGE$', //分享缩略图
+        shareUrl: window.location.href, //分享链接
+        tempShareId: CreateGUID(),
+        preShareId: GetParm('comeonshareid'),
+        preShareUserId: '$CCWX-shareUserId$'//分享者id
+        //callback: callback
+    };
+
+    //if (pageData.preShareUserId == pageData.currUserId) {
+    //    pageData.tempShareId = pageData.preShareId;
+    //}
+
+
+</script>
+
+<script type="text/jscript">
+    var signUpId = '$CCWX-ARTICLSUGID$'; //真实报名活动ID
+    var juactivityId = '$CCWX-JUACTIVITYID$'; //主表ID
+    var juactivityStatus = '$CCWX-ACTIVITYSTATUS'; //主表ID
+    var PageIndex = 1;
+    var isLogin = 0;
+    var wxAuthPageMustLogin = 0;
+    var appLoginUrl = '$CCWX-APPLOGINURL$';
+    function LoadRPInfo() {
+        $.ajax({
+            type: 'post',
+            url: "/Handler/OpenGuestHandler.ashx",
+            data: { Action: "GetADInfos", PageIndex: PageIndex, ActivityId: signUpId },
+            dataType: "json",
+            success: function (resp) {
+                var html = "";
+                if (resp.Status == 0) {
+                    if (resp.ExObj == null) {
+                        $("#laodmoer").hide();
+                        return;
+                    }
+
+                    $.each(resp.ExObj, function (index, Item) {
+                        html += '<li><img src=\"' + Item.K1 + '\" />' + Item.Name + '<span class=\"times\">' + Item.K2 + '</span></li>';
+                    });
+                    $("#fenxiang").text(resp.ExInt);
+                    $("#append").before(html);
+                    if (resp.ExStr == null) {
+                        resp.ExStr = "#";
+                    }
+
+                    PageIndex++;
+                }
+                else {
+                    $("#laodmoer").hide();
+                }
+            }
+        });
+    };
+    $(function () {
+
+        if (pageData.preShareUserId) {
+            $('#hdShareUserID').val(pageData.preShareUserId);
+        }
+
+        if (pageData.preShareId) {
+            $('#hdShareID').val(pageData.preShareId);
+        }
+
+        if (juactivityStatus != '0') {
+            /// $("#formsignin1").remove();
+        }
+        InitSignUpDataInfo();
+        LoadRPInfo();
+        window.alert = window.Alert = function (msg) {
+            layer.open({
+                content: msg,
+                time: 2
+            });
+        };
+
+        $(".weixinsharebtn").bind("touchend", function () {
+            var c = ".weixinshareshade";
+            if (!$(c)[0]) {
+                $("body").append("<div class='weixinshareshade'></div>");
+                console.log($(c))
+                $(c).css({
+                    "background-color": "rgba(0,0,0,0.8)",
+                    "position": "fixed",
+                    "width": "100%",
+                    "height": "100%",
+                    "top": "0px",
+                    "left": "0px",
+                    "z-index": "99",
+                    "background-image": "url(http://dev.comeoncloud.net/web/template/template8/styles/images/sharetext.png)",
+                    "background-size": "50%",
+                    "background-repeat": "no-repeat",
+                    "background-position": "right top"
+                })
+                $(c).bind("touchend", function () {
+                    $(c).css({ "display": "none" })
+                })
+            } else {
+                $(c).css({ "display": "block" })
+            }
+        });
+        $("#hdIsSignIn").val(GetParm("autosignin"));
+
+    });
+
+    function InsertData() {
+        if (isLogin == 0 && wxAuthPageMustLogin == 1) {
+            GotoLoginPage();
+            return;
+        }
+        var Name = $("#txtName").val();
+        var Phone = $("#txtPhone").val();
+        if (Name == "" || (Phone == "")) {
+            alert("请输入姓名、手机号码");
+            return false;
+        }
+        //                try {
+
+
+        $("#formsignin").ajaxSubmit({
+            url: "/serv/ActivityApiJson.ashx",
+            type: "post",
+            dataType: "json",
+            success: function (resp) {
+                if (resp.Status == 0) {//清空
+                    //$('input:text').val("");
+                    //$('textarea').val("");
+                    alert("报名成功");
+                    //alert("报名成功!\n姓名:" + $("#txtName").val() + "\n手机:" + $("#txtPhone").val());                            //alert("报名成功!");
+                    IsGotoSignInPage(); //是否跳到签到页面
+                    if (resp.ExStr != '' && resp.ExStr != null) {
+                        setInterval("SignupUrl('" + resp.ExStr + "')", 2000); //1000为1秒钟
+                    }
+                    return;
+
+                }
+                else if (resp.Status == 1) {
+                    alert("重复提交!");
+
+                }
+                else {
+                    alert(resp.Msg);
+                }
+
+            }
+        });
+        return false;
+    };
+    function SignupUrl(url) {
+        location.href = url;
+    }
+
+    //获取报名字段信息
+    function InitSignUpDataInfo() {
+        $.ajax({
+            type: 'post',
+            url: "/Handler/OpenGuestHandler.ashx",
+            data: { Action: "SignUpDataInfo", signUpId: signUpId, pathname: window.location.pathname },
+            dataType: "json",
+            success: function (resp) {
+                var html = "";
+                if (resp.Status == 0) {
+                    if (resp.ExInt == 1) {//不显示报名列表
+                        $("#divpersionlist").remove();
+
+                    }
+                    $.each(resp.ExObj, function (index, item) {
+
+
+                        switch (item.InputType) {
+                            case "combox": //下拉框
+                                //
+                                html += item.MappingName;
+                                html += '&nbsp;<select name=\"' + item.FieldName + '\">';
+                                for (var i = 0; i < item.Options.split(',').length; i++) {
+                                    var optionValue = item.Options.split(',')[i];
+                                    html += '<option value=\"' + optionValue + '\">';
+                                    html += optionValue;
+                                    html += '</option>';
+
+                                }
+                                html += '</select><br/><br/>';
+                                //
+                                break;
+                            case "checkbox": //多选框
+                                //
+                                html += item.MappingName;
+                                html += '<br/>';
+                                for (var i = 0; i < item.Options.split(',').length; i++) {
+                                    var optionValue = item.Options.split(',')[i];
+                                    html += '&nbsp;<input type=\"checkbox\" name=\"' + item.FieldName + '\" value=\"' + optionValue + '\" id=\"cb' + i + '\">';
+
+                                    html += '&nbsp;<label for=\"cb' + i + '\">' + optionValue + '</label>';
+                                    html += '<br/>';
+
+
+                                }
+                                //
+
+                                break;
+                            case "text": //文本框
+                                if (item.FieldIsNull === 1) {
+                                    item.MappingName += '(必填)';
+                                };
+                                //
+                                if (item.IsMultiline == "1") {
+                                    html += '<textarea rows=\"5\" style=\"width:100%;\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\"  placeholder=\"' + item.MappingName + '\"></textarea>';
+
+                                } else {
+                                    html += '<input class=\"textbox\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\" placeholder=\"' + item.MappingName + '\" type=\"text\">';
+                                }
+                                //
+                                break;
+                            default:
+
+                                if (item.FieldIsNull === 1) {
+                                    item.MappingName += '(必填)';
+                                };
+
+                                //
+                                if (item.IsMultiline == "1") {
+                                    html += '<textarea rows=\"5\" style=\"width:100%;\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\"  placeholder=\"' + item.MappingName + '\"></textarea>';
+
+                                } else {
+                                    html += '<input class=\"textbox\"  name=\"' + item.FieldName + '\" id=\"' + item.FieldName + '\" placeholder=\"' + item.MappingName + '\" type=\"text\">';
+                                }
+                                //
+                                break;
+
+                        }
+
+
+
+                    })
+                    html += '<input id=\"activityID\" type=\"hidden\" value=\"' + signUpId + '\" name=\"ActivityID\" />';
+                    $("#formsignin").append(html);
+                    $("#formsignin").append(resp.ExStr);
+                    LoadUserData();
+                }
+                else {
+                    alert(resp.Msg);
+                }
+            }
+        });
+    };
+
+    ///加载当前用户信息 如果可用
+    function LoadUserData() {
+        $.ajax({
+            type: 'post',
+            url: "/Handler/OpenGuestHandler.ashx",
+            data: { Action: "GetCurrentUserInfo" },
+            dataType: "json",
+            success: function (resp) {
+                if (resp.Status == 1) {
+                    isLogin = 1;
+                    $("#txtName").val(resp.ExObj.TrueName);
+                    $("#txtPhone").val(resp.ExObj.Phone);
+                    $("#formsignin").find("input[type='text'],textarea").each(function () {
+
+                        var placeholder = $(this).attr("placeholder");
+                        if (placeholder.indexOf("邮箱") >= 0 || placeholder.indexOf("邮件") >= 0 || placeholder.indexOf("email") >= 0 || placeholder.indexOf("Email") >= 0) {
+                            $(this).val(resp.ExObj.Email);
+                        }
+                        if (placeholder.indexOf("公司") >= 0) {
+                            $(this).val(resp.ExObj.Company);
+                        }
+                        if (placeholder.indexOf("职位") >= 0 || placeholder.indexOf("职务") >= 0) {
+                            $(this).val(resp.ExObj.Postion);
+                        }
+
+
+                    });
+
+                }
+
+
+            }
+        });
+
+        $.ajax({
+            type: 'post',
+            url: "/Serv/API/Common/CheckWebsiteCommRelation.ashx",
+            dataType: "json",
+            data: { key: 'WXAuthPageMustLogin' },
+            success: function (resp) {
+                if (resp.status) {
+                    wxAuthPageMustLogin = 1;
+                }
+            }
+        });
+
+    }
+    function GotoLoginPage() {
+        Alert("您还没有登录，请先登录")
+        setTimeout(function () {
+            document.location.href = appLoginUrl + '?redirect=' + encodeURI(document.location.href);
+        }, 2000);
+    }
+</script>
+
+<script type="text/javascript">
+    //var pageData = {
+    //    currUserOpenId: '$CCWX-currOpenerOpenID$', //当前用户的wxopenId
+    //    currUserId: '$CCWX-currUserID$', //当前用户的userId
+    //    title: '$CCWX-ARTICLETITLE$', //标题
+    //    summary: '$CCWX-ARTICLESUMMARY$', //描述
+    //    shareImgUrl: '$CCWX-ARTICLEIMAGE$', //分享缩略图
+    //    shareUrl: window.location.href, //分享链接
+
+    //    tempShareId: CreateGUID(),
+    //    preShareId: GetParm('comeonshareid'),
+    //    callback: callback
+    //};
+
+    var shareCallBackFunc = {
+        timeline_s: function () {
+            submitShare('timeline_s');
+            shareComeplete('$CCWX-JUACTIVITYID$');
+        },
+        timeline_c: function () {
+            //朋友圈分享取消
+        },
+        message_s: function () {
+            //分享给朋友
+            submitShare('message_s');
+            shareComeplete('$CCWX-JUACTIVITYID$');
+        },
+        message_c: function () {
+            //朋友分享取消
+        }
+    }
+
+    var processUrl = function (url) {
+        url = DelUrlParam(url, 'comeonshareid');
+        url = DelUrlParam(url, 'from');
+        url = DelUrlParam(url, 'isappinstalled');
+        return url;
+    }
+
+    var callback = function (data) { }
+
+    var submitShare = function (WxMsgType) {
+        var reqData = {
+            Action: 'ShareSubmit',
+            url: processUrl(pageData.shareUrl),
+            shareId: pageData.tempShareId,
+            preId: pageData.preShareId,
+            userId: pageData.currUserId,
+            userWxOpenId: pageData.currUserOpenId,
+            wxMsgType: WxMsgType
+        }
+
+        //分享到朋友圈
+        $.ajax({
+            type: 'post',
+            url: '/serv/pubapi.ashx',
+            data: reqData,
+            dataType: 'jsonp',
+            success: function (data) {
+                pageData.tempShareId = CreateGUID();
+            }
+        });
+    }
+
+    //TODO:Url处理
+    //移除原有参数 comeonshareid from isappinstalled
+    pageData.shareUrl = processUrl(pageData.shareUrl);
+    pageData.shareUrl = pageData.shareUrl + '?comeonshareid=' + pageData.tempShareId;
+
+
+    wx.ready(function () {
+        wxapi.wxshare({
+            title: pageData.title,
+            desc: pageData.summary,
+            link: pageData.shareUrl,
+            imgUrl: pageData.shareImgUrl
+        }, shareCallBackFunc)
+    });
+    //报名成功是否跳到签到页面
+    function IsGotoSignInPage() {
+
+        if (GetParm("gotosigninpage") == "1") {
+
+            window.location.href = "/app/cation/wap/signIn.aspx?id=" + juactivityId;
+
+        }
+
+    }
+    //获取Get参数
+    function GetParm(parm) {
+        //获取当前URL
+        var local_url = window.location.href;
+
+        //获取要取得的get参数位置
+        var get = local_url.indexOf(parm + "=");
+        if (get == -1) {
+            return "";
+        }
+        //截取字符串
+        var get_par = local_url.slice(parm.length + get + 1);
+        //判断截取后的字符串是否还有其他get参数
+        var nextPar = get_par.indexOf("&");
+        if (nextPar != -1) {
+            get_par = get_par.slice(0, nextPar);
+        }
+        return get_par;
+    }
+    //获取参数
+
+</script>
+

@@ -1,0 +1,61 @@
+<div class="wrapClassDetail">
+    <div class="classTitle">
+        <h4>{{pageData.article.title}}</h3>
+        <span>300人在学习</span>
+    </div>
+    <div class="classVideo">
+        <video class="videoStyle" src="movie.ogg" controls="controls">
+        </video>
+    </div>
+    <div class="classDetail">
+        <div class="classCate" ng-if="pageData.isShowClassCate==true">
+            <div class="row">
+                <div class="col borderRight borderBottom" ng-class="{selected:pageData.currPageIndex==1}" ng-click="pageData.currPageIndex=1">
+                    课程章节
+                </div>
+                <div class="col borderBottom" ng-class="{selected:pageData.currPageIndex==2}" ng-click="pageData.currPageIndex=2">
+                    课程详情
+                </div>
+            </div>
+        </div>
+        <div class="classChapter" ng-if="pageData.currPageIndex==1">
+           <div class="list">
+               <div class="oneChapter" ng-repeat="item in [0,1,2,3]">
+                   <div class="item item-icon-right" ng-click="pageData.isExpand=!pageData.isExpand;" ng-if="pageData.isExpand==true">
+                       第一章  标题标题标题标题标题标题
+                       <i class="icon iconfont icon-arrowdown"></i>
+                   </div>
+                   <div class="item item-icon-right" ng-click="pageData.isExpand=!pageData.isExpand;" ng-if="pageData.isExpand==false">
+                       第一章  标题标题标题标题标题标题
+                       <i class="icon iconfont icon-arrowright"></i>
+                   </div>
+                   <div class="singleClass" ng-if="pageData.isExpand==true">
+                       <ul>
+                           <li ng-class="{color008DF6:pageData.currSingleIndex==1}" ng-click="pageData.isShowClassCate=false;pageData.currSingleIndex=1">
+                               <i class="icon iconfont icon-icoyuan"></i>
+                               第一个课程
+                           </li>
+                           <li ng-class="{color008DF6:pageData.currSingleIndex==2}" ng-click="pageData.isShowClassCate=false;pageData.currSingleIndex=2">
+                               <i class="icon iconfont icon-icoyuan"></i>
+                               第二个课程
+                           </li>
+                           <li ng-class="{color008DF6:pageData.currSingleIndex==3}" ng-click="pageData.isShowClassCate=false;pageData.currSingleIndex=3">
+                               <i class="icon iconfont icon-icoyuan"></i>
+                               第三个课程
+                           </li>
+                           <li ng-class="{color008DF6:pageData.currSingleIndex==4}" ng-click="pageData.isShowClassCate=false;pageData.currSingleIndex=4">
+                               <i class="icon iconfont icon-icoyuan"></i>
+                               第四个课程
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="classIntro" ng-if="pageData.currPageIndex==2">
+            <p>
+               {{pageData.article.summary}}
+            </p>
+        </div>
+    </div>
+</div>

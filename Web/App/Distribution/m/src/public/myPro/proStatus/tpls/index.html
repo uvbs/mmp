@@ -1,0 +1,38 @@
+<div class="wrapProStatus">
+    <header ng-attr-title="{{prostatus.title}}" ng-attr-btnshow="0" ng-attr-isshow="1"></header>
+
+    <div class="content has-header need-header">
+        <div class="wrapCardList">
+            <div class="row pLeft32" ng-repeat="item in prostatus.logList">
+                <!--<div class="col">-->
+                    <!--&lt;!&ndash;<div class="imgDiv">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<img class="imgStyle" src="http://139.196.16.189:80/uploads/CrXRk0.png">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+                <div class="zhe" ng-if="$index==0"></div>
+                <div class="greenPoint"></div>
+                <div class="col leftLine">
+                    <div class="null"></div>
+                    <div class="row pLeft0">
+                        <!--<div class="col"><span class="mLeft6">发表文章</span></div>-->
+                        <div class="col textL pLeft12">{{item.projectlog_time | date:'yyyy-MM-dd HH:mm'}}</div>
+                    </div>
+                    <div class="card">
+                        <div class="item pLeft0 pRight0">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 class="font14">{{item.status}}</h2>
+                                    <summary ng-bind="item.remark"></summary>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="wrapShowMore" ng-if="pageData.dataList.length<pageData.totalCount">-->
+                <!--<button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

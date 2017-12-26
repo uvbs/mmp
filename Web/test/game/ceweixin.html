@@ -1,0 +1,277 @@
+﻿<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="target-densitydpi=320,width=640,user-scalable=no" />
+<script src="./js/jQueryRotateCompressed.js"></script>
+<script type="text/javascript">
+    var info = "";
+    var infos = "";
+    var reason = "";
+    var name = "";
+    var resultText='测测你的微信值多少钱？';
+    var result_arr = ['50万元','20万元','500万元','价值连城，无价之宝','1毛钱','1元钱','分文不值','1000元','100万元','5000元','5万元','10万元'];
+    $(function(){
+        var r_h = $("#round").width();
+        $("#round").css("height", r_h + "px");
+        var a_p = r_h*3/8;
+        $("#arrow").css("width", a_p + "px");
+        var p_t = (r_h/2) - (a_p/2);
+        $("#arrow").css("padding-top", p_t + "px");
+        $("#begin").click(function(){
+            var name = $("#name").val();
+            //  var birth = $("#month").val() + "" + $("#day").val();
+            //---------------------------
+            if(name == "" || name.length == 0){
+                alert("请输入你的姓名!");
+                return false;
+            }
+            number = 0;
+            for(var a=0;a< name.length;a++){ 
+                number = number + name.charCodeAt(a); 
+            } 
+            number=(number+1) % 12; 
+            d=number; info="'"+name+"'"+"的微信价值"+result_arr[d]+"。好牛<img src=\"/game/images/1.gif\" _moz_resizing=\"true\" /> ";
+            resultText="'"+name+"'"+"的微信价值"+result_arr[d]+"。测测你的微信值多少钱？?";
+            d = d * 30 + 15;
+            $('#arrow-img').stopRotate();
+            $("#arrow-img").rotate({
+                angle:0,
+                duration: 5000,
+                animateTo: d+1440,
+                callback:function(){
+                    var w = $(document).width();
+                    var l;
+                    var r_w = $("#result").width();
+                    l = w/2 - (r_w/2);
+                    $("#result").css("left", l + "px");
+                    $("#info").html(info);
+                    $("#infos").text(infos);
+                    document.title = infos;
+                    $("#result").show();
+                }
+            });
+        });
+        $("body").on("click", "#close", function(){
+            $("#result").hide();
+            $("#content").show();
+        });
+        $("#share").click(function(){
+            var info = $("#info").html();
+        });
+    });
+</script>
+<style type="text/css">
+    #content {
+        padding: 0 0 10px 0;
+        margin: 0 auto;
+        width: 100%;
+        height: 90%;
+        border-bottom: 1px solid #DCDCDC;
+        background: #fff;
+    }
+
+    #bg {
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        background: #fff;
+    }
+
+    #marry-who {
+        margin: 0 auto;
+        padding-top: 10px;
+        width: 100%;
+        height: 172px;
+        background-image: url(/game/images/5_1.jpg);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        -moz-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+
+    #marry-form {
+        padding: 17px 20px 0;
+        float: left;
+        display: inline;
+        text-align:center;
+    }
+
+    #ad {
+        margin: 0 auto;
+        text-align: center;
+        width: 650px;
+    }
+
+    #bai {
+        margin: 0 auto;
+        text-align: center;
+        width: 650px;
+    }
+
+    #marry-form .form-one {
+        font-size: 30px;
+        margin: 40px 0px 0 0;
+        float: left;
+        text-align: center;
+    }
+
+    #begin {
+        width: 168px;
+        height: 60px;
+        cursor: pointer;
+        text-align: center;
+        display: initial;
+    }
+
+        #begin img {
+            width: 168px;
+            height: 60px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+    #round {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        background-image: url(/game/images/25.jpg);
+        -moz-background-size: 100% 100%;
+        background-size: 100% 100%;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/game/images/25.jpg', sizingMethod='scale');
+    }
+
+    #arrow {
+        margin: 0 auto;
+        padding-top: 10em;
+        text-align: center;
+    }
+
+    #arrow-img {
+        width: 100%;
+        height: auto;
+    }
+
+    #result {
+        font-size: 30px;
+        width: 90%;
+        height: 158px;
+        margin: 0 auto;
+        position: fixed;
+        top: 40%;
+        background-image: url(/game/images/result.png);
+        background-repeat: no-repeat;
+        filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+        -moz-background-size: 100% 100%;
+        background-size: 100% 100%;
+        display: none;
+        z-index: 999;
+    }
+
+    #info {
+        padding-top: 40px;
+        font-weight: 800;
+        padding-bottom: 8px;
+        padding-left: 30px;
+        font-size: 18px;
+        width: 95%;
+        z-index: 999;
+    }
+
+    #tools {
+        padding-left: 30px;
+    }
+
+    #share {
+        font-size: 18px;
+        margin-top: 2px;
+        color: red;
+    }
+
+    #close {
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        right: 0;
+        margin-top: -5px;
+        margin-right: -5px;
+    }
+
+    .guanzhu a {
+        font-size: 18px;
+    }
+
+    #mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-color: #333;
+        -moz-opacity: 0.9;
+        opacity: 0.9;
+    }
+
+    #tip {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 10px;
+        left: 15px;
+    }
+
+        #tip img {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+</style>
+<div id="ceshuResult">
+</div>
+$AD$
+<div id="result">
+    <div id="close">
+        <img src="/game/images/close.png" alt="" />
+    </div>
+    <div id="info">
+    </div>
+    <div id="tools">
+        <span id="share"> 觉得好玩就分享到朋友圈让朋友一起玩吧！ </span>
+    </div>
+</div>
+<div id="content">
+    <div id="bg">
+        <div id="round">
+            <div id="arrow">
+                <img src="/game/images/arrow1.png" id="arrow-img" alt="" />
+            </div>
+        </div>
+        <div id="marry-who">
+            <div id="marry-form">
+                <div class="form-one">
+                    <label for="name">填写你的姓名</label> <input type="text" name="name" id="name" style="width:120px;font-size:30px;" />
+                </div>
+                <div id="begin">
+                    <img src="/game/images/start.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="infos" style="display:none;">
+</div>
+<div style="text-align:center;display:inherit;">
+    <p style="color:#000;font-weight:bolder;font-size:22px;">
+        更多惊喜，请关注<a href="http://mp.weixin.qq.com/s?__biz=MzA3MDExNDUyNw==&mid=200482909&idx=1&sn=deced89bf5505af4d968df8e25a520be#rd" target="_blank">至云之家</a>
+    </p>
+</div>
+<script type="text/javascript">
+    var imgUrl = "$SHAREIMAGE$";
+    var shareLink = "$SHAREURL$";
+    wx.ready(function () {
+        wxapi.wxshare({
+            title:resultText,
+            desc: '测测你的微信值多少钱？',
+            link: shareLink,
+            imgUrl: imgUrl
+        });
+    })
+</script>

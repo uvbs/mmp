@@ -1,0 +1,3 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="wucSelectDateTime.ascx.cs" Inherits="ZentCloud.JubitIMP.Web.Control.wucSelectDateTime" %>
+<input type="text" id="txtSelectDate" readonly="readonly" onfocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"
+    style="text-align: center; width: 130px; border: 1px solid #8BA1CF;" runat="server" />

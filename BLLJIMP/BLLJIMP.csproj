@@ -1,0 +1,872 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{38D7AA58-C95B-449B-86C6-A8073A56E11F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>BLLJIMP</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ZentCloud.BLLJIMP</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/Maticsoft.BLL/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AopSdk, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\AopSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyNetQ, Version=0.50.12.407, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyNetQ.0.50.12.407\lib\net40\EasyNetQ.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.RedisSessionStateProvider, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.RedisSessionStateProvider.2.2.4\lib\net40\Microsoft.Web.RedisSessionStateProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySpider">
+      <HintPath>..\Web\dll\MySpider.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Open.EZRproSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Open.EZRproSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Open.HongWareSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\dll\Open.HongWareSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.3.5.6\lib\net40\RabbitMQ.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis.StrongName, Version=1.2.1.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.StrongName.1.2.1\lib\net40\StackExchange.Redis.StrongName.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="ZCJson">
+      <HintPath>..\Web\dll\ZCJson.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL.cs" />
+    <Compile Include="BLLActivity.cs" />
+    <Compile Include="BLLActivityForwardInfo.cs" />
+    <Compile Include="BLLAdInfo.cs" />
+    <Compile Include="BLLApi.cs" />
+    <Compile Include="BLLAppManage.cs" />
+    <Compile Include="BLLArticleCategory.cs" />
+    <Compile Include="BLLCardCoupon.cs" />
+    <Compile Include="BLLCarLibrary.cs" />
+    <Compile Include="BLLCommRelation.cs" />
+    <Compile Include="BLLCompanyWebSite.cs" />
+    <Compile Include="BLLComponent.cs" />
+    <Compile Include="BLLDashboard.cs" />
+    <Compile Include="BLLDefineCreditAcount.cs" />
+    <Compile Include="BLLDistribution.cs" />
+    <Compile Include="BLLEfast.cs" />
+    <Compile Include="BLLFilterWord.cs" />
+    <Compile Include="BLLFlow.cs" />
+    <Compile Include="BLLForbesQuestion.cs" />
+    <Compile Include="BllGame.cs" />
+    <Compile Include="BllHaiMa.cs" />
+    <Compile Include="BLLIM.cs" />
+    <Compile Include="BLLImage.cs" />
+    <Compile Include="BLLJuActivity.cs" />
+    <Compile Include="BLLKeyValueData.cs" />
+    <Compile Include="BLLApiLog.cs" />
+    <Compile Include="BLLLiveChat.cs" />
+    <Compile Include="BLLMeifan.cs" />
+    <Compile Include="BLLLog.cs" />
+    <Compile Include="BLLMall.cs" />
+    <Compile Include="BLLMember.cs" />
+    <Compile Include="BLLMonitor.cs" />
+    <Compile Include="BLLMQ.cs" />
+    <Compile Include="BLLQuestion.cs" />
+    <Compile Include="BLLRedis.cs" />
+    <Compile Include="BLLReview.cs" />
+    <Compile Include="BLLSaller.cs" />
+    <Compile Include="BLLScoreDefine.cs" />
+    <Compile Include="BLLShareMonitor.cs" />
+    <Compile Include="BLLSignIn.cs" />
+    <Compile Include="BLLSlide.cs" />
+    <Compile Include="BLLSMS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BLLStoredValueCard.cs" />
+    <Compile Include="BLLSocketLog.cs" />
+    <Compile Include="BLLStockHistory.cs" />
+    <Compile Include="BLLSystemNotice.cs" />
+    <Compile Include="BLLTag.cs" />
+    <Compile Include="BLLTableFieldMap.cs" />
+    <Compile Include="BLLTimingTask.cs" />
+    <Compile Include="BLLTransfersAudit.cs" />
+    <Compile Include="BLLTutor.cs" />
+    <Compile Include="BLLUploadOtherServer.cs" />
+    <Compile Include="BLLUser.cs" />
+    <Compile Include="BLLUserDistributionMember.cs" />
+    <Compile Include="BLLUserExpand.cs" />
+    <Compile Include="BLLUserScore.cs" />
+    <Compile Include="BLLUserScoreDetailsInfo.cs" />
+    <Compile Include="BLLUserShare.cs" />
+    <Compile Include="BLLUserStatistics.cs" />
+    <Compile Include="BLLVote.cs" />
+    <Compile Include="BLLWebSite.cs" />
+    <Compile Include="BLLWebsiteDomainInfo.cs" />
+    <Compile Include="BLLWeixin.cs" />
+    <Compile Include="BLLWeixinCard.cs" />
+    <Compile Include="BLLWeixinOpen.cs" />
+    <Compile Include="BLLWithdrawCash.cs" />
+    <Compile Include="BLLWXMallProduct.cs" />
+    <Compile Include="DictionaryExtensionMethodClass.cs" />
+    <Compile Include="Enums\APIErrCode.cs" />
+    <Compile Include="Enums\ApiModule.cs" />
+    <Compile Include="Enums\ArticleCategoryType.cs" />
+    <Compile Include="Enums\ArticleCateSysType.cs" />
+    <Compile Include="Enums\AwardsType.cs" />
+    <Compile Include="Enums\CacheDataKey.cs" />
+    <Compile Include="Enums\CommRelationType.cs" />
+    <Compile Include="Enums\ComponentKeyType.cs" />
+    <Compile Include="Enums\ContentType.cs" />
+    <Compile Include="Enums\DashboardType.cs" />
+    <Compile Include="Enums\EnumCardCouponType.cs" />
+    <Compile Include="Enums\EnumTableFieldType.cs" />
+    <Compile Include="Enums\KeyVauleDataType.cs" />
+    <Compile Include="Enums\MQType.cs" />
+    <Compile Include="Enums\OrderType.cs" />
+    <Compile Include="Enums\ProjectType.cs" />
+    <Compile Include="Enums\ReviewType.cs" />
+    <Compile Include="Enums\ScoreDefineType.cs" />
+    <Compile Include="Enums\SMSPlanType.cs" />
+    <Compile Include="Enums\TagsType.cs" />
+    <Compile Include="Enums\UserExpandType.cs" />
+    <Compile Include="Enums\UserScoreBalanceType.cs" />
+    <Compile Include="Enums\WebsiteWXUserRegType.cs" />
+    <Compile Include="Enums\WXBroadcastType.cs" />
+    <Compile Include="Enums\EnumLogType.cs" />
+    <Compile Include="ModelEx\ActivityDataInfo.cs" />
+    <Compile Include="ModelEx\ActivityFieldMappingInfo.cs" />
+    <Compile Include="ModelEx\Answer.cs" />
+    <Compile Include="ModelEx\ArticeCategoryTypeResponse.cs" />
+    <Compile Include="ModelEx\CardCoupons.cs" />
+    <Compile Include="ModelEx\ArticleCategory.cs" />
+    <Compile Include="ModelEx\CarModelColorInfo.cs" />
+    <Compile Include="ModelEx\CarServerDayPartsDetail.cs" />
+    <Compile Include="ModelEx\CarServerDayPrice.cs" />
+    <Compile Include="ModelEx\CarServerParts.cs" />
+    <Compile Include="ModelEx\CompanyWebsite_Navigate.cs" />
+    <Compile Include="ModelEx\CompanyWebsite_ToolBar.cs" />
+    <Compile Include="ModelEx\Component.cs" />
+    <Compile Include="ModelEx\CrowdFundInfo.cs" />
+    <Compile Include="ModelEx\DashboardJson.cs" />
+    <Compile Include="ModelEx\JuActivityInfo.cs" />
+    <Compile Include="ModelEx\KeyVauleDataInfo.cs" />
+    <Compile Include="ModelEx\MonitorEventDetailsInfo.cs" />
+    <Compile Include="ModelEx\MonitorLinkInfo.cs" />
+    <Compile Include="ModelEx\MemberInfo.cs" />
+    <Compile Include="ModelEx\MonitorPlan.cs" />
+    <Compile Include="ModelEx\OrderPay.cs" />
+    <Compile Include="ModelEx\ProductSku.cs" />
+    <Compile Include="ModelEx\ProjectCommission.cs" />
+    <Compile Include="ModelEx\Question.cs" />
+    <Compile Include="ModelEx\Questionnaire.cs" />
+    <Compile Include="ModelEx\QuestionnaireRecordDetail.cs" />
+    <Compile Include="ModelEx\SignInAddress.cs" />
+    <Compile Include="ModelEx\SMSDetails.cs" />
+    <Compile Include="ModelEx\SMSTriggerDetails.cs" />
+    <Compile Include="ModelEx\StoredValueCardRecord.cs" />
+    <Compile Include="ModelEx\TableFieldMapping.cs" />
+    <Compile Include="ModelEx\TeamPerformance.cs" />
+    <Compile Include="ModelEx\UserFollowChain.cs" />
+    <Compile Include="ModelEx\UserInfo.cs" />
+    <Compile Include="ModelEx\UserScoreDetailsInfo.cs" />
+    <Compile Include="ModelEx\VoteLogInfo.cs" />
+    <Compile Include="ModelEx\WebsiteInfo.cs" />
+    <Compile Include="ModelEx\WeixinMemberInfo.cs" />
+    <Compile Include="ModelEx\WeixinMenu.cs" />
+    <Compile Include="ModelEx\WeixinReplyRuleInfo.cs" />
+    <Compile Include="ModelEx\WeixinSpread.cs" />
+    <Compile Include="ModelEx\WXMallProductInfo.cs" />
+    <Compile Include="ModelEx\WXMemberInfo.cs" />
+    <Compile Include="ModelEx\WXMallCategory.cs" />
+    <Compile Include="ModelEx\Project.cs" />
+    <Compile Include="ModelGen\API\BaseWXMallProductInfoList.cs" />
+    <Compile Include="ModelGen\API\List\ReviewList.cs" />
+    <Compile Include="ModelGen\API\Mall\NumberSaleModel.cs" />
+    <Compile Include="ModelGen\API\Mall\OrderManualModel.cs" />
+    <Compile Include="ModelGen\LiveChatRoomAdminUsers.cs" />
+    <Compile Include="ModelGen\MeifanActivity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelGen\MeifanActivityData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelGen\MeifanActivityItem.cs" />
+    <Compile Include="ModelGen\MeifanMyCard.cs" />
+    <Compile Include="ModelGen\MeifanCard.cs" />
+    <Compile Include="ModelGen\API\User\Expand\Field.cs" />
+    <Compile Include="ModelGen\AppPushClient.cs" />
+    <Compile Include="ModelGen\LiveChatDetail.cs" />
+    <Compile Include="ModelGen\LiveChatRoomUsers.cs" />
+    <Compile Include="ModelGen\API\User\Field.cs" />
+    <Compile Include="ModelGen\API\User\UserCenterField.cs" />
+    <Compile Include="ModelGen\LiveChatRoom.cs" />
+    <Compile Include="ModelGen\AppManage.cs" />
+    <Compile Include="ModelGen\AppManageVersion.cs" />
+    <Compile Include="ModelGen\MemberExActionInfo.cs" />
+    <Compile Include="ModelGen\MQHistoryInfo.cs" />
+    <Compile Include="ModelGen\MQ\DistNewMemberNoticeInfo.cs" />
+    <Compile Include="ModelGen\MQ\MessageInfo.cs" />
+    <Compile Include="ModelGen\MQ\QuestionnaireStatisticsInfo.cs" />
+    <Compile Include="ModelGen\MQ\ShopDetailOpenStatistics.cs" />
+    <Compile Include="ModelGen\MQ\WebStatisticsBase.cs" />
+    <Compile Include="ModelGen\ProductSkuSupplier.cs" />
+    <Compile Include="ModelGen\SupplierChannelSettlement.cs" />
+    <Compile Include="ModelGen\SupplierUnSettlement.cs" />
+    <Compile Include="ModelGen\SupplierSettlementDetail.cs" />
+    <Compile Include="ModelGen\SupplierSettlement.cs" />
+    <Compile Include="ModelGen\ActivityConfig.cs" />
+    <Compile Include="ModelGen\ActivityDataInfo.cs" />
+    <Compile Include="ModelGen\ActivityFieldMappingInfo.cs" />
+    <Compile Include="ModelGen\ActivityForwardInfo.cs" />
+    <Compile Include="ModelGen\ActivityInfo.cs" />
+    <Compile Include="ModelGen\AdInfo.cs" />
+    <Compile Include="ModelGen\Answer.cs" />
+    <Compile Include="ModelGen\ApiModule.cs" />
+    <Compile Include="ModelGen\ApiParameterInfo.cs" />
+    <Compile Include="ModelGen\API\BaseResponse.cs" />
+    <Compile Include="ModelGen\API\File\ExportCache.cs" />
+    <Compile Include="ModelGen\API\Flow\PostAction.cs" />
+    <Compile Include="ModelGen\API\Forbes\APIBase.cs" />
+    <Compile Include="ModelGen\API\CardCoupon\CardcouponBase.cs" />
+    <Compile Include="ModelGen\API\CardCoupon\Cardcoupon_EntranceTicket.cs" />
+    <Compile Include="ModelGen\API\CardCoupon\MyCardcouponBase.cs" />
+    <Compile Include="ModelGen\API\CardCoupon\MyCardcouponList_Entranceticket.cs" />
+    <Compile Include="ModelGen\API\CardCoupon\MyCardcoupon_EntranceTicket.cs" />
+    <Compile Include="ModelGen\API\Forbes\Category.cs" />
+    <Compile Include="ModelGen\API\Forbes\Activity.cs" />
+    <Compile Include="ModelGen\API\Forbes\ScoreRank.cs" />
+    <Compile Include="ModelGen\API\Forbes\SignPerson.cs" />
+    <Compile Include="ModelGen\API\Forbes\ActivityDetail.cs" />
+    <Compile Include="ModelGen\API\Forbes\News.cs" />
+    <Compile Include="ModelGen\API\Forbes\NewsDetail.cs" />
+    <Compile Include="ModelGen\API\Forbes\Login.cs" />
+    <Compile Include="ModelGen\API\Forbes\CheckLogin.cs" />
+    <Compile Include="ModelGen\API\Forbes\Slide.cs" />
+    <Compile Include="ModelGen\API\Forbes\TutorList.cs" />
+    <Compile Include="ModelGen\API\Forbes\UserInfo.cs" />
+    <Compile Include="ModelGen\API\Forbes\ScoreRecord.cs" />
+    <Compile Include="ModelGen\API\Forbes\Attention.cs" />
+    <Compile Include="ModelGen\API\Forbes\Questionnaire.cs" />
+    <Compile Include="ModelGen\API\Forbes\SystemNotice.cs" />
+    <Compile Include="ModelGen\API\Forbes\MasterList.cs" />
+    <Compile Include="ModelGen\API\Forbes\MasterBase.cs" />
+    <Compile Include="ModelGen\API\Forbes\MasterDetail.cs" />
+    <Compile Include="ModelGen\API\Forbes\AskList.cs" />
+    <Compile Include="ModelGen\API\Forbes\AskDetail.cs" />
+    <Compile Include="ModelGen\API\Forbes\IndexMsg.cs" />
+    <Compile Include="ModelGen\API\Forbes\MasterTag.cs" />
+    <Compile Include="ModelGen\API\Forbes\MasterNumber.cs" />
+    <Compile Include="ModelGen\API\Mall\AddOrderResp.cs" />
+    <Compile Include="ModelGen\API\Mall\FreightModel.cs" />
+    <Compile Include="ModelGen\API\Mall\FreightTemplateRule.cs" />
+    <Compile Include="ModelGen\API\Mall\FreightTemplateSkuMapping.cs" />
+    <Compile Include="ModelGen\API\Mall\OrderRequestModel.cs" />
+    <Compile Include="ModelGen\API\Mall\ExamInfo.cs" />
+    <Compile Include="ModelGen\API\Mall\ProductAppointmentInfo.cs" />
+    <Compile Include="ModelGen\API\Mall\SkuModel.cs" />
+    <Compile Include="ModelGen\API\Mall\OrderListModel.cs" />
+    <Compile Include="ModelGen\API\Mall\OrderDetailModel.cs" />
+    <Compile Include="ModelGen\API\Mall\OrderProductModel.cs" />
+    <Compile Include="ModelGen\API\Mall\OrderModelBase.cs" />
+    <Compile Include="ModelGen\API\Step5\Activity.cs" />
+    <Compile Include="ModelGen\API\Step5\ActivityDetail.cs" />
+    <Compile Include="ModelGen\API\Step5\ArticleReplyReview.cs" />
+    <Compile Include="ModelGen\API\Step5\ArticleReview.cs" />
+    <Compile Include="ModelGen\API\Step5\AskDetail.cs" />
+    <Compile Include="ModelGen\API\Step5\AskList.cs" />
+    <Compile Include="ModelGen\API\Step5\Attention.cs" />
+    <Compile Include="ModelGen\API\Step5\Category.cs" />
+    <Compile Include="ModelGen\API\Step5\CheckLogin.cs" />
+    <Compile Include="ModelGen\API\Step5\Login.cs" />
+    <Compile Include="ModelGen\API\Step5\MasterBase.cs" />
+    <Compile Include="ModelGen\API\Step5\MasterDetail.cs" />
+    <Compile Include="ModelGen\API\Step5\MasterList.cs" />
+    <Compile Include="ModelGen\API\Step5\MasterNumber.cs" />
+    <Compile Include="ModelGen\API\Step5\MasterTag.cs" />
+    <Compile Include="ModelGen\API\Step5\News.cs" />
+    <Compile Include="ModelGen\API\Step5\NewsDetail.cs" />
+    <Compile Include="ModelGen\API\Step5\QrCode.cs" />
+    <Compile Include="ModelGen\API\Step5\Questionnaire.cs" />
+    <Compile Include="ModelGen\API\Step5\ScoreRank.cs" />
+    <Compile Include="ModelGen\API\Step5\ScoreRecord.cs" />
+    <Compile Include="ModelGen\API\Step5\SignPerson.cs" />
+    <Compile Include="ModelGen\API\Step5\SystemNotice.cs" />
+    <Compile Include="ModelGen\API\Step5\Userinfo.cs" />
+    <Compile Include="ModelGen\API\Step5\HrLove.cs" />
+    <Compile Include="ModelGen\API\Step5\HrLoveDetail.cs" />
+    <Compile Include="ModelGen\API\Step5\Position.cs" />
+    <Compile Include="ModelGen\API\Step5\PositionDetail.cs" />
+    <Compile Include="ModelGen\API\User\PayRegisterUser.cs" />
+    <Compile Include="ModelGen\API\User\PayUpgrade.cs" />
+    <Compile Include="ModelGen\API\User\UserInfo.cs" />
+    <Compile Include="ModelGen\ApplyPositionInfo.cs" />
+    <Compile Include="ModelGen\ArticleCategory.cs" />
+    <Compile Include="ModelGen\ArticleCategoryType.cs" />
+    <Compile Include="ModelGen\ArticleCategoryTypeConfig.cs" />
+    <Compile Include="ModelGen\Attention.cs" />
+    <Compile Include="ModelGen\BankCard.cs" />
+    <Compile Include="ModelGen\CardCoupons.cs" />
+    <Compile Include="ModelGen\CarBrandInfo.cs" />
+    <Compile Include="ModelGen\CarDiscountRateInfo.cs" />
+    <Compile Include="ModelGen\CarModelCateInfo.cs" />
+    <Compile Include="ModelGen\CarModelDetailInfo.cs" />
+    <Compile Include="ModelGen\CarModelInfo.cs" />
+    <Compile Include="ModelEx\CarOwnerInfo.cs" />
+    <Compile Include="ModelGen\CarPartsInfo.cs" />
+    <Compile Include="ModelGen\CarQuotationInfo.cs" />
+    <Compile Include="ModelGen\CarSeriesCateInfo.cs" />
+    <Compile Include="ModelGen\CarSeriesInfo.cs" />
+    <Compile Include="ModelGen\CarServerInfo.cs" />
+    <Compile Include="ModelGen\CarServerOrderDetails.cs" />
+    <Compile Include="ModelGen\CarServerOrderInfo.cs" />
+    <Compile Include="ModelGen\CarWorkhoursPriceInfo.cs" />
+    <Compile Include="ModelGen\CodeListInfo.cs" />
+    <Compile Include="ModelGen\CommRelationInfo.cs" />
+    <Compile Include="ModelGen\CompanyInfo.cs" />
+    <Compile Include="ModelGen\CompanyWebsiteTemplate.cs" />
+    <Compile Include="ModelGen\CompanyWebsite_Config.cs" />
+    <Compile Include="ModelGen\CompanyWebsite_Navigate.cs" />
+    <Compile Include="ModelGen\CompanyWebsite_Projector.cs" />
+    <Compile Include="ModelGen\CompanyWebsite_Tab.cs" />
+    <Compile Include="ModelGen\CompanyWebsite_ToolBar.cs" />
+    <Compile Include="ModelGen\Component.cs" />
+    <Compile Include="ModelGen\ComponentModel.cs" />
+    <Compile Include="ModelGen\ComponentModelField.cs" />
+    <Compile Include="ModelGen\ComponentTemplate.cs" />
+    <Compile Include="ModelGen\ConfigBarCodeInfo.cs" />
+    <Compile Include="ModelGen\Coupon.cs" />
+    <Compile Include="ModelGen\CrowdFundInfo.cs" />
+    <Compile Include="ModelGen\CrowdFundItem.cs" />
+    <Compile Include="ModelGen\CrowdFundRecord.cs" />
+    <Compile Include="ModelGen\DashboardInfo.cs" />
+    <Compile Include="ModelGen\DashboardLog.cs" />
+    <Compile Include="ModelGen\DashboardMonitorInfo.cs" />
+    <Compile Include="ModelGen\DefineCreditAcount.cs" />
+    <Compile Include="ModelGen\DictionaryInfo.cs" />
+    <Compile Include="ModelGen\Distribution\BindBankCard.cs" />
+    <Compile Include="ModelGen\Distribution\WithdrawCash.cs" />
+    <Compile Include="ModelGen\ExpressInfo.cs" />
+    <Compile Include="ModelGen\FilterWord.cs" />
+    <Compile Include="ModelGen\Flow.cs" />
+    <Compile Include="ModelGen\FlowAction.cs" />
+    <Compile Include="ModelGen\FlowActionDetail.cs" />
+    <Compile Include="ModelGen\FlowActionFile.cs" />
+    <Compile Include="ModelGen\FlowStep.cs" />
+    <Compile Include="ModelGen\FlowStepRelation.cs" />
+    <Compile Include="ModelGen\forbes\AccountBound.cs" />
+    <Compile Include="ModelGen\forbes\Slide.cs" />
+    <Compile Include="ModelGen\forbes\ForbesQuestion.cs" />
+    <Compile Include="ModelGen\forbes\ForbesQuestionResult.cs" />
+    <Compile Include="ModelGen\forbes\ForbesQuestionPersonal.cs" />
+    <Compile Include="ModelGen\ForwardingRecord.cs" />
+    <Compile Include="ModelGen\FreightTemplate.cs" />
+    <Compile Include="ModelGen\FreightTemplateRule.cs" />
+    <Compile Include="ModelGen\GameFriendChain.cs" />
+    <Compile Include="ModelGen\GameInfo.cs" />
+    <Compile Include="ModelGen\GameAdvertPlan.cs" />
+    <Compile Include="ModelGen\GameCategory.cs" />
+    <Compile Include="ModelGen\GameEventDetailInfo.cs" />
+    <Compile Include="ModelGen\GameEventDetailInfoClick.cs" />
+    <Compile Include="ModelGen\HaiMa\HaiMaStore.cs" />
+    <Compile Include="ModelGen\HaoService\Brand.cs" />
+    <Compile Include="ModelGen\HaoService\BrandResp.cs" />
+    <Compile Include="ModelGen\HaoService\INLBase.cs" />
+    <Compile Include="ModelGen\HaoService\RespBase.cs" />
+    <Compile Include="ModelGen\HaoService\Series.cs" />
+    <Compile Include="ModelGen\IndustryTemplate.cs" />
+    <Compile Include="ModelGen\JuActivityFiles.cs" />
+    <Compile Include="ModelGen\JuActivityImageMapping.cs" />
+    <Compile Include="ModelGen\JuActivityInfo.cs" />
+    <Compile Include="ModelGen\KeyVauleDataInfo.cs" />
+    <Compile Include="ModelGen\ApiLog.cs" />
+    <Compile Include="ModelGen\Live_MatchInfo.cs" />
+    <Compile Include="ModelGen\Log.cs" />
+    <Compile Include="ModelGen\LotteryUserInfo.cs" />
+    <Compile Include="ModelGen\MeetingDetails.cs" />
+    <Compile Include="ModelGen\MeetingInfo.cs" />
+    <Compile Include="ModelGen\MemberTag.cs" />
+    <Compile Include="ModelGen\MyCardCoupons.cs" />
+    <Compile Include="ModelGen\NewGUID.cs" />
+    <Compile Include="ModelGen\OldWeimengUser.cs" />
+    <Compile Include="ModelGen\Other\WxAutoLoginToken.cs" />
+    <Compile Include="ModelGen\PcPage.cs" />
+    <Compile Include="ModelGen\PcPage\PcPage.cs" />
+    <Compile Include="ModelGen\PositionInfo.cs" />
+    <Compile Include="ModelGen\ProductProperty.cs" />
+    <Compile Include="ModelGen\ProductPropertyValue.cs" />
+    <Compile Include="ModelGen\ProductSku.cs" />
+    <Compile Include="ModelGen\ProductStock.cs" />
+    <Compile Include="ModelGen\ProjectCommissionEstimate.cs" />
+    <Compile Include="ModelGen\PromotionActivity.cs" />
+    <Compile Include="ModelGen\QrCodeLoginMap.cs" />
+    <Compile Include="ModelGen\Question.cs" />
+    <Compile Include="ModelGen\Questionnaire.cs" />
+    <Compile Include="ModelGen\QuestionnaireRecord.cs" />
+    <Compile Include="ModelGen\QuestionnaireRecordDetail.cs" />
+    <Compile Include="ModelGen\QuestionnaireSet.cs" />
+    <Compile Include="ModelGen\ScoreDefineInfoExt.cs" />
+    <Compile Include="ModelGen\ScoreDefineInfo.cs" />
+    <Compile Include="ModelGen\ScoreLockInfo.cs" />
+    <Compile Include="ModelGen\ShareInfo.cs" />
+    <Compile Include="ModelGen\ShareMonitorInfo.cs" />
+    <Compile Include="ModelGen\ShareReaderInfo.cs" />
+    <Compile Include="ModelGen\ShoppingCart.cs" />
+    <Compile Include="ModelGen\SignInAddress.cs" />
+    <Compile Include="ModelGen\SignInLog.cs" />
+    <Compile Include="ModelGen\Slide.cs" />
+    <Compile Include="ModelGen\StoredValueCard.cs" />
+    <Compile Include="ModelGen\StoredValueCardUseRecord.cs" />
+    <Compile Include="ModelGen\StoredValueCardRecord.cs" />
+    <Compile Include="ModelGen\SocketLog.cs" />
+    <Compile Include="ModelGen\Socket\Conn.cs" />
+    <Compile Include="ModelGen\Socket\SendToClient.cs" />
+    <Compile Include="ModelGen\Socket\QRCodeLogin.cs" />
+    <Compile Include="ModelGen\Socket\QRCodeLoginRedis.cs" />
+    <Compile Include="ModelGen\Socket\User.cs" />
+    <Compile Include="ModelGen\StockHistory.cs" />
+    <Compile Include="ModelGen\SystemNotice.cs" />
+    <Compile Include="ModelGen\TableFieldMapping.cs" />
+    <Compile Include="ModelGen\TeamPerformance.cs" />
+    <Compile Include="ModelGen\TeamPerformanceDetails.cs" />
+    <Compile Include="ModelGen\TeamPerformanceSet.cs" />
+    <Compile Include="ModelGen\TimingTask.cs" />
+    <Compile Include="ModelGen\TransfersAudit.cs" />
+    <Compile Include="ModelGen\TypeInfo.cs" />
+    <Compile Include="ModelGen\UserCreditAcountDetails.cs" />
+    <Compile Include="ModelGen\UserDistributionMemberInfo.cs" />
+    <Compile Include="ModelGen\UserDistributionOwnerTempInfo.cs" />
+    <Compile Include="ModelGen\UserExpand.cs" />
+    <Compile Include="ModelGen\UserFollowChain.cs" />
+    <Compile Include="ModelGen\UserLevelConfig.cs" />
+    <Compile Include="ModelGen\UserSignHistory.cs" />
+    <Compile Include="ModelGen\UserStatistics.cs" />
+    <Compile Include="ModelGen\VoteGroupInfo.cs" />
+    <Compile Include="ModelGen\VoteLogInfo_100_2959_1_proc.cs" />
+    <Compile Include="ModelGen\UserScoreDetailsInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelGen\WanBang\WBAttentionInfo.cs" />
+    <Compile Include="ModelGen\WanBang\WBBaseInfo.cs" />
+    <Compile Include="ModelGen\WanBang\WBCompanyInfo.cs" />
+    <Compile Include="ModelGen\WanBang\WBProjectInfo.cs" />
+    <Compile Include="ModelGen\TutorInfo.cs" />
+    <Compile Include="ModelGen\WanBang\WBJointProjectInfo.cs" />
+    <Compile Include="ModelGen\WBHBannaImg.cs" />
+    <Compile Include="ModelGen\WBHOpinionInfo.cs" />
+    <Compile Include="ModelGen\WBHPartnerInfo.cs" />
+    <Compile Include="ModelGen\WBHScoreRecord.cs" />
+    <Compile Include="ModelGen\Weixin\JsapiTicketModel.cs" />
+    <Compile Include="ModelGen\Weixin\JsapiConfigModel.cs" />
+    <Compile Include="ModelGen\Weixin\UploadArticle.cs" />
+    <Compile Include="ModelGen\Weixin\WeixinCard.cs" />
+    <Compile Include="ModelGen\Weixin\WeixinQrcodeTicketResp.cs" />
+    <Compile Include="ModelGen\Weixin\WeixinStore.cs" />
+    <Compile Include="ModelGen\WXBroadcastHistory.cs" />
+    <Compile Include="ModelGen\WXMallRefund.cs" />
+    <Compile Include="ModelGen\WXMallRefundLog.cs" />
+    <Compile Include="ModelGen\WXMallStatisticsOrderDetail.cs" />
+    <Compile Include="ModelGen\WXMallStatisticsProduct.cs" />
+    <Compile Include="ModelGen\WXMallStatisticsOrder.cs" />
+    <Compile Include="ModelGen\WXMassArticle.cs" />
+    <Compile Include="ModelGen\WXQiyeConfig.cs" />
+    <Compile Include="ModelGen\WXMallDelivery.cs" />
+    <Compile Include="ModelGen\WXMallPaymentType.cs" />
+    <Compile Include="ModelGen\WXMallScoreTypeInfo.cs" />
+    <Compile Include="ModelGen\MonitorEventDetailsInfo.cs" />
+    <Compile Include="ModelGen\MonitorLinkInfo.cs" />
+    <Compile Include="ModelGen\MonitorPlan.cs" />
+    <Compile Include="ModelGen\ReplyReviewInfo.cs" />
+    <Compile Include="ModelGen\ReviewConFig.cs" />
+    <Compile Include="ModelGen\ReviewInfo.cs" />
+    <Compile Include="ModelGen\SmsVerificationCode.cs" />
+    <Compile Include="ModelGen\TheVoteInfo.cs" />
+    <Compile Include="ModelGen\UserLoginLogs.cs" />
+    <Compile Include="ModelGen\MemberGroupInfo.cs" />
+    <Compile Include="ModelGen\MemberInfo.cs" />
+    <Compile Include="ModelGen\ModuleFilterInfo.cs" />
+    <Compile Include="ModelGen\SMSSendPipeInfo.cs" />
+    <Compile Include="ModelGen\SMSDetails.cs" />
+    <Compile Include="ModelGen\SMSPlanInfo.cs" />
+    <Compile Include="ModelGen\SMSSendQueueInfo.cs" />
+    <Compile Include="ModelGen\SMSTriggerDetails.cs" />
+    <Compile Include="ModelGen\SMSUserPipeSet.cs" />
+    <Compile Include="ModelGen\SystemSet.cs" />
+    <Compile Include="ModelGen\UserInfo.cs" />
+    <Compile Include="ModelGen\UserTemplate.cs" />
+    <Compile Include="ModelGen\UTransactionInfo.cs" />
+    <Compile Include="ModelGen\VoteInfo.cs" />
+    <Compile Include="ModelGen\VoteLogInfo.cs" />
+    <Compile Include="ModelGen\VoteObjectInfo.cs" />
+    <Compile Include="ModelGen\WebAccessLogsInfo.cs" />
+    <Compile Include="ModelGen\WebAccessLogsPath.cs" />
+    <Compile Include="ModelGen\WebsiteDomainInfo.cs" />
+    <Compile Include="ModelGen\WebsiteInfo.cs" />
+    <Compile Include="ModelGen\WeixinMemberInfo.cs" />
+    <Compile Include="ModelGen\WeixinMenu.cs" />
+    <Compile Include="ModelGen\WeixinMsgSourceInfo.cs" />
+    <Compile Include="ModelGen\WeixinMsgDetails.cs" />
+    <Compile Include="ModelGen\WeixinMsgDetailsImgsInfo.cs" />
+    <Compile Include="ModelGen\WeixinReplyRuleImgsInfo.cs" />
+    <Compile Include="ModelGen\WeixinReplyRuleInfo.cs" />
+    <Compile Include="ModelGen\WeixinSpread.cs" />
+    <Compile Include="ModelGen\Weixin\Article.cs" />
+    <Compile Include="ModelGen\BarCodeInfo.cs" />
+    <Compile Include="ModelGen\Weixin\ErrorMessage.cs" />
+    <Compile Include="ModelGen\Weixin\MediaOperate.cs" />
+    <Compile Include="ModelGen\Weixin\MediaOperateReturn.cs" />
+    <Compile Include="ModelGen\Weixin\RequestMessageBase.cs" />
+    <Compile Include="ModelGen\Weixin\RequestMessageEvent.cs" />
+    <Compile Include="ModelGen\Weixin\RequestMessageImage.cs" />
+    <Compile Include="ModelGen\Weixin\RequestMessageLocation.cs" />
+    <Compile Include="ModelGen\Weixin\RequestMessageText.cs" />
+    <Compile Include="ModelGen\Weixin\RequestMessageVoice.cs" />
+    <Compile Include="ModelGen\Weixin\ResponseMessageBase.cs" />
+    <Compile Include="ModelGen\Weixin\ResponseMessageNews.cs" />
+    <Compile Include="ModelGen\Weixin\ResponseMessageText.cs" />
+    <Compile Include="ModelGen\Weixin\WeixinAccessToken.cs" />
+    <Compile Include="ModelGen\Weixin\WeixinFollowers.cs" />
+    <Compile Include="ModelGen\Weixin\WeixinFollowersInfo.cs" />
+    <Compile Include="ModelGen\Weixin\WeixinUserInfo.cs" />
+    <Compile Include="ModelGen\WXAddVMaping.cs" />
+    <Compile Include="ModelGen\WXAddVTask.cs" />
+    <Compile Include="ModelGen\WXAwards.cs" />
+    <Compile Include="ModelGen\WXConsigneeAddress.cs" />
+    <Compile Include="ModelGen\WXFileReceive.cs" />
+    <Compile Include="ModelGen\WXFlowDataInfo.cs" />
+    <Compile Include="ModelGen\WXFlowInfo.cs" />
+    <Compile Include="ModelGen\WXFlowStepInfo.cs" />
+    <Compile Include="ModelGen\WXKeFu.cs" />
+    <Compile Include="ModelGen\WXKeFuLog.cs" />
+    <Compile Include="ModelGen\WXKeFuQuestionReceive.cs" />
+    <Compile Include="ModelGen\WXKeFuQuestionReply.cs" />
+    <Compile Include="ModelGen\WXKeFuQuestionReplyTemp.cs" />
+    <Compile Include="ModelGen\WXLottery.cs" />
+    <Compile Include="ModelGen\WXLotteryWinningData.cs" />
+    <Compile Include="ModelGen\WXMallCategory.cs" />
+    <Compile Include="ModelGen\WXMallOrderDetailsInfo.cs" />
+    <Compile Include="ModelGen\WXMallOrderInfo.cs" />
+    <Compile Include="ModelGen\WXMallOrderStatusInfo.cs" />
+    <Compile Include="ModelGen\WXMallProductInfo.cs" />
+    <Compile Include="ModelGen\WXMallStores.cs" />
+    <Compile Include="ModelGen\WXMemberFlowHistory.cs" />
+    <Compile Include="ModelGen\WXMemberInfo.cs" />
+    <Compile Include="ModelGen\WXQrCode.cs" />
+    <Compile Include="ModelGen\WXShowImgInfo.cs" />
+    <Compile Include="ModelGen\WXShowInfo.cs" />
+    <Compile Include="ModelGen\WXSignInInfo.cs" />
+    <Compile Include="ModelGen\WXAddVCategory.cs" />
+    <Compile Include="ModelGen\WXMallDeliveryStaff.cs" />
+    <Compile Include="ModelGen\WXMallScoreProductInfo.cs" />
+    <Compile Include="ModelGen\WXMallScoreOrderDetailsInfo.cs" />
+    <Compile Include="ModelGen\WXMallScoreOrderInfo.cs" />
+    <Compile Include="ModelGen\WXMallScoreRecord.cs" />
+    <Compile Include="ModelGen\ScoreConfig.cs" />
+    <Compile Include="ModelGen\WXLotteryLog.cs" />
+    <Compile Include="ModelGen\WXLotteryRecord.cs" />
+    <Compile Include="ModelGen\VoteRecharge.cs" />
+    <Compile Include="ModelGen\OrderPay.cs" />
+    <Compile Include="ModelGen\PayConfig.cs" />
+    <Compile Include="ModelGen\WBHShareRecord.cs" />
+    <Compile Include="ModelGen\WXLotteryV1.cs" />
+    <Compile Include="ModelGen\WXAwardsV1.cs" />
+    <Compile Include="ModelGen\WXLotteryLogV1.cs" />
+    <Compile Include="ModelGen\WXLotteryRecordV1.cs" />
+    <Compile Include="ModelGen\WXLotteryWinningDataV1.cs" />
+    <Compile Include="ModelGen\Navigation.cs" />
+    <Compile Include="ModelGen\ExpressResult.cs" />
+    <Compile Include="ModelGen\WXMallGiftOrderInfo.cs" />
+    <Compile Include="ModelGen\GetAddress.cs" />
+    <Compile Include="ModelEx\QuestionPostModel.cs" />
+    <Compile Include="ModelGen\ProjectCommission.cs" />
+    <Compile Include="ModelGen\ProjectLog.cs" />
+    <Compile Include="ModelGen\Project.cs" />
+    <Compile Include="ModelGen\ProductGroupBuyRule.cs" />
+    <Compile Include="ModelGen\ProductPriceConfig.cs" />
+    <Compile Include="ModelGen\WXMallStatistics.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TransacType.cs" />
+    <Compile Include="BllScore.cs" />
+    <Compile Include="BllLottery.cs" />
+    <Compile Include="BllPay.cs" />
+    <Compile Include="BllOrder.cs" />
+    <Compile Include="ModelGen\UserVoteInfo.cs" />
+    <Compile Include="BllKuaidi100.cs" />
+    <Compile Include="BLLDistributionOffLine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AliStock\AliStock.csproj">
+      <Project>{d35152f9-a061-4586-b834-58c180f3a97d}</Project>
+      <Name>AliStock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AZStorage\AZStorage.csproj">
+      <Project>{d6394f37-0417-45ec-82b7-66e2d4e61e8f}</Project>
+      <Name>AZStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLLPermission\BLLPermission.csproj">
+      <Project>{4e3cc450-e8ca-49c0-bcf9-e1af71de1cef}</Project>
+      <Name>BLLPermission</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonPlatform.Helper\CommonPlatform.Helper.csproj">
+      <Project>{52c4a8fb-b358-422b-a3a1-09ea73203d68}</Project>
+      <Name>CommonPlatform.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeteaseIMSDK\NeteaseIMSDK.csproj">
+      <Project>{154257f9-014f-40ed-ad4e-73c13c482653}</Project>
+      <Name>NeteaseIMSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Open.EfastSDK\Open.EfastSDK.csproj">
+      <Project>{0a41a74d-09b3-4210-ad83-a5f7f26643c4}</Project>
+      <Name>Open.EfastSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OssHelper\AliOss.csproj">
+      <Project>{f916a046-8d39-4038-892e-ef00a83caf22}</Project>
+      <Name>AliOss</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Payment\Payment.csproj">
+      <Project>{bf11a23a-9c9c-4ec8-b3ce-fb76ce112fee}</Project>
+      <Name>Payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RedisHelper\RedisHelper.csproj">
+      <Project>{307ad912-e473-43a4-975b-78a430d0f399}</Project>
+      <Name>RedisHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ueditor.Helper\Ueditor.Helper.csproj">
+      <Project>{f37faf4f-83d0-4b37-abb2-be76cef0f3b4}</Project>
+      <Name>Ueditor.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCAppPush\ZCAppPush.csproj">
+      <Project>{07141f01-d925-4637-8277-588bf3bcb411}</Project>
+      <Name>ZCAppPush</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCBLLEngine\ZCBLLEngine.csproj">
+      <Project>{67a2097c-482c-4e08-a3bb-cf7a01c2ffe1}</Project>
+      <Name>ZCBLLEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCBLLEngine\ZCBLLEngine.csproj">
+      <Project>{67a2097c-482c-4e08-a3bb-cf7a01c2ffe1}</Project>
+      <Name>ZCBLLEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCBLLEngine\ZCBLLEngine.csproj">
+      <Project>{67a2097c-482c-4e08-a3bb-cf7a01c2ffe1}</Project>
+      <Name>ZCBLLEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCBLLEngine\ZCBLLEngine.csproj">
+      <Project>{67a2097c-482c-4e08-a3bb-cf7a01c2ffe1}</Project>
+      <Name>ZCBLLEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCCommon\ZCCommon.csproj">
+      <Project>{66816e20-66b9-4bab-871f-45efe110146b}</Project>
+      <Name>ZCCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCCommon\ZCCommon.csproj">
+      <Project>{66816e20-66b9-4bab-871f-45efe110146b}</Project>
+      <Name>ZCCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCDBEngine\ZCDALEngine.csproj">
+      <Project>{9722b8c9-701e-4f27-835f-ef9c79a7c554}</Project>
+      <Name>ZCDALEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\AopSdk.dll" />
+    <Content Include="DLL\Newtonsoft.Json.dll" />
+    <Content Include="DLL\Open.EZRproSDK.dll" />
+    <Content Include="DLL\Open.HongWareSDK.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>

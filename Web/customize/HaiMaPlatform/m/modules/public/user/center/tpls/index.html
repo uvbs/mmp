@@ -1,0 +1,58 @@
+<div class="wrapUserIndex">
+    <div class="list">
+        <div class="userInfo">
+            <!--<div class="avatar" style="background-image: url({{pageData.userInfo.avatar}}); ">-->
+            <div class="avatar" style="background-image: url('/img/hb/hb6.jpg'); ">
+
+            </div>
+            <div class="userName">琴瑟在弦</div>
+        </div>
+        <!--<div class="item row state">-->
+            <!--<div class="col" ng-click="go('#/myFollow/{{pageData.userInfo.id}}')">-->
+                <!--<div>0</div>-->
+                <!--<div>关注</div>-->
+            <!--</div>-->
+            <!--<div class="col col-10 line"><span>&nbsp;</span></div>-->
+            <!--<div class="col" ng-click="go('#/myFans/{{pageData.userInfo.id}}')">-->
+                <!--<div>0</div>-->
+                <!--<div>粉丝</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="item item-divider colorGrey_9">空间被{{pageData.userInfo.userPraiseCount}}次浏览</div>-->
+        <!--<div class="item item-divider colorGrey_9">获得了{{pageData.userInfo.viewCount}}个赞</div>-->
+        <a class="item item-icon-right color_999" href="#/editInfo">
+            我的信息
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right color_999" href="#/userPoints">
+            我的积分
+            <span class="item-note">
+                <!--{{pageData.userInfo.userTotalScore}}-->
+                300
+            </span>
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right color_999" href="#/myAsk/{{pageData.userInfo.id}}/true">
+            我的业绩
+            <span class="item-note">
+                100
+            </span>
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right color_999" href="#/myAsk/{{pageData.userInfo.id}}/true">
+            我的集训
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <!--<div class="wrapBtn logout">-->
+            <!--<button class="button button-block button-positive button-energized" ng-mousedown="pageFunc.goToLink()">-->
+                <!--分享给朋友-->
+            <!--</button>-->
+        <!--</div>-->
+        <!--<div class="wrapBtn logout">-->
+            <!--<button class="button button-block button-positive" ng-mousedown="pageFunc.logout()">-->
+                <!--退出登录-->
+            <!--</button>-->
+        <!--</div>-->
+    </div>
+    <footermenu ng-attr-select="2"></footermenu>
+</div>

@@ -1,0 +1,80 @@
+/*重写部分*/
+/*自定义部分*/
+.bg{
+    background: url("../images/index/bg.png") top center no-repeat;
+    background-size: cover;
+    padding-bottom: 5%;
+}
+.offset-headerbg{
+    margin-top: 10%;
+}
+.header-bg{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+.content-bg{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:-5%;
+    z-index: -2;
+    max-width: 80%;
+}
+.offset-font-2{
+    margin-top:-20% ;
+}
+.offset-btn{
+    margin-top: -15% !important;
+    position: relative;
+}
+.btn{
+    color: #fff;
+    font-size: 1.5rem;
+    position: absolute;
+    top:45%;
+    left: 0;
+    width: 63%;
+    height: 35%;
+    padding: 4% 0 0 15%;
+    text-decoration: none;
+    outline: none;
+}
+.offset-bike{
+    margin-top: -7% !important;
+}
+.offset-football{
+    margin-top: -75%;
+    margin-left: 10%;
+}
+.offset-section{
+    margin-top: -45%;
+}
+.offset-section p{
+    margin: 0 0 5px;
+    font-size: 12px;
+}
+.ico-glass{
+    position: absolute;
+    right: 0;
+    max-width: 20%;
+}
+.font-code{
+    color:#0963bc;
+    text-align: center;
+}
+.ico-seastar{
+    position: absolute;
+    right: 0;
+    top: 25%;
+    max-width: 20%;
+}
+/*修复问题*/
+.fix-width-50{
+    width: 50%;
+}
+.fix-width-67{
+    width: 67%;
+}

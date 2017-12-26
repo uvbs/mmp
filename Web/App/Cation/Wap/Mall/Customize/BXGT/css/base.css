@@ -1,0 +1,25 @@
+@charset "utf-8";
+a:active{star:expression(this.onFocus=this.blur());}
+a:focus,button:focus{outline:none; -moz-outline:none;}
+:focus{outline:none;}
+/*Reset Css*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,img,area,param{margin:0; padding:0;}
+html,body{margin:0; padding:0; height: 100%;}
+select{*behavior: url("select.htc");}/*IE6,IE7select*/
+ol,ul{padding-left:0; list-style-type:none; list-style:none;}
+img{border:none; display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+th{font-style:normal;font-weight:normal;}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal;}
+input{display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+fieldset{border:none;}
+legend{display:none;}
+/*Clear Css*/
+.clear{clear:both; font-size:0px; height:0px; line-height:0;}
+.clearfix:after{content:'\20';display:block;clear:both;visibility:hidden;line-height:0;height:0;}
+.clearfix{display:block;zoom:1;}
+html[xmlns] .clearfix{display:block;}
+* html .clearfix{height:1%;}
+/*Common Css*/
+body{font:12px/1.5 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+.fl{float:left; _display:inline;}
+.fr{float:right; _display:inline;}

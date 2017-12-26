@@ -1,0 +1,36 @@
+﻿<div class="wrapOpen pBottom72 pTop62">
+
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+        <h3>课程分类</h3>
+        <div class="cbp-wrap-menulist">
+            <a href="javascript:;" target="_blank" ng-click="pageFunc.leftMenuClick(item)" ng-repeat="item in pageData.tag">{{item.name}}</a>    
+        </div>
+        
+    </nav>
+
+    <div class="warpHeader bar bar-header item-input-inset">
+        <i class="icon iconfont icon-iconfontliebiao mLeft6 mRight12 colorBlue" ng-click="pageFunc.toggleMenuClick()"></i> 
+        <label class="item-input-wrapper">
+            <input type="search" placeholder="搜索...">
+            <i class="icon iconfont icon-sousuo" ng-click="pageFunc.search()"></i>
+        </label>
+    </div>
+    <div class="wrapActivityCardList">
+
+        <div class="card" ng-repeat="item in pageData.artitle" ng-click="pageFunc.gotoDetail(item)">
+            <div class="item">
+                <img class="avatar" src="{{item.imgSrc}}">
+                <div class="content">
+                    <div class="whiteSpaceNormal">
+                        {{item.title}}
+                    </div>                
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapShowMore" ng-if="pageData.artitle.length < pageData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadData()">查看更多</button>
+        </div>
+    </div>
+    <footermenu></footermenu>
+</div>

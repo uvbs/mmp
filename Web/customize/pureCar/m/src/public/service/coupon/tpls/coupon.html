@@ -1,0 +1,31 @@
+<div class="serviceCouponCtrl">
+	<tabs class="titleTab" tabs="['工时券', '优惠券']" current="pageData.tabIndex" on-select="pageFunc.setTabIndex"></tabs>
+
+	<tabs ng-if="pageData.tabIndex === 1" class="subTab" tabs="['未使用', '已使用', '已过期']" current="pageData.couponStatus"></tabs>
+	
+	<div ng-if="pageData.tabIndex === 0" class="list list-inset bgTransparent">
+	  <label class="item item-input item-input-search">
+	    <input type="text" placeholder="搜索">
+		<i class="icon iconfont icon-dianhua"></i>
+	  </label>
+	</div>
+	
+	<div class="insetBlock">
+		<div class="row">
+			<div class="col col-75">优惠券信息信息</div>
+			<div class="col couponStatus">未使用</div>
+		</div>
+	</div>
+	<div class="insetBlock">
+		<div class="row">
+			<div class="col col-75">优惠券信息信息</div>
+			<div class="col couponStatus">未使用</div>
+		</div>
+	</div>
+	<div class="insetBlock">
+		<div class="row">
+			<div class="col col-75">优惠券信息信息</div>
+			<div class="col couponStatus">未使用</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,55 @@
+<div class="wrapSubmitInfo">
+    <header ng-attr-title="{{submitinfo.title}}"></header>
+    <div class="content has-header">
+        <form class="form-horizontal" ng-submit="submitinfo.submitInfo()">
+            <div class="list list-inset list-reset wrapForm">
+                <label class="item item-input" ng-repeat="item in submitinfo.fields">
+                    <input id="txtSignup_{{item.field}}" type="text" ng-model="item.input" placeholder="请输入{{item.field_show_name}}" ng-required="{{(item.field_is_null==0)}}">
+                </label>
+            </div>
+            <div class="bottomDev">
+                <div class="padding">
+                    <button type="submit" class="button button-block button-energized change">
+                        提交财富商机
+                    </button>
+                </div>
+                <div class="devlist" ng-mousedown="submitinfo.backToList()">
+                    我的项目列表
+                </div>
+            </div>
+        </form>
+
+        <!--<div class="list list-inset list-reset wrapForm">-->
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="项目名称" ng-model="submitinfo.dataInfo.porject_name">-->
+            <!--</label>-->
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="姓名" ng-model="submitinfo.dataInfo.contact">-->
+            <!--</label>-->
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="手机" ng-model="submitinfo.dataInfo.phone">-->
+            <!--</label>-->
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="微信" ng-model="submitinfo.dataInfo.weixin">-->
+            <!--</label>-->
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="单位" ng-model="submitinfo.dataInfo.company">-->
+            <!--</label>-->
+            <!--<label class="item item-input">-->
+                <!--<div contenteditable="true">推荐理由</div>-->
+            <!--</label>-->
+        <!--</div>-->
+
+        <!--<div class="bottomDev">-->
+            <!--<div class="padding">-->
+                <!--<button class="button button-block button-energized change" ng-mousedown="submitinfo.submitInfo()">-->
+                    <!--提交财富商机-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="devlist" ng-mousedown="submitinfo.backToList()">-->
+                <!--我的项目列表-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+

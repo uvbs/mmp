@@ -1,0 +1,545 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css" />
+    <link href="css/component.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function selected(obj, v) {
+            $("#li1").find("img").attr("src", "images/userinfo1.png");
+            $("#li2").find("img").attr("src", "images/userinfo2.png");
+            $("#li3").find("img").attr("src", "images/userinfo3.png");
+            $("#li4").find("img").attr("src", "images/userinfo4.png");
+            $(obj).find("img").attr("src", "images/userinfo" + v + "_1.png");
+        }
+    </script>
+</head>
+<body>
+    <!--Page 1 content-->
+    <div class="swiper-slide sliderbg1">
+        <div class="swiper-container swiper-nested">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <div class="pages_container">
+                            <div class="index_container3">
+                                <div class="userinfo-bg">
+                                    <div class="userlogo">
+                                        <a href="">
+                                            <img src="images/user.png" alt="" title="" border="0" style="width: 80px"><br />
+                                        </a>
+                                    </div>
+                                    <div class="username">
+                                        <h3>
+                                            用户名</h3>
+                                        <p>
+                                            会员号码：000123</p>
+                                    </div>
+                                </div>
+                                <div class="form_div2">
+                                    <div class="page_padding9">
+                                        <div class="menu3">
+                                            <ul id="tabsmenu">
+                                                <li id="li1" class="active" onclick="selected(this,1)"><a href="#tab1">
+                                                    <img src="images/userinfo1_1.png" alt="" title="" /><span>我的收藏</span></a></li>
+                                                <li id="li2" onclick="selected(this,2)"><a href="#tab2">
+                                                    <img src="images/userinfo2.png" alt="" title="" /><span>我的订单</span></a></li>
+                                                <li id="li3" onclick="selected(this,3)"><a href="#tab3">
+                                                    <img src="images/userinfo3.png" alt="" title="" /><span>物流跟踪</span></a></li>
+                                                <li id="li4" onclick="selected(this,4)"><a href="#tab4">
+                                                    <img src="images/userinfo4.png" alt="" title="" /><span>售后服务</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab1" class="tabcontent">
+                                    <div class="menu_sc">
+                                        <ul>
+                                            <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_02.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                            <br />
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <a href="shopcar.html" class="shopcar"></a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_03.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                            <br />
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <a href="shopcar.html" class="shopcar"></a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_04.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                            <br />
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <a href="shopcar.html" class="shopcar"></a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_04.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                            <br />
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <a href="shopcar.html" class="shopcar"></a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="tab2" class="tabcontent">
+                                    <div class="menu_order">
+                                        <ul>
+                                            <li>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td align="left">
+                                                            <tt style="color: #999">订单号：001003005 2015-05-25 交易完成 已付款</tt>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left">
+                                                            <div class="td1-1">
+                                                                <img src="images/order_01.png" alt="" title="" /></div>
+                                                            <div class="td2-1">
+                                                                <span>澳洲直送 智力车厘子 </span>
+                                                                <br />
+                                                                <span>￥<span>3.00 </span>X<span>1</span> </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right">
+                                                            <tt>总计1件商品，<span class="number101">￥3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td align="left">
+                                                            <tt style="color: #999">订单号：001003005 2015-05-25  交易完成 已付款</tt>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left">
+                                                            <div class="td1-1">
+                                                                <img src="images/order_01.png" alt="" title="" /></div>
+                                                            <div class="td2-1">
+                                                                <span>澳洲直送 智力车厘子 </span>
+                                                                <br />
+                                                                <span>￥<span>3.00 </span>X<span>1</span> </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right">
+                                                            <tt>总计1件商品，<span class="number101">￥3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td align="left">
+                                                            <tt style="color: #999">订单号：001003005 2015-05-25  交易完成 已付款</tt>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left">
+                                                            <div class="td1-1">
+                                                                <img src="images/order_01.png" alt="" title="" /></div>
+                                                            <div class="td2-1">
+                                                                <span>澳洲直送 智力车厘子 </span>
+                                                                <br />
+                                                                <span>￥<span>3.00 </span>X<span>1</span> </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right">
+                                                            <tt>总计1件商品，<span class="number101">￥3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td align="left">
+                                                            <tt style="color: #999">订单号：001003005 2015-05-25  交易完成 已付款</tt>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left">
+                                                            <div class="td1-1">
+                                                                <img src="images/order_01.png" alt="" title="" /></div>
+                                                            <div class="td2-1">
+                                                                <span>澳洲直送 智力车厘子 </span>
+                                                                <br />
+                                                                <span>￥<span>3.00 </span>X<span>1</span> </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right">
+                                                            <tt>总计1件商品，<span class="number101">￥3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <!--                  <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_01.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_01.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_01.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                <table>
+                                                    <tr>
+                                                        <td class="td1">
+                                                            <img src="images/order_01.png" alt="" title="" />
+                                                        </td>
+                                                        <td class="td2">
+                                                            <span>澳洲直送 智力车厘子 </span>
+                                                            <br />
+                                                            <span>14斤/500g </span>
+                                                        </td>
+                                                        <td class="td3">
+                                                            <tt>￥<span class="number">3.00 </span></tt>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="tab3" class="tabcontent">
+                                    <div class="toogle_wrap gray" style="min-height: 60px;">
+                                        <div class="trigger" style="margin-top: 35px">
+                                            <div class="service_box">
+                                                <div class="services_icon1">
+                                                    <img src="images/order_01.png" alt="" title="" /></div>
+                                                <div class="service_content1">
+                                                    <span>订单编号：001002005</span>
+                                                </div>
+                                                <div style="float: right; margin-top: -18px; margin-right: -15px">
+                                                    <a href="" class="wuliu"><span>正在<br />
+                                                        派送</span></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="toggle_container">
+                                            <div class="index_container2">
+                                                <ul class="cbp_tmtimeline">
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                卖家已发货
+                                                            </p>
+                                                            <p>
+                                                                2015-03-03 18:50:00
+                                                            </p>
+                                                            <p>
+                                                                【上海吴淞公司】的收件人【洪乾坤】已收件
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                2015-03-03 20:50:00
+                                                            </p>
+                                                            <p>
+                                                                由【上海吴淞公司】发往【上海徐汇公司】
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                2015-03-04 08:50:00
+                                                            </p>
+                                                            <p>
+                                                                快件已到达【上海徐汇公司】扫描人【郭红燕】
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="toogle_wrap white" style="min-height: 60px;">
+                                        <div class="trigger" style="margin-top: 35px">
+                                            <div class="service_box">
+                                                <div class="services_icon1">
+                                                    <img src="images/order_01.png" alt="" title="" /></div>
+                                                <div class="service_content1">
+                                                    <span>订单编号：001003005</span>
+                                                </div>
+                                                <div style="float: right; margin-top: -18px; margin-right: -15px">
+                                                    <a href="" class="wuliu"><span>正在<br />
+                                                        派送</span></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="toggle_container">
+                                            <div class="index_container2">
+                                                <ul class="cbp_tmtimeline">
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                卖家已发货
+                                                            </p>
+                                                            <p>
+                                                                2015-03-03 18:50:00
+                                                            </p>
+                                                            <p>
+                                                                【上海吴淞公司】的收件人【洪乾坤】已收件
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                2015-03-03 20:50:00
+                                                            </p>
+                                                            <p>
+                                                                由【上海吴淞公司】发往【上海徐汇公司】
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                2015-03-04 08:50:00
+                                                            </p>
+                                                            <p>
+                                                                快件已到达【上海徐汇公司】扫描人【郭红燕】
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="toogle_wrap gray" style="min-height: 60px;">
+                                        <div class="trigger" style="margin-top: 35px">
+                                            <div class="service_box">
+                                                <div class="services_icon1">
+                                                    <img src="images/order_01.png" alt="" title="" /></div>
+                                                <div class="service_content1">
+                                                    <span>订单编号：001003005</span>
+                                                </div>
+                                                <div style="float: right; margin-top: -18px; margin-right: -15px">
+                                                    <a href="" class="wuliu"><span>正在<br />
+                                                        派送</span></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="toggle_container">
+                                            <div class="index_container2">
+                                                <ul class="cbp_tmtimeline">
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                卖家已发货
+                                                            </p>
+                                                            <p>
+                                                                2015-03-03 18:50:00
+                                                            </p>
+                                                            <p>
+                                                                【上海吴淞公司】的收件人【洪乾坤】已收件
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                2015-03-03 20:50:00
+                                                            </p>
+                                                            <p>
+                                                                由【上海吴淞公司】发往【上海徐汇公司】
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cbp_tmicon">
+                                                        </div>
+                                                        <div class="cbp_tmlabel">
+                                                            <p>
+                                                                2015-03-04 08:50:00
+                                                            </p>
+                                                            <p>
+                                                                快件已到达【上海徐汇公司】扫描人【郭红燕】
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab4" class="tabcontent">
+                                    <div class="form_sub2 radius10">
+                                        <a href="index.html">申请退货流程</a>
+                                    </div>
+                                    <div class="form_sub2 radius10">
+                                        <a href="index.html">常见购物问题</a>
+                                    </div>
+                                    <div class="form_sub2 radius10">
+                                        <a href="index.html">收到货物有问题/有问题</a>
+                                    </div>
+                                    <div class="form_sub2 radius10">
+                                        <a href="index.html">智能客户服务热线</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="padding-bottom: 20px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer">
+        <div class="menu1">
+            <ul>
+                <li><a href="index.html">
+                    <img src="images/home1.png" alt="" title="" /><span>首页</span></a></li>
+                <li><a href="menu.html">
+                    <img src="images/home2.png" alt="" title="" /><span>分类</span></a></li>
+                <li><a href="shopcar.html">
+                    <img src="images/home3.png" alt="" title="" /><span>购物车</span></a></li>
+                <li class="active"><a href="userinfo.html">
+                    <img src="images/home4_1.png" alt="" title="" /><span>我的</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
+    <script type="text/javascript" src="js/jquery.tabify.js"></script>
+    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/load.js"></script>
+</body>
+</html>

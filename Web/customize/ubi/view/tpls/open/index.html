@@ -1,0 +1,69 @@
+﻿<div class="layout boxMain warpOpen">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <i class="iconfont icon-shipin"></i>
+                    <span class="titleText">公开课</span>
+                </span>
+            </div>
+
+            <div class="boxMainText clear">
+                <div class="warpOpenNav">
+                    <ul>
+                        <li><span>分类筛选：</span></li>
+                        <li ng-repeat="item in pageData.tag"><a ng-class="{change:pageData.selectCate.id == item.id}" href="javascript:;" ng-click="pageFunc.selectCateList(item)">{{item.name}}</a></li>
+
+                    </ul>
+                </div>
+                <div class="warpOpenCon">
+                    <dl class="openDl" ng-repeat="item in pageData.artitle">
+                        <dt>
+                            <img class="hand" ng-src="{{item.imgSrc}}" ng-click="pageFunc.gotoDetail(item)" alt="">
+                        </dt>
+                        <dd>
+                            <h5 class="hand" ng-click="pageFunc.gotoDetail(item)">
+                                {{item.title}}
+                            </h5>
+                            <p>
+                                {{item.summary}}
+                            </p>
+
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+            <div class="warpPagination" ng-if="pageData.totalCount > pagaData.pageSize">
+                <pagination ng-model="pageData.pageIndex"
+                            total-items="pageData.totalCount"
+                            items-per-page="pageData.pageSize"
+                            max-size="5"
+                            boundary-links="true"
+                            rotate="false"
+                            previous-text="上一页"
+                            next-text="下一页"
+                            first-text="首页"
+                            last-text="尾页">
+                </pagination>
+            </div>
+
+        </div>
+        <div class="col-xs-3">
+            <div class="warpOpenAside">
+                <div class="warpSearchInput">
+                    <div class="form-group">
+                        <input ng-model="pageData.searchKeyword" type="search" class="form-control txtSearch" value="" placeholder="搜索课程..." />
+                        <div class="btnSearch" ng-click="pageFunc.search()"></div>
+                    </div>
+                </div>
+                <div class="openAsideInfo">
+                    <h4>公告</h4>
+                    <p ng-bind-html="pageData.notice">
+                    </p>
+                </div>
+                <smallhotopen ng-attr-cateid="" ng-attr-type="OpenClass" ng-attr-routename="open"></smallhotopen>
+            </div>
+        </div>
+    </div>
+</div>

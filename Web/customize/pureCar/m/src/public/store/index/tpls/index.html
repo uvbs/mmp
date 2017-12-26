@@ -1,0 +1,49 @@
+﻿<div class="storeIndexCtrl">
+	<div class="header">
+	  <h1 class="title">{{::pageData.title}}</h1>
+    <div class="location">
+      <i class="iconfont icon-didian"></i>
+      上海
+    </div>
+	</div>
+
+  <div class="slogan">
+    省钱 省心 <span class="colorPrimary">搞的定</span>
+  </div>
+  <div class="searchBox">
+    <input class="searchBoxInput" type="text" placeholder="选择车型找优惠" ng-click="pageFunc.selectCarModel($event)" />
+    <div class="searchBoxIcon">
+      <i class="iconfont icon-search"></i>
+    </div>
+  </div>
+
+  <div class="hotsales insetBlock">
+    <div class="ribbon">
+      <div class="banner">
+        <div class="text">热门活动区</div>
+      </div>
+    </div>
+    <div class="hotsalesContainer">
+    </div>
+  </div>
+
+  <div class="hotproducts insetBlock">
+    <div class="ribbon">
+      <div class="banner">
+        <div class="text">畅销精品区</div>
+      </div>
+    </div>
+    <div class="productImageContainer">
+      <img class="productImage" src="http://i1.sinaimg.cn/qc/news/2007-07-25/U642P33T2D296042F9DT20070725144212.JPG" />
+    </div>
+    <div class="productName">
+      2015款汉兰达2.7L豪华版 指导价格 29.88 万
+    </div>
+    <div class="productPrice">
+      <span class="productPriceSign">￥</span><span class="productPriceNumber">26.88</span><span class="productPriceUnit">万</span>
+    </div>
+  </div>
+</div>
+<script type="text/ng-template" id="storeSelectCarDialog">
+  <div><selectcar select-model="pageFunc.selectModel" allow-input="false"></selectcar></div>
+</script>

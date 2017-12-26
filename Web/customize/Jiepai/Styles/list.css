@@ -1,0 +1,112 @@
+#txtKeyWord{
+    border: 1px solid #c3a687 !important;
+    border-radius: 8px;
+    padding: 0.6em;
+    box-shadow:0 0 3px 1px #c3a687 inset;
+}
+.btn-diy{
+    border: 0;
+    box-shadow: 0 2px 1px 1px #304f35;
+    border-radius: 8px;
+    padding: 8px 9px 6px 9px;
+    background:-webkit-linear-gradient(270deg,#1c7323 80%,#f2ca04);
+    background: -o-linear-gradient(270deg,#1c7323 80%,#f2ca04);
+    background: -moz-linear-gradient(270deg,#1c7323 80%,#f2ca04);
+    background: linear-gradient(180deg,#1c7323 80%,#f2ca04);
+    color: #fff;
+}
+.btn-diy-2{
+    border: 0;
+    box-shadow: 0 4px 0 0 #304f35;
+    border-radius: 8px;
+    padding: 13px 30px 10px 30px;
+    background:-webkit-linear-gradient(90deg,green 50%,#f2ca04);
+    background: -o-linear-gradient(270deg,green 50%,#f2ca04);
+    background: -moz-linear-gradient(270deg,green 50%,#f2ca04);
+    background: linear-gradient(0deg,green 50%,#f2ca04);
+    color: #fff;
+}
+.div-btn{
+    display: inline-block;
+    width: 45%;
+    margin-bottom: 1em;
+}
+#player-pic{
+    color: #fff;
+}
+#player-pic:before,
+#player-pic:after {
+content: " "; 
+display: table; 
+}
+#player-pic:after {
+clear: both;
+}
+
+.bg-divbox{
+    width: 50%;
+    float: left;
+    padding: 0 5px 0 10px
+}
+.bg-divbox:nth-child(2n){
+    padding: 0 10px 0 5px
+}
+.bg-div{
+    border-radius: 6px;
+    background:#333;
+    padding: 0.5em 0.5em 1.5em 0.5em;
+    margin:0 0 0.5em 0  ;
+    position: relative;
+    width: 100%;
+}
+
+.player-id{
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: 99;
+    padding: 0.1em 0.5em;
+    background-color: red;
+    border-radius: 6px 0 6px 0;
+}
+.ranking{
+    position: absolute;
+    top:-5px;
+    right: -6px;
+    z-index: 99;
+    width: 25%;
+}
+.player-view{
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 6px;
+}
+.player-vote{
+    position: absolute;
+    right: 0;
+    bottom:0;
+    z-index: 99;
+    padding: 0.1em 0.5em;
+    background-color: red;
+    border-radius: 6px 0 0 0;
+}
+.btn-diy-3{
+    border: 0;
+    box-shadow: 0 4px 0 0 #304f35;
+    border-radius: 8px;
+    padding: 8px 20px 5px 20px;
+    background:-webkit-linear-gradient(90deg,green 50%,#f2ca04);
+    background: -o-linear-gradient(270deg,green 50%,#f2ca04);
+    background: -moz-linear-gradient(270deg,green 50%,#f2ca04);
+    background: linear-gradient(0deg,green 50%,#f2ca04);
+    color: #fff;
+}
+.list-icon{
+    max-width: 20%;
+    height: 20px !important;
+    vertical-align: bottom;
+}

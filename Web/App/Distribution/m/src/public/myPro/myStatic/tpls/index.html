@@ -1,0 +1,53 @@
+<div class="wrapMyPro">
+    <header ng-attr-title="{{mystatic.title}}" ng-attr-btnshow="0"></header>
+    <div class="content has-header">
+        <div class="row row-sale " >
+            <div class="col col-sale wrapSearch">
+                    <select ng-model="mystatic.latestDay" ng-options="latestDay.name for latestDay in mystatic.latestDays" ng-change="mystatic.changeDate(mystatic.latestDay.id)">
+                    </select>
+                    <a class="button button-small button-energized change" href="#/sbinfo">
+                        添加
+                    </a>
+            </div>
+        </div>
+        <!--<div class="whole borderTop" ng-class="{borderBottom:$index==(mystatic.dataList.length-1)}" ng-repeat="item in mystatic.dataList" ng-mousedown="mystatic.goToDetail(item)">-->
+            <!--<div class="row row-sale">-->
+                <!--<div class="col textR">-->
+                    <!--{{item.project_status}}  {{item.project_amount | currency:'￥'}}-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="col" ng-bind="item.project_name">-->
+                <!--</div>-->
+                <!--<div class="col">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="col textR">-->
+                    <!--{{item.project_time | date:'yyyy-MM-dd HH:mm'}}-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="list wrapDataList">
+            <div class="item"  ng-repeat="item in mystatic.dataList" ng-mousedown="mystatic.goToDetail(item)">
+                <div class="row row-sale font12">
+                    <div class="col textR">
+                        {{item.project_status}} <span class="priceSmall"> {{item.project_amount | currency:'￥'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" ng-bind="item.project_name">
+                    </div>
+                </div>
+                <div class="row font12">
+                    <div class="col textR">
+                        {{item.project_time | date:'yyyy-MM-dd HH:mm'}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

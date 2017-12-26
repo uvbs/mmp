@@ -1,0 +1,18 @@
+﻿<div>
+    <div class="warpCommentDialog warpTagsDialog">
+        <div class="headerBar">
+            <div class="cancel" ng-click="pageFunc.tagsCancel(0)">取消</div>
+            <label class="labelChoose">标签选择</label>
+            <div class="confirm" ng-click="pageFunc.tagsConfirm(0)">确定</div>
+            <div class="clear"></div>
+        </div>
+        
+        <div class="solidLine"></div>
+        <div class="list">
+            <div class="width100 height30 tagDiv margin textC floatL lineH oneTag" ng-class="{bgBlue:pageFunc.checkSelect(item,pageData.currTagList,0)}" ng-mousedown="pageFunc.tagClick(item,pageData.currTagList,0)" ng-repeat="item in pageData.tagList">
+                <span ng-class="{colorWhite:pageFunc.checkSelect(item,pageData.currTagList,0)}">{{item.tag}}</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,222 @@
+.storeVoucherCtrl {
+  background: #414141;
+
+  .firstBlock {
+    padding: 10px;
+    box-sizing: border-box;
+    background: #fffff3 url('/customize/pureCar/m/static/img/storeVoucherBg.png') bottom no-repeat no-repeat;
+    background-size: 100% auto;
+  }
+
+  .headOuterBlock {
+    position: relative;
+    font-weight: bold;
+    & > div {
+      box-sizing: border-box;
+      width: 33%;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .leftTitle, .rightTitle {
+      border-top: 1px solid @colorPrimary;
+      border-bottom: 1px solid @colorPrimary;
+      padding-top: 2px;
+      padding-bottom: 2px;
+
+      & > div {
+        border-top: 1px solid @colorPrimary;
+        border-bottom: 1px solid @colorPrimary;
+      }
+    }
+    .leftTitle {
+      float: left;
+      border-left: 1px solid @colorPrimary;
+    }
+    .rightTitle {
+      float: right;
+      border-right: 1px solid @colorPrimary;
+    }
+    .centerTitle {
+      position: absolute;
+      color: white;
+      background-color: @colorPrimary;
+      font-size: 22px;
+      line-height: 36px;
+      top: -4px;
+      width: 34%;
+      left: 50%;
+      margin-left: -17%;
+    }
+    margin-top: 2px;
+  }
+
+  .productInfo {
+    margin-top: 14px;
+    .productImageContainer {
+      float: left;
+      width: 38.2%;
+      height: 0;
+      padding-bottom: 30%;
+      overflow: hidden;
+      .productImage {
+        width: 100%;
+      }
+    }
+    .productText {
+      padding-left: 14px;
+      width: 60%;
+      float: left;
+      color: black;
+      div {
+        text-overflow: ellipsis;   
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 12px;
+        line-height: 20px;
+      }
+      .productName {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .priceBlock {
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid fadeout(@colorPrimary, 60%);
+    background: fadeout(@colorPrimary, 90%);
+    padding: 10px 0;
+    text-align: center;
+    font-size: 15px;
+    color: @colorPrimary;
+
+    .priceText {
+      color: #e50314;
+      font-size: 20px;
+    }
+  }
+
+  .countDown {
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    color: @colorPrimary;
+
+    .iconfont:before {
+      vertical-align: top;
+    }
+  }
+
+  .priceDetail {
+    border: 2px solid @colorPrimary;
+    font-size: 12px;
+    & > div {
+      box-sizing: border-box;
+      width: 50%;
+      float: left;
+      &:first-child {
+        border-right: 1px solid @colorPrimary;
+      }
+    }
+    .priceDetailItem {
+      border-top: 1px solid @colorPrimary;
+      &:first-child {
+        border-top: none;
+      }
+      & > div {
+        float: left;
+      }
+      & > div:first-child {
+        box-sizing: border-box;
+        padding-left: 5px;
+        width: 70%
+      }
+      & > div:last-child {
+        width: 30%;
+        text-align: center;
+      }
+    }
+
+    .priceDetailNote {
+      padding: 2px 5px;
+
+      &Content {
+        background: white;
+        border: 1px solid #ccc;
+        height: 75px;
+      }
+    }
+  }
+  .priceClaim {
+    font-size: 14px;
+    color: white;
+    background: @colorPrimary;
+    text-align: center;
+    line-height: 28px;
+  }
+
+  .finalPrice {
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px 3px;
+    border: 1px solid @colorPrimary;
+    width: 210px;
+    margin: 20px auto 0;
+
+    .priceNumber {
+      font-weight: bold;
+      font-size: 40px;
+      color: @colorPrimary;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+  .enquiryCount {
+    color: @colorPrimary;
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: 60px;
+  }
+
+  .bottomMenu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    .consult, .comment, .newcars {
+      background: white;
+      box-sizing: border-box;
+      border-right: 1px solid #ccc;
+      float: left;
+      width: 20.6%;
+      height: 54px;
+      text-align: center;
+      vertical-align: middle;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: black;
+
+      .iconfont {
+        color: @colorPrimary;
+        font-size: 40px;
+      }
+      div {
+        margin-top: -8px;
+      }
+    }
+    .apply {
+      line-height: 54px;
+      background: @colorPrimary;
+      font-size: 20px;
+      color: white;
+      float: left;
+      width: 38.2%;
+      height: 54px;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}

@@ -1,0 +1,146 @@
+﻿body {
+}
+
+.top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+   background-color: #0face0;
+}
+.top-left {
+    margin-top:10px;
+    margin-left:2px;
+}
+.top-left img {
+    max-width:40px;
+    vertical-align:middle;
+}
+.vue-el-left {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 360px;
+    bottom: 0;
+    background-color: #fff;
+    border-right: 1px solid #e2e2e2;
+    overflow:auto;
+}
+.right {
+    position:absolute;
+    top:60px;
+    left:350px;
+    
+}
+
+.item {
+    height: 100px;
+    line-height: 50px;
+    border-bottom: 1px solid #f5f6f8;
+    position: relative;
+    overflow: hidden;
+    padding-left:2px;
+}
+
+.item-left {
+    float: left;
+    width: 50px;
+}
+
+    .item-left img {
+        max-width: 30px;
+        vertical-align: middle;
+    }
+
+.item-center {
+    float: left;
+    width: 150px;
+}
+
+
+.item-right {
+    float: left;
+    width: 100px;
+
+}
+.item-bottom {
+   color:#ccc;
+}
+.item-bottom a{
+   text-decoration:none;
+}
+.red {
+    color:red;
+    cursor:pointer;
+}
+
+.btn-in {
+    border: 1px solid #00a1fc;
+    background: #fff;
+    color: #00a1fc;
+    line-height: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.kefu-name {
+    font-size:12px;
+    color:white;
+}
+#ifLiveChat {
+    width:100%;
+    height:100%;
+    border:none;
+
+}
+.flo-right {
+
+    float:right;
+    color:white;
+    font-size:14px;
+    margin-right:20px;
+    margin-top:10px;
+    
+}
+.green {
+    color:green;
+}
+.un-read {
+
+    line-height: 16px;
+    color: #fff;
+    background-color: red;
+    font-size: 12px;
+    border-radius: 12px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 15px;
+    margin-right:2px;
+}
+.un-read-clear {
+    line-height: 16px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 12px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 15px;
+    margin-right:2px;
+}
+.offline {
+     color: #ccc;
+}
+#divRemind {
+
+    display:none;
+}
+.voice {
+    color:white;
+    font-size:12px;
+    margin-left:20px;
+}
+    

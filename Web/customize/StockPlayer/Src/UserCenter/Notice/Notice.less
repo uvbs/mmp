@@ -1,0 +1,79 @@
+﻿.notice {
+    margin: 10px 15px 30px 15px;
+    min-height: 350px;
+
+    .notice-head {
+        font-size: 18px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        padding: 10px 15px;
+    }
+
+    .notice-item {
+        position: relative;
+        border-bottom: 1px dashed #ccc;
+        padding: 15px 0px;
+
+        .head {
+            height: 30px;
+            line-height: 30px;
+
+            .time {
+                display: inline;
+                height: 30px;
+            }
+
+            .new {
+                margin-left: 10px;
+                border: solid #FF1200 1px;
+                height: 30px;
+                display: inline;
+                padding: 0px 5px;
+                font-size: 12px;
+                color: #FF1200;
+            }
+        }
+
+        .content {
+            height: 64px;
+            min-height: 64px;
+            line-height: 21px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            padding: 5px;
+            color: #333;
+            word-wrap: break-word;
+            word-break: normal;
+
+            a, a:hover, a:visited {
+                color: #3292e4;
+                text-decoration: none;
+            }
+
+            .j-pass {
+                margin-left: 40px;
+                color: #ff8800;
+                cursor: pointer;
+                line-height: 30px;
+            }
+
+            .j-reject {
+                margin-left: 15px;
+                color: #FF1200;
+                cursor: pointer;
+                line-height: 30px;
+            }
+        }
+
+        .action {
+        }
+    }
+
+    .bottom-pager {
+        text-align: center;
+        margin-top: 20px;
+    }
+}

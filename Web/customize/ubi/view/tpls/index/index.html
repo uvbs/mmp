@@ -1,0 +1,164 @@
+﻿<div class="layout boxMain warpIndex">
+    <div class="warpIndexMain  clear">
+        <div class="warpIndexLeft">
+            <div class="indexOne">
+                <!--<h4>每日案例</h4>-->
+                <div class="indexOneCon">
+                    <div class="indexOneLeft">
+                        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="6" class="indexOneLeft">
+                            <li ng-repeat="img in pageData.adImgs">
+                                <img ng-src="{{img.img}}" alt="{{img.title}} " ng-click="go('{{img.url}}')">
+                            </li>
+                        </ul>
+                        <div rn-carousel-indicators ng-if="pageData.adImgs.length > 1" slides="pageData.adImgs" rn-carousel-index="carouselIndex" class="imgIndex"></div>
+                    </div>
+                    <!--<div class="indexOneLeft">
+                        <a href="javascript:;"><img alt="" src="{{pageData.dailyCase.thumImg}}"></a>
+                    </div>-->
+                    <h4>每日案例</h4>
+                    <div class="indexOneRight">
+                        <h5>{{pageData.dailyCase.title}} </h5>
+                        <p>{{pageData.dailyCase.summaryLong}}</p>
+                        <div class="indexOneConBot">
+                            <button class="btn btn-primary " ng-click="go('#/case/' + pageData.dailyCase.id)">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="indexTwo">
+                <div class="indexTwoLeft">
+                    <div class="twoLeftfa">
+                        <div class="twoLeftH">
+                            <h4> <i class="iconfont icon-q-a twoStyle"></i>热门问题 </h4>
+                            <p ng-click="go('#/ask')">更多</p>
+                        </div>
+                        <!--<dl ng-repeat="item in pageData.regulations">-->
+                            <!--<dt>-->
+                                <!--<h5 ng-click="go('#/regulations/'+item.id)">{{item.title}}</h5>-->
+                            <!--</dt>-->
+                            <!--<dd>-->
+                                <!--<div class="twoRight">-->
+                                    <!--{{item.summary}}-->
+                                <!--</div>-->
+                            <!--</dd>-->
+                        <!--</dl>-->
+                        <ul class="twoQueLi">
+                            <li ng-repeat="item in pageData.hotarticles.list" ng-click="go('#/ask/'+item.id)"><i class="iconfont icon-wenhao"> </i> {{item.title}}</li>
+                        </ul>
+                    </div>
+                    <div class="twoLeftfa twoLeftNews">
+                        <div class="twoLeftH">
+                            <h4> <i class="iconfont icon-circularmap twoStyle"></i>新闻资讯 </h4>
+                            <p ng-click="go('#/news')">更多</p>
+                        </div>
+                        <ul class="twoNewsLi">
+                            <li ng-repeat="item in pageData.news" ng-click="go('#/news/'+item.id)"><i class="iconfont icon-icoyuan"> </i> {{item.title}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="indexTwoRight">
+                    <div class="twoLeftH">
+                        <h4> <i class="iconfont icon-anli twoStyle"></i>案例分析 </h4>
+                        <p ng-click="go('#/case')">更多</p>
+                    </div>
+                    <ul class="twoRightChina">
+                        <li ng-repeat="item in pageData.cases">
+                            <h5 ng-click="go('#/case/'+item.id)" ng-bind="item.title"></h5>
+                            <p ng-bind="item.summary">
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="indexThree">
+                <div class="twoLeftH">
+                    <h4><i class="iconfont icon-zhengcefagui twoStyle"></i>评论与原创</h4>
+                    <p ng-click="go('#/ask')">更多</p>
+                </div>
+                <div class="threeHot">
+                    <ul class="threeHotHeight">
+                        <li ng-repeat="item in pageData.hotquestions.list">
+                            <p class="hotLeft">
+                                <i class="iconfont icon-wu" ng-if="item.categoryId == pageData.askarticleCateId"> </i>
+                                <i class="iconfont icon-wenhao" ng-if="item.categoryId == pageData.askquestionCateId"> </i>
+                                <!--<a href="#/ask/{{item.id}}" ng-class="{redFont:$index<3}">{{item.title}}</a>-->
+                                <a href="#/ask/{{item.id}}" >{{item.title}}</a>
+                                <span>&nbsp&nbsp{{item.createDate}}   {{item.pubUser.userName}}</span>
+                            </p>
+                            <p class="hotRight">{{item.commentCount}}评论</p>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="icon-change">
+                            <a id="one1" href="javascript:;" ng-class="{change:pageData.hotquestions.pageIndex==1}" ng-click="pageFunc.selectHotquestion(1)" ng-mouseover="pageFunc.selectHotquestion(1)"></a>
+                            <a id="one2" href="javascript:;" ng-class="{change:pageData.hotquestions.pageIndex==2}" ng-if="pageData.hotquestions.pageSize*1<pageData.hotquestions.totalcount" ng-click="pageFunc.selectHotquestion(2)" ng-mouseover="pageFunc.selectHotquestion(2)"></a>
+                            <a id="one3" href="javascript:;" ng-class="{change:pageData.hotquestions.pageIndex==3}" ng-if="pageData.hotquestions.pageSize*2<pageData.hotquestions.totalcount" ng-click="pageFunc.selectHotquestion(3)" ng-mouseover="pageFunc.selectHotquestion(3)"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="indexFour">
+                <div class="twoLeftH">
+                    <h4> <i class="iconfont icon-Unicode twoStyle"></i>公开课 </h4>
+                    <p ng-click="go('#/open')">更多</p>
+                </div>
+                <div class="fourLesson">
+                    <div class="lessonOne">
+                        <dl ng-repeat="item in pageData.opens" class="mBottom10">
+                            <dt><a ng-href="#/open/{{item.id}}"><img ng-src="{{ item.imgSrc}}" alt=""></a></dt>
+                            <dd>
+                                <h5 ng-bind="item.title"></h5>
+                                <p ng-bind="item.summary">
+                                </p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <!-- warpIndexLeft -->
+        </div>
+
+        <div class="warpIndexRight">
+            <div class="indexRightOne">
+                <h4>社区动态</h4>
+                <dl class="clear" ng-repeat="item in pageData.statuses">
+                    <dt>
+                        <a href="#/userspace/{{item.pubUser.id}}"><img src="{{item.pubUser.avatar}}" alt=""></a>
+                    </dt>
+                    <dd>
+                        <div class="span1">
+                            <a href="#/userspace/{{item.pubUser.id}}">
+                                {{item.pubUser.userName}}：
+                            </a>
+                            <!--{{item.pubUser.userName}}：-->
+                        </div>
+                        <div class="span2" ng-click="pageFunc.go()">
+                                {{item.summary}}
+                        </div>
+                        <p class="time">{{item.categoryName}} {{item.createDate}}（{{item.commentCount}}评论）</p>
+                    </dd>
+                </dl>
+            </div>
+            <div class="rightListTwo">
+                <h4>最新问题</h4>
+                <ul>
+                    <li ng-repeat="item in pageData.newquestions"><a href="#/ask/{{item.id}}"><i class="iconfont icon-dian "></i>{{item.title}}</a></li>
+                </ul>
+            </div>
+            <div class="indexRightThree clear">
+                <h4>新入会员</h4>
+                <div class="newMan" ng-repeat="item in pageData.newusers">
+                    <dl>
+                        <dt><a href="#/userspace/{{item.id}}"><img src="{{item.avatar}}" a alt=""></a></dt>
+                        <dd ng-click="go('#/userspace/'+item.id)">{{item.userName}}</dd>
+                    </dl>
+                    <p>{{item.createDate}}加入</p>
+                </div>
+            </div>
+            <div class="indexRightFour clear">
+                <p>通过关注易劳微信公众号<br />同样可登录易劳网站！</p>
+                <div class="fourImg" ng-class="{}"><a href="javascript:;"><img src="/customize/ubi/images/UBI_Weixin.png" alt=""></a></div>
+            </div>
+        </div>
+    </div>
+</div>

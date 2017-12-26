@@ -1,0 +1,119 @@
+@import "//at.alicdn.com/t/font_1442209464_655242.css";
+.wrapVoteForHim
+{
+    background-image: url(../image/beijing.png);
+    background-repeat: repeat-y;
+    background-size: 100% 102%;
+    background-color: #1C191C;
+    padding-bottom: 61px;
+}
+.wrapVoteForHim .content
+{
+    margin-top: -69px;
+}
+.wrapVoteForHim .content .list-reset
+{
+    margin-left: 26px;
+    margin-right: 24px;
+    border-radius: 4px;
+    margin-top: 0;
+}
+.wrapVoteForHim .content .list-reset .item-reset
+{
+    padding: 0 0 0 10px;
+}
+.wrapVoteForHim .content .list-reset .item-reset .input-reset
+{
+    height: 30px;
+}
+.wrapVoteForHim .content .list-reset .item-reset .search
+{
+    border-left: 1px solid #ddd;
+    margin-right: 10px;
+}
+.wrapVoteForHim .content .col-reset
+{
+    position: relative;
+}
+.wrapVoteForHim .content .col-reset .no
+{
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: red;
+    font-weight:bold;
+}
+.wrapVoteForHim .content .col-reset .row-bottom-reset
+{
+    width: 96%;
+    position: absolute;
+    bottom: 8px;
+    left: 6px;
+    color: #fff;
+    padding: 0;
+    background-color: rgba(68,67,67,.4);
+    height: 32px;
+}
+.wrapVoteForHim .content .col-reset .row-bottom-reset .col-inside-reset
+{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-right: 1px solid #fff;
+    border-color: rgba(255,255,255,.4);
+}
+.wrapVoteForHim .content .row-button-reset, .wrapVoteForHim .content .row-button-reset .col-button-reset
+{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.wrapVoteForHim .content .row-button-reset .col-button-reset .button-reset
+{
+    min-height: 20px;
+    line-height: 37px;
+    border-radius: 4px;
+    border-color: #fff;
+    background-color: #fff;
+    color: #666;
+}
+.wrapVoteForHim .padding20
+{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.wrapVoteForHim .imgWidth
+{
+    width: 100%;
+}
+.wrapVoteForHim .bottom
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    background-color: #101010;
+    text-align: center;
+    height: 50px;
+}
+.wrapVoteForHim .bottom .row, .wrapVoteForHim .bottom .row .col
+{
+    padding: 0;
+}
+.wrapVoteForHim .bottom .row .col .row
+{
+    padding-top: 0;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 15px;
+}
+.wrapVoteForHim .bottom .row .col i
+{
+    position: relative;
+    top: 15px;
+    font-size: 30px;
+}
+.wrapVoteForHim .borderLine
+{
+    border-right: 1px solid #fff;
+}

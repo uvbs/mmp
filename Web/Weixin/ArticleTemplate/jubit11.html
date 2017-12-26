@@ -1,0 +1,169 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--活动模板-微信模板-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>$CCWX-ARTICLETITLE$</title>
+    $CCWX-WEBSITEWEIXINICO$
+    <link href="https://res.wx.qq.com/open/libs/weui/0.4.0/weui.css" rel="stylesheet" />
+    <link href="/Weixin/ArticleTemplate/css/jubit11.css" rel="stylesheet" />
+    <link href="/Weixin/ArticleTemplate/css/weixin.css?v=2016111401" rel="stylesheet" />
+    <link href="/Plugins/zcComment/comment.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="zh_CN mm_appmsg">
+    <div class="rich_media">
+        <div class="top_banner">
+        </div>
+        <div class="rich_media_inner">
+            <div id="page-content">
+                <div class="rich_media_area_primary">
+                    <h2 class="rich_media_title">
+                        $CCWX-ARTICLETITLE$
+                    </h2>
+                    <div class="rich_media_meta_list">
+                        <em class="rich_media_meta rich_media_meta_text">$CCWX-ARTICLETIME$</em>
+                    </div>
+                    <div class="rich_media_content">
+                        $CCWX-ARTICLECONTENT$
+                    </div>
+                    <div class="rich_media_tool"></div>
+                </div>
+            </div>
+            <div>
+                $CCWX-SPREADUSERINFO$
+            </div>
+            <div class="rich_imgdiv_max">
+                $CCWX-DISTRIBUTIONWXQRCODELIMITURL
+            </div>
+        </div>
+    </div>
+    $CCWX-FileDownload$
+    $CCWX-RELATIONARTICLE$
+    <div class="wrapIndependentComment">
+    </div>
+    $CCWX-ARTICLEBOTTOM$
+</body>
+</html>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/Scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/Scripts/StringBuilder.Min.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/Scripts/Common.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/Plugins/LayerM/layer.m.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/Scripts/wxshare/wxshare1.1.0/wxshare.js"></script>
+<script type="text/javascript" src="/Plugins/zcComment/zcComment.js"></script>
+<script type="text/javascript">
+    var vm = {}; //页面对象
+    var vf = { init: init }; //页面方法
+    $(function () {
+        //初始化
+        vf.init();
+        //加载评论
+        vf.initComment();
+        //处理分享链接
+        vf.processUrl();
+        //微信加载完成,设置分享
+        vf.wxReady();
+    });
+
+    //页面初始化
+    function init() {
+        vm.currArtcleId = '$CCWX-JUACTIVITYID$';//当前文章id
+        vm.currCommentId = '$CCWX-ARTICLEID$';//评论用的文章id
+        vm.currUserOpenId = '$CCWX-currOpenerOpenID$'; //当前用户的wxopenId
+        vm.currUserId = '$CCWX-currUserID$'; //当前用户的userId
+        vm.title = '$CCWX-ARTICLETITLE$'; //标题
+        vm.summary = '$CCWX-ARTICLESUMMARY$'; //描述
+        vm.shareImgUrl = '$CCWX-ARTICLEIMAGE$'; //分享缩略图
+        vm.tempShareId = CreateGUID();
+        vm.preShareId = GetParm('comeonshareid');
+        vm.preShareUserId = '$CCWX-shareUserId$';//分享者id
+
+        vf.initComment = initComment;//加载评论
+        vf.shareCallBack = shareCallBack;//分享回调
+        vf.submitShare = submitShare;//分享记录
+        vf.processUrl = processUrl;//处理分享链接
+        vf.wxReady = wxReady;//微信加载完成
+        vf.shareComeplete = shareComeplete; //分享完成加积分
+    }
+    //加载评论
+    function initComment() {
+        if (vm.currCommentId != ''){
+            $(".wrapIndependentComment").zcComment({ id: vm.currCommentId, checkUserId:true, currUserId: vm.currUserId });
+        }
+    }
+    //分享回调
+    function shareCallBack() {
+        return {
+            timeline_s: function () {
+                vf.submitShare('timeline_s');
+                vf.shareComeplete(vm.currArtcleId);
+            },
+            timeline_c: function () {
+                //朋友圈分享取消
+            },
+            message_s: function () {
+                //分享给朋友
+                vf.submitShare('message_s');
+                vf.shareComeplete(vm.currArtcleId);
+            },
+            message_c: function () {
+                //朋友分享取消
+            }
+        };
+    }
+    //处理分享链接
+    function processUrl() {
+        var url = window.location.href;
+        var shareId = vm.tempShareId;
+        url = DelUrlParam(url, 'comeonshareid');
+        url = DelUrlParam(url, 'from');
+        url = DelUrlParam(url, 'isappinstalled');
+
+        vm.submitUrl = url;
+        if (url.indexOf('?') >= 0) {
+            url = url + '&comeonshareid=' + shareId;
+        } else {
+            url = url + '?comeonshareid=' + shareId;
+        }
+        vm.shareUrl = url;
+    }
+    //分享之后开启监控记录
+    function submitShare(WxMsgType) {
+        var reqData = {
+            Action: 'ShareSubmit',
+            url: vm.submitUrl,
+            shareId: vm.tempShareId,
+            preId: vm.preShareId,
+            userId: vm.currUserId,
+            userWxOpenId: vm.currUserOpenId,
+            wxMsgType: WxMsgType
+        }
+
+        //分享到朋友圈
+        $.ajax({
+            type: 'post',
+            url: '/serv/pubapi.ashx',
+            data: reqData,
+            dataType: 'jsonp',
+            success: function (data) {
+                //vm.tempShareId = CreateGUID();
+                //alert("1231");
+            }
+        });
+    }
+    //微信加载完成,设置分享
+    function wxReady() {
+        wx.ready(function () {
+            wxapi.wxshare({
+                title: vm.title,
+                desc: vm.summary,
+                link: vm.shareUrl,
+                imgUrl: vm.shareImgUrl
+            }, vf.shareCallBack());
+        });
+    }
+</script>

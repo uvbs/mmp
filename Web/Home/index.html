@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link  rel="stylesheet" href="style.css"  />
+<script type="text/javascript" src="script/jquery.js"></script>
+<script type="text/javascript" src="script/commonscript.js"></script>
+<script type="text/javascript">
+$(function(){
+$(".textinput").find("input").focus(function(){
+	$(".inputfocus").removeClass("pwwrong").removeClass("inputfocus")
+	$(this).parents(".textinput").addClass("inputfocus");
+	})
+$(".textinput").find("input").focusout(function(){
+		$(this).parents(".inputfocus").removeClass("pwwrong").removeClass("inputfocus");
+		});
+
+/*密码错误*/
+//pwwrong();
+
+/*账号错误*/
+//idwrong();
+});
+</script>
+
+<!--[if lt IE 9]>
+<style type="text/css">
+.textinput input{line-height:43px;}
+</style>
+<![endif]-->
+</head>
+
+<body>
+<!--[if lt IE 7]><div style="position:fixed;_position:absolute;top:0;left:0;right:0;bottom:0;background:black;z-index:999999999;text-align:center;"><a href="http://windows.microsoft.com/zh-CN/internet-explorer/download-ie"><img src="images/ie.jpg" style="width:100%;" alt="您正在使用旧版本的Internet Explorer浏览器" /></a></div><![endif]-->
+<div class="mainbox">
+  <div class="loginbox">
+    <div class="header"></div>
+    <div class="concent">
+      <form action="" method="post" id="login">
+        <div class="textinput">
+          <input type="text" id="account" name="account"/>
+          <label class="texticon" for="account"></label>
+          <div class="inputleft"></div>
+          <div class="inputright"></div>
+        </div>
+        <div class="textinput">
+          <input type="password" id="password" name="password"/>
+          <label class="pwicon" for="password"></label>
+          <div class="inputleft"></div>
+          <div class="inputright"></div>
+        </div>
+        <div class="textinput verificationbox">
+          <div class="verification">
+            <input type="text" name="verification" />
+            <div class="inputleft"></div>
+            <div class="inputright"></div>
+          </div>
+          <div class="verificationimg"></div>
+        </div>
+        <div class="btnbox"><a href="javascript:void(0);"  class="loginbtn"  onclick='$("#login").submit()'>登录</a><a href="javascript:void(0);" class="signinbtn">注册</a></div>
+      </form>
+      <div class="prompt">感谢您使用至云客户关系营销平台</div>
+    </div>
+  </div>
+</div>
+<div class="copyright">Copyright © <a href="http://www.comeoncloud.com/">上海至云信息科技有限公司</a></div>
+<div class="mainbg"><img src="images/mainbg.png" onload="mainbgshow()" /></div>
+<script type="text/javascript">
+$(".concent").append('<div class="leftbg"></div><div class="rightbg"></div><div class="bottombg"></div>')
+$(".loginbox").append('<div class="leftbottombg"></div><div class="rightbottombg"></div>')
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿@charset "utf-8";
+@import "//at.alicdn.com/t/font_1437452604_7030187.css";
+@import "/lib/ionic/ionic.css";
+
+.wrapUserEdit {
+    padding-bottom: 120px;
+    background-color: #FAFAF9;
+}
+
+    .wrapUserEdit .bar-header {
+        background-color: #FF6033;
+    }
+
+        .wrapUserEdit .bar-header .title .fanhui {
+            float: left;
+            margin-left: 5px;
+        }
+
+
+    .wrapUserEdit .input-label {
+        color: #999;
+    }
+
+    .wrapUserEdit .bar-header .title {
+        color: #fff;
+    }
+
+    .wrapUserEdit .content .list .tip {
+        color: #999;
+        font-size: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+.wrapSelectProvince h1 {
+    padding: 0 0 6px;
+    font-size: 16px;
+}
+
+.wrapSelectProvince .dataList {
+    height: 256px;
+    overflow: auto;
+}
+
+    .wrapSelectProvince .dataList li {
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+    }
+
+        .wrapSelectProvince .dataList li:hover {
+            background-color: #ddd;
+        }
+
+.wrapUserEdit .content .wrapBtn .button {
+    background-color: #FF6033;
+    border-color: #FF6033;
+    margin-left: 37px;
+    width: 77%;
+}
+
+.wrapUserEdit .content .list .xinghao {
+   // color: #FF805F;
+   // position: relative;
+    // left: -11px;
+}
+
+.wrapUserEdit .content .list .iconfont {
+    font-size: 8px;
+    color: #FF805F;
+}
+.wrapUserEdit .content .list .item .highvolume {
+    position: relative;
+    top: 2px;
+    font-size: 18px;
+    margin-right: 10px;
+}

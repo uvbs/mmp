@@ -1,0 +1,23 @@
+
+.codeDiv {
+	border: 1px solid #2f4050;
+	margin: 0px;
+	margin-bottom: 8px;
+	margin-top: 10px;
+	padding-bottom: 4px;
+	font-size: 9pt border-radius: 11px;
+}
+
+.codeDivHeader {
+	background-color: #2f4050;
+	margin: 0px;
+	padding: 4px;
+	font-size: 12pt;
+	border-radius: 1px;
+	color: #fff;
+}
+
+.form-control{
+	width:90%;
+	display:inline-block
+}

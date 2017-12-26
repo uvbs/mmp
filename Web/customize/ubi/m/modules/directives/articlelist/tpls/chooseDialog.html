@@ -1,0 +1,24 @@
+﻿<div class="chooseDialog">
+    <div class="country">
+        <label class="">
+            <span class="spanStyle">省份选择：</span>
+            <select class="selectStyle pRight10 border0 colorGrey_6" ng-model="pageListData.province" ng-options="province.name for province in pageListData.provinceList"></select>
+        </label>
+    </div>
+    <div class="country" ng-if="!pageListData.isHideTagChoose">
+        <span class="spanStyle" ng-model="pageListData.currTag">标签选择：</span>
+        <select class="selectStyle pRight10 border0 colorGrey_6" ng-model="pageListData.currTag" ng-options="currTag.tag for currTag in pageListData.tagList"></select>
+        <!--<div class="list">
+            <div class="width100 height30 tagDiv margin textC floatL lineH" ng-class="{bgLightBlue:item.id==pageListData.currTag.id}" ng-mousedown="pageListFunc.tagClick(item)" ng-repeat="item in pageListData.tagList">
+                <span ng-class="{colorWhite:item.id==pageListData.currTag.id}">{{item.tag}}</span>
+            </div>
+            <div class="clear"></div>
+        </div>-->
+    </div>
+    <div class="buttonStyle">
+        <!--<button class="confirm" ng-click="pageListFunc.confirm()">确定</button>-->
+        <button class="button button-positive" ng-click="pageListFunc.confirm()">
+            确定
+        </button>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="wrapCashRecord">
+    <header ng-attr-title="{{cashrecord.title}}" ng-attr-btnshow="0"></header>
+    <div class="content has-header">
+        <div class="row">
+            <div class="col textC font17">
+                您当前可提现金额是{{cashrecord.currUseInfo.can_use_amount}}元
+            </div>
+        </div>
+        <div class="list list-inset list-reset">
+            <label class="item item-input">
+                <input type="text" placeholder="请输入提现金额" ng-model="cashrecord.amount">
+            </label>
+        </div>
+        <div class="textC">温馨提示:提现金额要大于50元</div>
+        <div class="card" ng-if="cashrecord.bankInfo!=''">
+            <div class="item item-text-wrap pAll0">
+                <div class="row">
+                    <div class="col font13" ng-bind="cashrecord.bankInfo.bank_name">
+                        <!--招商银行-->
+                    </div>
+                    <div class="col textR font13" ng-bind="cashrecord.bankInfo.account_name">
+                        <!--王二小-->
+                    </div>
+                </div>
+                <div class="row" ng-mousedown="go('#/cardlist')">
+                    <div class="col textC font21">
+                        <span ng-if="cashrecord.show" ng-bind="cashrecord.bankInfo.bank_account"></span>
+                        <span ng-if="!cashrecord.show">**** **** **** {{cashrecord.bankInfo.bank_account.substring(cashrecord.bankInfo.bank_account.length-4,cashrecord.bankInfo.bank_account.length)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col textR font12">
+                        <span ng-if="!cashrecord.show" ng-mousedown="cashrecord.show=true;">显示全部</span>
+                        <span ng-if="cashrecord.show" ng-mousedown="cashrecord.show=false;">隐藏号码</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" ng-if="cashrecord.bankInfo==''" ng-mousedown="go('#/cardlist')">
+            <div class="item item-text-wrap">
+                <div class="textC">
+                    点击选择要提现的银行卡
+                </div>
+            </div>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-positive change" ng-mousedown="cashrecord.applyForCash()">
+                确认提现
+            </button>
+        </div>
+        <!--<div class="list" ng-repeat="data in [0,1]">-->
+            <!--<div class="item item-divider font12">-->
+                <!--2015年11月-->
+                <!--<div class="floatR">￥2000.00</div>-->
+            <!--</div>-->
+            <!--<div class="item pAll0" ng-repeat="item in [0,1,2]">-->
+                <!--<div class="row">-->
+                    <!--<div class="col font13">-->
+                        <!--申请提现<br/>-->
+                        <!--等待打款<br/>-->
+                        <!--11月20日  12:33-->
+                    <!--</div>-->
+                    <!--<div class="col textR money">-->
+                        <!--￥200.00-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="list">
+            <!--<div class="item item-divider font12">-->
+                <!--2015年11月-->
+                <!--<div class="floatR">￥2000.00</div>-->
+            <!--</div>-->
+            <div class="item pAll0" ng-repeat="item in cashrecord.dataList">
+                <div class="row">
+                    <div class="col font13">
+                        申请提现<br/>
+                        <span ng-bind="item.status"></span>
+                        <!--<span ng-if="item.status==0">待审核</span>-->
+                        <!--<span ng-if="item.status==1">已受理</span>-->
+                        <!--<span ng-if="item.status==2">成功</span>-->
+                        <!--<span ng-if="item.status==3">失败</span>-->
+                        <br/>
+                        <!--11月20日  12:33-->
+                        {{item.time | date:'yyyy-MM-dd HH:mm'}}
+                    </div>
+                    <div class="col textR money">
+                        {{item.amount | currency:'￥'}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

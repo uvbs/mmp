@@ -1,0 +1,21 @@
+﻿{
+  "Common": [
+    "ZCJ_WebsiteInfo",
+    "ZCJ_WebsiteDomainInfo",
+    "ZCJ_ModuleFilterInfo",
+    "ZCJ_PermissionInfo",
+    "ZCJ_PermissionGroupInfo",
+    "ZCJ_PermissionRelationInfo",
+    "ZCJ_UserPmsGroupRelationInfo",
+    "ZCJ_MenuInfo",
+    "ZCJ_MenuRelationInfo",
+    "ZCJ_KeyVauleDataInfo",
+    "ZCJ_Component",
+    "ZCJ_ComponentModel",
+    "ZCJ_ComponentModelField",
+    "ZCJ_CompanyWebsite_ToolBar",
+    "ZCJ_Slide",
+    "ZCJ_DefineCreditAcount"
+  ],
+  "WebsiteOwner": []
+}

@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/styles.css">
+<link rel="stylesheet" type="text/css"
+	href="/TownCheck_CMS/js/validation/css/validate.css">
+<link type="text/css" rel="stylesheet"
+	href="../js/validate/css/validate.css" />
+<SCRIPT src="/TownCheck_CMS/js/validation/talent-validate-all.js"></SCRIPT>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add Campaign</title>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<link rel="stylesheet" type="text/css"
+	href="/TownCheck_CMS/css/styles.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="./jquery-1.6.4.js" language="javascript"></script>
+<script src="../js/validate/talent-validate-all.js"
+	language="javascript"></script>
+<script src="./demo.js" language="javascript"></script>
+
+<link type="text/css" rel="stylesheet" href="../Styles/SyntaxHighlighter.css" />
+	<link type="text/css" rel="stylesheet" href="./demo.css" />
+	<script src="../Scripts/shCore.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJScript.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJava.js" type="text/javascript"></script>
+</head>
+<body>
+	<SCRIPT src="/TownCheck_CMS/js/PopupCalendar.js"></SCRIPT>
+	<SCRIPT src="/TownCheck_CMS/js/towncheck_contants.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="/TownCheck_CMS/js/head.js"></SCRIPT>
+	<SCRIPT src="/TownCheck_CMS/js/channel/channel.js"></SCRIPT>
+	<SCRIPT src="./campaign.js"></SCRIPT>
+	<SCRIPT src="/TownCheck_CMS/js/offer/offer.js"></SCRIPT>
+
+	<DIV style="TEXT-ALIGN: center; WIDTH: 100%">
+		<DIV id=headContainer>
+			<DIV id="navTabs">
+				<ul>
+					<li><a onclick="javascript:toChannelUrl()" target="_top"
+						style="background-position: 0 -29px"> <span
+							style="background-position: right -29px">Channel</span>
+					</a></li>
+					<li><a onclick="javascript:toCampaignUrl()" target="_top"
+						onfocus=this.blur()> <span>Campaign</span>
+					</a></li>
+					<li><a onclick="javascript:toOfferUrl()" target="_top"
+						onfocus=this.blur()> <span
+							style="width: 60px; text-align: center">Offer</span>
+					</a></li>
+					<!--  <a href="cscc/self/index.jsp" target="middle" onfocus=this.blur() onclick="selectMenu('menu',this,'selected')">���ܹ���</a>   -->
+				</ul>
+			</DIV>
+		</DIV>
+	</DIV>
+
+
+	<form action="/TownCheck_CMS/Campaign/saveCampaign.do"
+		onsubmit="return tt.validate()" method="get">
+		<DIV align="right">
+			<input type="button" style="width: 100px"
+				onclick="javascript:addCampaignRow()" value="Add Place" /> <input
+				type="submit" value="Save" style="width: 60px" />
+		</DIV>
+		<DIV style="TEXT-ALIGN: center; WIDTH: 100%">
+			<DIV id=mainContainer>
+				<DIV style="width: 100%" id="generalMenuLinks" align="left">
+					<SPAN class='generalMenuLink'> <A
+						onclick="javascript:searchCampaignUrl()" target="_top"
+						onfocus=this.blur()>Search Campaign</A>
+					</SPAN>
+				</DIV>
+				<DIV id=topBody>
+					<p style="text-align: left;">
+						<span class="titleSPAN">Campaign Information</span>
+					</p>
+					<TABLE width="100%">
+						<TBODY>
+							<TR>
+								<TD width="150"><SPAN class="labelSPAN">Description</SPAN>
+								</TD>
+								<TD colspan="3"><INPUT id="discriptionTxt"
+									name="description" type="text" value="" style="width: 300px;" />
+								</TD>
+							</TR>
+							<TR>
+								<TD width="150"><LABEL class="labelSPAN">Title</LABEL></TD>
+								<TD colspan="3"><INPUT id="TitleTxt" name="title"
+									type="text" value="" style="width: 300px;" /></TD>
+
+							</TR>
+							<TR>
+								<TD width="150"><LABEL class="labelSPAN">Icon</LABEL></TD>
+								<TD colspan="3"><INPUT id="iconFile" name="icon"
+									type="file" value="" style="width: 400px;" /></TD>
+							</TR>
+							<TR>
+								<TD width="150"><SPAN class="labelSPAN">Display
+										Date(S)</SPAN></TD>
+								<TD width="150"><INPUT id="displayDateSTxt"
+									name="startDisplayDateString" type="text" value=""
+									style="width: 150px" onclick="getDateString(this,oCalendarEn)" />
+								</TD>
+								<TD width="150"><SPAN class="labelSPAN">Display
+										Date(E)</SPAN></TD>
+								<TD width="500"><INPUT id="displayDateETxt"
+									name="endDisplayDateString" type="text" value=""
+									style="width: 150px" onclick="getDateString(this,oCalendarEn)" />
+								</TD>
+							</TR>
+							<TR>
+								<TD width="150"><SPAN class="labelSPAN">Start Date</SPAN></TD>
+								<TD width="150"><INPUT id="startDateTxt"
+									name="startDateString" type="text" value=""
+									style="width: 150px" onclick="getDateString(this,oCalendarEn)" />
+								</TD>
+								<TD width="150"><SPAN class="labelSPAN">End Date</SPAN></TD>
+								<TD width="500"><INPUT id="endDateTxt" name="endDateString"
+									type="text" value="" style="width: 150px"
+									onclick="getDateString(this,oCalendarEn)" /></TD>
+							</TR>
+							<TR>
+								<TD width="150"><SPAN class="labelSPAN">Channel Name</SPAN>
+								</TD>
+								<TD colspan="3"><select id="channelNameOpt"
+									NAME="channelId" style="width: 150px">
+
+
+
+
+										<option value="104001">citibalk update</option>
+
+
+
+								</select></TD>
+							</TR>
+						</TBODY>
+					</TABLE>
+				</DIV>
+
+				<DIV id=mainBody>
+					<BR>
+					<TABLE class=altRowTable id="placeTable" border=0 cellSpacing=0
+						cellPadding=0 width="100%" align=center>
+						<TBODY>
+
+							<TH width="60%" align=left>&nbsp;&nbsp;&nbsp;Campaign Place</TH>
+							<TH width="20%" align=left>&nbsp;&nbsp;&nbsp;Open Time</TH>
+							<TH width="20%" align=left>&nbsp;&nbsp;&nbsp;Close Time</TH>
+							<TH width="20%" align=left>&nbsp;&nbsp;&nbsp;Action</TH>
+
+						</TBODY>
+					</TABLE>
+					<BR>
+
+				</DIV>
+			</DIV>
+		</DIV>
+	</form>
+	<div id="msgId"
+		style="margin: 0, 0, 0, 0; position: absolute; width: 150;"></div>
+</body>
+<script language="javascript">
+								alert(document.documentElement.scrollLeft);
+								alert(document.body.scrollLeft);
+
+								var ftitle = new tt.Field("Title: ", "title");//.setMsgId("msgId");
+								var ficon = new tt.Field("Icon: ", "icon");//.setMsgId("msgId");
+								var fdisplayDateStart = new tt.Field(
+										"Display Date(S): ",
+										"startDisplayDateString");//.setMsgId("msgId");
+								var fdisplayDateEnd = new tt.Field(
+										"Display Date(E): ",
+										"endDisplayDateString");//.setMsgId("msgId");
+								var fstartDate = new tt.Field("Start Date: ",
+										"startDateString");//.setMsgId("msgId");
+								var fendDate = new tt.Field("End Date: ",
+										"endDateString");//.setMsgId("msgId");
+								var fchannelName = new tt.Field(
+										"Channel Name: ", "channelId");//.setMsgId("msgId");
+
+								tt.vf.req.add(ftitle, ficon, fdisplayDateStart,
+										fdisplayDateEnd, fstartDate, fendDate,
+										fchannelName);
+
+								new tt.DV().set("yyyy-mm-dd").add(
+										fdisplayDateStart, fdisplayDateEnd,
+										fstartDate, fendDate);
+
+								// tt.vf.dv.set("yyyy-MM-dd").add(fdisplayDateStart,fdisplayDateEnd,fstartDate,fendDate);
+							</script>
+</html>

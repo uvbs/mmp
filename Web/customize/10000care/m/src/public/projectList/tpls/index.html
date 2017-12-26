@@ -1,0 +1,124 @@
+﻿<div class="wrapProjectList page">
+	<div class="row">
+		<div class="col">
+			<div class="wrapInputDark selectDark">
+				<select ng-model="pageData.area" ng-change="pageFunc.search()">
+					<option value="">全部区县</option>
+					<option value="黄浦区">黄浦区</option>
+					<option value="长宁区">长宁区</option>
+					<option value="徐汇区">徐汇区</option>
+					<option value="静安区">静安区</option>
+					<option value="杨浦区">杨浦区</option>
+					<option value="虹口区">虹口区</option>
+					<option value="闸北区">闸北区</option>
+					<option value="普陀区">普陀区</option>
+					<option value="浦东新区">浦东新区</option>
+					<option value="宝山区">宝山区</option>
+					<option value="闵行区">闵行区</option>
+					<option value="金山区">金山区</option>
+					<option value="嘉定区">嘉定区</option>
+					<option value="青浦区">青浦区</option>
+					<option value="松江区">松江区</option>
+					<option value="奉贤区">奉贤区</option>
+					<option value="崇明县">崇明县</option>
+				</select>
+			</div>
+		</div>
+		<div class="col">
+			<div class="wrapInputDark selectDark">
+				<select ng-model="pageData.cate" ng-change="pageFunc.search()">
+					<option value="">全部分类</option>
+                    <option value="粘贴折叠">粘贴折叠</option>
+                    <option value="成品包装">成品包装</option>
+                    <option value="组件装配">组件装配</option>
+                    <option value="加工制作">加工制作</option>
+                    <option value="纺织串接">纺织串接</option>
+                    <option value="缝纫整熨">缝纫整熨</option>
+                    <option value="其它项目">其它项目</option>
+                    <option value="阳光办公室">阳光办公室</option>
+				</select>
+			</div>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="wrapInputDark">
+				<input type="text" placeholder="搜索项目..." ng-model="pageData.projectName">
+				<i class="iconfont icon-sousuo inputRight" ng-click="pageFunc.search()"></i>
+			</div>
+		</div>
+	</div>
+	<div class="projectList">
+
+
+		<div class="row" ng-repeat="item in pageData.showList">
+			<div class="col font16 col-50" ng-repeat="content in item">
+				<div class="content">
+					<div class="img">
+						<img src="{{content.Thumbnails}}">
+					</div>
+					<div>发布于：{{content.InsertDateStr}}</div>
+					<div>项目：{{content.ProjectName}}</div>
+					<div>周期：{{content.ProjectCycleName}}</div>
+					<div>{{content.CompanyName}}</div>	
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="row">
+			<div class="col font16 col-50">
+				<div class="content">
+					<div class="img">
+						<img src="/customize/10000care/m/static/img/care/comm/c1.png">
+					</div>
+					<div>发布于2015.09.24</div>
+					<div>项目：档案整理</div>
+					<div>周期：30天之内</div>
+					<div>上海话新asda阿斯顿公司</div>	
+				</div>
+			</div>
+			<div class="col font16 col-50">
+				<div class="content">
+					<div class="img">
+						<img src="/customize/10000care/m/static/img/care/comm/c1.png">
+					</div>
+					<div>发布于2015.09.24</div>
+					<div>项目：档案整理</div>
+					<div>周期：30天之内</div>
+					<div>上海话新asda阿斯顿公司</div>	
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col font16 col-50">
+				<div class="content">
+					<div class="img">
+						<img src="/customize/10000care/m/static/img/care/comm/c1.png">
+					</div>
+					<div>发布于2015.09.24</div>
+					<div>项目：档案整理</div>
+					<div>周期：30天之内</div>
+					<div>上海话新asda阿斯顿公司</div>	
+				</div>
+			</div>
+			<div class="col font16 col-50">
+				<div class="content">
+					<div class="img">
+						<img src="/customize/10000care/m/static/img/care/comm/c1.png">
+					</div>
+					<div>发布于2015.09.24</div>
+					<div>项目：档案整理</div>
+					<div>周期：30天之内</div>
+					<div>上海话新asda阿斯顿公司</div>	
+				</div>
+			</div>
+		</div> -->
+
+
+		<div class="row mTop10 pBottom32" ng-if="pageData.isShowMore">
+			<div class="col wrapLoginBtn">
+				<a href="javascript:;" class="btnLogin" ng-click="pageFunc.loadData()">查看更多</a>
+			</div>
+		</div>
+	</div>
+</div>

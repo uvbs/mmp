@@ -1,0 +1,56 @@
+﻿<div class="wrapArticleList">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" ng-if="pageData.hasClassify!=undefinded">
+
+        <h3><i class="icon iconfont icon-fenlei classfy"></i>分类查询</h3>
+        <div class="cbp-wrap-menulist">
+            <a href="javascript:;" target="_blank" ng-click="pageFunc.leftMenuClick(item)" ng-repeat="item in pageData.tag">{{item.name}}</a>
+        </div>
+
+    </nav>
+
+    <form ng-submit="pageFunc.search()">
+        <div class="warpHeader bar bar-header item-input-inset ">
+            <i class="icon iconfont icon-fenlei classfy" ng-click="pageFunc.toggleMenuClick()" ng-if="pageData.hasClassify"></i>
+            <div class="searchDiv">
+                <input class="inputSearch" type="search" ng-model="pageData.keyword" placeholder="搜索关键字查询">
+                <div class="rightSearch">
+                    <i class="icon iconfont icon-search" ng-click="pageFunc.search()"></i>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="wrapCardList wrapNewsList">
+        <div class="card" ng-repeat="item in pageData.dataList">
+            <div class="item">
+                <div class="row" ng-click="pageFunc.go(item.id)">
+                    <div>
+                        <img class="img" ng-src="{{item.imgSrc}}">
+                        <!--<img src="/customize/wisdomlife/m/static/img/cctv.png" class="img" />-->
+                    </div>
+                    <div class="col mLeft">
+                        <h2 title="{{item.title}}">{{item.title}}</h2>
+                        <summary>{{item.summary}}</summary>
+                    </div>
+                </div>
+                
+                <div class="row" ng-if="item.categoryName!=''">
+                    <div class="col txtLeft">
+                        <a href="javascript:;" class="tag">{{item.categoryName}}</a>
+                    </div>
+                    <!--<div class="col txtCenter colorDDD">
+                        <i class="iconfont icon-arrowdown relativeTop4"></i>
+                    </div>
+                    <div class="col txtRight color999">
+                        <span class="relativeTop4">{{item.createDate}}</span>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.dataList.length<pageData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>
+        </div>
+    </div>
+    <div ng-if="pageData.totalCount == 0">
+        没有数据
+    </div>
+</div>

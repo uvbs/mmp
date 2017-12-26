@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+
+    <title>订单详情</title>
+    <!--发布路径-->
+    <!--<link href="/lib/ionic/ionic.css" rel="stylesheet"/>-->
+    <!--<link href="/css/global-m.css" rel="stylesheet"/>-->
+    <!--<link href="/lib/layer.mobile/need/layer.css" rel="stylesheet"/>-->
+
+    <!--开发路径-->
+    <link href="/OpenWebApp/lib/ionic/ionic.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/css/global-m.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/lib/layer.mobile/need/layer.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="wrapOrderDetail pTop50" id="wrapOrderDetail">
+    <div class="bar bar-header bar-balanced fixed top0 height50">
+        <h1 class="title lineHeight50">
+            <!--    <i  v-on:click="goUrlChange('index.html','')" class="iconfont icon-homeshixin floatL"></i>
+               订单详情
+               <i v-on:click="goUrlChange('orderlist.html','')" class="iconfont icon-quanbudingdan floatR"></i>
+    -->
+            <i onclick="history.go(-1)" class="iconfont icon-fanhui floatL iconfontfixlarge font25"></i>
+            <span v-text="home_title"></span>
+            <i v-on:click="goUrlChange()"
+               class="iconfont icon-homeshixin floatR iconfontfixlarge top48F font30"></i>
+
+            <div class="clear"></div>
+
+        </h1>
+    </div>
+    <div class="list">
+        <!-- <div class="item item-divider fontBold">
+            订单详情
+        </div> -->
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">订单编号:</div>
+                <div class="col col-75"><span v-cloak>{{orderDetail.order_id}}</span></div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">预约人:</div>
+                <div class="col col-75"><span v-cloak>{{userInfo.name}}</span></div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">手机号:</div>
+                <div class="col col-75"><span v-cloak>{{userInfo.phone}}</span></div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold" v-cloak>{{category_name}}:</div>
+                <div class="col col-75 itemtitle">
+                    <span v-text="orderDetail.product_name"></span>
+                    <!--<span v-cloak v-if="orderDetail.price>0">-->
+                        <!--{{orderDetail.product_name}}{{orderDetail.price*timeList.length}}元-->
+                    <!--</span>-->
+                    <!--<span v-if="orderDetail.price==0" v-cloak>-->
+                        <!--{{orderDetail.product_name}}-->
+                    <!--</span>-->
+                </div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">预约日期:</div>
+                <div class="col col-75"><span v-cloak>{{timeList[0].date}}</span></div>
+            </div>
+            <div class="row" v-for="item in timeList" v-if="timeList.length>0">
+                <div class="col"></div>
+                <div class="col col-75"><span v-cloak>{{item.alltime}}</span></div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">增值服务:</div>
+                <div class="col col-75 lineHeight20 height25">
+                    <span v-text="orderDetail.added_details.showNm"></span>
+                    <!--<span v-if="orderDetail.added_details.length>0"></span>-->
+                    <!--<span v-if="orderDetail.added_details.length==0">无</span>-->
+                </div>
+            </div>
+            <div class="row" v-for="service in orderDetail.added_details">
+                <div class="col"></div>
+                <div class="col col-75 itemtitle " v-cloak>
+                    {{service.product_name}}&nbsp;&nbsp;{{service.price}}{{service.unit}}*{{service.count}}&nbsp;&nbsp;&nbsp;&nbsp;{{service.price*service.count}}元
+                </div>
+            </div>
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold">订单总价:</div>
+                <div class="col col-75 lineHeight20 height25">
+                    <span v-if="orderDetail.total_amount!=0" v-text="orderDetail.total_amount+'元'">
+                    </span>
+                    <span v-if="orderDetail.total_amount==0">免费</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="item font14">
+            <div class="row">
+                <div class="col txtRight fontBold">支付方式:</div>
+                <div class="col col-75" v-if="orderDetail.pay_type=='WEIXIN'">微信</div>
+            </div>
+
+        </div> -->
+        <div class="item pAll2 font14" v-if="orderDetail.total_amount!=0">
+            <div class="row">
+                <div class="col txtRight fontBold">支付状态:</div>
+                <div class="col col-75 lineHeight20 height25">
+                    <span v-text="orderDetail.paystatus"></span>
+                    <!--<span v-if="orderDetail.is_pay==0">未付款</span>-->
+                    <!--<span v-if="orderDetail.is_pay==1">已付款</span>-->
+                </div>
+            </div>
+            <!--支付状态：未支付-->
+        </div>
+        <div class="item pAll2 font14">
+            <div class="row">
+                <div class="col txtRight fontBold lineHeight20">订单状态:</div>
+                <div class="col col-75 height25">
+                    <span v-text="orderDetail.order_status"></span>
+                </div>
+            </div>
+        </div>
+        <div class="item pAll2">
+            <div v-if="orderDetail.total_amount>0&&orderDetail.order_status=='待付款'"
+                 class="button button-block button-balanced" v-on:click="orderPay_wx()">
+                <!-- <i class="iconfont icon-xuanze"></i> -->
+                重新支付
+            </div>
+            <div v-if="orderDetail.order_status=='待付款'" class="button button-block button-stable"
+                 v-on:click="cancelOrderBtn()">
+                <!-- <i class="iconfont icon-shanchu"></i> -->
+                取消订单
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<!--发布路径-->
+
+<!--<script src="/lib/vue/vue.min.js"></script>-->
+<!--<script src="/lib/la-datePicker/datePicker.js"></script>-->
+<!--<script src="/lib/jquery/jquery-2.1.1.min.js"></script>-->
+<!--<script src="/lib/layer.mobile/layer.m.js"></script>-->
+<!--<script src="/Scripts/global-m.js"></script>-->
+<!--<script src="http://file.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>-->
+
+<!--开发路径-->
+<script src="/OpenWebApp/lib/vue/vue.min.js"></script>
+<script src="/OpenWebApp/lib/la-datePicker/datePicker.js"></script>
+<script src="/OpenWebApp/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="/OpenWebApp/lib/layer.mobile/layer.m.js"></script>
+<script src="/OpenWebApp/Scripts/global-m.js"></script>
+<script src="http://file.comeoncloud.net/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+
+<script>
+    var BookingConfig = {};
+//    var BookingConfig = {
+//        "title": "服务预约",
+//        "home_title": "会议室预订",
+//        "order_list_title": "我的订单",
+//        "order_detail_title": "订单详情",
+//        "category_type": "MeetingRoom",
+//        "category_name": "会议室",
+//        "slide_width": 0,
+//        "slide_height": 0,
+//        "is_login": true,
+//        "is_member": true,
+//        "access_level": 1,
+//        "truename": "summer",
+//        "phone": "13365923991",
+//        "apply_url": "/App/Member/Wap/CompleteUserInfo.aspx?referrer=http%3a%2f%2fdev1.comeoncloud.net%2fApp%2fBooking%2fMeetingRoom%2fm%2forderDetail.aspx%3forderId%3d422674%26type%3dMeetingRoom",
+//        "nopms_url": "/Error/NoPmsMobile.htm",
+//        "share_title": "精品会议室",
+//        "share_img": "http://open-files.comeoncloud.net/www/hf/jubit/image/20160411/F1481F67263F4122B91BC0953A1A8519.jpg",
+//        "share_desc": "精品会议室，欢迎您过来",
+//        "share_link": ""
+//    };
+
+
+    var vm = new Vue({
+        el: '#wrapOrderDetail',
+        data: {
+            orderId: '',
+            orderDetail: {},
+            timeList: [],
+            userInfo: {
+                name: '',  //用户姓名
+                phone: '' //用户手机号
+            },
+            category_name: '',
+            home_title:'订单详情'
+        },
+        methods: {
+            goUrlChange: goUrlChange,
+            getOrderDetail: getOrderDetail,
+            cancelOrder: cancelOrder, //取消订单
+            cancelOrderBtn: cancelOrderBtn,
+            orderPay_wx: orderPay_wx, //微信支付
+            wxConfig: wxConfig,
+            runWxConfig: runWxConfig,
+            init: init
+        }
+    });
+    vm.init();
+    function init() {
+        getOrderDetail();
+        wxConfig();
+        vm.category_name = BookingConfig.category_name;
+        if(BookingConfig.home_title!=''){
+            vm.home_title=BookingConfig.home_title;
+        }
+    }
+    function goUrlChange() {
+        window.location.href = 'index.html?type=' + BookingConfig.category_type;
+    }
+    //取消订单按钮
+    function cancelOrderBtn() {
+        var content = '确定要取消订单？';
+        layer.open({
+            content: content,
+            btn: ['确定', '取消'],
+            shadeClose: false,
+            yes: function () {
+                cancelOrder();
+            },
+            no: function () {
+                layer.closeAll();
+            }
+        });
+    }
+    //取消订单
+    function cancelOrder() {
+        var url = '/serv/api/mall/order.ashx';
+        var params = {
+            action: 'cancel',
+            order_id: vm.orderId
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: params
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.errcode == 0) {
+                alert('取消成功');
+                layer.closeAll();
+                goUrlChange();
+            } else {
+                alert(data.errmsg);
+            }
+        }, function (data) {
+            alert(data.errmsg);
+        })
+    }
+    //获取订单详情
+    function getOrderDetail() {
+        vm.orderId = GetParm('orderId');
+//        vm.orderId='422614';
+        // serv/api/booking/order/get.ashx?order_id=422614
+        var url = '/serv/api/booking/order/get.ashx';
+        var params = {
+            order_id: vm.orderId
+        };
+        var dataobj = {
+            type: 'POST',
+            url: url,
+            data: params
+        };
+        ajaxReq(dataobj, function (data) {
+            console.log(data);
+            if (data.status) {
+                if (data.result.order_details && data.result.order_details.length > 0) {
+
+                    data.result.order_details[0].start_date = data.result.order_details[0].start_date.replace(new RegExp(/(-)/g), '/');
+
+                    var date = new Date(data.result.order_details[0].start_date.replace(/-/g,'/'));
+                    var dateStr = date.format('yyyy年MM月dd日');//formatTime(date,'');
+                    for (var j = 0; j < data.result.order_details.length; j++) {
+                        var start = data.result.order_details[j].start_date;
+                        var end = data.result.order_details[j].end_date;
+                        var starttime = parseInt(start.substring(11, 16)) < 10 ? start.substring(12, 16) : start.substring(11, 16);
+                        var endtime = parseInt(end.substring(11, 16)) < 10 ? end.substring(12, 16) : end.substring(11, 16);
+                        var one = {
+                            date: dateStr,
+                            alltime: starttime + '-' + endtime
+                        };
+                        vm.timeList.push(one);
+                    }
+                }
+                // {{orderDetail.product_name}}{{orderDetail.price*timeList.length}}元
+                //会议室名称
+                if(data.result.price>0){
+                    data.result.product_name=data.result.product_name+' '+data.result.price*vm.timeList.length;
+                }
+                //增值服务
+                if(data.result.added_details.length>0){
+                    data.result.added_details.showNm='';
+                }
+                else{
+                    data.result.added_details.showNm='无';
+                }
+                //支付状态
+                if(data.result.is_pay==1){
+                    data.result.paystatus='已支付';
+                }
+                else{
+                    data.result.paystatus='待支付';
+                }
+                vm.orderDetail = data.result;
+                console.log('会议室订单列表', vm.orderDetail);
+                console.log('会议室时间段列表', vm.timeList);
+
+                vm.userInfo.name = BookingConfig.truename;
+                vm.userInfo.phone = BookingConfig.phone;
+
+                wx.ready(function () {
+                    var shareModel = {
+                        title: '',
+                        desc: '',
+                        link: '',
+                        imgUrl: '',
+                        type: '',
+                        dataUrl: ''
+                    }
+                    if (BookingConfig.share_title != '' && BookingConfig.share_title != undefined) {
+                        shareModel.title = BookingConfig.share_title;
+                    }
+                    if (BookingConfig.share_img != '' && BookingConfig.share_img != undefined) {
+                        shareModel.imgUrl = BookingConfig.share_img;
+                    }
+                    if (BookingConfig.share_desc != '' && BookingConfig.share_desc != undefined) {
+                        shareModel.desc = BookingConfig.share_desc;
+                    }
+                    if (BookingConfig.share_link != '' && BookingConfig.share_link != undefined) {
+                        shareModel.link = BookingConfig.share_link;
+                    }
+
+                    wxapi.wxshare({
+                        title: shareModel.title,
+                        desc: shareModel.desc,
+                        link: shareModel.link,
+                        imgUrl: shareModel.imgUrl
+                    }, function (data) {
+
+                    })
+                });
+
+            } else {
+                alert(data.msg);
+            }
+        }, function (data) {
+            alert(data.msg);
+        });
+    }
+    //支付订单
+    function orderPay_wx() {
+        var url = '/serv/api/mall/payment.ashx';
+        var urldata = {
+            action: 'brandwcpayrequest',
+            order_id: vm.orderId,
+            order_type: 'mall'
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: urldata
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.errcode == 0) {
+                //拼接微信支付参数
+                var paydata = {
+                    timestamp: data.pay_req.timeStamp,
+                    nonceStr: data.pay_req.nonceStr,
+                    package: data.pay_req.package,
+                    signType: data.pay_req.signType,
+                    paySign: data.pay_req.paySign,
+                    success: function (res) {
+//                        resolve(res)
+//                        goUrlChange('orderDetail.html', vm.orderId);
+                        window.location.href = 'orderDetail.html?orderId=' + vm.orderId + '&type=' + BookingConfig.category_type;
+                    },
+                    cancel: function (res) {
+//                        reject(res)
+                    }
+                };
+                wx.chooseWXPay(paydata);
+            } else {
+                alert(data.errmsg);
+                return;
+            }
+        }, function (data) {
+            if(data.errmsg!='请在微信中打开'){
+                data.errmsg='该商户微信支付还没有配置';
+            }
+            alert(data.errmsg);
+        });
+    }
+    /*微信接口*/
+    function wxConfig() {
+        var url = '/serv/wxapi.ashx';
+        var urldata = {
+            action: 'getjsapiconfig',
+            url: location.href.split('#')[0]
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: urldata
+        };
+        ajaxReq(dataobj, function (wxapidata) {
+            runWxConfig(wxapidata);
+        }, function (data) {
+            alert(data.errormsg);
+        });
+    }
+    function runWxConfig(configdata) {
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: configdata.appId, // 必填，公众号的唯一标识
+            timestamp: configdata.timestamp, // 必填，生成签名的时间戳
+            nonceStr: configdata.nonceStr, // 必填，生成签名的随机串
+            signature: configdata.signature, // 必填，签名，见附录1
+            jsApiList: [
+                "onMenuShareTimeline",
+                "onMenuShareAppMessage",
+                "onMenuShareQQ",
+                "onMenuShareWeibo",
+                "startRecord",
+                "stopRecord",
+                "onVoiceRecordEnd",
+                "playVoice",
+                "pauseVoice",
+                "stopVoice",
+                "onVoicePlayEnd",
+                "uploadVoice",
+                "downloadVoice",
+                "chooseImage",
+                "previewImage",
+                "uploadImage",
+                "downloadImage",
+                "translateVoice",
+                "getNetworkType",
+                "openLocation",
+                "getLocation",
+                "hideOptionMenu",
+                "showOptionMenu",
+                "hideMenuItems",
+                "showMenuItems",
+                "hideAllNonBaseMenuItem",
+                "showAllNonBaseMenuItem",
+                "closeWindow",
+                "scanQRCode",
+                "chooseWXPay",
+                "openProductSpecificView",
+                "addCard",
+                "chooseCard",
+                "openCard"
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+    }
+    /*微信接口 end*/
+
+    //获取用户姓名和手机
+    function userInfo() {
+        var url = '/serv/api/user/info.ashx';
+        var dataJson = {
+            action: 'currentuserinfo'
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: dataJson
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data) {
+                console.log('用户信息', data.result);
+                vm.userInfo.name = data.truename;
+                vm.userInfo.phone = data.phone;
+            } else {
+                alert('获取用户信息失败');
+            }
+        }, function (data) {
+            alert(data.msg);
+        })
+    }
+
+</script>
+</body>
+</html>

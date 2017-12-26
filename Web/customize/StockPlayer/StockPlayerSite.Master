@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="StockPlayerSite.master.cs" Inherits="ZentCloud.JubitIMP.Web.customize.StockPlayer.StockPlayerSite" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <%
+        if (!string.IsNullOrWhiteSpace(ico))
+            this.Response.Write(string.Format("<link type=\"image/x-icon\" rel=\"shortcut icon\" href=\"{0}\" />", ico));
+    %>
+    <link rel="stylesheet" href="http://static-files.socialcrmyun.com/lib/talent-validate/css/validate.css" />
+    <link rel="stylesheet" href="http://static-files.socialcrmyun.com/lib/talent-validate/css/validate.css" />
+    <link rel="stylesheet" href="http://static-files.socialcrmyun.com/lib/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://static-files.socialcrmyun.com/lib/emoji/CEmojiEngine.css" />
+    <link rel="stylesheet" href="/Plugins/zcIM/zcIM.css?v=20161126" />
+    <link rel="stylesheet" href="http://static-files.socialcrmyun.com/Plugins/viewUser/viewUser.css" />
+    <link href="http://static-files.socialcrmyun.com/customize/StockPlayer/Css/Pager.css?v=2016102002" rel="stylesheet" />
+    <link href="/customize/StockPlayer/Css/Common.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div>
+        <div class="wrapHead">
+            <div class="mHead">
+                <div class="Width970">
+                    <div class="Width970 Height10"></div>
+                    <div class="floatL">
+                        <img src="<%=logo %>" width="120" height="90" class="logoimg" />
+                    </div>
+                    <div class="noLogin pTop10 floatR <%= curUser == null ?"":"hidden" %>">
+                        <div class="rightNav ">
+                            <div class="inline">
+                                <img class="textimg" src="http://static-files.socialcrmyun.com/img/userhead.png" />
+                                <input type="text" id="login_acount" class="useremail logintext textCheck" placeholder="账号" />
+                            </div>
+                            <div class="inline">
+                                <img class="textimg" src="http://static-files.socialcrmyun.com/img/userpwd.png" />
+                                <input type="password" id="login_pwd" class="userpassword logintext textCheck" placeholder="密码" />
+                            </div>
+                            <div class="inline">
+                                <button type="button" class="btn btn-default loginBottom" onclick="login()">登录</button>
+                            </div>
+                            <div class="inline">
+                                <button type="button" class="btn btn-default codeLoginBottom" onclick="qrCodeLogin()">二维码登录</button>
+                            </div>
+                        </div>
+                        <div class="head-pwd">
+                            <span class="spanColor">
+                                <a href="/customize/StockPlayer/src/Register/ForgotPassword.aspx">忘记密码</a>
+                                <a href="/customize/StockPlayer/src/Register/Register.aspx" class="mLeft20">我要注册</a>
+                                <img class="img-icon" src="http://static-files.socialcrmyun.com/customize/StockPlayer/Img/Register.png" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="login floatR <%= curUser == null ?"hidden":"" %>">
+                        <div class="loginInfo">
+                            <img class="useravatar" <%= curUser ==null?"": "src=\""+ new ZentCloud.BLLJIMP.BLLUser().GetUserDispalyAvatar(curUser)+"\"" %> />
+                            <span class="userdispalyname"><%= curUser ==null?"":new ZentCloud.BLLJIMP.BLLUser().GetUserDispalyName(curUser) %></span>
+                        </div>
+                        <div class="head-pwd">
+                            <span class="spanColor">
+                                <a href="javascript:void(0);" onclick="loginout()">退出登录</a>
+                                <img class="img-icon" src="http://static-files.socialcrmyun.com/customize/StockPlayer/Img/Register.png" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mHeadTo">
+                <div class="Width970">
+                    <a href="/customize/StockPlayer/Src/Index/Index.aspx"><span class="spanHeadTo">行情</span></a>
+                    <a href="/customize/StockPlayer/Src/Blogs/BowenList.aspx"><span class="spanHeadTo">谈股论金</span></a>
+                    <a href="/customize/StockPlayer/Src/Stock/StockList.aspx"><span class="spanHeadTo">股权交易</span></a>
+                    <a href="/customize/StockPlayer/Src/Company/BlogList.aspx"><span class="spanHeadTo">公司发布</span></a>
+                    <a href="/customize/StockPlayer/Src/PupilDebate/PupilDebateList.aspx"><span class="spanHeadTo">多空论战</span></a>
+                    <a href="/customize/StockPlayer/Src/Cognizance/Cognizances.aspx"><span class="spanHeadTo">心态感悟</span></a>
+                    <a href="/customize/StockPlayer/Src/UserCenter/UserCenter.aspx"><span class="spanHeadTo">个人中心</span></a>
+                    <a href="/customize/StockPlayer/Src/Complaint/Complaints.aspx"><span class="spanHeadTo">建议投诉</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="wrapContenxt Width1000">
+            <asp:ContentPlaceHolder ID="ContentBodyCenter" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="wrapButtom Width1000">
+            <div class="mButtom">
+                <div class="helpLink">
+                    <a href="javascript:;" class="cFont">关于我们</a>
+                    <a href="javascript:;" class="cFont mLeft50">帮助中心</a>
+                    <a href="javascript:;" class="cFont mLeft50">网站协议</a>
+                    <a href="javascript:;" class="cFont mLeft50">联系我们</a>
+                </div>
+                  <div class="beiInfo">
+                    <a target="_blank" style=" color:White" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">©金融玩家版权所有  沪ICP备16040198号</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/IM/Web_SDK_Base_v2.8.0.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/IM/Web_SDK_NIM_v2.8.0.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/Scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/Scripts/StringBuilder.Min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/Plugins/zcIM/util.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/emoji/emoji.js"></script>
+<script type="text/javascript" src="/Plugins/zcIM/zcIM.js"></script>
+<script type="text/javascript" src="/Plugins/viewUser/viewUser.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="http://static-files.socialcrmyun.com/lib/talent-validate/talent-validate-all.js"></script>
+<script type="text/javascript" src="/Scripts/wxshare/wxshare0.0.1/wxshare.js?v=20161025"></script>
+
+<script type="text/javascript">
+    //聊天组件
+    var zcChat = new zcIM();
+    //用户信息（鼠标移动到头像，名称上用）
+    var viewComp = new viewUser();
+    //websocket
+    var ws = null;
+    //qrcode websocket
+    var qrws = null;
+    //数据
+    var data = {};
+    var u_id = <%= curUser == null ? 0 :curUser.AutoID %>;
+    var u_iscenter = false;
+    var is_login = false;
+    var ol_a = '<%=ol_a%>';
+    var ol_b = '<%=ol_b%>';
+    var ol_s = '<%=ol_s%>';
+    var ol_icos = '<%=ol_icos%>';
+    var port = <%=port%>;
+    data.support_im = true;
+    $(function () {
+        //检查IE版本 
+        checkSupportIM();
+        <%if (curUser != null)
+          { 
+              ZentCloud.BLLJIMP.BLLUser bllUser = new ZentCloud.BLLJIMP.BLLUser();
+        %>
+
+        is_login = true;
+        if(data.support_im) {
+            ws = connectSocketServer(<%= curUser.AutoID %>);
+
+        <%if (curUser.UserType!=6){%>
+            zcChat.login(<%= curUser.AutoID %>,'<%= (curUser.UserType!=6?curUser.IMToken:"" )%>','<%= bllUser.GetUserDispalyAvatar(curUser) %>','<%= bllUser.GetUserDispalyName(curUser) %>');
+         <%}%>
+        }
+        
+        <%}%>
+        
+        data.shareData = {
+            title: '<%=webSite.WebsiteTitle%>',
+            summary: '<%=webSite.WebsiteDescription%>',
+            shareUrl:'http://'+ window.location.host+'/customize/StockPlayer/Src/Index/Index.aspx',
+            shareImgUrl: '<%=logo%>'
+        };
+    });
+</script>
+<script type="text/javascript" src="/customize/StockPlayer/Js/Master.js"></script>
+<script type="text/javascript" src="/customize/StockPlayer/Js/Pager.js"></script>
+<asp:contentplaceholder id="buttom" runat="server">
+
+</asp:contentplaceholder>

@@ -1,0 +1,14 @@
+.width-80{
+    width: 80%;
+}
+#bg-fix{
+     position: absolute;
+     z-index: -1;
+     left: 0;
+ }
+#bg-fix-2{
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top:8em;
+}

@@ -1,0 +1,42 @@
+<div class="wrapCardList">
+    <div class="content">
+        <div class="card" ng-repeat="item in cardlist.dataList">
+            <div class="item item-text-wrap">
+                <div class="row">
+                    <div class="col font13" ng-bind="item.bank_name">
+                        <!--招商银行-->
+                    </div>
+                    <div class="col textR font13" ng-bind="item.account_name">
+                        <!--王二小-->
+                    </div>
+                </div>
+                <div class="row"  ng-mousedown="cardlist.backToUseCard(item)">
+                    <div class="col textC font21">
+                        <span ng-if="item.show">**** **** **** {{item.bank_account.substring(item.bank_account.length-4,item.bank_account.length)}}</span>
+                        <span ng-if="!item.show" ng-bind="item.bank_account"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <i class="icon iconfont icon-bianjixiugai bianjixiugai" ng-mousedown="cardlist.goToDetail(item)"></i>
+                    <i class="icon iconfont icon-shanchu iconstyle" ng-mousedown="cardlist.deleteBankCard(item)"></i>
+                    <div class="col textR font12">
+                        <span ng-if="!item.show" ng-mousedown="item.show=true;">隐藏号码</span>
+                        <span ng-if="item.show" ng-mousedown="item.show=false;">显示全部</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <a class="item item-icon-left item-icon-right itemreset" ng-mousedown="cardlist.goToDetail('add')">
+                <i class="icon iconfont icon-dcjia"></i>
+                添加银行卡
+                <i class="icon iconfont icon-arrowright"></i>
+            </a>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-positive change">
+                取消
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿<div class="layout boxMain warpMaster">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <i class="iconfont icon-iconzhuanjia"></i>
+                    <span class="titleText">专家库</span>
+                </span>
+            </div>
+            <div class="boxMainText">
+                <div class="warpCitySelect">
+                    <ul>
+                        <li><span>地区选择:</span></li>
+                        <li ng-repeat="item in pageData.cateList">
+                            <a href="javascript:;" ng-click="pageFunc.selectCate(item)" ng-class="{change:item.name == pageData.currSelectCate.name}">
+                                {{item.name}}
+                            </a>
+                        </li>
+                    </ul>
+                    <span class="moreRight" ng-click="pageFunc.showOtherCate()">
+                        <!--更多-->
+                        {{pageData.showOther?'收起':'更多'}}
+                        <i class="iconfont {{pageData.showOther?'icon-xiangshang':'icon-unfold'}}"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="alertCitySelect" ng-show="pageData.showOther">
+                <div class="alertCityFff">
+                    <ul>
+                        <li ng-repeat="item in pageData.cateOtherList">
+                            <a href="javascript:;" ng-click="pageFunc.selectCate(item)" ng-class="{change:item.name == pageData.currSelectCate.name}">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="warpMainMan">
+                <div class="mainManTitle clear">
+                    <p class="mainLeft">目前全站共有{{pageData.totalAllCount}}位专家</p>
+                    <p class="mainRight">
+                        <span ng-class="{change:pageData.sort==''}" ng-click="pageFunc.setSort('')">按回复次数排列</span>
+                        <span>|</span>
+                        <span ng-class="{change:pageData.sort=='wzNum'}" ng-click="pageFunc.setSort('wzNum')">按发表文章数排列</span>
+                    </p>
+                </div>
+                <div class="mainCon">
+                    <div class="mainConList" ng-repeat="item in pageData.TutorList">
+                        <!--<dl>-->
+                        <!--<dt><a href="#/userspace/{{item.id}}"><img src="{{item.avatar}}" alt="" onerror="javascript:this.src='/img/europejobsites.png';"></a></dt>-->
+                        <!--<dd>-->
+                        <!--<p class="listTop"><a href="#/userspace/{{item.id}}">{{item.userName}}</a></p>-->
+                        <!--<p>{{item.digest}}</p>-->
+                        <!--</dd>-->
+                        <!--</dl>-->
+                        <div class="dl">
+                            <div class="dt"><a href="#/userspace/{{item.id}}"><img src="{{item.avatar}}" alt="" onerror="javascript:this.src='/img/europejobsites.png';"></a></div>
+                            <div class="dd">
+                                <p>
+                                    <a href="#/userspace/{{item.id}}">{{item.userName}}</a>
+                                    <div title="{{item.digest}}">
+                                        {{item.digest}}
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="mainBot">
+                            <button ng-if="!item.userIsFollow" class="btn btn-primary btn-block" ng-click="pageFunc.submitFollow(item)">关注</button>
+                            <button ng-if="item.userIsFollow" class="btn btn-warning btn-block" ng-click="pageFunc.submitDisFollow(item)">取消关注</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="more_btn" ng-show="pageData.totalCount > 0 && pageData.totalCount > pageData.TutorList.length">
+                    <a href="javascript:" class="pl_input1 grad radius6" ng-click="pageFunc.loadTutorList()">显示更多回复</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpRightTop">
+                <div class="warpSearchInput">
+                    <div class="form-group">
+                        <input ng-model='pageData.keyword' type="search" class="form-control txtSearch " placeholder="搜索专家..." />
+                        <div class="btnSearch" ng-click="pageFunc.loadTutorList()"></div>
+                    </div>
+                </div>
+                <hotquestion></hotquestion>
+                <rcmtutor></rcmtutor>
+            </div>
+        </div>
+    </div>
+</div>

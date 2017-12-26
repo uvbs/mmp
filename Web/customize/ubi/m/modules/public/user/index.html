@@ -1,0 +1,14 @@
+﻿<div class="perAska" ng-show="pageData.answerList.totalCount>0">
+    <h5>回答</h5>
+    <div class="perAskList">
+        <div class="perListOne" ng-repeat="item in pageData.defList.answerDef">
+            <p class="one"><span>{{item.pubUser.userName}}</span>{{item.createDate}}</p>
+            <p ng-bind-html="item.content">
+            </p>
+            <p>
+                <!--<a href="javascript:;" ng-repeat="tag in item.tags">标签</a>-->
+            </p>
+            <p class="last"><span>{{item.replyCount}}条回答         </span><span>{{item.pv}}人预览</span></p>
+        </div>
+    </div>
+</div>

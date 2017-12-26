@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      validate验证框架演示
+    </title>
+
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="../js/jquery.min.js?v=2.1.4">
+    </script>
+    <script src="../js/bootstrap.min.js?v=3.3.6">
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="../js/validate/css/validate.css" />
+
+    <script src="../js/validate/talent-validate-all.js" language="javascript">
+    </script>
+    <script src="./demo.js" language="javascript">
+    </script>
+    
+    <link type="text/css" rel="stylesheet" href="../Styles/SyntaxHighlighter.css" />
+	<link type="text/css" rel="stylesheet" href="./demo.css" />
+	<script src="../Scripts/shCore.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJScript.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJava.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <form class="form-horizontal" name='form1'>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">
+            字段1
+          </label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" id="inputEmail3" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">
+            字段2
+          </label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" name="n2" id='n2_id2' placeholder="">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input type="button" class="btn btn-default" value="验证" onclick="tt.validate()" />
+          </div>
+        </div>
+
+        <div id='id1_msgId' style='border-bottom: 1px solid #232323; padding: 5px;'>
+        </div>
+
+
+
+        <div id='n2_id2_msg' style='border-bottom: 1px solid #232323; width: 400px;  padding: 5px;'>
+        </div>
+       
+
+      </form>
+
+    </div>
+  </body>
+  <script id="talent_script">
+    //第一种方式：直接指定msgId
+    var f1 =new tt.Field("inputEmail3", "", "inputEmail3").setMsgId("id1_msgId");
+    tt.vf.req.add(f1);
+    new tt.LV().set(4, 15).add(f1);
+
+    //第二种方式：覆盖计算msgId的函数getMsgId
+    var f2 =new tt.Field("n2", "n2", "");//构造函数的参数依次是: label, name, id, element
+    f2.getMsgId = function(element) {  //element是html元素
+	    return element.id + "_msg";
+	  }
+
+    tt.vf.req.add(f2);
+    new tt.LV().set(4, 15).add(f2);
+</script>
+</html>
+

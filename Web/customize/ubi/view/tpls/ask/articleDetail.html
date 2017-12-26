@@ -1,0 +1,99 @@
+<div class="layout boxMain warpAsk warpAskti">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle clear">
+                <span class="warpAskaleft" ng-if="!pageData.isnotice">
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span ng-click="go('#/ask')" class="hand">问答</span> &gt; 文章详情</span>
+                </span>
+                <span class="warpAskaleft" ng-if="pageData.isnotice">
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span ng-click="go('#/ask')" class="hand">问答</span> &gt; 公告详情</span>
+                </span>
+                 <div class="warpSearchInput warpAskaright">
+                     <div class="form-group">
+                     <input ng-model='pageData.searchKeyword' type="search" class="form-control txtSearch" placeholder="文章、问题搜索" />
+                    <div class="btnSearch" ng-click="pageFunc.loadData(true)"></div>
+                    </div>
+            </div>
+            </div>
+            <div class="boxMainText">
+               
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpAskRightTop mBottom0">
+                <button class="btn btn-primary askBots " ng-click="go('#/askAdd/question')">发问题</button>
+                 <button class="btn btn-primary askBots last" ng-click="go('#/askAdd/article')">发文章</button>
+            </div>
+        </div>
+    </div>
+    <div class="warpAsktiCon">
+         <div class="row">
+             <div class="col-xs-9">
+                <div class="titleCon">
+                    <h4>{{pageData.article.title}}</h4>
+                    <div class="titleConTap">
+                        <span ng-repeat="tag in pageData.article.tags">
+                            {{tag}}
+                        </span>
+                    </div>
+                    <div class="titleImg">
+                        <a href="javascript:;"><img src="{{pageData.article.pubUser.avatar}}" alt=""></a><span class="man">{{pageData.article.pubUser.userName}} </span><span> {{pageData.article.createDate | date:'yyyy-MM-dd'}}发表</span>
+                    </div>
+                </div>
+             </div>
+             <div class="col-xs-3 right" ng-if="!pageData.isnotice">
+                 <div class="warpAskRightTop ">
+                     <button class="btn btn-primary  titleTop" ng-click="pageFunc.praiseContent()" ng-if="!pageData.article.currUserIsPraise">点赞</button>
+                     <button class="btn  titleTop" ng-if="pageData.article.currUserIsPraise">已点赞</button>
+                     <span class="lbPraiseCount">{{pageData.article.praiseCount}}点赞</span>
+                 </div>
+                 <div class="warpAskRightTop titleBot">
+                     <button class="btn btn-primary" ng-click="pageFunc.favoriteArticle()" ng-if="!pageData.article.currUserIsFavorite">收藏</button>
+                     <button class="btn btn-warning" ng-click="pageFunc.disFavoriteArticle()" ng-if="pageData.article.currUserIsFavorite">取消收藏</button>
+                     <span>{{pageData.article.favoriteCount}}收藏，{{pageData.article.pv}}浏览</span>
+                 </div>
+             </div>
+        </div>
+    </div>
+    <div class="titleMainCon">
+          <div class="row">
+                <div class="col-xs-9 pLeft0 pRight0">
+                    <div class="titleMainTop mBottom20" ng-bind-html="pageData.article.content">
+                        
+                    </div>
+                    <div class="share" ng-if="!pageData.isnotice">
+                        <!--<span class="two"><i class="iconfont icon-shequjubao dian"></i>举报</span>-->
+                        <div class="mTop26">
+                            <div class="jiathis_style clear">
+                                <span class="mRight6 floatL relativeTop_1">分享到：</span>
+                                <a class="jiathis_button_qzone"></a>
+                                <a class="jiathis_button_tsina"></a>
+                                <a class="jiathis_button_tqq"></a>
+                                <a class="jiathis_button_weixin"></a>
+                                <a class="jiathis_button_renren"></a>
+                                <a class="jiathis_button_xiaoyou"></a>
+                                <a class="jiathis jiathis_txt jtico jtico_jiathis"></a>
+                            </div>
+                            <script type="text/javascript">
+                                //var curUser = JSON.parse(localStorage.getItem(baseData.localStorageKeys.currUserInfo));
+                                //var UserAutoId = curUser == null ? 0 : curUser.id;
+                                var jiathis_config = {
+                                    url: document.location.href.replace('/#/', '/m#/')
+                                }
+                            </script> 
+                            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1410416683851686" charset="utf-8"></script>
+                        </div>
+                    </div>
+                    <comment ng-attr-articleid="{{pageData.currArticleId}}" ng-if="!pageData.isnotice" ng-attr-optype="1"></comment>
+                </div>
+              <div class="col-xs-3 pRight0" ng-if="!pageData.isnotice">
+                  <smallhottags></smallhottags>
+                  <rcmtutor></rcmtutor>
+                  <interesteduser></interesteduser>
+              </div>
+          </div>
+    </div>
+</div>
+<!--    -->

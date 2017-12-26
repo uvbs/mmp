@@ -1,0 +1,51 @@
+.imageRotation{
+    margin-top: 20px;
+    overflow:hidden;  /*--超出容器的所有元素都不可见--*/
+    position:relative;  /*--相对定位--*/
+    float: right;
+
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    }
+/*-------------图片容器---------------*/
+.imageBox{
+    position:absolute;  /*--固定定位--*/
+
+    top:0px;
+    left:0px;
+    overflow:hidden;
+    }
+.imageBox img {
+    display:block;
+
+
+    float:left;
+    border:none;
+    }
+/*-------------图标容器---------------*/
+.icoBox{
+   	position:absolute;  /*--固定定位--*/
+    bottom:14px;
+    right:15px;
+    width:76px;
+    height:12px;
+    text-align:center;
+    line-height:40px;
+    z-index:2;
+
+    }
+.icoBox span{
+	/*margin-left: 0px;*/
+    display:block;
+    float:left;
+    height:12px;
+    width:12px;
+    margin-left:3px;
+    overflow:hidden;
+    background:url("../images/ico.png") 0px 0px no-repeat;
+    cursor:pointer;
+    }
+.icoBox span.active {
+    background-position:0px -12px;
+    cursor:default;
+    }

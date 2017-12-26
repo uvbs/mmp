@@ -1,0 +1,131 @@
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>派遣转外包</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="http://static.gensee.com/webcast/static/tra/js/utils.js"></script>
+    <script type="text/javascript" src="http://static.gensee.com/webcast/static/tra/js/swfobject.js"></script>
+    <script language="javascript" type="text/javascript" src="http://static.gensee.com/webcast/static/tra/js/jquery-1.7.1.min.js"></script>
+    <style type="text/css">
+      .errorMessage {
+            color: #FF0000;
+        }
+    </style>
+    <style type="text/css" media="screen">
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            text-align: center;
+        
+         background-color: #d4d4d3;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        object {
+            outline: none;
+        }
+    </style>
+    <script type="text/javascript">
+    var detector = new BrowserDetect();
+        function getRequest() {
+            return '/training';
+        }
+        function fixOutOfMemoryError() {
+            __flash_unloadHandler = function() {
+            };
+            __flash_savedUnloadHandler = function() {
+            };
+        }
+        var flashvars = {
+            sc:"2",
+            bp: "http://static.gensee.com/webcast/branding/default/zh_CN/swf",
+            code:'4505c54ee49702202d92d5321e134bd83596abeaa8aab68116af1ac25d',
+            br:detector.type,
+            bv:detector.version,
+            bl:detector.lang,
+            url:detector.url,
+            ce:detector.cookieEnabled,
+            lang:'zh_CN',
+            live:'false',
+            skin:'default',
+            isLoop:"false",
+            nickName:encodeURIComponent("easylaodongfa"),
+            hideHead:'false',
+            pptAlignLeft:'true',
+            uimode:'2'
+            ,k:''
+            ,entry:'5878600bcd4ba9c0c9b8a3682a6cd1c5df3d2c5f1d8bffffdaaa9d245533dff7a3af1a796738d8f94854e66aa6121a47'
+            
+            ,m:'0'
+            ,py:'1'
+            ,s:'0'
+            
+            
+            
+            
+            
+            ,publicChat:true
+        };
+        var params = {
+            
+            allowScriptAccess: "always",
+            allowFullScreen:"true"
+        };
+        var attributes = {
+            id: "record",
+            name: "record"
+        };
+        $(document).ready(function() {
+            setTimeout(showDownloadTip,3000);
+            
+            
+            swfobject.embedSWF("http://static.gensee.com/webcast/static/tra/swf/gsplayer.swf", "flashplayercontainer", "100%", "100%", "10.0.12.36"
+                    , "http://static.gensee.com/webcast/static/tra/swf/expressInstall.swf", flashvars, params, attributes);
+            
+        });
+        function showDownloadTip(){
+             $("#downloadElement").show();
+        }
+        function showFlashNotFoundPage() {
+        }
+    $(window).bind("beforeunload", function() {
+        try {
+            var confirm = "";
+            if (detector.type == 'Firefox' || detector.type == 'Mozilla') {
+                confirm = document["record"].checkExit();
+            }
+            else {
+                confirm = window['record'].checkExit();
+            }
+        
+        } catch(e) {
+        }
+    });
+    function gsBrowserUrl(url){
+        window.open(url,'cobrowse_easylaodongfa');
+    }
+    </script>
+
+
+</head>
+
+<body>
+
+
+<div id="flashplayercontainer">
+    <a href="http://www.adobe.com/go/getflashplayer" id="downloadElement" style="display: none;" target="_blank">请点击，到Adobe网站安装Flash Player。<img src="http://static.gensee.com/webcast/static/tra/images/get_flash_player.gif" border="0"/></a>
+</div>
+</body>
+</html>
+
+
+

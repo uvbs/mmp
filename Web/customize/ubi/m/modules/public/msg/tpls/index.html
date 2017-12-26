@@ -1,0 +1,17 @@
+﻿<div class="wrapMsg">
+	<div class="dataList">
+        <div class="card" ng-repeat="item in pageData.notices.list">
+            <div class="item">
+                <div class="time">{{item.date}}</div>
+                <p class="msg">
+                    <span class="userName">{{item.userName}}</span>
+                    <span class="msg" ng-bind-html="item.content"></span>
+                </p>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.notices.list.length < pageData.notices.totalCount">
+            <button class="button button-clear colorBlue" ng-click="pageFunc.loadNotice(false)">查看更多</button>
+        </div>
+	</div>
+	<footermenu ng-attr-select="1"></footermenu>
+</div>

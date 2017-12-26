@@ -1,0 +1,43 @@
+﻿<div class="wrapMy page">
+	<div class="header txtCenter">
+		<div class="logo">
+			<img src="/customize/10000care/m/static/img/care/comm/juhua.png">
+		</div>
+		<div class="title">
+        <span ng-if="pageData.loginType == 1">
+            爱心企业
+        </span>
+        <span ng-if="pageData.loginType == 0">
+            阳光基地
+        </span>
+		</div>
+	</div>
+	<div class="list" ng-if="pageData.loginType == 1">
+        
+        <a class="item item-icon-right" href="#/companyEdit">
+        <i class="iconfont icon-ziliao"></i>
+            企业资料
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/pubProject">
+        <i class="iconfont icon-bianji"></i>
+            发布项目
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        <a class="item item-icon-right" href="#/projectList/my">
+        <i class="iconfont icon-fabu"></i>
+            我的发布
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+       
+    </div>
+    <div class="list" ng-if="pageData.loginType == 0">
+        
+        <a class="item item-icon-right" href="#/baseEdit">
+        <i class="iconfont icon-ziliao"></i>
+            基地资料
+            <i class="icon iconfont icon-arrowright"></i>
+        </a>
+        
+    </div>
+</div>

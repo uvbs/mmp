@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css" />
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+    <!--Page 1 content-->
+    <div class="swiper-slide sliderbg2">
+        <div class="swiper-container swiper-nested">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <div class="pages_container">
+                            <div class="image_single">
+                                <img src="images/header_01.jpg" alt="" title="" border="0" />
+                            </div>
+                            <div class="list form">
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <div class="top-search radius6 ">
+                                                <input type="text" onblur="if(this.value=='')this.value='输入选手名字或编号';" onfocus="if(this.value=='输入选手名字或编号')this.value='';"
+                                                    value="输入选手名字或编号" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <img src="images/btn_01.png" style="width: 55px" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="page_padding2">
+                                    <div class="menu1">
+                                        <ul>
+                                            <li id="li1" class="active"><a href="#tab1">
+                                                <img src="images/btn_02.png" alt="" title="" /></a></li>
+                                            <li id="li2"><a href="#tab2">
+                                                <img src="images/btn_03.png" alt="" title="" /></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="menu2">
+                                    <ul>
+                                        <li>
+                                            <div class="mask">
+                                                <tt class="left_maskbar">121</tt><tt class="right_maskbar"><b>1</b></tt>
+                                            </div>
+                                            <img src="images/list_02.jpg" alt="" title="" border="0" /><tt class="bottom_maskbar">4556票</tt><span>佳仁
+                                                上海</span><a href="details.html"><img src="images/btn_04.png" /></a></li>
+                                        <li>
+                                            <div class="mask">
+                                                <tt class="left_maskbar">159</tt><tt class="right_maskbar1"><b>2</b></tt>
+                                            </div>
+                                            <img src="images/list_03.jpg" alt="" title="" border="0" /><tt class="bottom_maskbar">37346票</tt><span>左琪
+                                                上海</span> <a href="details.html">
+                                                    <img src="images/btn_04.png" /></a></li>
+                                        <li>
+                                            <div class="mask">
+                                                <tt class="left_maskbar">219</tt><tt class="right_maskbar"><b>3</b></tt>
+                                            </div>
+                                            <img src="images/list_04.jpg" alt="" title="" border="0" /><span>佳仁 上海</span> <a
+                                                href="details.html">
+                                                <img src="images/btn_04.png" /></a></li>
+                                        <li>
+                                            <div class="mask">
+                                                <tt class="left_maskbar">91</tt>
+                                            </div>
+                                            <img src="images/list_05.jpg" alt="" title="" border="0" /><tt class="bottom_maskbar">4456票</tt><span>左琪
+                                                上海</span> <a href="details.html">
+                                                    <img src="images/btn_04.png" /></a></li>
+                                    </ul>
+                                </div>
+                                <div class="form_div3">
+                                    <a href="index.html" class="form_a red radius6">
+                                        更多</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/load.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var h = $('.sliderbg2').css("height");
+            var w = $('.pages_container').css("width");
+            var s = 1.6;
+
+            if (w >= '320px') {
+                s = 1.5;
+            }
+            if (w >= '375px') {
+                s = 1.4;
+            }
+            if (w >= '414px') {
+                s = 1.4;
+            }
+            h = parseInt(h.replace("px", "")) * s;
+            $('.pages_container').css("height", h + "px");
+        });
+    </script>
+</body>
+</html>

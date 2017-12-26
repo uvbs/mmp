@@ -1,0 +1,264 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+.thumbnail {
+  height: 200px;
+}
+.thumbnail img.pull-right {
+  width: 50px;
+}
+/**
+ *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+@font-face {
+  font-family: 'DFPShaoNvW5-GB503161';
+  src: url('/customize/dati/assets/font/DFPShaoNvW5-GB.eot');
+  src: url('/customize/dati/assets/font/DFPShaoNvW5-GB.eot?#iefix') format('embedded-opentype'), url('/customize/dati/assets/font/DFPShaoNvW5-GB.woff') format('woff'), url('/customize/dati/assets/font/DFPShaoNvW5-GB.ttf') format('truetype'), url('/customize/dati/assets/font/DFPShaoNvW5-GB.svg#DFPShaoNvW5-GB') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.font {
+  font-family: 'DFPShaoNvW5-GB503161' !important;
+}
+html,
+body {
+  height: 100%;
+}
+.ng-scope {
+  height: 100%;
+}
+/* alert提示框 */
+#alertDialog {
+  position: fixed;
+  *position: absolute;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: #fff;
+  padding: 20px 20px 20px 20px;
+  text-align: center;
+  font-size: 14px;
+  -moz-border-radius: 7px;
+  -moz-box-shadow: 0 0 40px #000;
+  box-shadow: 0 0 40px #000;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 40px #ccc;
+  z-index: 99999;
+}
+#alertDialog .close {
+  position: absolute;
+  right: 10px;
+  top: 22px;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: #fff;
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 16px;
+  line-height: 20px \9;
+  font-weight: bold;
+  border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  text-decoration: none;
+}
+.errorDialog {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.errorDialog .close {
+  color: #FD7E71 !important;
+}
+.warningDialog {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.warningDialog .close {
+  color: #000 !important;
+  text-decoration: none;
+}
+.warningDialog .close a {
+  text-decoration: none;
+}
+.warningErrorDialog {
+  background-color: #ececec !important;
+  color: #333 !important;
+}
+.warningErrorDialog .close {
+  color: #ececec !important;
+}
+img.banner {
+  width: 100%;
+}
+.homebox {
+  background: url("../assets/images/index/bg.jpg") top center no-repeat;
+  background-size: 100% 100%;
+  overflow-x: hidden;
+}
+.content-diy {
+  position: absolute;
+  width: 100%;
+  bottom: 10%;
+}
+.btn-diy {
+  background-color: #e51873 !important;
+  border: none !important;
+  width: 80% !important;
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.homebox .btn-diy {
+  font-size: 20px;
+}
+.homebox .content-diy {
+  bottom: 4%;
+}
+.resultbox {
+  background: url("http://files.comeoncloud.net/dati/datibeij.jpg") top center no-repeat;
+  background-size: 100% 100%;
+}
+.result-content {
+  width: 100%;
+  border-radius: 3px;
+  color: #fff;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+  text-align: center;
+}
+.content-diy-1 {
+  position: absolute;
+  width: 100%;
+  top: 44%;
+}
+.content-diy-2 {
+  position: absolute;
+  width: 100%;
+  top: 60%;
+}
+.result-p {
+  font-size: 3rem;
+  margin: 0 0 5px !important;
+}
+.result-p-red {
+  color: red;
+}
+.result-btn {
+  display: block;
+  background-color: #e51873;
+  color: #fff;
+  width: 50%;
+  text-decoration: none;
+  outline: none;
+  margin: 1rem auto;
+  padding: 0.7rem;
+  border-radius: 3px;
+  text-align: center;
+}
+.result-btn:hover {
+  background-color: #007fab;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+@media (min-width: 375px) {
+  .result-bottom {
+    margin-top: 3rem !important;
+  }
+}
+.resultbox .content-diy-1 .result-p {
+  font-size: 30px;
+  margin: 31px;
+  padding: 10px 0;
+}
+.testbox {
+  background: url("http://files.comeoncloud.net/dati/datibeij.jpg") top center no-repeat;
+  background-size: 100% 100%;
+  min-height: 480px;
+}
+.main-content {
+  width: 100%;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.5rem;
+  background-color: rgba(49, 214, 230, 0.5);
+}
+.question-id {
+  color: red;
+  font-size: 3rem;
+}
+.question-option {
+  display: block;
+  width: 100%;
+  background-color: #007fab;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+.question-select {
+  background-color: #005b86;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+.question-submit {
+  display: inline-block;
+  background-color: #007fab;
+  color: #fff;
+  width: 30%;
+  text-decoration: none;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 3px;
+  margin: 14px;
+}
+.question-submit:hover {
+  background-color: #005b86;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+.submit-group {
+  text-align: center;
+}
+.content-diy-test {
+  width: 100%;
+}
+.testbox .banner {
+  width: 100%;
+}
+.acme-malarkey {
+  text-transform: capitalize;
+  color: #cb3837;
+}
+.acme-malarkey:after {
+  animation: cursor-blink 0.4s linear infinite;
+  content: "|";
+  color: #cb3837;
+}
+@keyframes cursor-blink {
+  1% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.acme-navbar-text {
+  color: white;
+}

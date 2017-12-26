@@ -1,0 +1,6 @@
+﻿.zyAlertDialog {position:fixed;*position:absolute;background-color:#cffbc7;color:green;padding:10px 40px 10px 20px;text-align:left;font-size:20px;border:2px solid #fff;border:2px solid #eee;-moz-border-radius:7px;-moz-box-shadow:0 0 40px #000;box-shadow:0 0 40px #000;-webkit-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0 40px #ccc;z-index:999999999999;}
+.zyAlertDialog .mdClose { text-decoration:none; position:absolute;right:10px;top:14px;color:#190;background-color:#fff;display:block;width:20px;height:20px;text-align:center;overflow:hidden;font-size:18px;line-height:20px;font-weight:bold;border-radius:12px;-moz-border-radius:12px;-webkit-border-radius:12px;}
+.zyAlertDialog.errorDialog {background-color:#FD7E71!important;color:#c10!important;}
+.zyAlertDialog.errorDialog .mdClose {color:#FD7E71!important;}
+.zyAlertDialog.warningDialog {background-color:#fbeac7!important;color:#d80!important;}
+.zyAlertDialog.warningDialog .mdClose {color:#fbeac7!important;}

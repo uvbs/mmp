@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <input id="txtContent" type="text" value="" />
+    <input type="button" value="发送" onclick="send()" />
+</body>
+</html>
+<script type="text/javascript" src="/lib/IM/Web_SDK_Base_v2.8.0.js"></script>
+<script type="text/javascript" src="/lib/IM/Web_SDK_NIM_v2.8.0.js"></script>
+<script src="/Scripts/jquery-2.1.1.min.js"></script>
+<script>
+    var data = {};
+    var nim = NIM.getInstance({
+        // debug: true,
+        appKey: '3b7e4e7c7e9a170a743e6460a09c481a',
+        account: '417092',
+        token: '30604d22bcb5ec35d38c675ef6963508',
+        onconnect: onConnect,
+        onfriends: onFriends,
+        onwillreconnect: onWillReconnect,
+        ondisconnect: onDisconnect,
+        onerror: onError,
+        onroamingmsgs: onRoamingMsgs,
+        onofflinemsgs: onOfflineMsgs,
+        onmsg: onMsg
+    });
+    function onConnect() {
+        console.log('连接成功');
+    }
+    function onWillReconnect(obj) {
+        // 此时说明 SDK 已经断开连接, 请开发者在界面上提示用户连接已断开, 而且正在重新建立连接
+        console.log('即将重连');
+        console.log(obj.retryCount);
+        console.log(obj.duration);
+    }
+    function onDisconnect(error) {
+        // 此时说明 SDK 处于断开状态, 开发者此时应该根据错误码提示相应的错误信息, 并且跳转到登录页面
+        console.log('丢失连接');
+        console.log(error);
+        if (error) {
+            switch (error.code) {
+                // 账号或者密码错误, 请跳转到登录页面并提示错误
+                case 302:
+                    break;
+                    // 被踢, 请提示错误后跳转到登录页面
+                case 'kicked':
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    function onError(error) {
+        console.log(error);
+    }
+    function onFriends(friends) {
+        console.log(friends);
+    };
+
+    function onRoamingMsgs(obj) {
+        console.log('收到漫游消息', obj);
+        pushMsg(obj.msgs);
+    }
+    function onOfflineMsgs(obj) {
+        console.log('收到离线消息', obj);
+        pushMsg(obj.msgs);
+    }
+    function onMsg(msg) {
+        console.log('收到消息', msg.scene, msg.type, msg);
+        pushMsg(msg);
+        switch (msg.type) {
+            case 'custom':
+                onCustomMsg(msg);
+                break;
+            case 'notification':
+                // 处理群通知消息
+                onTeamNotificationMsg(msg);
+                break;
+            default:
+                break;
+        }
+    }
+    function pushMsg(msgs) {
+        if (!Array.isArray(msgs)) { msgs = [msgs]; }
+        var sessionId = msgs[0].sessionId;
+        data.msgs = data.msgs || {};
+        data.msgs[sessionId] = nim.mergeMsgs(data.msgs[sessionId], msgs);
+    }
+    function onCustomMsg(msg) {
+        // 处理自定义消息
+    }
+    function send() {
+        var content = $('#txtContent').val().trim();
+        var msg = nim.sendText({
+            scene: 'p2p',
+            to: '417095',
+            text: content,
+            done: sendMsgDone
+        });
+        console.log('正在发送p2p text消息, id=' + msg.idClient);
+        pushMsg(msg);
+    }
+
+    function sendMsgDone(error, msg) {
+        console.log(error);
+        console.log(msg);
+        console.log('发送' + msg.scene + ' ' + msg.type + '消息' + (!error ? '成功' : '失败') + ', id=' + msg.idClient);
+        pushMsg(msg);
+    }
+</script>

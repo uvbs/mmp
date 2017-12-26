@@ -1,0 +1,22 @@
+<div class="storeListCtrl">
+  <div class="headerBar">
+    <i class="iconfont icon-fenlei"></i>
+    <div class="searchBox">
+      <div class="inputContainer">
+        <input ng-model="pageData.keyword" ng-keypress="pageFunc.inputKeypress($event)" />
+      </div>
+      <i class="iconfont icon-search" ng-click="pageFunc.load()"></i>
+    </div>
+  </div>
+  <ul class="list">
+    <li class="insetBlock clearfix" ng-repeat="store in pageData.list">
+      <div class="floatL" ng-click="pageFunc.gotoDetail(store)">
+        <div class="storeName overflow_ellipsis">【{{store.district}}】{{store.companyName}}</div>
+        <div class="storeAddress overflow_ellipsis">
+          <i class="iconfont icon-didian colorPrimary"></i>{{store.address}}
+        </div>
+      </div>
+      <div class="floatR greenBtn" ng-click="pageFunc.comment(store)">评价</div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,120 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>提交需求</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link type="text/css" rel="stylesheet" href="Css/style.css">
+    <link href="../../css/buttons.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+
+</head>
+
+
+<body>
+       
+        <div class="fbxm">
+            <form method="post" id="formsubmit">
+                <p>
+                    <label>姓名：</label><br />
+                    <input id="Name" name="Name"  style="width:95%;" class="input100 name" type="text" placeholder="姓名(必填)" value=""/>
+
+                </p>
+
+                <p>
+                    <label style="float:none;">居住地址：</label><br/>
+                    <textarea class="req" name="K1" id="K1" rows="5"  placeholder="居住地址"></textarea>
+                </p>
+                <p>
+                    <label>联系电话：</label><br />
+                    <input id="K2" name="K2"  style="width:95%;" class="input100 name" type="text" placeholder="联系电话(必填)" value=""/>
+                   
+
+                </p>
+
+                <p style="margin-bottom:0;">
+                    <label style="float:none;">求助事项：</label><br/>
+                    <textarea id="K3" name="K3" placeholder="求助事项(必填)" class="req" rows="10"></textarea>
+                </p>
+                  <br />
+                <a href="javascript:void(0)" id="btnSubmit" class="button button-block button-rounded button-action button-large">提交需求</a>
+
+                <!--hidden -->
+                <input  type="hidden" value="216217" name="ActivityID" />
+                <input  type="hidden" value="eGluY2hlbmdsdQ==" name="LoginName" />
+                <input  type="hidden" value="7F5F1AD0A5E8F29AB7A8EC4F#2F087FF" name="LoginPwd" /> 
+                <input  type="hidden" value="systemdefault" name="Phone" />
+                <input  type="hidden" value="none" name="DistinctKeys" />
+                 <!--hidden -->
+            </form>
+        </div>
+      
+        <div class="blank"></div>
+
+	</body>
+
+ <script type="text/javascript">
+
+     $(function () {
+
+         $("#btnSubmit").click(function () {
+             //
+             var Name = $("#Name").val();
+             var K1 = $.trim($("#K1").val());
+             var K2 = $.trim($("#K2").val());
+             var K3 = $.trim($("#K3").val());
+             if (Name == "") {
+                 alert("请输入姓名");
+                 $("#Name").focus();
+                 return false;
+             }
+             if (K1=="") {
+                 alert("请输入居住地址");
+                 $("#K1").focus();
+                 return false;
+             }
+             if (K2 == "") {
+                 alert("请输入联系电话");
+                 $("#K2").focus();
+                 return false;
+             }
+             if (K3== "") {
+                 alert("请输入求助事项");
+                 $("#K3").focus();
+                 return false;
+             }
+
+             $("#formsubmit").ajaxSubmit({
+                 url: "/serv/ActivityApiJson.ashx",
+                 type: "post",
+                 dataType: "json",
+                 success: function (resp) {
+                     if (resp.Status == 0) {//清空
+                         //$('input:text').val("");
+                         //$('textarea').val("");
+                         alert("提交成功,请等待审核!");
+                         return;
+
+                     }
+                     else if (resp.Status == 1) {
+                         alert("重复提交!");
+
+                     }
+                     else {
+                         alert(resp.Msg);
+                     }
+
+                 }
+             });
+             return false;
+
+             //
+         });
+     });
+     
+
+    
+ </script>
+</html>

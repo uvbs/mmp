@@ -1,0 +1,445 @@
+﻿<link href="/game/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $("html").click(function(){$(".top-users").hide()});
+    $(".retry-button").click(function(){$(".game-message1").hide(); return false;});
+    $(".retry-button").click(function(){$(".game-over").hide(); return false;});
+</script>
+<style type="text/css">
+    .game-score-tongji {
+        vertical-align: top;
+        text-align: center;
+    }
+
+        .game-score-tongji ul {
+            width: 100%;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            float: left;
+        }
+
+            .game-score-tongji ul li {
+                list-style-type: none;
+                text-align: center;
+            }
+
+    .app-content {
+        display: inline-block;
+        float: right;
+        overflow: hidden;
+        vertical-align: middle;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: normal;
+        font-family: Arial;
+        height: 40px;
+        width: 40px;
+        margin-right: 8px;
+        background: #f45d00; /* Old browsers */
+    }
+
+    .top-users {
+        position: fixed;
+        top: 50%;
+        margin-top: -175px;
+        z-index: 99999;
+        background: #F0F0F0;
+        border-radius: 10px;
+        padding: 20px 20px;
+        left: 50%;
+        margin-left: -145px;
+        width: 250px;
+    }
+
+        .top-users ul li {
+            height: 22px;
+            overflow: hidden;
+        }
+
+    .begin_game {
+        text-align: center;
+    }
+
+        .begin_game a {
+            display: inline-block;
+            background: #8f7a66;
+            border-radius: 3px;
+            padding: 0 20px;
+            text-decoration: none;
+            color: #f9f6f2;
+            height: 40px;
+            line-height: 42px;
+            margin-left: 9px;
+        }
+
+    .game-container .game-message p {
+        margin-top: 10px;
+    }
+
+    .share-wx {
+        display: none;
+        background: url(/game/images/2000.png);
+        width: 480px;
+        height: 640px;
+        z-index: 10000;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+    }
+
+    .other_game {
+        background: rgba(0, 199, 167, 0.7);
+        margin: 10px auto;
+        overflow: hidden;
+        padding: 5px;
+        text-align: left;
+        width: 270px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+        .other_game p {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: normal;
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+
+        .other_game ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .other_game a {
+            display: block;
+            color: #fff;
+            background: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .other_game p {
+            height: auto;
+            line-height: 13px;
+        }
+
+        .other_game ul li img {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .other_game ul li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid green;
+        }
+</style>
+$AD$ <br />
+<div class="container">
+    <div class="game-message1">
+        <div class="top-users game-score-tongji">
+            <ul>
+                <li>
+                    世界最强分数
+                </li>
+                <li>
+                    124544
+                </li>
+                <li>
+                    101428
+                </li>
+                <li>
+                    84280
+                </li>
+            </ul>
+            <!--
+                        <ul>
+                            <li>
+                                朋友圈最新分数
+                            </li>
+                            <li>
+                                2316
+                            </li>
+                            <li style="color:red;">
+                                11334
+                            </li>
+                            <li>
+                                1204
+                            </li>
+                        </ul>
+            -->
+            <div style="clear:both;">
+            </div>
+            <br />
+            10000 分超神！等你来挑战<br />
+            <br />
+            <div class="begin_game">
+                <a class="start-button" href="javascript:void(0)">开始挑战</a>
+            </div>
+        </div>
+    </div>
+    <div class="heading">
+        <div class="title" style="width:90px;float:left;">
+            <div style="font-size:35px;font-weight:bold;margin-top:5px;padding:0px;">
+                2048！
+            </div>
+            <div style="font-size:14px;margin-top:-5px;margin-left:5px;padding:0px;">
+            </div>
+        </div>
+        <div class="scores-container">
+            <div class="score-container">
+                <div class="score-addition">
+                </div>
+            </div>
+            <div class="best-container" id="best_score">
+            </div>
+        </div>
+    </div>
+    <div class="above-game" style="display:none;">
+        <a class="keep-playing-button">Keep going</a> <a class="restart-button">New Game</a>
+    </div>
+    <div class="game-container" style="margin:0 10px 0 0;" id="screenShotContainer">
+        <div class="game-message" id="msg_box">
+            <div style="font-weight:bold;margin:120px 0 10px 0;font-size:20px;">
+                合出数字: <span style="color:red;font-size:28px;" id="result_number"></span>总分<span style="color:red;font-size:28px;" id="end_score"></span>
+            </div>
+            <div class="lower">
+                <a class="retry-button">重新开始</a> <a class="share-button" onclick="javascript:show_share();">炫耀</a>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-row">
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+                <div class="grid-cell">
+                </div>
+            </div>
+        </div>
+        <div class="tile-container">
+        </div>
+    </div>
+    <p class="game-explanation" style="margin:10px 0 10px 0px;line-height:20px;">
+        <br />
+    </p>
+    <div style="float:left;text-align:center;font-size:14px;">
+        <strong>玩法：</strong><span style="font-size:14px;">玩法: 史上最停不下来的游戏，滑动控制方格移动，合并相同数字，挑战2048！</span>
+    </div>
+    <div style="clear:both;">
+    </div>
+</div>
+<div style="clear:both;">
+</div>
+<script src="/game/js/bind_polyfill.js"></script>
+<script src="/game/js/classlist_polyfill.js"></script>
+<script src="/game/js/animframe_polyfill.js"></script>
+<script src="/game/js/keyboard_input_manager.js"></script>
+<script src="/game/js/haha.js"></script>
+<script src="/game/js/grid.js"></script>
+<script src="/game/js/tile.js"></script>
+<script src="/game/js/local_storage_manager.js"></script>
+<script src="/game/js/game_manager.js"></script>
+<script src="/game/js/application.js"></script>
+<div style="background:rgba(0,0,0,0.4);position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:10000;display:none;" id="result_div">
+    <p style="text-align:center;float:right;width:100%;">
+        <img src="/game/images/tip-share.jpg" style="width:100%;" />
+    </p>
+    <div style="width:220px;height:250px;top:150px;left:50%;margin-left:-126px;background:rgba(0,0,0,0.3);border:1px rgba(255,255,255,0.3) solid;border-radius:6px;padding:15px;text-align:center;position:relative;">
+        <i style="position:absolute;background:url(/game/images/close.png);width:29px;height:29px;background-size:29px 29px;top:-10px;right:-14px;" onclick="$('#result_div').hide();"></i>
+        <center style="line-height:25px;font-size:20px;margin-top:20px;color:#eee;" id="result_content">
+            <span style="font-size:36px;"><span style="color:#fce700;"></span></span><br />
+            <br />
+            <span style="display:inline-block;">
+                天啦！在上海地区<br />
+            </span> <span style="display:inline-block;">
+                您的智商 <span style="color:#fc4d35;">&gt;76％</span> 的人<br />
+            </span> <span style="display:inline-block;">
+                反应速度 <span style="color:#fc4d35;">&gt;78％</span> 的人<br />
+            </span> <span style="display:inline-block;">
+                协调能力 <span style="color:#fc4d35;">&gt;82％</span> 的人<br />
+                <br />
+            </span> <span style="display:inline-block;">您属于<span style="color:#04e5f9;font-size:30px;">大师</span>级别！</span>
+        </center>
+    </div>
+</div>
+<br />
+<script>
+    var cur_score = 0;
+    var show_end_tips = 1;
+    var number_tips = 0;
+    function show_share()
+    {
+        $('#result_div').show();
+    }
+    function show_medal()
+    {
+        number_tips = max_number;
+        var str = '';
+        if(number_tips == 256)
+        {
+            str = '您已经迈出了本局的第一步<'+'br /><'+'br /><'+'span style="font-size:36px;color:#fce700;">'+number_tips+'!<'+'/span><'+'br />';
+            str += '继续冲刺吧<'+'br /><'+'div style="font-size:16px;padding-top:10px;color:#04e5f9;text-decoration:underline;" onclick="$(\'#result_div\').hide();">';
+            str += '下个目标 -> '+ number_tips*2 +'　加油哦！<'+'/div>';
+        }
+        else if(number_tips == 512)
+        {
+            str = '小有成就<'+'br /><'+'br /><'+'span style="font-size:36px;color:#fce700;">'+number_tips+'!<'+'/span><'+'br />';
+            str += '不过还是很屌了<'+'br /><'+'div style="font-size:16px;padding-top:10px;color:#04e5f9;text-decoration:underline;" onclick="$(\'#result_div\').hide();">';
+            str += '下个目标 -> '+ number_tips*2 +'　加油哦！<'+'/div>';
+        }
+        else if(number_tips == 1024)
+        {
+            str = '天呐！您居然合出了<'+'br /><'+'br /><'+'span style="font-size:36px;color:#fce700;">'+number_tips+'!<'+'/span><'+'br />';
+            str += '太帅气了<'+'br /><'+'div style="font-size:16px;padding-top:10px;color:#04e5f9;text-decoration:underline;" onclick="$(\'#result_div\').hide();">';
+            str += '下个目标 -> '+ number_tips*2 +'　有奖励！<'+'/div>';
+        }
+        else if(number_tips == 2048)
+        {
+            str = '神呐！您居然合出了<'+'br /><'+'br /><'+'span style="font-size:36px;color:#fce700;">'+number_tips+'!<'+'/span><'+'br />';
+            str += '真是屌爆了<'+'br /><'+'div style="font-size:16px;padding-top:10px;color:#04e5f9;text-decoration:underline;" onclick="$(\'#result_div\').hide();">';
+            str += '终极目标完成了分享吧！！加油哦！<'+'/div>';
+        }
+    };
+    function set_title()
+    {
+        document.title = '史上最停不下来的智商游戏，哈哈！我得了'+cur_score+'分！敢挑战吗？';
+        if(number_tips<max_number && (max_number == 256 || max_number == 512 || max_number == 1024 || max_number == 2048)) {
+            show_medal(); 
+        } 
+        if(game_over==1 && cur_score>500 && show_end_tips==1)
+        {
+            if(cur_score<1000) { 
+                zs_num=26; 
+                fy_num=30; 
+                sd_num=30; 
+                level_name = '渣渣'; 
+                zs_num += Math.floor((cur_score/1000)*200+8)/10; 
+                fy_num += Math.floor((cur_score/1000)*200+1)/10; 
+                sd_num += Math.floor((cur_score/1000)*200+5)/10; 
+            } 
+            else if(cur_score<2000) { 
+                zs_num=36; 
+                fy_num=40; 
+                sd_num=40; 
+                level_name = '第一滴血'; 
+                zs_num += Math.floor((cur_score/2000)*200+8)/10; 
+                fy_num += Math.floor((cur_score/2000)*200+1)/10; 
+                sd_num += Math.floor((cur_score/2000)*200+5)/10; 
+            } 
+            else if(cur_score<3000) { 
+                zs_num=36; 
+                fy_num=40; 
+                sd_num=40; 
+                level_name = '新手'; 
+                zs_num += Math.floor((cur_score/3000)*200+8)/10; 
+                fy_num += Math.floor((cur_score/3000)*200+1)/10; 
+                sd_num += Math.floor((cur_score/3000)*200+5)/10; 
+            } 
+            else if(cur_score<4000) { 
+                zs_num=56; 
+                fy_num=70; 
+                sd_num=60; 
+                level_name = '入门'; 
+                zs_num += Math.floor((cur_score/4000)*200+8)/10; 
+                fy_num += Math.floor((cur_score/4000)*200+1)/10; 
+                sd_num += Math.floor((cur_score/4000)*200+5)/10; 
+            } 
+            else if(cur_score<6000) { 
+                zs_num=68; 
+                fy_num=70; 
+                sd_num=72; 
+                level_name = '高手'; 
+                zs_num += Math.floor((cur_score/6000)*200+2)/10; 
+                fy_num += Math.floor((cur_score/6000)*200+7)/10; 
+                sd_num += Math.floor((cur_score/6000)*200+6)/10; 
+            } 
+            else if(cur_score<10000) { 
+                zs_num=79; 
+                fy_num=75; 
+                sd_num=78; 
+                level_name = '大师'; 
+                zs_num += Math.floor((cur_score/10000)*200+4)/10; 
+                fy_num += Math.floor((cur_score/10000)*200+1)/10; 
+                sd_num += Math.floor((cur_score/10000)*200+5)/10; 
+            } 
+            else if(cur_score>10000)
+            {
+                level_name = '神';
+                zs_num = 97;
+                fy_num = 94;
+                sd_num = 91;
+            }
+            else if(cur_score>20000)
+            {
+                level_name = '超神';
+                zs_num = 99;
+                fy_num = 99;
+                sd_num = 99;
+            }
+            $('#result_div').show();
+            $('#result_content').html('<'+'span style="font-size:36px;"><'+'span style="color:#fce700;">'+cur_score+'!<'+'/span><'+'/span><'+'br />'
+		+'<'+'span style="display:inline-block;">天呐！在中国地区<'+'br /><'+'/span>'
+		+'<'+'span style="display:inline-block;">您的智商 <'+'span style="color:#fc4d35;">'+zs_num+'％<'+'/span> 的人<'+'br /><'+'/span>'
+		+'<'+'span style="display:inline-block;">反应速度 <'+'span style="color:#fc4d35;">'+fy_num+'％<'+'/span> 的人<'+'br /><'+'/span>'
+		+'<'+'span style="display:inline-block;">协调能力 <'+'span style="color:#fc4d35;">'+sd_num+'％<'+'/span> 的人<'+'br /><'+'/span>'
+		+'<'+'span style="display:inline-block;">您属于<'+'span style="color:#04e5f9;font-size:30px;">'+level_name+'<'+'/span>级别！<'+'/span>');
+            $('#infos').html('我在挑战2048中获得了 '+cur_score+'，你能超越我吗？快来挑战吧！');
+        }
+    }
+</script>
+<div id="infos" style="display:none;">
+</div>
+<div style="text-align:center;display:inherit;">
+    <p style="color:#000;font-weight:bolder;font-size:22px;">
+        更多惊喜，请关注<a href="http://mp.weixin.qq.com/s?__biz=MzA3MDExNDUyNw==&mid=200482909&idx=1&sn=deced89bf5505af4d968df8e25a520be#rd" target="_blank">至云之家</a>
+    </p>
+</div>
+<script type="text/javascript">
+    var imgUrl = "$SHAREIMAGE$";
+    var shareLink = "$SHAREURL$";
+    wx.ready(function () {
+        wxapi.wxshare({
+            title:'我在挑战2048中获得了 '+cur_score+'，你能超越我吗？快来挑战吧！',
+            desc: '2048？快来挑战吧！',
+            link: shareLink,
+            imgUrl: imgUrl
+        });
+    })
+</script>

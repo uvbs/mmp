@@ -1,0 +1,29 @@
+﻿<div class="wrapSelfMediaDetail">
+    <div class="idDetail">
+        <i class="icon iconfont icon-fanhui fanhui" ng-click="pageFunc.goback()"></i>
+        账号详情
+    </div>
+    <div class="wrapBanner">
+        <div class="row">
+            <div class="avatar">
+                <img src="{{pageData.article.imgSrc}}" alt="{{pageData.article.title}}" class="img">
+                <!--<img src="/customize/wisdomlife/m/static/img/cctv.png" class="img" />-->
+            </div>
+            <div class="col">
+                <div class="title">{{pageData.article.title}}</div>
+                <div class="colorLightBlack">认证信息：{{pageData.article.k1}}</div>
+                <div class="colorLightBlack">时间：{{pageData.article.k2}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="article">
+        <div class="introduction">
+            <div class="redBlock"></div>
+            企业介绍：
+        </div>
+        <p ng-bind-html="pageData.article.content" class="pLeft12 pRight12">
+            
+        </p>
+        <img />
+    </div>
+</div>

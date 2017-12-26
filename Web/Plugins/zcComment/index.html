@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>评论功能</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <link href="/OpenWebAppComponent/customize/comments/comment.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.0/weui.css"/>
+    <!-- 引入 WeUI -->
+    <!--<link rel="stylesheet" href="path/to/weui/dist/style/weui.min.css"/>-->
+
+
+    <!--<script src="/OpenWebAppComponent/lib/weui-0.4.0/src/example/zepto.min.js"></script>-->
+    <!--<script src="/OpenWebAppComponent/lib/weui-0.4.0/src/example/example.js"></script>-->
+    <script src="/OpenWebAppComponent/lib/jquery/jquery-2.1.1.min.js"></script>
+    <script src="/OpenWebAppComponent/customize/comments/comment.js"></script>
+
+</head>
+<body>
+<div id="independentComment" class="wrapIndependentComment">
+    <!--<div class="title">-->
+    <!--6个回答-->
+    <!--</div>-->
+    <div id="commentcount" class="title">
+
+    </div>
+    <div id="comment" class="wrapList">
+    <!--<div id="comment" class="list">-->
+        <!--<div class="item item-avatar">-->
+            <!--<img src="http://preview.comeoncloud.net/img/hb/hb7.jpg">-->
+            <!--<a class="colorBlue" ng-click="pageFunc.goTo(item)">花吹雪</a>-->
+
+            <!--<p class="time">一天前</p>-->
+
+            <!--<p class="content whiteSpaceNormal">春天到了，樱花开了，好想去看开满遍地的花儿。。。</p>-->
+
+            <!--<div class="operateBtns">-->
+                <!--&lt;!&ndash;<i class="iconfont icon-dianzan colorDDD"&ndash;&gt;-->
+                <!--&lt;!&ndash;ng-mousedown="pageFunc.praiseReview(item)"></i><span class="count">6</span>&ndash;&gt;-->
+                <!--<i class="iconfont icon-dianzan colorLightBlue"-->
+                   <!--ng-mousedown="pageFunc.disReviewContent(item)"></i><span-->
+                    <!--class="count">8</span>-->
+                <!--<i class="iconfont icon-xiaoxiguanli" ng-mousedown="pageFunc.showReplyDialog(item,'')"></i>-->
+                <!--<i class="iconfont icon-shequjubao" ng-mousedown="pageFunc.showReportDialog(item)"></i>-->
+            <!--</div>-->
+
+            <!--<div class="wrapSubList">-->
+                <!--<div class="subItem"-->
+                     <!--ng-mousedown="pageFunc.showReplyDialog(item,reply)">-->
+        <!--<span class="userName colorBlue">回复人<span class="mLeft_12">-->
+        <!--回复 <a href="javascript:" class="userName mLeft5">花吹雪</a>-->
+        <!--</span>：</span><span>一起去看吧</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="wrapSubList">-->
+                <!--<div class="subItem"-->
+                     <!--ng-mousedown="pageFunc.showReplyDialog(item,reply)">-->
+        <!--<span class="userName colorBlue">回复人<span class="mLeft_12">-->
+        <!--回复 <a href="javascript:" class="userName mLeft5">花吹雪</a>-->
+        <!--</span>：</span><span>一起去看吧</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="wrapSubList">-->
+                <!--<div class="subItem"-->
+                     <!--ng-mousedown="pageFunc.showReplyDialog(item,reply)">-->
+        <!--<span class="userName colorBlue">回复人<span class="mLeft_12">-->
+        <!--回复 <a href="javascript:" class="userName mLeft5">花吹雪</a>-->
+        <!--</span>：</span><span>一起去看吧</span>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<a href="javascript:;" class="colorBlue font13" ng-mousedown="pageFunc.loadReplyList(item)">更多</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="wrapShowMore">-->
+            <!--<button class="button button-clear" ng-mousedown="pageFunc.loadCommentList()">查看更多</button>-->
+        <!--</div>-->
+    </div>
+
+    <!--<div class="wrapAddIndepentComment"></div>-->
+    <div class="wrapAddIndepentComment">
+        <!--<i class="iconfont icon-arrowleft floatL"></i>-->
+        <span onclick="openCommentDialog()" >添加评论</span>
+        <!--<span ng-mousedown="pageFunc.showDialog()" ng-show="pageData.optype==1">回答问题</span>-->
+        <i class="iconfont icon-xiaoxiguanli"></i>
+    </div>
+</div>
+<div id="commentDialog" class="weui_dialog_confirm" style="display: none">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd">
+            <strong class="weui_dialog_title">添加评论</strong>
+        </div>
+        <div class="weui_dialog_bd">
+            <textarea class="areastyle" placeholder="请输入您对该篇文章的评论或者感想"></textarea>
+        </div>
+        <div class="weui_dialog_ft">
+            <a  onclick="closeCommentDialog()" class="weui_btn_dialog default">取消</a>
+            <a onclick="confirmCommentDialog()" href="javascript:;" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+<div id="replyDialog" class="weui_dialog_confirm" style="display: none">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd">
+            <strong class="weui_dialog_title">添加回复</strong>
+        </div>
+        <div class="weui_dialog_bd">
+            <textarea class="areastyle" placeholder="请输入您对该条评论的回复"></textarea>
+        </div>
+        <div class="weui_dialog_ft">
+            <a  onclick="closeReplyDialog()" class="weui_btn_dialog default">取消</a>
+            <a onclick="confirmReplyDialog()" href="javascript:;" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

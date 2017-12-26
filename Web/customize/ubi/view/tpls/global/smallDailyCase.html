@@ -1,0 +1,13 @@
+﻿<div class="caseAsideDay mTop10">
+    <h4>每日案例</h4>
+    <div class="caseAsideDayBot">
+        <h6 class="overflo" ng-bind="smalldailycaseData.dailyCase.title"></h6>
+        <dl>
+            <dt><a href="javascript:;"><img src="{{smalldailycaseData.dailyCase.thumImg}}" alt=""></a></dt>
+            <dd>
+                <p><a href="javascript:;" ng-bind="smalldailycaseData.dailyCase.summary"></a></p>
+                <button class="btn btn-primary" ng-click="go('#case/' + smalldailycaseData.dailyCase.id)">查看详情</button>
+            </dd>
+        </dl>
+    </div>
+</div>

@@ -1,0 +1,230 @@
+﻿<div>
+    <div class="warpHeader bar bar-header item-input-inset" ng-if="pageData.hasSearch == '1'">
+        <label class="item-input-wrapper">
+            <input type="search" ng-model="pageData.searchKeyword" placeholder="搜索...">
+            <i class="icon iconfont icon-sousuo" ng-click="pageFunc.search()"></i>
+        </label>
+    </div>
+    <div class="wrapHeaderFilter row" ng-if="pageData.hasrow=='1'">
+        <div class="col" ng-class="{selected:item.checked}" ng-repeat="item in [pageData.tabs[0],pageData.tabs[1],pageData.tabs[2]]" ng-click="pageFunc.tabClick(item)">
+            {{item.name}}
+        </div>
+        <!--<div class="col" ng-class="{selected:pageData.currTabIndex == 0}" ng-click="pageData.currTabIndex=0">
+            最新动态
+        </div>
+        <div class="col" ng-class="{selected:pageData.currTabIndex == 1}" ng-click="pageData.currTabIndex=1">
+            热门动态
+        </div>
+        <div class="col" ng-class="{selected:pageData.currTabIndex == 2}" ng-click="pageData.currTabIndex=2">
+            未回答问题
+        </div>-->
+    </div>
+    <div class="wrapCardList wrapAskList">
+        <div class="card" ng-repeat="item in pageData.currViewData.list">
+            <div class="item">
+                <div class="row">
+                    <div class="col" ng-click="pageFunc.go(item)">
+                        <div class="mBottom6">
+                            <span class="userName">{{item.pubUser.userName}}</span>
+                            <span class="time">{{item.createDate | date:'yyyy-MM-dd'}}{{item.isQuestion? '提问':'发表'}}</span>
+                            <span class="viewCount">
+                                <i class="iconfont icon-liulan">
+                                </i>
+                                {{item.pv}}
+                            </span>
+                        </div>
+                        <!--<summary>内容内容内容内容内容内容内容内容内容内容内容</summary>-->
+                        <p ng-bind-html="item.summary" class="hand pTop10 pBottom10">
+                        </p>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a ng-click="pageFunc.goList(tag)" class="tag">{{tag}}</a>
+                        </li>
+                        <!--<li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>-->
+                    </ul>
+                </div>
+                <a href="javascript:;" class="floatR askType" ng-if="item.isQuestion">问题</a>
+                <a href="javascript:;" class="floatR askType" ng-if="!item.isQuestion">文章</a>
+                <a href="javascript:;" class="floatR askFollow" ng-if="!item.currUserIsFollow">关注</a>
+                <a href="javascript:;" class="floatR askFollow" ng-if="item.currUserIsFollow">取消关注</a>
+            </div>
+        </div>
+        <!--<div class="card">
+            <div class="item">
+                <div class="row">
+                    <div class="col">
+                        <div class="mBottom6">
+                            <span class="userName">如果</span>
+                            <span class="time">一分钟前提问</span>
+                            <span class="viewCount">
+                                <i class="iconfont icon-liulan">
+                                </i>
+                                328
+                            </span>
+                        </div>
+                        <h2>标题标题标题标题标题标题标题标题标题标题</h2>
+                        <summary>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:;" class="floatR askType">文章</a>
+                <a href="javascript:;" class="floatR askFollow">关注</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item">
+                <div class="row">
+                    <div class="col">
+                        <div class="mBottom6">
+                            <span class="userName">如果</span>
+                            <span class="time">一分钟前提问</span>
+                            <span class="viewCount">
+                                <i class="iconfont icon-liulan">
+                                </i>
+                                328
+                            </span>
+                        </div>
+                        <summary>内容内容内容内容内容内容内容内容内容内容内容</summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:;" class="floatR askType">问题</a>
+                <a href="javascript:;" class="floatR askFollow">关注</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item">
+                <div class="row">
+                    <div class="col">
+                        <div class="mBottom6">
+                            <span class="userName">如果</span>
+                            <span class="time">一分钟前提问</span>
+                            <span class="viewCount">
+                                <i class="iconfont icon-liulan">
+                                </i>
+                                328
+                            </span>
+                        </div>
+                        <h2>标题标题标题标题标题标题标题标题标题标题</h2>
+                        <summary>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:;" class="floatR askType">文章</a>
+                <a href="javascript:;" class="floatR askFollow">关注</a>
+            </div>
+        </div>-->
+        <div class="wrapShowMore" ng-if="pageData.currViewData.list.length < pageData.currViewData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadData(pageData.currViewData)">查看更多</button>
+        </div>
+        <div ng-if="pageData.currViewData.totalCount == 0">
+            没有数据
+        </div>
+    </div>
+    <!--<div class="wrapCardList wrapUpdateList" ng-if="pageData.currTabIndex == 1">
+        <div class="card" ng-repeat="item in [1]">
+            <div class="item">
+                <div class="row">
+                    <div class="col">
+                        <div class="mBottom6">
+                            <span class="userName">如果</span>
+                            <span class="time">一分钟前</span>
+                        </div>
+                        <summary>内容内容内容内容内容内容内容内容内容内容内容</summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                        <li class="floatL">
+                            <a href="javascript:;" class="tag">标签</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row cardBtnList">
+                    <i class="iconfont icon-xiaoxiguanli"></i><span>0</span>
+                    <i class="iconfont icon-dianzan"></i><span>10</span>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore">
+            <button class="button button-clear">查看更多</button>
+        </div>
+    </div>
+    <div class="wrapUserList" ng-if="pageData.currTabIndex == 2">
+        <div class="card" ng-repeat="item in [1,2,3,4,5,6]">
+            <a class="item item-avatar" href="javascript:;">
+                <img src="http://preview.comeoncloud.net/img/hb/hb7.jpg">
+                <h2>Venkman</h2>
+                <p>Back off, man. I'm a scientist.</p>
+            </a>
+        </div>
+        <div class="wrapShowMore">
+            <button class="button button-clear">查看更多</button>
+        </div>
+    </div>-->
+</div>

@@ -1,0 +1,21 @@
+.starRating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  
+  li {
+    margin-right: 3px;
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+    &.filled {
+      color: #fd0; //#21568b
+    }
+  }
+  &.readonly li.filled {
+    color: #666;
+  }
+}

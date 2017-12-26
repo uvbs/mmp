@@ -1,0 +1,47 @@
+<div class="wrapUserEdit">
+    <div class="bar bar-header">
+        <div class="h1 title">编辑资料</div>
+    </div>
+    <div class="content has-header">
+        <div class="list">
+            <label class="item item-input" ng-show="pageData.userInfo.userType!=2">
+                <span class="input-label">姓名</span>
+                <input type="text" class="form-control" ng-model="pageData.userInfo.userName" placeholder="姓名">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">性别</span>
+                <select class="pRight10 border0 colorGrey_6" ng-model="pageData.sex" ng-options="sex.name for sex in pageData.sexList"></select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">电话</span>
+                <input type="text" class="form-control" ng-model="pageData.userInfo.userPhone" placeholder="手机">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">所在省</span>
+                <select id="pro" class="pRight10 border0 colorGrey_6" ng-change="pageFunc.selectProvince()" ng-model="pageData.province" ng-options="province.name for province in pageData.provinceList"></select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">所在市</span>
+                <select id="region" class="pRight10 border0 colorGrey_6" ng-model="pageData.city" ng-options="city.name for city in pageData.cityList"></select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">所属经销商</span>
+                <input type="text" class="form-control" ng-model="pageData.userInfo.userCompany" placeholder="所属经销商">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">岗位</span>
+                <input type="text" class="form-control" ng-model="pageData.userInfo.userPostion" placeholder="岗位">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">个人简介</span>
+                <input type="text" class="form-control" ng-model="pageData.userInfo.userIntroduction" placeholder="个人简介">
+            </label>
+        </div>
+        <div class="wrapBtn">
+            <button class="button button-block button-positive" ng-click="pageFunc.save()">
+                保存修改
+            </button>
+        </div>
+        <backbtn></backbtn>
+    </div>
+</div>

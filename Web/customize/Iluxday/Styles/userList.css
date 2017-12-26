@@ -1,0 +1,233 @@
+@import "//at.alicdn.com/t/font_1441086227_4946773.css";
+
+
+.wrapPlayer
+{
+    background-image: url(../images/middle.png);
+    background-size: cover;
+}
+.wrapPlayer .header
+{
+    height: 230px;
+}
+.wrapPlayer .header img
+{
+    width: 100%;
+}
+.wrapPlayer .search
+{
+    position: relative;
+    margin: 10px 26px;
+}
+.wrapPlayer .search input
+{
+    width: 100%;
+    -webkit-border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    border-radius: 6px !important;
+    padding-left: 10px;
+    padding-right: 64px;
+    background-color: #E9CEA7;
+}
+.wrapPlayer .search span
+{
+    color: #fff;
+    position: absolute;
+    right: 1px;
+    top: 2px;
+    font-size: 16px;
+    display: inline-block;
+    background-color: #C08548;
+    padding: 5px 3px 5px 12px;
+    border-radius: 4px;
+}
+.wrapPlayer .sologen
+{
+    text-align: center;
+    padding: 0 60px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+.wrapPlayer .wrapUserList .row, .wrapPlayer .wrapUserList .row .col-50
+{
+    padding: 5px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent
+{
+    height: 350px;
+    background-color: #fff;
+    -webkit-border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    border-radius: 6px !important;
+    position: relative;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .avatar
+{
+    height: 210px;
+    overflow: hidden;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    position: relative;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .avatar img.user
+{
+    height: 210px;
+    min-width: 100%;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .avatar .name
+{
+    position: absolute;
+    top: 0;
+    color: #fff;
+    font-size: 14px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .avatar .name .tubiaoImg
+{
+    width: 56px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .avatar .name .aixin
+{
+    position: absolute;
+    top: 3px;
+    left: 21px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .avatar .name .spanStyle
+{
+    position: absolute;
+    top: 22px;
+    left: 13px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .summary
+{
+    height: 100px;
+    font-size: 13px;
+    overflow: hidden;
+    padding: 5px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .summary .row .col .wordbar
+{
+    height: 57px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .summary .row .col .wordbar .radius
+{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #CB8C4B;
+    top: 223px;
+    left: 1px;
+    color: #fff;
+    text-align: center;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .summary .row .col .wordbar .dianzanImg
+{
+    width: 128px;
+    height: 49px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .summary .row .col .wordbar .wordStyle
+{
+    position: absolute;
+    top: 224px;
+    left: 47px;
+    font-size: 3px;
+    width: 84px;
+    height: 50px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .wrapBtn
+{
+    padding-top: 6px;
+    text-align: center;
+    margin-top: 6px;
+}
+.wrapPlayer .wrapUserList .row .userItem .colContent .wrapBtn a
+{
+    color: #333;
+    text-decoration: none;
+    outline: 0;
+    background-color: #CB8C4B;
+    padding: 5px 20px;
+    border-radius: 4px;
+}
+.wrapPlayer .wrapBtn
+{
+    text-align: center;
+    padding: 0 5px;
+}
+.wrapPlayer .wrapBtn .pageBtn
+{
+    display: inline-block;
+    background-color: #C08548;
+    color: #fff;
+    font-size: 14px;
+    padding: 3px 12px;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+}
+.wrapPlayer .wrapBtn .pageBtn:hover
+{
+    background-color: #000;
+}
+.wrapPlayer .contact
+{
+    text-align: center;
+    margin-top: 80px;
+    color: #A17052;
+}
+.wrapPlayer .erweima
+{
+    text-align: center;
+    margin-top: 10px;
+}
+.wrapPlayer .erweima .erweimaImg
+{
+    width: 100px;
+    height: 100px;
+}
+.wrapPlayer .intro
+{
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    color: #A17052;
+}
+.wrapPlayer .intro .zhubanfang
+{
+    margin-top: 10px;
+    display: block;
+}
+.wrapPlayer .bottom
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    background-color: #9D7742;
+    text-align: center;
+    height: 50px;
+}
+.wrapPlayer .bottom .row, .wrapPlayer .bottom .row .col
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.wrapPlayer .bottom .row .col .row
+{
+    padding-top: 0;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 15px;
+}
+.wrapPlayer .bottom .row .col i
+{
+    position: relative;
+    top: 15px;
+    font-size: 30px;
+}
+.wrapPlayer .borderLine
+{
+    border-right: 1px solid #fff;
+}

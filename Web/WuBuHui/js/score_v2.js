@@ -1,0 +1,1 @@
+define(["jquery","gotopageanywhere"],function(e){function t(){var t=e(".earnscore").hasClass("showearnscore");t?e(".earnscore").removeClass("showearnscore"):e(".earnscore").addClass("showearnscore")}e("#earnscorebtn").bind("touchend",function(){t()})});

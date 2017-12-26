@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+
+    <title>会议室预约</title>
+    <link href="/OpenWebApp/lib/ionic/ionic.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/lib/layer.mobile/need/layer.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/lib/vue/vue-swipe/vue-swipe.css" rel="stylesheet"/>
+    <link href="/OpenWebApp/css/global-m.css" rel="stylesheet"/>
+    <style>
+        .wrapTimeList .col-50{
+            line-height: 20px;
+            padding: 5px;
+            border-bottom: 1px;
+            border-style: solid;
+            border-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapMeetingRoomList pBottom25" id="wrapMeetingRoomList"
+     v-bind:class="{ 'pTop100': meetRoomCategoryList.length>0, 'pTop53': meetRoomCategoryList.length==0 }">
+    <div class="bar bar-header bar-balanced fixed top0 height50">
+        <h1 class="title lineHeight50">
+            <i onclick="history.go(-1)" class="iconfont icon-fanhui floatL font25 iconfontfixlarge"></i>
+            <span v-text="home_title"></span>
+            <i v-on:click="goOrderList()"
+               class="iconfont icon-quanbudingdan iconfontfixlarge top48F  floatR font30 "></i>
+
+            <div class="clear"></div>
+        </h1>
+    </div>
+    <div class="bar bar-subheader pAll2P height52 fixed top50 borderBottom" v-if="meetRoomCategoryList.length>0">
+        <select class="width100P pAll2P height100P" v-model="currCate" v-on:change="selectCateChange()">
+            <option v-for="option in meetRoomCategoryList" v-bind:value="option.value" v-text="option.text">
+            </option>
+        </select>
+    </div>
+
+
+    <div class="dataList">
+        <div class="list card" v-for="item in meetRoomList">
+            <div class="item">
+                <div class="itemtitle" v-text="item.title"></div>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" :src="img" v-for="img in item.imgs">
+                <p class="txtIndent" v-text="item.summary">
+                </p>
+
+                <p>
+                    <span class="">价格：</span>
+                    <span class="colorYellow" v-if="item.price!=0" v-text="(item.price+item.unit)"></span>
+                    <span class="colorYellow" v-if="item.price==0">免费</span>
+                </p>
+            </div>
+
+            <div class="item" v-if="!item.calendar.show">
+                <div v-if="(time_set_method==0)||!item.noBlock" class="button button-block button-balanced height40"
+                     v-on:click="showSelect(item)">
+                    <i class="iconfont icon-gouwuche iconfontfix"></i>
+                    <span class="iconfontfix">立即预约</span>
+                </div>
+                <div class="button button-block button-balanced height40"
+                     v-if="time_set_method==1&&item.noBlock"
+                     v-bind:class="{'borderBg':time_set_method==1&&item.noBlock}">
+                    <span class="">没有可预约的时间</span>
+                </div>
+            </div>
+
+
+            <div class="item wrapBooking" v-if="item.calendar.show">
+                <div class="wayOne" v-if="time_set_method==0">
+                    <div class="wrapDatePick">
+                        <div class="wrapSelectYearAndMonth row">
+                            <div class="col txtLeft height25" v-on:click="toPreMonth(item)"
+                                 v-bind:class="{'colorGrey_d':item.calendar.hasBeforeToday,'hoverGrey':!item.calendar.hasBeforeToday}">
+                                <
+                            </div>
+                            <div class="col txtCenter">
+                                <span>{{item.calendar.year}}年{{item.calendar.month}}月</span>
+                            </div>
+                            <div class="col txtRight hoverGrey height25" v-on:click="toNextMonth(item)">
+                                >
+                            </div>
+                        </div>
+                        <div class="row borderBottom txtCenter">
+                            <div class="col" v-for="w in week" v-text="w">
+                            </div>
+                        </div>
+                        <div class="wrapDayList txtCenter">
+                            <div class="row" v-for="wd in item.calendar.dayList">
+                                <div class="col" v-for="day in wd"
+                                     v-bind:class="{'bgLightGreen':day.isCheck,'colorWhite':day.isCheck}"
+                                     v-on:click="selectDate(item,day)">
+                                <span v-if="!day.isTody" v-bind:class="{'colorGrey_d':day.isBeforeToday()}"
+                                      v-text="day.day">
+                                </span>
+                                <span v-if="day.isTody">
+                                    今天
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapTimeList list">
+                        <div class="item row" v-for="times in item.calendar.currTimeList">
+                            <div class="col" v-for="time in times">
+                                <label>
+                                    <input v-if="time.isBookAble" disabled type="checkbox">
+                                    <input v-if="!time.isBookAble" type="checkbox"
+                                           v-model="time.checked" v-cloak>
+                                    {{ parseInt(time.arr[0])<10 ? time.arr[0].substring(0,4):
+                                    time.arr[0].substring(0,5)}}-{{ parseInt(time.arr[1])<10 ?
+                                    time.arr[1].substring(0,4):
+                                    time.arr[1].substring(0,5)}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wayTwo" v-if="time_set_method==1">
+                    <div class="styleOne"
+                         v-if="time_set_style==1&&(!item.calendar.blockTimeList[0].noBlock&&item.calendar.blockTimeList.length!=0)">
+                        <div class="row">
+                            <div class="col">
+                                请选择时间段(可多选)：
+                            </div>
+                        </div>
+                        <div class="row" v-for="data in item.calendar.blockTimeList">
+                            <div class="col txtCenter pLeft30 pRight30">
+                                <div class="timeshow" v-if="!data.isSelectedAble"
+                                     v-bind:class="{'selected':data.checked}"
+                                     v-model="data.checked" v-on:click="selectBlockTime(data)" v-text="data.blockTime">
+                                </div>
+                                <div class="timeshow" v-if="data.isSelectedAble"
+                                     v-bind:class="{'unableClick':data.isSelectedAble}"
+                                     v-text="data.blockTime">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="styleTwo" v-if="time_set_style==0">
+
+                        <div class="wrapDatePick">
+                            <div class="wrapSelectYearAndMonth row">
+                                <div class="col txtLeft height25" v-on:click="toPreMonth(item)"
+                                     v-bind:class="{'colorGrey_d':item.calendar.hasBeforeToday,'hoverGrey':!item.calendar.hasBeforeToday}">
+                                    <
+                                </div>
+                                <div class="col txtCenter">
+                                    <span>{{item.calendar.year}}年{{item.calendar.month}}月</span>
+                                </div>
+                                <div class="col txtRight hoverGrey height25" v-on:click="toNextMonth(item)">
+                                    >
+                                </div>
+                            </div>
+                            <div class="row borderBottom txtCenter">
+                                <div class="col" v-for="w in week" v-text="w">
+                                </div>
+                            </div>
+                            <div class="wrapDayList txtCenter">
+                                <div class="row" v-for="wd in item.calendar.dayList">
+                                    <div class="col" v-for="day in wd"
+                                         v-bind:class="{'bgLightGreen':day.isCheck,'colorWhite':day.isCheck}"
+                                         v-on:click="selectDate(item,day)">
+                                    <span v-bind:class="{'colorGrey_d':isAbleClick(item,day)}"
+                                          v-text="day.day">
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapTimeList list">
+                            <div class="item row row-wrap">
+                                <div class="col-50" v-for="time in item.secondTimeList">
+                                    <label>
+                                        <input v-if="time.isBookAble" disabled type="checkbox">
+                                        <input v-if="!time.isBookAble" type="checkbox"
+                                               v-model="time.checked" v-cloak>
+                                        {{time.time}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wayThree" v-if="time_set_method==2">
+                    <div class="wrapDatePick">
+                        <div class="wrapSelectYearAndMonth row">
+                            <div class="col txtLeft height25" v-on:click="toPreMonth(item)"
+                                 v-bind:class="{'colorGrey_d':item.calendar.hasBeforeToday,'hoverGrey':!item.calendar.hasBeforeToday}">
+                                <
+                            </div>
+                            <div class="col txtCenter">
+                                <span>{{item.calendar.year}}年{{item.calendar.month}}月</span>
+                            </div>
+                            <div class="col txtRight hoverGrey height25" v-on:click="toNextMonth(item)">
+                                >
+                            </div>
+
+                        </div>
+                        <div class="row borderBottom txtCenter">
+                            <div class="col" v-for="w in week" v-text="w">
+                            </div>
+                        </div>
+                        <div class="wrapDayList txtCenter">
+                            <div class="row" v-for="wd in item.calendar.dayList">
+                                <div class="col" v-for="day in wd"
+                                     v-bind:class="{'bgLightGreen':day.isCheck, 'colorWhite':day.isCheck}"
+                                     v-on:click="selectDate(item,day)">
+                                    <span v-bind:class="{'colorGrey_d':!isAbleClick(item,day)}"
+                                          v-text="day.day">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapTimeList list">
+                        <div class="item row" v-for="times in item.thirdTimeList">
+                            <div class="col" v-for="time in times">
+                                <label>
+                                    <input v-if="time.isBookAble" disabled type="checkbox">
+                                    <input v-if="!time.isBookAble" type="checkbox"
+                                           v-model="time.checked" v-cloak>
+                                    {{time.time}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="item.relation_products.length>0">
+                    <div class="item row">
+                        <div class="col">
+                            增值服务
+                        </div>
+                    </div>
+                    <div class="item row" v-for="service in item.relation_products">
+                        <div class="col itemtitle">
+                            <label>
+                                <input type="checkbox" v-model="service.checked" v-cloak>
+                                {{service.title}} {{service.price}}{{service.unit}}
+                            </label>
+                        </div>
+                        <div class="col txtRight">
+                            <span class="font12">数量:</span>
+                            <div class="editbox">
+                                <span class="editboxL " v-on:click="delnum(service,$event)">-</span>
+
+                                <div class="editnumbox"><input type="text" v-model="service.count"
+                                                               v-bind:change="checknum(service)"></div>
+                                <span class="editboxR" v-on:click="addnum(service,$event)">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button button-block button-balanced height40 " v-on:click="bookMeetRoom(item)">
+                    <i class="iconfont icon-xuanze iconfontfix"></i>
+                    <span class=" iconfontfix">提交预约</span>
+
+                </div>
+                <div class="button button-block button-stable height40 " v-on:click="hideSelectBtn(item)">
+                    <i class="iconfont icon-shanchu iconfontfix"></i>
+
+                    <span class=" iconfontfix">取消预约</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-if="totalCount==0" class="txtCenter mTop20">
+        没有数据
+    </div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="/OpenWebApp/lib/jquery/jquery-2.1.1.min.js"></script>
+<script src="/OpenWebApp/lib/vue/vue.min.js"></script>
+<script src="/OpenWebApp/lib/la-datePicker/datePicker.js"></script>
+<script src="/OpenWebApp/lib/vue/vue-swipe/vue-swipe.js"></script>
+<script src="/OpenWebApp/lib/layer.mobile/layer.m.js"></script>
+<script src="/OpenWebApp/Scripts/global-m.js"></script>
+
+<script>
+   var BookingConfig = {};
+    var vm = new Vue({
+        el: '#wrapMeetingRoomList',
+        data: {
+            list: [
+                {
+                    id: 1,
+                    show: false,
+                    dayList: [],
+                    year: 2016,
+                    month: 3,
+                    date: new Date(),
+                    selectDate: {},
+                    hasBeforeToday: false,
+                    currTimeList: []
+                }
+            ],
+            week: LADatePicker.config.week,
+            currCate: '',
+            currCheckTimeList: [],
+
+            pageIndex: 1,
+            pageSize: 5,
+            totalCount: 0,
+            meetRoomList: [],   //会议室列表
+
+            bookedTimeList: [],  //会议室预约情况
+            meetRoomCategoryList: [],   //会议室分类
+            index: 0,
+            skus: [],
+            start: '',  //格式为 - 分割的年月日
+            orderId: '',  //订单id
+            totalfee: 0, //总金额
+            userInfo: {
+                name: '',  //用户姓名
+                phone: ''  //用户手机号
+            },
+            category_type: 'MeetingRoom',  //预约分类，默认为会议室分类,以后还有导师预约等
+            home_title: '预约列表',    //预约分类名称，默认为会议室,以后还有导师等
+            time_set_method: 0, //时间显示方法 0为第一种固定日历显示，1为第二种,2为第三种每周一、三、五可以预定，然后其下面的时间段是个可以配置的时间数组
+            time_set_style: 0  //第二种时间显示方法样式有两种：0为日历显示，1为方块显示
+            // thirdTimeList:[]  //第三种方式的时间段
+        },
+        methods: {
+            showSelect: showSelect,
+            hideSelect: hideSelect,
+            hideSelectBtn: hideSelectBtn,  //取消按钮
+            selectCateChange: selectCateChange,
+            toNextMonth: toNextMonth,
+            toPreMonth: toPreMonth,
+            selectDate: selectDate,
+            getMeetRoomList: getMeetRoomList,  //获取会议室列表
+            getBookedTimeList: getBookedTimeList,  //会议室预约情况
+            bookMeetRoom: bookMeetRoom,  //会议室提交预约
+            getMeetRoomCategory: getMeetRoomCategory,  //会议室分类
+            isChecked: isChecked,
+            orderPay_wx: orderPay_wx,
+            runWxConfig: runWxConfig,
+            wxConfig: wxConfig,
+            userInfo: userInfo,  //获取用户信息
+            delnum: delnum,
+            checknum: checknum,
+            addnum: addnum,
+            goOrderList: goOrderList, //去订单列表
+            addNum: addNum,
+            isAbleClick: isAbleClick,//是否可点击（日期是否在后台传过来的日期内）
+            selectBlockTime: selectBlockTime, //点击选择方块时间
+            init: init
+        }
+    });
+
+    vm.init();
+    function init() {
+        $(function () {
+            $(window).scroll(function () {
+                //当内容滚动到底部时加载新的内容
+                if ($(this).scrollTop() + $(window).height() >= $(document).height()) {
+                    //判断当没有数据的时候不加载
+                    if (vm.totalCount > vm.meetRoomList.length) {
+                        vm.getMeetRoomList(false);
+                    }
+                }
+            });
+        });
+        vm.time_set_method = BookingConfig.time_set_method;
+        vm.time_set_style = BookingConfig.time_set_style;
+        userInfo();
+        getMeetRoomCategory();
+        wxConfig();
+    }
+    function goOrderList() {
+        window.location.href = 'orderlist.html?type=' + vm.category_type;
+    }
+    //取消预订提示框
+    function hideSelectBtn(item) {
+        hideSelect(item);
+    }
+    //减
+    function delnum(service, $event) {
+        $event.stopPropagation();
+        //判断是否为数字
+        if (isNaN(service.count)) {
+            service.count = 1;
+        }
+        if (parseInt(service.count) <= 1) {
+            alert('不能再少了哦');
+        }
+        else {
+            service.count = parseInt(service.count) - 1;
+        }
+    }
+    //值改变
+    function checknum(service) {
+        if (!isNaN(service.count)) {
+//            service.count=1;
+        }
+        else {
+            service.count = 1;
+        }
+        if (service.count === 0) {
+            service.count = 1;
+        }
+        if (service.count < 0) {
+            if (service.count === "") {
+            } else {
+                service.count = 1;
+                alert('请选择至少选择一件商品');
+            }
+        }
+    }
+    //加
+    function addnum(service, $event) {
+        $event.stopPropagation();
+        if (isNaN(service.count)) {
+            service.count = 1;
+        }
+        service.count = parseInt(service.count) + 1;
+    }
+    //获取会议室列表
+    function getMeetRoomList(isNew) {
+        if (isNew) {
+            vm.meetRoomList = [];
+            vm.pageIndex = 1;
+        }
+        else {
+            vm.pageIndex++;
+        }
+        var url = '/serv/api/booking/list.ashx';
+        var params = {
+            type: vm.category_type,
+            rows: vm.pageSize,
+            page: vm.pageIndex,
+            cate_id: vm.currCate
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: params
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+                vm.totalCount = data.result.totalcount;
+                for (var i = 0; i < data.result.list.length; i++) {
+                    //构建第一种方法日历数据
+                    var calendar = {
+                        id: i,
+                        show: false,
+                        dayList: [],
+                        year: 2016,
+                        month: 3,
+                        date: new Date(),
+                        selectDate: {},
+                        hasBeforeToday: false,
+                        currTimeList: [],   //存放第一种方法日历时间段
+                        blockTimeList: []   //存放第二种方法方块样式数据
+                    };
+                    data.result.list[i]['calendar'] = calendar;
+
+                    if (data.result.list[i].imgs) {
+                        data.result.list[i].imgs = data.result.list[i].imgs.split(',');
+                    }
+                    for (var j = 0; j < data.result.list[i].relation_products.length; j++) {
+                        data.result.list[i].relation_products[j].count = 1; //先构建增值服务的数量，便于渲染模板
+                    }
+                    //构建第二种方法的方块样式数据
+                    if (vm.time_set_method == 1 && vm.time_set_style == 1) {
+                        //后台传过来的时间都在sku_list字段中，先判断是否》0并且ex1是否为null,否的话说明是第一种日历方法
+                        if (data.result.list[i].sku_list.length > 0 && data.result.list[i].sku_list[0].ex1 != null) {
+                            var toDay = new Date();
+                            var today = new Date(toDay.getFullYear(),toDay.getMonth(),toDay.getDate());
+                            for (var m = data.result.list[i].sku_list.length - 1; m >= 0; m--) {
+                                //先把时间yyyy-MM-dd转化为格式yyyy/MM/dd形式（解决苹果手机为NaN问题）
+                                var ex1 = data.result.list[i].sku_list[m].ex1.replace(/-/g, '/');
+                                var ex2 = data.result.list[i].sku_list[m].ex2.replace(/-/g, '/');
+                                //时间格式错误 或者 是今天之前的时间，是的话删掉，不显示在页面上
+                                if(isNaN(new Date(ex1).getDate()) || new Date(ex1) < today) {
+                                    data.result.list[i].sku_list.splice(m);
+                                    continue;
+                                }
+                                data.result.list[i].sku_list[m].blockTime = new Date(ex1).format('yyyy-MM-dd hh:mm') + '-' + new Date(ex2).format('hh:mm'); //预先将时间拼接好显示在页面上
+                                data.result.list[i].sku_list[m].checked = false;  //预先创建checked字段，判断该时间是否被选中
+                            }
+                            //通过前面的筛选，判断sku_list是否有值，没有的话创建noBlock字段，用来 点击立即预约时是否显示里面的东西
+                            if (data.result.list[i].sku_list.length > 0) {
+                                data.result.list[i].noBlock = false;
+                                getBlockBookedTimeLIst(data.result.list[i]);
+                            }
+                            else {
+                                data.result.list[i].noBlock = true;
+                            }
+                        }
+                        else {
+                            data.result.list[i].noBlock = true;
+                        }
+                        data.result.list[i].calendar.blockTimeList = data.result.list[i].sku_list;//将最后的sku_list赋值给blockTimeList，用来显示点击预约时要显示的内容
+                    }
+
+
+                    //构建第二种方法的日历样式
+                    if (vm.time_set_method == 1 && vm.time_set_style == 0) {
+                        var sku_day_list = [];
+                        if (data.result.list[i].sku_list.length > 0 && data.result.list[i].sku_list[0].ex1 != null) {
+                            for (var m = data.result.list[i].sku_list.length - 1; m >= 0; m--) {
+                                var ex1 = data.result.list[i].sku_list[m].ex1.replace(/-/g, '/');
+                                var ex2 = data.result.list[i].sku_list[m].ex2.replace(/-/g, '/');
+
+                                //时间格式错误 或者 是今天之前的时间，是的话删掉，不显示在页面上
+                                if(isNaN(new Date(ex1).getDate())) {
+                                    data.result.list[i].sku_list.splice(m);
+                                    continue;
+                                }
+                                if (sku_day_list.indexOf(new Date(ex1).format('yyyy-MM-dd')) >= 0) {
+                                    continue;
+                                }
+                                sku_day_list.push(new Date(ex1).format('yyyy-MM-dd'));
+                            }
+                            if (data.result.list[i].sku_list.length > 0) {
+                                data.result.list[i].noBlock = false;
+                            }
+                            else {
+                                data.result.list[i].noBlock = true;
+                            }
+                        }
+                        else {
+                            data.result.list[i].noBlock = true;
+                        }
+                        data.result.list[i].sku_day_list = sku_day_list;
+                        data.result.list[i].secondTimeList = [];
+                    }
+
+                    //构建第三种方法的日历周期方法
+                    if (vm.time_set_method == 2) {
+                        data.result.list[i].thirdTimeList = [];  //第三种方式的时间段
+                        var sku_calendar_day_list = [];
+                        if (data.result.list[i].sku_list.length > 0 && data.result.list[i].sku_list[0].ex1 != null) {
+                            var dataOne = data.result.list[i].sku_list;
+                            var dataTwo = data.result.list[i].sku_list;
+                            for (var j = 0; j < dataOne.length; j++) {
+                                var time = {
+                                    week: '',
+                                    timeList: []
+                                };
+                                for (var m = 0; m < dataTwo.length; m++) {
+                                    if (dataOne[j].ex3 == dataTwo[m].ex3) {
+                                        time.week = dataOne[j].ex3;
+                                        var one = {
+                                            checked: false,
+                                            isBookAble: true,
+                                            ex1: dataTwo[m].ex1,
+                                            ex2: dataTwo[m].ex2,
+                                            time: new Date('2016/5/8 ' + dataTwo[m].ex1).format('h:mm') + '-' + new Date('2016/5/8 ' + dataTwo[m].ex2).format('h:mm')
+                                        };
+//                                        var one=dataTwo[m].ex1+'-'+dataTwo[m].ex2;
+                                        time.timeList.push(one);
+                                    }
+                                }
+                                time.timeList = toErweiArr(time.timeList);
+                                //判断sku_calendar_day_lish中是否有相同的week
+                                if (sku_calendar_day_list.length > 0) {
+                                    var isHas = false;
+                                    for (var n = 0; n < sku_calendar_day_list.length; n++) {
+                                        if (time.week == sku_calendar_day_list[n].week) {
+                                            isHas = true;
+                                        }
+                                    }
+                                    if (!isHas) {
+                                        sku_calendar_day_list.push(time);
+                                    }
+                                }
+                                else {
+                                    sku_calendar_day_list.push(time);
+                                }
+                            }
+                        }
+                        else {
+                            data.result.list[i].noBookTime = '所选日期没有可预约时间'; //没有预约时间
+                        }
+                        data.result.list[i].sku_calendar_day_list = sku_calendar_day_list;
+                    }
+                    vm.meetRoomList.push(data.result.list[i]);
+                }
+                console.log('会议室列表', vm.meetRoomList);
+            } else {
+                alert(data.msg);
+            }
+        }, function (data) {
+            alert(data.msg);
+        });
+    }
+
+    //会议室预约情况（第二种方法方块样式）
+    function getBlockBookedTimeLIst(item) {
+        var time = '';
+        var endtime = '';
+        var array = [];
+        for (var i = 0; i < item.sku_list.length; i++) {
+            array.push(new Date(item.sku_list[i].ex1).getTime());
+            array.push(new Date(item.sku_list[i].ex2).getTime());
+        }
+        var max = Math.max.apply(null, array) + 1000 * 3600 * 24;
+        var min = Math.min.apply(null, array) - 1000 * 3600 * 24;
+        var url = '/serv/api/booking/order/details/listbyproduct.ashx';
+        var params = {
+            type: vm.category_type,
+            product: item.product_id,
+            start: new Date(min).format('yyyy/MM/dd'),  //2016/04/06
+            end: new Date(max).format('yyyy/MM/dd')   //2016/04/07
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: params
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+                for (var m = 0; m < item.sku_list.length; m++) {
+                    var ischeck = false;
+                    for (var i = 0; i < data.result.length; i++) {
+                        var start = new Date(item.sku_list[m].ex1).getTime() == new Date(data.result[i].start).getTime();
+                        var end = new Date(item.sku_list[m].ex2).getTime() == new Date(data.result[i].end).getTime();
+                        if (start && end) {
+                            ischeck = true;
+                            break;
+                        }
+                    }
+                    item.sku_list[m].isSelectedAble = ischeck;
+
+                }
+                console.log('会议室预约情况', data.result);
+            } else {
+                alert(data.msg);
+            }
+        }, function (data) {
+        });
+
+    }
+
+    //会议室预约情况（第一种日历方法）
+    function getBookedTimeList(item, day) {
+        clearBeforeTimeList();
+        var time = '';
+        var endtime = '';
+        time = item.calendar.selectDate.day.format('yyyy/MM/dd');
+        endtime = LADatePicker.dateAdd('d', 1, new Date(item.calendar.selectDate.day)).format('yyyy/MM/dd');
+//        alert('选中时间：'+item.calendar.selectDate.day+',转化后时间：'+time);
+        var url = '/serv/api/booking/order/details/listbyproduct.ashx';
+        var params = {
+            type: vm.category_type,
+            product: item.product_id,
+            start: time,  //  2016/04/06
+            end: endtime   //  2016/04/07
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: params
+        };
+        ajaxReq(dataobj, function (data) {
+
+            if (data.status) {
+                if (vm.time_set_method == 0) {
+                    for (var m = 0; m < item.calendar.currTimeList.length; m++) {
+                        for (var n = 0; n < 2; n++) {
+                            var ischeck = false;
+                            for (var i = 0; i < data.result.length; i++) {
+                                //data.result[i].start返回格式：2016-05-17 10:00:00
+                                var startHour = parseInt(data.result[i].start.split(' ')[1].split(':')[0]);
+                                var startMinute = parseInt(data.result[i].start.split(' ')[1].split(':')[1]);
+                                var endHour = parseInt(data.result[i].end.split(' ')[1].split(':')[0]);
+                                var endMinute = parseInt(data.result[i].end.split(' ')[1].split(':')[1]);
+                                // var start = parseInt(data.result[i].start.substring(11, 13));
+                                // var end = parseInt(data.result[i].end.substring(11, 13));
+                                var calStartHour = parseInt(item.calendar.currTimeList[m][n].arr[0].split(':')[0]);
+                                var calStartMinute = parseInt(item.calendar.currTimeList[m][n].arr[0].split(':')[1]);
+                                var calEndHour = parseInt(item.calendar.currTimeList[m][n].arr[1].split(':')[0]);
+                                var calEndMinute = parseInt(item.calendar.currTimeList[m][n].arr[1].split(':')[1]);
+                                var isStart = (startHour == calStartHour) && (startMinute == calStartMinute);
+                                var isEnd = (endHour == calEndHour) && (endMinute == calEndMinute);
+
+//                                var start = parseInt(data.result[i].start.substring(11, 13));
+//                                var end = parseInt(data.result[i].end.substring(11, 13));
+//                                var calStart = parseInt(item.calendar.currTimeList[m][n].arr[0]);
+//                                var calEnd = parseInt(item.calendar.currTimeList[m][n].arr[1]);
+
+//                                if (calStart == start && calEnd == end) {
+//                                    ischeck = true; //判断是否可以预定,是为不可预定
+//                                    break;
+//                                }
+                                if (isStart && isEnd) {
+                                    //判断是否是今天，如果是判断是否过了今天的时间段，过了则不可选
+                                    if (day.isTody) {
+                                        var today = new Date();
+                                        var time = today.getHours() + ':' + today.getMinutes();
+                                        if (calEndHour <= parseInt(today.getHours()) && calEndMinute <= parseInt(today.getMinutes())) {
+                                            ischeck = true;
+                                        }
+                                        else {
+                                            ischeck = false;
+                                        }
+                                    }
+                                    else {
+                                        ischeck = true; //判断是否可以预定,是为不可预定
+                                    }
+                                    break;
+                                }
+
+                            }
+
+                            //判断是否是今天，如果是判断是否过了今天的时间段，过了则不可选
+                            var calEndHour = parseInt(item.calendar.currTimeList[m][n].arr[1].split(':')[0]);
+                            var calEndMinute = parseInt(item.calendar.currTimeList[m][n].arr[1].split(':')[1]);
+                            if (day.isTody) {
+                                var today = new Date();
+                                var time = today.getHours() + ':' + today.getMinutes();
+                                if (calEndHour <= parseInt(today.getHours()) && calEndMinute <= parseInt(today.getMinutes())) {
+                                    ischeck = true;
+                                }
+                                else {
+                                    ischeck = false;
+                                }
+                            }
+                            item.calendar.currTimeList[m][n].isBookAble = ischeck;
+                        }
+                    }
+                }
+                else if (vm.time_set_method == 2) {
+                    for (var m = 0; m < item.thirdTimeList.length; m++) {
+                        for (var n = 0; n < 2; n++) {
+                            var ischeck = false;
+                            for (var i = 0; i < data.result.length; i++) {
+                                //data.result[i].start返回格式：2016-05-17 10:00:00
+                                var startHour = parseInt(data.result[i].start.split(' ')[1].split(':')[0]);
+                                var startMinute = parseInt(data.result[i].start.split(' ')[1].split(':')[1]);
+                                var endHour = parseInt(data.result[i].end.split(' ')[1].split(':')[0]);
+                                var endMinute = parseInt(data.result[i].end.split(' ')[1].split(':')[1]);
+                                // var start = parseInt(data.result[i].start.substring(11, 13));
+                                // var end = parseInt(data.result[i].end.substring(11, 13));
+                                var calStartHour = parseInt(item.thirdTimeList[m][n].ex1.split(':')[0]);
+                                var calStartMinute = parseInt(item.thirdTimeList[m][n].ex1.split(':')[1]);
+                                var calEndHour = parseInt(item.thirdTimeList[m][n].ex2.split(':')[0]);
+                                var calEndMinute = parseInt(item.thirdTimeList[m][n].ex2.split(':')[1]);
+                                var isStart = (startHour == calStartHour) && (startMinute == calStartMinute);
+                                var isEnd = (endHour == calEndHour) && (endMinute == calEndMinute);
+
+                                if (isStart && isEnd) {
+                                    //判断是否是今天，如果是判断是否过了今天的时间段，过了则不可选
+                                    if (day.isTody) {
+                                        var today = new Date();
+                                        var time = today.getHours() + ':' + today.getMinutes();
+                                        if (calEndHour <= parseInt(today.getHours()) && calEndMinute <= parseInt(today.getMinutes())) {
+                                            ischeck = true;
+                                        }
+                                        else {
+                                            ischeck = false;
+                                        }
+                                    }
+                                    else {
+                                        ischeck = true; //判断是否可以预定,是为不可预定
+                                    }
+                                    break;
+                                }
+                            }
+                            if (item.thirdTimeList[m][n] != undefined) {
+                                //判断是否是今天，如果是判断是否过了今天的时间段，过了则不可选
+                                var calEndHour = parseInt(item.thirdTimeList[m][n].ex2.split(':')[0]);
+                                var calEndMinute = parseInt(item.thirdTimeList[m][n].ex2.split(':')[1]);
+                                if (day.isTody) {
+                                    var today = new Date();
+                                    var time = today.getHours() + ':' + today.getMinutes();
+                                    if (calEndHour <= parseInt(today.getHours()) && calEndMinute <= parseInt(today.getMinutes())) {
+                                        ischeck = true;
+                                    }
+                                    else {
+                                        ischeck = false;
+                                    }
+                                }
+                                item.thirdTimeList[m][n].isBookAble = ischeck;
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                alert(data.msg);
+            }
+        }, function (data) {
+        });
+    }
+    //切换日期将之前日期预约情况清除
+    function clearBeforeTimeList() {
+        for (var i = 0; i < vm.meetRoomList.length; i++) {
+            for (var j = 0; j < vm.meetRoomList[i].calendar.currTimeList.length; j++) {
+                for (var n = 0; n < 2; n++) {
+                    vm.meetRoomList[i].calendar.currTimeList[j][n].checked = false;
+                    vm.meetRoomList[i].calendar.currTimeList[j][n].isBookAble = false;
+                }
+            }
+            for (var m = 0; m < vm.meetRoomList[i].relation_products.length; m++) {
+                if (vm.meetRoomList[i].relation_products[m].checked != undefined) {
+                    vm.meetRoomList[i].relation_products[m].checked = false;
+                    vm.meetRoomList[i].relation_products[m].count = 1;
+                }
+            }
+        }
+    }
+    //js float中相加后面出现多位小数
+    function addNum(num1, num2) {
+        var sq1, sq2, m;
+        try {
+            sq1 = num1.toString().split(".")[1].length;
+        }
+        catch (e) {
+            sq1 = 0;
+        }
+        try {
+            sq2 = num2.toString().split(".")[1].length;
+        }
+        catch (e) {
+            sq2 = 0;
+        }
+        m = Math.pow(10, Math.max(sq1, sq2));
+        return (num1 * m + num2 * m) / m;
+    }
+    //判断时间段选中状态
+    function isChecked(item) {
+        var list = item.calendar.currTimeList;
+        for (var i = 0; i < list.length; i++) {
+            for (var j = 0; j < list[i].length; j++) {
+                if (list[i][j].checked != undefined && list[i][j].checked) {
+                    var sku = {
+                        sku_id: item.sku_id,
+                        count: 1,
+                        start_date: vm.start + ' ' + list[i][j].arr[0],
+                        end_date: vm.start + ' ' + list[i][j].arr[1],
+                        type: 1  //用于区分日期，时间段和方块的时间 ，1表示第一种的日期，2表示增值服务，3表示方块
+                    };
+                    vm.totalfee = addNum(vm.totalfee, item.price);//vm.totalfee +parseFloat(item.price);
+                    vm.skus.push(sku);
+                }
+            }
+        }
+    }
+    //判断第三种方法选中状态
+    function isThirdCheck(item) {
+        var list = item.thirdTimeList;
+        for (var i = 0; i < list.length; i++) {
+            for (var j = 0; j < list[i].length; j++) {
+                if (list[i][j].checked != undefined && list[i][j].checked) {
+                    var sku = {
+                        sku_id: item.sku_id,
+                        count: 1,
+                        start_date: vm.start + ' ' + list[i][j].ex1,
+                        end_date: vm.start + ' ' + list[i][j].ex2,
+                        type: 1  //用于区分日期，时间段和方块的时间 ，1表示第一种的日期，2表示增值服务，3表示方块
+                    };
+                    vm.totalfee = addNum(vm.totalfee, item.price);//vm.totalfee +parseFloat(item.price);
+                    vm.skus.push(sku);
+                }
+            }
+        }
+    }
+    //判断增值服务选中状态
+    function isServiecChecked(item) {
+        var list = item.relation_products;
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].checked != undefined && list[i].checked) {
+                var count = 0;
+                if (list[i].count == undefined) {
+                    count = 1;
+                    vm.totalfee = addNum(vm.totalfee, list[i].price * count); // vm.totalfee +parseFloat(list[i].price*count);
+                } else {
+                    count = list[i].count;
+                    vm.totalfee = addNum(vm.totalfee, list[i].price * count); // vm.totalfee +parseFloat(list[i].price*count);
+                }
+                var sku = {
+                    sku_id: list[i].sku_id,
+                    count: count,
+                    start_date: '',
+                    end_date: '',
+                    type: 2
+                };
+                vm.skus.push(sku);
+            }
+        }
+    }
+    //判断第二种方法的列表样式选中状态
+    function isBlockTimeChecked(item) {
+        var list = item.calendar.blockTimeList;
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].checked != undefined && list[i].checked) {
+                var sku = {
+                    sku_id: list[i].sku_id,
+                    count: 1,
+                    start_date: list[i].ex1,
+                    end_date: list[i].ex2,
+                    type: 3
+                };
+                vm.totalfee = addNum(vm.totalfee, item.price);//vm.totalfee +parseFloat(item.price);
+                vm.skus.push(sku);
+            }
+        }
+    }
+    //判断第二种方法的日历样式选中状态
+   function isSecondTimeChecked(item) {
+       var list = item.secondTimeList;
+       for (var i = 0; i < list.length; i++) {
+           if (list[i].checked) {
+               var sku = {
+                   sku_id: list[i].sku_id,
+                   count: 1,
+                   start_date: list[i].ex1,
+                   end_date: list[i].ex2,
+                   type: 3
+               };
+               vm.totalfee = addNum(vm.totalfee, item.price);//vm.totalfee +parseFloat(item.price);
+               vm.skus.push(sku);
+           }
+       }
+   }
+    //会议室提交预约
+    function bookMeetRoom(item) {
+
+        try {
+
+            vm.totalfee = 0;
+            vm.skus = [];
+            var start = '';
+            var end = '';
+            if (vm.time_set_method == 0) {
+                if (item.calendar.selectDate.day == undefined || item.calendar.selectDate.day == '') {
+                    alert('请选择日期');
+                    return;
+                }
+                vm.start = item.calendar.selectDate.day.format('yyyy/MM/dd');
+                var startTime = item.calendar.currTimeList[0][0].arr[0];
+                var endTime = item.calendar.currTimeList[item.calendar.currTimeList.length - 1][1].arr[1];
+                start = vm.start + ' ' + startTime;
+                end = vm.start + ' ' + endTime;
+                isChecked(item);
+            }
+            else if (vm.time_set_method == 1) {
+                if(vm.time_set_style ==1){
+                    start = item.calendar.blockTimeList[0].ex1;
+                    end = item.calendar.blockTimeList[item.calendar.blockTimeList.length - 1].ex2;
+                    isBlockTimeChecked(item);
+                }
+                else{
+                    start = item.secondTimeList[0].ex1;
+                    end = item.secondTimeList[item.secondTimeList.length - 1].ex2;
+                    isSecondTimeChecked(item);
+                }
+            }
+            else if (vm.time_set_method == 2) {
+                if (item.calendar.selectDate.day == undefined || item.calendar.selectDate.day == '') {
+                    alert('请选择日期');
+                    return;
+                }
+                vm.start = item.calendar.selectDate.day.format('yyyy/MM/dd');
+                start = vm.start + ' ' + item.thirdTimeList[0][0].ex1;
+                if (item.thirdTimeList[item.thirdTimeList.length - 1][1] == undefined) {
+                    end = vm.start + ' ' + item.thirdTimeList[item.thirdTimeList.length - 1][0].ex2;
+                }
+                else {
+                    end = vm.start + ' ' + item.thirdTimeList[item.thirdTimeList.length - 1][1].ex2;
+                }
+                isThirdCheck(item);
+            }
+            // debugger;
+            isServiecChecked(item);
+            if (vm.skus.length == 0) {
+                alert('请选择时间段');
+                return;
+            }
+            item.time_set_method = vm.time_set_method;
+            item.time_set_style = vm.time_set_style;
+            var dataJson = {
+                pay_type: 'WEIXIN',
+                use_score: 0,
+                product_id: item.product_id,
+//                sku_id:item.sku_id,
+                min_start_date: start,
+                max_end_date: end,
+                skus: vm.skus,
+                totalfee: vm.totalfee,
+                category_type: BookingConfig.category_type,
+                category_name: BookingConfig.category_name
+//                title:item.title
+            };
+            localStorage.setItem('product', JSON.stringify(item));
+            localStorage.setItem('dataJson', JSON.stringify(dataJson));
+            window.location.href = 'submitOrder.html';  //发布
+        } catch (e) {
+            alert(e);
+        }
+
+    }
+    //会议室分类
+    function getMeetRoomCategory() {
+        vm.category_type = BookingConfig.category_type;
+        if (BookingConfig.home_title != '') {
+            vm.home_title = BookingConfig.home_title;
+        }
+
+//        document.title = BookingConfig.category_name;
+        var url = '/serv/api/article/category/selectlist.ashx';
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: {type: vm.category_type}
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.status) {
+                vm.meetRoomCategoryList = data.result;
+                if (data.result.length > 0)
+                    vm.currCate = data.result[0].value;
+                else
+                    vm.currCate = '';
+
+                console.log('会议室分类列表', vm.meetRoomCategoryList);
+                vm.getMeetRoomList(true);
+            } else {
+                alert(data.msg);
+            }
+        }, function (data) {
+            alert(data.msg);
+        });
+    }
+    //支付订单
+    function orderPay_wx(order_id) {
+        var url = '/serv/api/mall/payment.ashx';
+        var urldata = {
+            action: 'brandwcpayrequest',
+            order_id: order_id,
+            order_type: 'mall'
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: urldata
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data.errcode == 0) {
+                //拼接微信支付参数
+                var paydata = {
+                    timestamp: data.pay_req.timeStamp,
+                    nonceStr: data.pay_req.nonceStr,
+                    package: data.pay_req.package,
+                    signType: data.pay_req.signType,
+                    paySign: data.pay_req.paySign,
+                    success: function (res) {
+//                        resolve(res)
+//                        goUrlChange('orderDetail.html', vm.orderId);
+                        window.location.href = 'orderDetail.html?orderId=' + vm.orderId + '&type=' + BookingConfig.category_type;
+                    },
+                    cancel: function (res) {
+//                        reject(res)
+                    }
+                }
+                wx.chooseWXPay(paydata);
+            } else {
+                alert(data.errmsg);
+                return;
+            }
+        }, function (data) {
+            if(data.errmsg!='请在微信中打开'){
+                data.errmsg='该商户微信支付还没有配置';
+            }
+            alert(data.errmsg);
+        });
+    }
+    /*微信接口*/
+    function wxConfig() {
+        var url = '/serv/wxapi.ashx';
+        var urldata = {
+            action: 'getjsapiconfig',
+            url: location.href.split('#')[0]
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: urldata
+        };
+        ajaxReq(dataobj, function (wxapidata) {
+            runWxConfig(wxapidata);
+        }, function (data) {
+            alert(data.msg);
+        });
+    }
+    function runWxConfig(configdata) {
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: configdata.appId, // 必填，公众号的唯一标识
+            timestamp: configdata.timestamp, // 必填，生成签名的时间戳
+            nonceStr: configdata.nonceStr, // 必填，生成签名的随机串
+            signature: configdata.signature, // 必填，签名，见附录1
+            jsApiList: [
+                "onMenuShareTimeline",
+                "onMenuShareAppMessage",
+                "onMenuShareQQ",
+                "onMenuShareWeibo",
+                "startRecord",
+                "stopRecord",
+                "onVoiceRecordEnd",
+                "playVoice",
+                "pauseVoice",
+                "stopVoice",
+                "onVoicePlayEnd",
+                "uploadVoice",
+                "downloadVoice",
+                "chooseImage",
+                "previewImage",
+                "uploadImage",
+                "downloadImage",
+                "translateVoice",
+                "getNetworkType",
+                "openLocation",
+                "getLocation",
+                "hideOptionMenu",
+                "showOptionMenu",
+                "hideMenuItems",
+                "showMenuItems",
+                "hideAllNonBaseMenuItem",
+                "showAllNonBaseMenuItem",
+                "closeWindow",
+                "scanQRCode",
+                "chooseWXPay",
+                "openProductSpecificView",
+                "addCard",
+                "chooseCard",
+                "openCard"
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+        var shareModel = {
+            title: '',
+            desc: '',
+            link: '',
+            imgUrl: '',
+            type: '',
+            dataUrl: ''
+        }
+        if (BookingConfig.share_title != '' && BookingConfig.share_title != undefined) {
+            shareModel.title = BookingConfig.share_title;
+        }
+        if (BookingConfig.share_img != '' && BookingConfig.share_img != undefined) {
+            shareModel.imgUrl = BookingConfig.share_img;
+        }
+        if (BookingConfig.share_desc != '' && BookingConfig.share_desc != undefined) {
+            shareModel.desc = BookingConfig.share_desc;
+        }
+        if (BookingConfig.share_link != '' && BookingConfig.share_link != undefined) {
+            shareModel.link = BookingConfig.share_link;
+        }
+
+        wxapi.wxshare({
+            title: shareModel.title,
+            desc: shareModel.desc,
+            link: shareModel.link,
+            imgUrl: shareModel.imgUrl
+        }, function (data) {
+
+        })
+    }
+    /*微信接口 end*/
+
+
+    function showSelect(item) {
+
+        try {
+            if (item.access_level == 0) {
+                if (BookingConfig.truename == '' || BookingConfig.phone == '') {
+                    var content = '您的资料不完善';
+                    layer.open({
+                        content: content,
+                        btn: ['去完善资料', '取消'],
+                        shadeClose: false,
+                        yes: function () {
+                            window.location.href = '/customize/shop/?v=1.0#/userMange';
+                        },
+                        no: function () {
+                            layer.closeAll();
+                        }
+                    });
+                    clearBeforeTimeList();
+                    return;
+                }
+            } else {
+                if (!BookingConfig.is_member) {
+                    window.location.href = BookingConfig.apply_url;
+                    return;
+                }
+                else {
+                    if (item.access_level > BookingConfig.access_level) {
+                        window.location.href = BookingConfig.nopms_url;
+                        return;
+                    }
+                }
+            }
+            item.calendar.show = true;
+            if (vm.time_set_method == 0 || (vm.time_set_method == 1 && vm.time_set_style == 0) || vm.time_set_method == 2) {
+                if (item.calendar.dayList.length == 0) {
+                    setItemDateList(
+                            item,
+                            item.calendar.date.getFullYear(),
+                            item.calendar.date.getMonth() + 1
+                    );
+                }
+                ;
+                console.log('item.calendar.dayList', item.calendar.dayList);
+                if (vm.time_set_method != 2) {
+                    for (var i = 0; i < item.calendar.dayList.length; i++) {
+                        for (var j = 0; j < item.calendar.dayList[i].length; j++) {
+                            if (item.calendar.dayList[i][j].isTody) {
+                                selectDate(item, item.calendar.dayList[i][j]);
+                            }
+                            ;
+                        }
+                        ;
+                    }
+                    ;
+                }
+            }
+
+
+        }
+        catch
+                (e) {
+            alert('showSelect异常:' + e);
+        }
+
+    }
+    function isAbleClick(item, day) {
+        if (day == 0) return false;
+        //第三种方式当为固定周期时可选
+        if (vm.time_set_method == 2) {
+            if (day.isBeforeToday()) {
+                return false;
+            }
+            for (var i = 0; i < item.sku_calendar_day_list.length; i++) {
+                var sku = item.sku_calendar_day_list;
+                if (sku[i].week == day.week) {
+                    return true;
+                }
+            }
+        }
+        else { //第二种方式的第二种样式
+            var ndayString = new Date(day.year, day.month - 1, day.day).format('yyyy-MM-dd');
+            return item.sku_day_list.indexOf(ndayString) < 0;
+        }
+    }
+
+    function hideSelect(item) {
+        item.calendar.show = false;
+        layer.closeAll();
+    }
+
+    function selectCateChange() {
+        console.log(vm.currCate);
+        vm.getMeetRoomList(true);
+    }
+
+    function selectBlockTime(item) {
+        item.checked = !item.checked;
+        console.log(vm.meetRoomList);
+    }
+
+   //第二种方式点击日期显示该日期下的时间段
+   function showSecondTimeList(item, day) {
+       //清除之前选中的时间段
+       item.secondTimeList = [];
+       var sku_list = item.sku_list;
+       var toDay = new Date();
+       for (var i = 0; i < sku_list.length; i++) {
+           var ex1 = sku_list[i].ex1.replace(/-/g, '/');
+           var ex2 = sku_list[i].ex2.replace(/-/g, '/');
+           if(isNaN(new Date(ex1).getDate())) continue;
+           var exDate = new Date(ex1);
+           var dayDate = new Date(exDate.getFullYear(),exDate.getMonth(),exDate.getDate());
+           if(day.getDate().getTime() != dayDate.getTime()) continue;
+           var time = {
+               sku_id: sku_list[i].sku_id,
+               ex1:sku_list[i].ex1,
+               ex2:sku_list[i].ex2,
+               isBookAble:false,
+               checked:false,
+               time:new Date(ex1).format('h:mm')+'-'+ new Date(ex2).format('h:mm')
+           }
+           if(new Date(ex2)<toDay) time.isBookAble = true;
+           item.secondTimeList.push(time);
+       }
+       if(item.secondTimeList.length>0){
+           var url = '/serv/api/booking/order/details/listbyproduct.ashx';
+
+           var start = day.getDate().format('yyyy/MM/dd');
+           var end = new Date(day.getDate().getFullYear(),day.getDate().getMonth(),day.getDate().getDate()+1).format('yyyy/MM/dd');
+           var params = {
+               type: vm.category_type,
+               product: item.product_id,
+               start: start,  //  2016/04/06
+               end:end //  2016/04/07
+           };
+           var dataobj = {
+               type: 'Post',
+               url: url,
+               data: params
+           };
+           ajaxReq(dataobj, function (data) {
+               if(data.status){
+                   for( var i= 0; i<data.result.length;i++){
+                       var startEx = new Date(data.result[i].start.replace(/-/g, '/')).format('yyyy/MM/dd hh:mm');
+                       var endEx = new Date(data.result[i].end.replace(/-/g, '/')).format('yyyy/MM/dd hh:mm');
+                       for(var j=0;j<item.secondTimeList.length;j++){
+                           if(item.secondTimeList[j].isBookAble) continue;
+                           var startEx1 = new Date(item.secondTimeList[j].ex1.replace(/-/g, '/')).format('yyyy/MM/dd hh:mm');
+                           var endEx1 = new Date(item.secondTimeList[j].ex2.replace(/-/g, '/')).format('yyyy/MM/dd hh:mm');
+                           if(startEx == startEx1 && endEx == endEx1){
+                               item.secondTimeList[j].isBookAble =true;
+                           }
+                       }
+                   }
+               }
+           });
+       }
+   }
+    //第三种方式点击日期显示该日期下的时间段
+    function showThirdTimeList(item, day) {
+        //清除之前选中的时间段
+        for (var m = 0; m < item.thirdTimeList.length; m++) {
+            for (var n = 0; n < item.thirdTimeList[m].length; n++) {
+                item.thirdTimeList[m][n].checked = false;
+            }
+        }
+        for (var i = 0; i < item.sku_calendar_day_list.length; i++) {
+            var sku = item.sku_calendar_day_list[i];
+            if (sku.week == day.week) {
+                item.thirdTimeList = [];
+                item.thirdTimeList = sku.timeList;
+                getBookedTimeList(item, day);
+                return;
+            }
+        }
+    }
+    //将一维数组转化为二维数组
+    function toErweiArr(arr) {
+        for (var i = 0; i < arr.length; ++i)
+            arr.splice(i, 2, arr.slice(i, i + 2));
+        return arr;
+    }
+
+    function selectDate(item, day) {
+
+        // alert(' selectDate start ');
+
+        if (!day) {
+            return;
+        }
+        ;
+        if (day.isBeforeToday()) {
+            return;
+        }
+        ;
+        //判断是否在后台返回的日期内，否的话不能点击
+        if ((vm.time_set_method == 1 && vm.time_set_style == 0)) {
+            if (isAbleClick(item, day)) {
+                return;
+            }
+        }
+        if (vm.time_set_method == 2) {
+            if (!isAbleClick(item, day)) {
+                return;
+            }
+        }
+        LADatePicker.clearCheck(item.calendar.dayList);
+
+        // alert(' selectDate clearCheck end ');
+
+        day.isCheck = true;
+        item.calendar.selectDate.day = day.getDate();
+        // alert(' getBookedTimeList start ');
+        if (vm.time_set_method == 0) {
+            getBookedTimeList(item, day); //为0时表示第一种固定时间段，获取时间段的预约情况
+        }
+        else {
+            if (vm.time_set_method == 1 && vm.time_set_style == 0) {
+                //获取该日期下面的时间段
+                showSecondTimeList(item, day);
+            }
+            else if (vm.time_set_method == 2) {
+                showThirdTimeList(item, day);
+            }
+        }
+
+        // alert(' getBookedTimeList end ');
+
+    }
+
+    function toNextMonth(item) {
+        toMonth(item, 1);
+    }
+
+    function toPreMonth(item) {
+        item.calendar.selectDate.day = ''; //每次点击下个月或者上个月的时候清除之前选中的月
+        if (!item.calendar.hasBeforeToday) {
+            toMonth(item, -1);
+        }
+    }
+
+    function toMonth(item, number) {
+        item.calendar.selectDate.day = '';
+        LADatePicker.dateAdd('m', number, item.calendar.date);
+        setItemDateList(
+                item,
+                item.calendar.date.getFullYear(),
+                item.calendar.date.getMonth() + 1
+        );
+    }
+
+    /**
+     * [setItemDateList 设置时间对象]
+     * @param {[type]} item  [description]  item.calendar
+     * @param {[type]} year  [description]
+     * @param {[type]} month [description]
+     */
+    function setItemDateList(item, year, month) {
+
+        // alert('setItemDateList start');
+        item.calendar.year = year;
+        item.calendar.month = month;
+        item.calendar.dayList = LADatePicker.createDayArr(item.calendar.year, item.calendar.month);
+        item.calendar.hasBeforeToday = LADatePicker.hasBeforeToday(item.calendar.dayList);
+        item.calendar.currTimeList = [];
+
+        if (vm.time_set_method == 0) {
+            for (var k = 0; k <= 10; k++) {
+                var x = [];
+                var arrTmp1 = {arr: [(9 + k) + ':00:00', (9 + k + 1) + ':00:00']};
+                arrTmp1.isBookAble = false;
+                arrTmp1.checked = false;
+                x.push(arrTmp1);
+                k++;
+                var arrTmp2 = {arr: [(9 + k) + ':00:00', (9 + k + 1) + ':00:00']};
+                arrTmp2.isBookAble = false;
+                arrTmp2.checked = false;
+                x.push(arrTmp2);
+                item.calendar.currTimeList.push(x);
+            }
+            console.log('item.currTimeList', item.calendar.currTimeList);
+        }
+        else if (vm.time_set_method == 1) {
+            if (vm.time_set_style == 0) {
+                var sku_list = item.sku_list;
+
+                var x = [];
+                for (var i = 0; i < sku_list.length; i++) {
+                    var ex1 = sku_list[i].ex1.replace(/-/g, '/');
+                    var ex2 = sku_list[i].ex2.replace(/-/g, '/');
+                    if(isNaN(new Date(ex1).getDate())) continue;
+                    var exDate = new Date(ex1);
+                    var dayDate = new Date(exDate.getFullYear(),exDate.getMonth(),exDate.getDate());
+                    if(item.calendar.selectDate.day != dayDate) continue;
+                    x.push({isBookAble:false,checked:false,time:new Date(ex1).format('h:mm')+'-'+ new Date(ex2).format('h:mm')});
+                }
+                item.calendar.currTimeList.push(x);
+            }
+            else {
+                item.calendar.currTimeList.push(item.sku_list);
+            }
+        }
+        // alert('setItemDateList done');
+    }
+
+    //获取用户姓名和手机
+    function userInfo() {
+        var url = '/serv/api/user/info.ashx';
+        var dataJson = {
+            action: 'currentuserinfo'
+        };
+        var dataobj = {
+            type: 'GET',
+            url: url,
+            data: dataJson
+        };
+        ajaxReq(dataobj, function (data) {
+            if (data) {
+                BookingConfig.truename = data.truename;
+                BookingConfig.phone = data.phone;
+            } else {
+                alert('获取用户信息失败');
+            }
+        }, function (data) {
+            alert(data.msg);
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+﻿<div class="wrapSelectCar">
+	<div class="wrapTabTop">
+		<div class="row">
+			<div class="col" ng-class="{selected:item.index == pageData.topTabSelectIndex}" ng-repeat="item in pageData.topTab" ng-click="pageData.topTabSelectIndex = item.index">
+				{{item.title}}
+			</div>
+			
+		</div>
+	</div>
+	<div class="selectCar" ng-if="pageData.topTabSelectIndex == 0">
+		<div class="wrapTabTitle">
+	        <div class="row">
+	            <div class="col" ng-class="{greenActive:pageData.modelSelectStage >= 1}" ng-click="pageData.modelSelectStage = 1">
+	                品牌
+	            </div>
+	            <div class="col" ng-class="{greenActive:pageData.modelSelectStage >= 2}" ng-click="pageData.modelSelectStage = 2">
+	                车系
+	            </div>
+	            <div class="col" ng-class="{greenActive:pageData.modelSelectStage >= 3}" ng-click="pageData.modelSelectStage = 3">
+	                车型
+	            </div>
+	        </div>
+	    </div>
+
+		<div class="wrapBrad" ng-show="pageData.modelSelectStage == 1">
+			<div class="list">
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">A</span><img src="/customize/pureCar/m/static/img/demo/aodi_30_X_24.png" class="avatar"> <span>奥迪</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">A</span><img src="/customize/pureCar/m/static/img/demo/aodi_30_X_24.png" class="avatar"> <span>奥迪</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">A</span><img src="/customize/pureCar/m/static/img/demo/aodi_30_X_24.png" class="avatar"> <span>奥迪</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span class="pRight10">B</span><img src="/customize/pureCar/m/static/img/demo/baoma_30_X_24.png" class="avatar"> <span>宝马</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+			</div>
+		</div>
+		
+		<div class="wrapSeries" ng-show="pageData.modelSelectStage == 2">
+			<div class="list">
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+				<a class="item item-icon-right" href="#">
+				    <span>A6L</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+			</div>
+		</div>
+		
+		<div class="wrapModel" ng-show="pageData.modelSelectStage == 3">
+			<div class="list">
+				<a class="item" href="javascript:;">
+				    <span>2015款  2.0TSL  动感型</span>
+				</a>
+				<a class="item" href="javascript:;">
+				    <span>2015款  2.0TSL  动感型</span>
+				</a>
+				<a class="item" href="javascript:;">
+				    <span>2015款  2.0TSL  动感型</span>
+				</a>
+				<a class="item" href="javascript:;">
+				    <span>2015款  2.0TSL  动感型</span>
+				</a>
+			</div>
+		</div>		
+
+	</div>
+	<div class="noCar" ng-if="pageData.topTabSelectIndex == 1">
+		<div>请输入您的车型或VIN码</div>
+		<div>
+			<div class="txtVIN" contenteditable="true"></div>
+		</div>
+		<div>
+			<a href="javascript:;" class="greenBtn">
+				提&nbsp;&nbsp;交
+			</a>
+		</div>
+	</div>
+
+</div>

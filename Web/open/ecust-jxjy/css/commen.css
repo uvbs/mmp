@@ -1,0 +1,32 @@
+body{
+	padding-bottom: 60px;
+}
+.nav_title{
+	margin-top: 10px;
+}
+.nav_title ul{
+	width: 100%;
+}
+.nav_title ul li{
+	width: 32%;
+	/*border: 1px solid #00bdd2;*/
+}
+.nav_title ul li img{
+	width: 20px;
+}
+.nav_title ul li span{
+	display:block;
+	text-align: center;
+}
+a,
+a:hover,
+a:visited,
+a:link,
+a:focus,
+a:active
+{
+	color: #000000;
+	background-color: #33B0FB;
+	text-decoration: none;
+	outline:0;
+}

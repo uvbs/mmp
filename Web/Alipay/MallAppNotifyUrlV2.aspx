@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MallAppNotifyUrlV2.aspx.cs" Inherits="ZentCloud.JubitIMP.Web.Alipay.MallAppNotifyUrlV2" %>

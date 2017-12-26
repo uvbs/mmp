@@ -1,0 +1,52 @@
+﻿body {
+
+background-image:url(../images/loginbg.png);
+background-repeat:no-repeat;
+background-size:cover;
+}
+
+.weui-cells_form {
+
+    position:fixed;
+    bottom:100px;
+    width: 95%;
+    margin-left: 2.5%;
+}
+.weui-cell_vcode {
+
+   
+}
+.login-text {
+     position:fixed;
+    bottom:300px;
+    width: 95%;
+    margin-left: 2.5%;
+}
+.login-text img {
+    width:100%;
+
+}
+.login-tip {
+     position:fixed;
+    bottom:150px;
+    width: 95%;
+    margin-left: 2.5%;
+}
+.login-tip img {
+    width:100%;
+
+}
+.layui-m-layer0 .layui-m-layerchild {
+    width:auto !important;
+}
+.layui-m-layercont {
+    padding:10px 10px 10px 10px !important;
+}
+
+.weui-tabbar {
+    height:60px;
+}
+.weui-tabbar__label {
+    font-size:13px;
+    color:#4d4d4d;
+}

@@ -1,0 +1,59 @@
+﻿<div class="wrapArticleList">
+    <form ng-submit="pageListFunc.search()" ng-if="pageListData.hasSearch == '1'">
+        <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+            <h3>课程分类</h3>
+            <div class="cbp-wrap-menulist">
+                <a href="javascript:;" target="_blank" ng-click="pageListFunc.leftMenuClick(item)" ng-repeat="item in pageListData.toggleTag">{{item.name}}</a>
+            </div>
+        </nav>
+
+        <div class="warpHeader bar bar-header item-input-inset " ng-class="{haschoose:pageListData.haschoose == '1'}">
+            <i class="icon iconfont icon-iconfontliebiao mLeft6 mRight12 colorBlue" ng-click="pageListFunc.toggleMenuClick()" ng-if="pageListData.hasleftslide=='1'"></i>
+            <label class="item-input-wrapper">
+                <input type="search" ng-model="pageListData.keyword" placeholder="搜索...">
+                <i class="icon iconfont icon-sousuo" ng-click="pageListFunc.search()"></i>
+            </label>
+            <div class="rightBtn" ng-if="pageListData.haschoose == '1'" ng-mousedown="pageListFunc.showChooseDialog()">
+                <span class="">筛选</span>
+                <i class="icon-arrowdown iconfont"></i>
+            </div>        
+        </div>
+    </form>
+    <div class="wrapCardList wrapNewsList" ng-if="pageListData.totalCount > 0">
+        <div class="card" ng-repeat="item in pageListData.dataList">
+            <div class="item">
+                <div class="row" ng-click="pageListFunc.go(item.id)">
+                    <div ng-if="pageListData.hasImg == '1'">
+                        <img class="avatar" ng-src="{{item.imgSrc}}">
+                    </div>
+                    <div class="col">
+                        <h2 ng-bind="item.title"></h2>
+                        <summary ng-bind="item.summary" ng-if="pageListData.hassummary=='1'"></summary>
+                        <p ng-if="pageListData.hassummary!='1'">
+                            <span><i class="icon iconfont icon-haimalianxiren"></i></span>
+                            <span class="mLeft">{{item.commentSize}}</span>
+                            <span class="mLeft"><i class="icon iconfont icon-shixinshijian"></i></span>
+                            <span class="mLeft">{{item.createDate}}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row clear" ng-if="pageListData.hasTag=='0'">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a ng-click="pageListFunc.goList(tag)" class="tag" ng-bind="tag"></a>
+                        </li>
+                        <li class="floatR">
+                            <span ng-bind="item.createDate"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageListData.dataList.length<pageListData.totalCount">
+            <button class="button button-clear" ng-click="pageListFunc.loadMore()">查看更多</button>
+        </div>
+    </div>
+    <div ng-if="pageListData.totalCount == 0">
+        没有数据
+    </div>
+</div>

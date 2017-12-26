@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>validate验证框架演示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+<link type="text/css" rel="stylesheet"
+	href="../js/validate/css/validate.css" />
+<script src="./jquery-1.6.4.js" language="javascript"></script>
+<script src="../js/validate/talent-validate-all.js"
+	language="javascript"></script>
+<script src="./demo.js" language="javascript"></script>
+<script src="./jquery-1.6.4.js" language="javascript"></script>
+
+<link type="text/css" rel="stylesheet" href="../Styles/SyntaxHighlighter.css" />
+	<link type="text/css" rel="stylesheet" href="./demo.css" />
+	<script src="../Scripts/shCore.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJScript.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJava.js" type="text/javascript"></script>
+</head>
+<body>
+	<form name="form1" style='border: 1px solid #9BDF70; margin: 4px;'
+		title="form1">
+		n1<input type="text" value="" name="n1" id='id1' /> <br /> n2<input
+			type="text" value="" name="n2" id='id2' /> <br /> n3<input
+			type="text" value="" name="n3" id='id3' /> <br />
+	</form>
+
+	<input type="button" class='button' value="验证n1"
+		onclick="tt.validateName('n1')" />
+	<input type="button" class='button' value="验证n2"
+		onclick="tt.validateName('n2')" />
+	<input type="button" class='button' value="验证n2和n3"
+		onclick="tt.validateName('n2', 'n3')" />
+	<input type="button" class='button' value="验证所有"
+		onclick="tt.validate()" />
+</body>
+<script id="talent_script">
+			tt.vf.req.add("n1", "n2", "n3");
+		</script>
+</html>

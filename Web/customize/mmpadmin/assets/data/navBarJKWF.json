@@ -1,0 +1,75 @@
+{
+	"catalogTree":[
+		{
+			"levelOneHref":" ",
+			"levelOneName":"商城",
+			"levelOneIcon":"fa-shopping-cart",
+			"levelTwolist":[
+				{
+					"levelTwoHref":"index.productList({pageID:'',keyID:'',cateID:''})",
+					"levelTwoName":"商品列表"
+				},
+				{
+					"levelTwoHref":"index.productSort",
+					"levelTwoName":"商品分类"
+				},
+				{
+					"levelTwoHref":"index.productTag",
+					"levelTwoName":"商品标签"
+				},
+				{
+					"levelTwoHref":"index.orderList",
+					"levelTwoName":"订单列表"
+				},
+				{
+					"levelTwoHref":"index.configList",
+					"levelTwoName":"商城配置表"
+				}
+			]
+		},
+		{
+			"levelOneHref":" ",
+			"levelOneName":"卡券管理",
+			"levelOneIcon":"fa-yelp",
+			"levelTwolist":[
+				{
+					"levelTwoHref":"index.cardList({pageID:'',typeID:''})",
+					"levelTwoName":"卡券列表"
+				}
+			]
+		},
+		{
+			"levelOneHref":" ",
+			"levelOneName":"文章管理",
+			"levelOneIcon":"fa-yelp",
+			"levelTwolist":[
+				{
+					"levelTwoHref":"index.articleList({pageID:'',typeID:'',kewID:'',descID:''})",
+					"levelTwoName":"文章列表"
+				}
+			]
+		},
+		{
+			"levelOneHref":" ",
+			"levelOneName":"幻灯片管理",
+			"levelOneIcon":"fa-yelp",
+			"levelTwolist":[
+				{
+					"levelTwoHref":"index.newAdList",
+					"levelTwoName":"幻灯片列表"
+				}
+			]
+		},
+		{
+			"levelOneHref":" ",
+			"levelOneName":"导航管理",
+			"levelOneIcon":"fa-yelp",
+			"levelTwolist":[
+				{
+					"levelTwoHref":"index.navList({pageID:'',typeID:''})",
+					"levelTwoName":"导航列表"
+				}
+			]
+		}
+	]
+}

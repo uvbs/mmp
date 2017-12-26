@@ -1,0 +1,17 @@
+<div class="testbox viewbox">
+    <img class="banner" ng-src="{{setConfig.BgImgAnswer}}"/>
+  <section class="content-diy-test main-content" ng-show="pageData.show">
+    <p><span class="question-id">{{pageData.info.Num}}</span>.{{pageData.info.question_name}}</p>
+    <span class="question-option"
+          ng-class="{'question-select':pageData.info.Answer==item.option_id}"
+          ng-repeat="item in pageData.info.question_options"
+          ng-click="pageFunc.Select(item)">
+      <span ng-bind="pageFunc.GetPin($index)"></span>
+      <span ng-bind="item.option_name"></span>
+    </span>
+    <div class="submit-group">
+    <span class="question-submit" ng-click="pageFunc.goback()" ng-bind="pageData.backText"></span>
+    <span class="question-submit" ng-click="pageFunc.Submit()" ng-bind="pageData.nextText"></span>
+    </div>
+  </section>
+</div>

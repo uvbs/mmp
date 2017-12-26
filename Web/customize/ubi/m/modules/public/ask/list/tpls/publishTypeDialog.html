@@ -1,0 +1,10 @@
+﻿<div>
+    <div class="warpCommentDialog warpTypeDialog">
+        <div class="list">
+            <div class="addArticle" ng-class="{bgGreen:item.id == pageData.currType.id}" ng-mousedown="pageFunc.publishTypeChoose(item)" ng-repeat="item in pageData.typeList">
+                {{item.name}}
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

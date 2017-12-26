@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/commen.css">
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <a href="#">
+            <div class="item">
+                <div class="item_pic">
+                   <img src="images/classific.png">
+                </div>
+                <div class="intro">
+                    <div class="intro_classfic">自考通知</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <div class="item">
+                <div class="item_pic">
+                   <img src="images/classific.png">
+                </div>
+                <div class="intro">
+                    <div class="intro_classfic">专业介绍</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <div class="item">
+                <div class="item_pic">
+                   <img src="images/classific.png">
+                </div>
+                <div class="intro">
+                    <div class="intro_classfic">自考通知</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <div class="item">
+                <div class="item_pic">
+                   <img src="images/classific.png">
+                </div>
+                <div class="intro">
+                    <div class="intro_classfic">自考通知</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <div class="item">
+                <div class="item_pic">
+                   <img src="images/classific.png">
+                </div>
+                <div class="intro">
+                    <div class="intro_classfic">自考通知</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <p class="loadnote" style="text-align: center;"></p>
+
+    <div class="row">
+        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+            <div class="nav_title">
+                <ul class="list-inline">
+                    <li>
+                        <a href="index.html">
+                                <span>
+                                    <img src="images/home.jpg">
+                                </span>
+                                <span>
+                                    首页
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/App/Cation/Wap/ActivityLlists.aspx">
+                                <span>
+                                    <img src="images/activity.jpg">
+                                </span>
+                                <span>
+                                    学院活动
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://jxjy.comeoncloud.net/4663f/details.chtml">
+                            <span>
+                                <img src="images/call.jpg">
+                            </span>
+                            <span>
+                                联系我们
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+</body>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script>
+    $(function () {
+        InitData();
+    });
+    function InitData() {
+        $.ajax({
+            type: 'post',
+            url: "/Serv/WebsiteApi.ashx",
+            dataType:"jsonp",
+            jsonp:"callback",
+            data: { Action: "getarticlelistv1", cateid: GetParm("cateid") },
+            success: function (resp) {
+			console.log(resp);
+                $(".loadnote").text("　");
+                    var html = "";
+                    $.each(resp, function (Index, Item) {
+						html += '<div class=\"row\">';
+						html += '        <a href=\"' + Item.ArticleUrl + '\">';
+						html += '            <div class=\"item\">';
+						html += '                <div class=\"item_pic\">';
+						html += '                    <img src=\"' + Item.ArticleThumbnails + '\">';
+						html += '                </div>';
+						html += '                <div class=\"intro\">';
+						html += '                    <div class=\"intro_title\">' + Item.ArticleTitle.substr(0,25) + '</div>';
+						html += '                    <div class=\"intro_context\">' + Item.ArticleContent.substr(0,20) + '</div>';
+						html += '                    <div class=\"intro_date stress\">2015年01月05日</div>';
+						html += '                    <div class=\"intro_reader stress\">阅读：2134</div>';
+						html += '                </div>';
+						html += '            </div>';
+						html += '        </a>';
+						html += '    </div>';
+                    });
+                    $(".loadnote").before(html);
+                    if (html == "") {
+                        $(".loadnote").text("没有更多");
+                    }
+                } 
+        });
+    };
+
+    //获取Get参数
+    function GetParm(parm) {
+        //获取当前URL
+        var local_url = window.location.href;
+        //获取要取得的get参数位置
+        var get = local_url.indexOf(parm + "=");
+        if (get == -1) {
+            return "";
+        }
+        //截取字符串
+        var get_par = local_url.slice(parm.length + get + 1);
+        //判断截取后的字符串是否还有其他get参数
+        var nextPar = get_par.indexOf("&");
+        if (nextPar != -1) {
+            get_par = get_par.slice(0, nextPar);
+        }
+        return get_par;
+    }
+    //获取参数
+
+    function dealStr(str, maxl) {
+        if (str.length <= maxl) {
+            return str;
+        } else {
+            return str.substr(0, maxl) + "..";
+        }
+    }
+
+    $(document).ready(function () {
+        //处理标题
+        $('.intro_title').text(dealStr($('.intro_title').text(), 5));
+        //处理正文
+        $('.intro_context').text(dealStr($('.intro_context').text(), 10));
+    })
+</script>
+
+
+</html>

@@ -1,0 +1,483 @@
+<div class="zcSelectLink">
+    <div class="nSelectResult" title="{{sText}}">
+        <div class="nCateLinkResult" ng-if="sType != '自定义'">
+            <span class="sCate" ng-bind="sType"></span>
+            <span class="sPlit">|</span>
+            <span class="sText" ng-bind="sText" ng-click="vmFunc.toLinkPage()"></span>
+        </div>
+        <div class="nLinkResult" ng-if="sType == '自定义'">
+            <select class="nLType" ng-model="vm.sLType" ng-options="model for model in vm.lTypeList" ng-change="vmFunc.changeSLType()"></select>
+            <input type="text" class="nLinkText" ng-class="{'nLinkTextWidth':sType != '自定义'}" ng-model="vm.sLink" ng-blur="vmFunc.changeLink()">
+        </div>
+    </div>
+    <div class="nSelectEdit" ng-mouseover="vm.showDiv=true" ng-mouseleave="vm.showDiv=false">
+        <span class="sEdit">修改</span>
+        <svg class="icon icoEdit" aria-hidden="true">
+            <use xlink:href="#icon-arrowdown"></use>
+        </svg>
+    </div>
+    <div class="cSelectDiv" ng-class="{'cShowDiv':vm.showDiv}" ng-mouseover="vm.showDiv=true"
+         ng-mouseleave="vm.showDiv=false">
+        <ul class="cSelectUL">
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '页面'}"
+                ng-click="vmFunc.selectLi('页面')"><a>页面</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '文章'}"
+                ng-click="vmFunc.selectLi('文章')"><a>文章</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '活动'}"
+                ng-click="vmFunc.selectLi('活动')"><a>活动</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '商品'}"
+                ng-click="vmFunc.selectLi('商品')"><a>商品</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '签到'}"
+                ng-click="vmFunc.selectLi('签到')"><a>签到</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '优惠券'}"
+                ng-click="vmFunc.selectLi('优惠券')"><a>优惠券</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '众筹'}"
+                ng-click="vmFunc.selectLi('众筹')"><a>众筹</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '刮一刮'}"
+                ng-click="vmFunc.selectLi('刮一刮')"><a>刮一刮</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '摇一摇'}"
+                ng-click="vmFunc.selectLi('摇一摇')"><a>摇一摇</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '游戏'}"
+                ng-click="vmFunc.selectLi('游戏')"><a>游戏</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '微秀'}"
+                ng-click="vmFunc.selectLi('微秀')"><a>微秀</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '问卷'}"
+                ng-click="vmFunc.selectLi('问卷')"><a>问卷</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '答题'}"
+                ng-click="vmFunc.selectLi('答题')"><a>答题</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '投票(选题)'}"
+                ng-click="vmFunc.selectLi('投票(选题)')"><a>投票(选题)</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '投票(排行)'}"
+                ng-click="vmFunc.selectLi('投票(排行)')"><a>投票(排行)</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '我的'}"
+                ng-click="vmFunc.selectLi('我的')"><a>我的</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '其他'}"
+                ng-click="vmFunc.selectLi('其他')"><a>其他</a></li>
+            <li href="javascript:void(0);" class="cSelectli" ng-class="{'cSelected':sType == '自定义'}"
+                ng-click="vmFunc.selectLi('自定义')"><a>自定义</a></li>
+        </ul>
+    </div>
+    <div class="dialogSelectLinkDiv" ng-if="vm.showDataDiv">
+        <div class="headDiv">
+            <span ng-bind="vm.sTempType">页面</span>
+            <svg class="icon close" aria-hidden="true" ng-click="vm.showDataDiv=false">
+                <use xlink:href="#icon-cha"></use>
+            </svg>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType == '页面'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="页面的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType == '文章' || vm.sTempType == '活动'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="活动的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='商品'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="商品的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='签到'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="签到的地点名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='优惠券'">
+            <select ng-model="vm.cate" ng-change="vmFunc.searchData()">
+                <option value="">全部</option>
+                <option value="0">折扣券</option>
+                <option value="1">抵扣券</option>
+                <option value="2">免邮券</option>
+                <option value="3">满扣券</option>
+            </select>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='众筹'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="标题" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='刮一刮'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="活动的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='摇一摇'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="活动的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='游戏'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="游戏的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='微秀'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="微秀的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='问卷'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="问卷的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='答题'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="标题" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='投票(选题)'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="投票的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="searchDiv" ng-if="vm.sTempType =='投票(排行)'">
+            <form ng-submit="vmFunc.searchData()">
+                <input type="text" class="txtKeyword" placeholder="投票的名称" ng-model="vm.searchKeyword"/>
+                <button type="button" class="button button-positive btnSearch" ng-click="vmFunc.searchData()">
+                  <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-search"></use>
+                  </svg>
+                  查询
+                </button>
+            </form>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '页面'">
+            <div class="row rowHead">
+                <div class="col colHead">名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '文章' || vm.sTempType == '活动'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-85 colHead">标题</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '商品'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-60 colHead">名称</div>
+                <div class="col-25 colHead">价格</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '签到'">
+            <div class="row rowHead">
+                <div class="col colHead">地点名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '优惠券'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">类型</div>
+                <div class="col-55 colHead">名称</div>
+                <div class="col-30 colHead">优惠额度</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '众筹'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-60 colHead">标题</div>
+                <div class="col-25 colHead">总金额</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '刮一刮' || vm.sTempType == '摇一摇'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-85 colHead">活动名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '游戏'">
+            <div class="row rowHead">
+                <div class="col colHead">游戏名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '微秀'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-85 colHead">名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '问卷'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-85 colHead">问卷名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '答题'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-85 colHead">标题</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '投票(选题)'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">类型</div>
+                <div class="col-85 colHead">名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" ng-if="vm.sTempType == '投票(排行)'">
+            <div class="row rowHead">
+                <div class="col-15 colHead">缩略图</div>
+                <div class="col-85 colHead">名称</div>
+            </div>
+        </div>
+        <div class="listSelectHeadDiv" style="margin-top: 10px" ng-if="vm.sTempType == '其他'|| vm.sTempType == '我的'">
+            <div class="row rowHead">
+                <div class="col colHead">页面名称</div>
+            </div>
+        </div>
+        <div class="listSelectDiv">
+            <div class="row rowList"
+                 ng-repeat="component in vm.data track by $index" ng-if="vm.sTempType == '页面'"
+                 ng-class="{'rowSelected':sValue==component.component_id}"
+                 ng-click="vmFunc.select(component)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col colList">
+                    <span class="colTag" ng-if="vmFunc.haveTag(component)" ng-bind="vmFunc.getTag(component)">首页</span>
+                    <span class="colTitle textOverflow1" title="{{component.component_name}}" ng-bind="component.component_name"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="article in vm.data track by $index"
+                 ng-if="vm.sTempType == '文章' || vm.sTempType == '活动'"
+                 ng-class="{'rowSelected':sValue==article.JuActivityID}"
+                 ng-click="vmFunc.select(article)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5">
+                    <img ng-src="{{article.ThumbnailsPath}}" width="50"  height="50"/>
+                </div>
+                <div class="col-85 colList height60">
+                    <span class="colTitle textOverflow2" title="{{article.ActivityName}}" ng-bind="article.ActivityName"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="mall in vm.data track by $index" ng-if="vm.sTempType == '商品'"
+                 ng-class="{'rowSelected':sValue==mall.product_id}"
+                 ng-click="vmFunc.select(mall)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5"><img ng-src="{{mall.img_url}}" width="50" height="50"/></div>
+                <div class="col-60 colList height60">
+                    <span class="colTitle textOverflow2" title="{{mall.product_title}}" ng-bind="mall.product_title"></span>
+                </div>
+                <div class="col-25 colList height60 pTop15">
+                    <span class="colTitle" title="{{mall.price| currency:'￥'}}" ng-bind="mall.price| currency:'￥'"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="address in vm.data track by $index" ng-if="vm.sTempType == '签到'"
+                 ng-class="{'rowSelected':sValue==address.id}"
+                 ng-click="vmFunc.select(address)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col colList">
+                    <span class="colTitle textOverflow1" title="{{address.address}}" ng-bind="address.address"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="cardcoupon in vm.data track by $index" ng-if="vm.sTempType == '优惠券'"
+                 ng-class="{'rowSelected':sValue==cardcoupon.cardcoupon_id}"
+                 ng-click="vmFunc.select(cardcoupon)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList"><span
+                        ng-bind="['折扣券','抵扣券','免邮券','满扣券'][cardcoupon.cardcoupon_type]"></span></div>
+                <div class="col-55 colList"><span class="colTitle textOverflow1" title="{{cardcoupon.cardcoupon_name}}"
+                                                  ng-bind="cardcoupon.cardcoupon_name"></span></div>
+                <div class="col-30 colList">
+                    <span class="textOverflow1" ng-if="cardcoupon.cardcoupon_type==0"
+                          title="{{cardcoupon.discount+'折'}}" ng-bind="cardcoupon.discount+'折'"></span>
+                    <span class="textOverflow1" ng-if="cardcoupon.cardcoupon_type==1"
+                          title="{{'抵扣'+cardcoupon.deductible_amount+'元'}}"
+                          ng-bind="'抵扣'+cardcoupon.deductible_amount+'元'"></span>
+                    <span class="textOverflow1" ng-if="cardcoupon.cardcoupon_type==2"
+                          title="{{'满'+cardcoupon.freefreight_amount+'包邮'}}"
+                          ng-bind="'满'+cardcoupon.freefreight_amount+'包邮'"></span>
+                    <span class="textOverflow1" ng-if="cardcoupon.cardcoupon_type==3"
+                          title="{{'满'+cardcoupon.buckle_amount+'减'+cardcoupon.buckle_sub_amount}}"
+                          ng-bind="'满'+cardcoupon.buckle_amount+'减'+cardcoupon.buckle_sub_amount"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="crowdfund in vm.data track by $index" ng-if="vm.sTempType == '众筹'"
+                 ng-class="{'rowSelected':sValue==crowdfund.crowdfund_id}"
+                 ng-click="vmFunc.select(crowdfund)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5">
+                    <img ng-src="{{crowdfund.crowdfund_img_url}}" width="50" height="50"/>
+                </div>
+                <div class="col-60 colList height60">
+                    <span class="colTitle textOverflow2" title="{{crowdfund.crowdfund_title}}" ng-bind="crowdfund.crowdfund_title"></span></div>
+                <div class="col-25 colList height60 pTop15">
+                    <span class="colTitle textOverflow1" title="{{crowdfund.crowdfund_amount| currency:'￥'}}" ng-bind="crowdfund.crowdfund_amount| currency:'￥'"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="lottery in vm.data track by $index"
+                 ng-if="vm.sTempType == '刮一刮' || vm.sTempType == '摇一摇'"
+                 ng-class="{'rowSelected':sValue==lottery.LotteryID}"
+                 ng-click="vmFunc.select(lottery)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5">
+                    <img ng-src="{{lottery.ThumbnailsPath}}" width="50" height="50"/>
+                </div>
+                <div class="col-85 colList height60">
+                    <span class="colTitle textOverflow2" title="{{lottery.LotteryName}}" ng-bind="lottery.LotteryName"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="game in vm.data track by $index" ng-if="vm.sTempType == '游戏'"
+                 ng-class="{'rowSelected':sValue==game.AutoID}"
+                 ng-click="vmFunc.select(game)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col colList">
+                    <span class="colTitle textOverflow1" title="{{game.PlanName}}" ng-bind="game.PlanName"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="wxShow in vm.data track by $index" ng-if="vm.sTempType == '微秀'"
+                 ng-class="{'rowSelected':sValue==wxShow.AutoId}"
+                 ng-click="vmFunc.select(wxShow)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5">
+                    <img ng-src="{{wxShow.ShowImg}}" width="50" height="50"/>
+                </div>
+                <div class="col-85 colList height60">
+                    <span class="colTitle textOverflow2" title="{{wxShow.ShowName}}" ng-bind="wxShow.ShowName"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="Questionnaire in vm.data track by $index" ng-if="vm.sTempType == '问卷'"
+                 ng-class="{'rowSelected':sValue==Questionnaire.QuestionnaireID}"
+                 ng-click="vmFunc.select(Questionnaire)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5">
+                    <img ng-src="{{Questionnaire.QuestionnaireImage}}" width="50" height="50"/>
+                </div>
+                <div class="col-85 colList height60">
+                    <span class="colTitle textOverflow2" title="{{Questionnaire.QuestionnaireName}}" ng-bind="Questionnaire.QuestionnaireName"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="set in vm.data track by $index" ng-if="vm.sTempType == '答题'"
+                 ng-class="{'rowSelected':sValue==set.id}"
+                 ng-click="vmFunc.select(set)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5">
+                    <img ng-src="{{set.img}}" width="50" height="50"/>
+                </div>
+                <div class="col-85 colList height60">
+                    <span class="colTitle textOverflow2" title="{{set.title}}" ng-bind="set.title"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="vote in vm.data track by $index" ng-if="vm.sTempType == '投票(选题)'"
+                 ng-class="{'rowSelected':sValue==vote.AutoId}"
+                 ng-click="vmFunc.select(vote)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList">
+                    <span ng-if="vote.VoteSelect==1">单选</span><span ng-if="vote.VoteSelect==2">多选</span>
+                </div>
+                <div class="col-85 colList">
+                    <span class="colTitle textOverflow1" title="{{vote.VoteName}}" ng-bind="vote.VoteName"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="vote in vm.data track by $index" ng-if="vm.sTempType == '投票(排行)'"
+                 ng-class="{'rowSelected':sValue==vote.AutoID}"
+                 ng-click="vmFunc.select(vote)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col-15 colList height60 pTop5">
+                    <img ng-src="{{vote.VoteImage}}" width="50" height="50"/>
+                </div>
+                <div class="col-85 colList height60">
+                    <span class="colTitle textOverflow2" title="{{vote.VoteName}}" ng-bind="vote.VoteName"></span>
+                </div>
+            </div>
+            <div class="row rowList" ng-repeat="other in vm.data track by $index"
+                 ng-if="vm.sTempType == '其他' || vm.sTempType == '我的'"
+                 ng-class="{'rowSelected':sValue==other.id}"
+                 ng-click="vmFunc.select(other)"
+                 ng-mouseover="vmFunc.rowMouseOver($event)"
+                 ng-mouseleave="vmFunc.rowMouseLeave($event)">
+                <div class="col colList">
+                    <span class="colTitle textOverflow1" title="{{other.title}}" ng-bind="other.title"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogSelectLinkBgDiv" ng-if="vm.showDataDiv">
+        &nbsp;
+    </div>
+</div>

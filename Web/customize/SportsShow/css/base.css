@@ -1,0 +1,75 @@
+﻿@charset "UTF-8";
+/*重写部分*/
+.col-60 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 60%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 60%;
+    -ms-flex: 0 0 60%;
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+
+.col-offset-4 {
+    margin-left: 4%;
+}
+
+.col-offset-15 {
+    margin-left: 15%;
+}
+
+.col-offset-35 {
+    margin-left: 35%;
+}
+
+.p-reformat {
+    margin: 0;
+}
+
+/*自定义部分*/
+@font-face {
+    font-family: "ico";
+    src: url('//at.alicdn.com/t/font_1444974975_7552383.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1444974975_7552383.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//at.alicdn.com/t/font_1444974975_7552383.woff') format('woff'), /* chrome銆乫irefox */ url('//at.alicdn.com/t/font_1444974975_7552383.ttf') format('truetype'), /* chrome銆乫irefox銆乷pera銆丼afari, Android, iOS 4.2+*/ url('//at.alicdn.com/t/font_1444974975_7552383.svg#ico') format('svg'); /* iOS 4.1- */
+}
+
+.ico {
+    font-family: "ico" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-zhuanfa:before {
+    content: "\e600";
+}
+
+.ico-shuaxin:before {
+    content: "\e601";
+}
+
+.padding-center {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+/* alert提示框 */
+#alertDialog
+{
+    position:fixed;*position:absolute;background-color: rgba(0,0,0,.8)!important;color:#fff;padding:20px 40px 20px 20px;text-align:left;font-size:14px;
+    -moz-border-radius:7px;-moz-box-shadow:0 0 40px #000;box-shadow:0 0 40px #000;-webkit-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0 40px #ccc;z-index:99999;
+}
+#alertDialog .close {
+    position:absolute;right:10px;top:22px;background-color: rgba(0,0,0,.8)!important;color:#fff;display:block;width:20px;height:20px;text-align:center;
+    overflow:hidden;font-size:16px;line-height:16px;line-height:20px;font-weight:bold;border-radius:12px;-moz-border-radius:12px;-webkit-border-radius:12px;
+    text-decoration:none;
+}
+.errorDialog {background-color:#000!important;color:#fff!important;}
+.errorDialog .close {color:#FD7E71!important;}
+.warningDialog {background-color:#000!important;color:#fff!important;}
+.warningDialog .close {color:#000!important;text-decoration:none;}
+.warningDialog .close a{ text-decoration:none;}
+.warningErrorDialog {background-color:#ececec!important;color:#333!important;}
+.warningErrorDialog .close {color:#ececec!important;}

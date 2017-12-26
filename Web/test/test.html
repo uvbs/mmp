@@ -1,0 +1,35 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+
+   
+</head>
+<body>
+
+
+    <form id="uploadForm">
+            上传文件： <input type="file" name="file" />
+            <input type="button" value="上传" onclick="doUpload()" />
+    </form>  
+</body>
+<script src="/Scripts/jquery-1.8.2.min.js"></script>
+<script>
+    function doUpload() {
+        var formData = new FormData($("#uploadForm")[0]);
+        $.ajax({
+            url: '/serv/api/admin/mall/order.ashx?action=batchupdateexpress',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (resp) {
+               
+            },
+            error: function (resp) {
+               
+            }
+        });
+    }
+</script>
+</html>

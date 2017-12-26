@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <link href="/lib/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/lib/layer.mobile/need/layer.css" rel="stylesheet" />
+    <script src="/lib/jquery/jquery-2.1.1.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>    
+    <script src="/lib/layer.mobile/layer.m.js"></script>
+</head>
+<body>
+    <div class="padding20 text-center" style="padding-top:100px;">
+
+        <a href="javascript:;" class="btn btn-info" id="btnStart">设备配网</a>
+        <br /><br />
+        <a href="javascript:;" class="btn btn-info" id="btnScan">扫一扫</a>
+    </div>     
+    
+
+    <script>
+
+        window.alert = function (msg) {
+            layer.open({
+                content: msg
+            });
+        };
+
+        $.ajax({
+            url: "http://" + location.host + "/serv/wxapi.ashx",
+            data: {
+                action: "getjsapiconfig",
+                url: location.href
+            },
+            dataType: "json",
+            success: function (wxapidata) {
+                wx.config({
+                    beta:true,
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: wxapidata.appId, // 必填，公众号的唯一标识
+                    timestamp: wxapidata.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: wxapidata.nonceStr, // 必填，生成签名的随机串
+                    signature: wxapidata.signature,// 必填，签名，见附录1
+                    jsApiList: [
+                        "onMenuShareTimeline",
+                        "onMenuShareAppMessage",
+                        "onMenuShareQQ",
+                        "onMenuShareWeibo",
+                        "startRecord",
+                        "stopRecord",
+                        "onVoiceRecordEnd",
+                        "playVoice",
+                        "pauseVoice",
+                        "stopVoice",
+                        "onVoicePlayEnd",
+                        "uploadVoice",
+                        "downloadVoice",
+                        "chooseImage",
+                        "previewImage",
+                        "uploadImage",
+                        "downloadImage",
+                        "translateVoice",
+                        "getNetworkType",
+                        "openLocation",
+                        "getLocation",
+                        "hideOptionMenu",
+                        "showOptionMenu",
+                        "hideMenuItems",
+                        "showMenuItems",
+                        "hideAllNonBaseMenuItem",
+                        "showAllNonBaseMenuItem",
+                        "closeWindow",
+                        "scanQRCode",
+                        "chooseWXPay",
+                        "openProductSpecificView",
+                        "addCard",
+                        "chooseCard",
+                        "openCard",
+                        "configWXDeviceWiFi"
+                    ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                });
+
+                wx.ready(function () {
+                    $('#btnStart').on('click', function () {
+                        //WeixinJSBridge.invoke('configWXDeviceWiFi', {}, function (res) {
+
+                        //    alert(res);
+
+                        //    if (res.err_msg == "configWXDeviceWiFi:ok") {
+                        //        alert('配置成功');
+                        //    }
+                        //    else if (res.err_msg == "configWXDeviceWiFi:ok") {
+                        //        alert('取消配置');
+                        //    }
+                        //    else {
+                        //        alert('res.err_msg : ' + res.err_msg + '  res.desc : ' + res.desc);
+                        //    }
+
+                        //});
+                        
+                        wx.invoke('configWXDeviceWiFi', {}, function (res) {
+                            //alert(res);
+                            if (res.err_msg == "configWXDeviceWiFi:ok") {
+                                alert('配置成功');
+                            }
+                            else if (res.err_msg == "configWXDeviceWiFi:fail") {
+                                alert('连接超时');
+                            }
+                            else if (res.err_msg == "configWXDeviceWiFi:cancel") {
+                                alert('取消配置');
+                            }
+                            else {
+                                alert('res.err_msg : ' + res.err_msg + '  res.desc : ' + res.desc);
+                            }
+                        });
+
+                    });
+
+                    $('#btnScan').on('click', function () {
+                        wx.scanQRCode({
+                            needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                            scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                            success: function (res) {
+                                var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                                //alert(result);
+                            }
+                        });
+                    });
+                    
+                });
+
+                wx.error(function (res) {
+                    alert(res.errMsg);
+                });
+
+
+
+            },
+            error: function (errmes) {
+                console.dir(errmes)
+            }
+        });
+
+    </script>
+
+</body>
+</html>

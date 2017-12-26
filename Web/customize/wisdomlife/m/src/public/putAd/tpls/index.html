@@ -1,0 +1,64 @@
+﻿<div class="wrapUserEdit">
+    <div class="bar bar-header">
+        <div class="h1 title"><i class="icon iconfont icon-fanhui fanhui" ng-click="pageFunc.goback()"></i>我要投广告</div>
+    </div>
+    <div class="content has-header">
+        <div class="list">
+            <label class="item item-input tip">
+                <i class="icon iconfont icon-highvolume highvolume"></i>
+                提交广告申请：请确保填写真实有效资料
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">广告主名称：</span>
+                <input type="text" class="form-control" ng-model="pageData.K2" placeholder="请填写广告主名称" required>
+                
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">联系人姓名：</span>
+                <input type="text" class="form-control" ng-model="pageData.Name" placeholder="请填写联系人姓名" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">联系手机：</span>
+                <input type="number" class="form-control" ng-model="pageData.Phone" placeholder="请填写联系手机" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">联系邮箱：</span>
+                <input type="email" class="form-control" ng-model="pageData.K1" placeholder="请填写联系邮箱" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">广告预算：</span>
+                <input type="number" class="form-control" ng-model="pageData.K3" required placeholder="单位（元）" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">投放平台：</span>
+                <select id="selectPF" class="pRight10 border0 colorGrey_6" multiple="multiple" ng-model="pageData.K4" ng-options="province.name as province.name for province in pageData.provinceList" required></select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">投放开始日期：</span>
+                <!--<input type="text" class="form-control" ng-model="pageData.userInfo.userPhone" placeholder=""-->
+                <input type="date" ng-model="pageData.K5" />
+            </label>
+            <label class="item item-input">
+                <span class="input-label">投放截止日期：</span>
+                <!--<input type="text" class="form-control" ng-model="pageData.userInfo.userPhone" placeholder="">-->
+                <input type="date" ng-model="pageData.K6" />
+            </label>
+            <label class="item item-input">
+                <span class="input-label">广告内容概括：</span>
+                <input type="text" class="form-control" ng-model="pageData.K7" placeholder="">
+            </label>
+        </div>
+        <div class="wrapBtn">
+            <button class="button button-block button-positive" ng-mousedown="pageFunc.submit()">
+                立即提交
+            </button>
+        </div>
+        <backbtn></backbtn>
+    </div>
+</div>

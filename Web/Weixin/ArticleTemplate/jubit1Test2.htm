@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+<!--微信官方模板-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>$CCWX-ARTICLETITLE$</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="/Weixin/ArticleTemplate/css/template1.css">
+    <link href="/juactivity/wap/css/activitylist.css" rel="stylesheet" type="text/css" />
+    <link href="/css/jqm/themes/f.css" rel="stylesheet" type="text/css" />
+    <link href="/css/jqm/themes/jquery.mobile.structure-1.3.2.min.css" rel="stylesheet"
+        type="text/css" />
+    <script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jqScrollTo1.4.6.js" type="text/javascript"></script>
+    <script src="/Scripts/iscroll.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.mobile-1.3.2.js" type="text/javascript"></script>
+    <script src="/Scripts/StringBuilder.js" type="text/javascript"></script>
+    <script src="/Scripts/Common.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+    <script src="/Static/WeixinArticleTemplate/wtpinit.js" type="text/javascript"></script>
+    <style>
+        ol, ul
+        {
+            list-style-position: inside;
+        }
+    </style>
+    <style>
+        #activity-detail .page-content .text
+        {
+            font-size: 16px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sharebtn,#sendtofriendbtn").click(function () {
+                $("#sharebg,#sharebox").show();
+                $("#sharebox").css({ "top": $(window).scrollTop() })
+            });
+            $("#followbtn").click(function () {
+                $("#sharebg,#followbox").show();
+                $("#followbox").css({ "top": $(window).scrollTop() })
+            });
+            $("#sharebg,#sharebox,#followbox").click(function () {
+                $("#sharebg,#sharebox,#followbox").hide();
+                $("#sendtofriendbtn,#sharebtn").removeClass("ui-btn-active");
+            });
+        });
+
+      
+    </script>
+    <style>
+        .ui-icon-friend
+        {
+            background-image: url(http://www.jubit.cn/activity/icon/friendquan.png);
+            background-repeat: no-repeat;
+            background-position: 15% center;
+        }
+        .ui-icon-send
+        {
+            background-image: url(http://www.jubit.cn/activity/icon/zhuanfa.png);
+            background-repeat: no-repeat;
+            background-position: 12% center;
+        }
+    </style>
+    <!--<script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnSignIn").live("click", function () {
+                var Name = $("#txtName").val();
+                var Phone = $("#txtPhone").val();
+                if (Name == "" || (Phone == "")) {
+                    //alert("请输入姓名、手机号码");
+
+                    $('#lbDlgMsg').html("请输入姓名、手机号码");
+                    $('#dlgMsg').popup();
+                    $('#dlgMsg').popup('open');
+
+                    return false;
+                }
+                try {
+                    $.mobile.loading('show', { textVisible: true, text: '正在提交...' });
+                    var option = {
+                        url: "/serv/ActivityApiJson.ashx",
+                        type: "post",
+                        dataType: "text",
+                        success: function (result) {
+                            $.mobile.loading('hide');
+                            var resp = $.parseJSON(result);
+                            if (resp.Status == 0) {//清空
+
+                                $('input:text').val("");
+                                $('#lbDlgMsg').html("提交成功!");
+                                $('#dlgMsg').popup();
+                                $('#dlgMsg').popup('open');
+
+                            }
+                            else if (resp.Status == 1) {
+                                //该用户已提交过数据
+                                $('#lbDlgMsg').html("该用户已提交过数据!");
+                                $('#dlgMsg').popup();
+                                $('#dlgMsg').popup('open');
+                            }
+                            else {
+                                $('#lbDlgMsg').html(resp.Msg);
+                                $('#dlgMsg').popup();
+                                $('#dlgMsg').popup('open');
+
+                            }
+
+
+
+                        }
+                    };
+                    $("#formsignin").ajaxSubmit(option);
+                    return false;
+
+                }
+                catch (e) {
+                    alert(e);
+                }
+
+
+
+            });
+
+
+
+        });
+
+
+
+    
+    </script>-->
+</head>
+<body id="activity-detail" style="margin-top: 10px; margin-left: 5px; margin-right: 5px;">
+    <div class="page-bizinfo">
+        <div class="header">
+            <h1 id="activity-name">
+                $CCWX-ARTICLETITLE$</h1>
+            <p class="activity-info" style="font-size: 12px;">
+                <span id="post-date" class="activity-meta no-extra">$CCWX-ARTICLETIME$</span>
+                <br />
+                <span class="activity-meta no-extra">$CCWX-ARTICLEADDRESS$</span>
+                <br />
+                <span class="activity-meta no-extra">$CCWX-ArticleSource$</span>
+            </p>
+        </div>
+    </div>
+    <div class="page-content" style="margin: 10 10 10 10">
+        <div class="media" id="media">
+        </div>
+        <div class="text">
+            $CCWX-ARTICLECONTENT$
+        </div>
+        <br />
+        <!--<hr />
+        <h1 style="font-size: 20px; font-weight: bold;">
+            在线报名</h1>-->
+        $JUTP-TPSignForm$
+        <div data-role="popup" id="dlgMsg" style="padding: 20px; text-align: center; font-weight: bold;">
+            <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete"
+                data-iconpos="notext" class="ui-btn-right">Close</a>
+            <label id="lbDlgMsg">
+            </label>
+        </div>
+        <div style="width: 100%; height: 100%; display: none; background: #000; opacity: 0.7;
+            position: absolute; top: 0; left: 0; z-index: 999999; text-align: right;" id="sharebg">
+            &nbsp;
+        </div>
+        <div style="position: absolute; z-index: 1000000; right: 0; width: 100%; text-align: right;
+            display: none;" id="sharebox">
+            <img src="http://www.jubit.cn/activity/icon/follow1.png" width="100%" />
+        </div>
+        <div style="position: absolute; z-index: 1000000; right: 0; width: 100%; text-align: right;
+            display: none;" id="followbox">
+            <img src="http://www.jubit.cn/activity/icon/follow2.png" width="100%" />
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a id="sendtofriendbtn" class="ui-icon-send" data-inline="true" data-role="button">
+                    发送给朋友</a> </li>
+                <li id="sharebtnli"><a id="sharebtn" class="ui-icon-friend" data-inline="true" data-role="button">
+                    分享到朋友圈</a> </li>
+            </ul>
+            <ul>
+                <li><a id="btnPubToo" data-inline="true" data-role="button" href="/FShare/Wap/UserHub.aspx" data-ajax="false" >
+                    我也要发布文章活动</a> </li>
+            </ul>
+        </div>
+        <p class="page-toolbar" style="text-align: center; font-size: 12px; color: #293955;">
+            <span>朋友圈●乐分享&nbsp;就在&nbsp;<a href="weixin://contacts/profile/comeoncloudhome">至云之家(点击关注)</a>
+            </span>
+            <br />
+            <span>PC访问 <a target="_blank" href="http://wx.jubit.cn">wx.jubit.cn</a></span>
+            <label id="lbTest">123</label>
+        </p>
+        <br />
+        <br />
+    </div>
+</body>
+<script type="text/javascript">
+
+
+
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        WeixinJSBridge.call('showOptionMenu');
+    });
+
+    //var appId = "wx082a38235bae238f";
+    //var wxid = "jubitclub";
+    var desc = "$CCWX-ARTICLETITLE$";
+    var title = "$CCWX-ARTICLETITLE$";
+    var imgUrl = 'http://wx.jubit.cn/img/hb/hb1.jpg'; //;"$CCWX-ARTICLEIMAGE$";
+    //var shareUrl = "$CCWXTG-SHAREURL$";
+    var shareUrl = window.location.href;
+
+    // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 发送给好友
+
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+            WeixinJSBridge.invoke('sendAppMessage', {
+                //"appid": appId,
+                "img_url": imgUrl,
+                "img_width": "700",
+                "img_height": "420",
+                "link": shareUrl,
+                "desc": desc,
+                "title": title
+            }, function (res) {
+                //if (res.err_msg == 'send_app_msg:ok') {
+                //AddLog(0);
+                //}
+                $(lbTest).html("分享");
+                $(lbTest).html(res.err_msg);
+                $.ajax({
+                    type: 'post',
+                    url: '/Handler/OpenGuestHandler.ashx',
+                    data: { Action: 'WXShareRecord', activityId: title, msg: res.err_msg, stype: 'sendAppMessage', ext1: res },
+                    success: function (result) {
+
+                    }
+                });
+
+            })
+        });
+
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+                //"appid": appId,
+                "img_url": imgUrl,
+                "img_width": "700",
+                "img_height": "420",
+                "link": shareUrl,
+                "desc": desc,
+                "title": title
+            }, function (res) {
+                $('#lbTest').html("分享");
+                $('#lbTest').html(res.err_msg);
+                //                $.ajax({
+                //                    type: 'post',
+                //                    url: '/Handler/OpenGuestHandler.ashx',
+                //                    data: { Action: 'WXShareRecord', activityId: title, msg: res.err_msg, stype: 'shareTimeline', ext1: res },
+                //                    success: function (result) {
+
+                //                    }
+                //                });
+            });
+        });
+
+        WeixinJSBridge.on('menu:share:weibo', function (argv) {
+            WeixinJSBridge.invoke('shareWeibo', {
+                "content": title,
+                "url": shareUrl
+            }, function (res) {
+
+            });
+        });
+
+    }, false)
+    
+</script>
+</html>

@@ -1,0 +1,70 @@
+.storeOrdersCtrl {
+	background: transparent;
+	display: block;
+	flex: none;
+    padding-top: 10px;
+	.orderList {
+		padding: 0 10px;
+	}
+	.orderItem {
+		border-radius: 3px;
+		background: white;
+		margin-bottom: 15px;
+		padding: 0 5px;
+		border: 1px solid #f7f7f7;
+	}
+	
+	.orderTitle {
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: bold;
+		color: #666;
+		vertical-align: middle;
+	}
+	
+	.orderStatus {
+		vertical-align: middle;
+		padding: 1px 4px;
+		border-radius: 3px;
+		color: white;
+		margin-left: 2px;
+		
+		&.orderStatusProcessing {
+			background: #fb7e98;
+		}
+		&.orderStatusConfirmed {
+			background: #fac34c;
+		}
+		&.orderStatusFinished {
+			background: @colorDisabled;
+		}
+	}
+	
+	.arrivalTime, .orderTime {
+		line-height: 22px;
+	}
+	.arrivalTime {
+		color: #555;
+	}
+	.orderTime {
+		color: #aaa;
+	}
+	
+	.mallOrderList {
+		padding-top: 10px;
+		
+		.orderItem {
+			padding: 0 10px;
+		}
+		
+		hr {
+			margin-left: -10px;
+			margin-right: -10px;
+		}
+		
+		.orderImage {
+			height: 48px;
+			width: 64px;
+		}
+	}
+}

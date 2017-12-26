@@ -1,0 +1,67 @@
+/*重写部分*/
+p {
+    margin: 0;
+}
+/*自定义部分*/
+.bg1{
+    background: url("../images/question/bg1.png") top center repeat-y;
+    background-size: cover;
+    padding-bottom: 10%;
+}
+.bg2{
+    background: url("../images/question/bg2.png") top center repeat-y;
+    background-size: cover;
+    padding-bottom: 10%;
+}
+.bg3{
+    background: url("../images/question/bg3.png") top center repeat-y;
+    background-size: cover;
+    padding-bottom: 10%;
+}
+.bg4{
+    background: url("../images/question/bg4.png") top center repeat-y;
+    background-size: cover;
+    padding-bottom: 10%;
+}
+.bg5{
+    background: url("../images/question/bg5.png") top center repeat-y;
+    background-size: cover;
+    padding-bottom: 10%;
+}
+.margin-top-2{
+    margin-top: 0.2rem;
+}
+.main-content{
+    border: 2px solid #56b0d9;
+    border-radius: 10px;
+    background-color: rgba(195,246,255,0.5);
+    padding: 0.25rem 1rem;
+    font-weight: bold;
+
+}
+.content-head{
+    color: #0d6fb8;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.option{
+    background-color: rgba(167,218,233,0.5);
+    border-radius: 10px;
+    padding: 0.25rem 0.5rem;
+    margin: 1rem 0;
+}
+.option:hover{
+    background-color: rgba(65,149,205,0.5);
+}
+.selected{
+    background-color: rgba(65,149,205,0.5) !important;
+}
+.div-btn-next{
+    background-color: #0d6fb8;
+    width: 50%;
+    margin:1rem auto;
+    text-align: center;
+    color:#fff;
+    border-radius: 6px;
+    padding: 0.5rem 2rem;
+}

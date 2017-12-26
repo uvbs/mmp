@@ -1,0 +1,57 @@
+﻿<div class="wrapClassList">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+        <!--<h3><i class="icon iconfont icon-fenlei classfy"></i>分类</h3>-->
+        <h3>分类</h3>
+        <div class="cbp-wrap-menulist">
+            <a href="javascript:;" target="_blank" ng-click="pageFunc.leftMenuClick(item)" ng-repeat="item in pageData.tag">{{item.name}}</a>
+        </div>
+    </nav>
+
+    <!--<form ng-submit="pageFunc.search()">-->
+        <!--<div class="warpHeader bar bar-header item-input-inset">-->
+            <!--<i class="icon iconfont icon-iconfontliebiao mLeft6 mRight12 colorBlue" ng-click="pageFunc.toggleMenuClick()"></i>-->
+            <!--<label class="item-input-wrapper">-->
+                <!--<input type="search" placeholder="搜索...">-->
+                <!--<i class="icon iconfont icon-sousuo" ng-click="pageFunc.search()"></i>-->
+            <!--</label>-->
+        <!--</div>-->
+    <!--</form>-->
+    <form ng-submit="pageFunc.search()">
+        <div class="warpHeader bar bar-header item-input-inset ">
+            <i class="icon iconfont icon-iconfontliebiao classfy" ng-click="pageFunc.toggleMenuClick()"></i>
+            <div class="searchDiv">
+                <input class="inputSearch" type="search" ng-model="pageData.keyword" placeholder="搜索关键字查询">
+                <div class="rightSearch">
+                    <i class="icon iconfont icon-iconfontsousuo" ng-click="pageFunc.search()"></i>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="wrapCardList wrapNewsList">
+        <div class="card" ng-repeat="item in [0,1,2,3,4]" ng-click="pageFunc.go()">
+            <div class="Content">
+                <div class="leftContent">
+                    <img class="avatar" src="/img/hb/hb6.jpg">
+                </div>
+                <div class="rightContent">
+                    <h4>
+                        标题标题标题标题标题
+                    </h4>
+                    <p><span><i class="icon iconfont icon-lianxiren"></i></span><span class="mLeft">300</span><span class="mLeft"><i class="icon iconfont icon-shijian"></i></span><span class="mLeft">4小时</span> </p>
+                    <!--<span class="relativeTop4">2015-7-29 10:20</span>-->
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="wrapShowMore">
+            <button class="button button-clear">查看更多</button>
+        </div>
+        <!--<div class="wrapShowMore" ng-if="pageData.dataList.length<pageData.totalCount">-->
+            <!--<button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>-->
+        <!--</div>-->
+    </div>
+    <!--<div ng-if="pageData.totalCount == 0" class="txtCenter pTop22">-->
+        <!--没有数据-->
+    <!--</div>-->
+    <footermenu></footermenu>
+</div>

@@ -1,0 +1,53 @@
+﻿<div class="layout boxMain warpActivity">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <img src="/customize/ubi/images/icon/icon_activity.png" class="titleIco" />
+                    <span class="titleText">活动</span>
+                </span>
+            </div>
+            <div class="boxMainText mainCenter">
+                <a href="#/activityList" class="btnChangeView">切换到列表视图</a>
+                <div class="warpSelectYearAndMonth clearfix">
+                    <select class="form-control selectYear" ng-change="pageFunc.selectYear()" ng-model="pageData.currSelectYear" ng-options="year.value as year.label for year in pageData.years">
+                        <option value="{{item}}" ng-repeat="item in pageData.years">{{item}}</option>
+                    </select>
+                    <ul class="selectMonth">
+                        <li ng-repeat="item in pageData.months">
+                            <span ng-class="{selected:pageData.currSelectMonth == item}" ng-click="pageFunc.selectMonth(item)">{{item}}月</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="warpCalendar">
+                    <div class="warpWeek">
+                        <div class="weekItem clearfix" ng-repeat="item in pageData.weeks">
+                            <span>{{item}}</span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="warpDays clearfix" ng-repeat="days in pageData.currDays">
+                        <div class="dayItem" ng-repeat="day in days" ng-class="{dayBlue:day.hasActivity,dayGrey:day.hasOverActivity}">
+                            <div>
+                                &nbsp;
+                                <span class="dayTitle">{{day.day}}</span>
+                                <div class="activity" ng-repeat="item in day.activity" ng-class="{activityOver:item.isOver}" title="{{item.activityname}}">
+                                    <span ng-click="pageFunc.gotoDetail(item)">{{item.activityname}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpSearchInput">
+                <div class="form-group">
+                    <input ng-model='pageData.searchKeyword' type="search" class="form-control txtSearch" value="" placeholder="搜索活动..." />
+                    <div class="btnSearch" ng-click="pageFunc.search()"></div>
+                </div>
+            </div>
+            <hotactivity></hotactivity>
+        </div>
+</div>
+</div>

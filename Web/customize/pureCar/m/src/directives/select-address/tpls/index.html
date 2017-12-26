@@ -1,0 +1,18 @@
+<div class="directiveSelectAddress">
+  <div>地区</div>
+  <div>
+    <select ng-model="pageData.selectedDistrict"
+      ng-options="d.name for d in pageData.districts track by d.code">
+      <option value="">请选择</option>
+    </select>
+    <select ng-model="pageData.selectedArea"
+      ng-options="a.name for a in pageData.areas track by a.code">
+      <option value="">请选择</option>
+    </select>
+  </div>
+  <div>
+    <a href="javascript:;" class="greenBtn" ng-click="confirm(pageData.selectedDistrict, pageData.selectedArea)">
+      确&nbsp;&nbsp;定
+    </a>
+  </div>
+</div>

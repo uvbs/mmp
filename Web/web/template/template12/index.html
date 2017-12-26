@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/web/template/template12/styles/css/style.css?v=0.0.2">
+    <script src="/web/template/common/jquery.js"></script>
+    <script src="/web/template/common/template_common.js"></script>
+    <script src="/web/template/template12/script/template_index.js"></script>
+
+</head>
+<body class="hudiebody">
+<section class="box hudiebox" id="mainbox">
+    <div class="logopicbox">
+        <div class="logopic1"></div>
+        <div class="logopic2"></div>
+    </div>
+    <div class="logotextbox">
+        <div class="logotext1"></div>
+        <div class="logotext2"></div>
+    </div>
+    <!-- <div id="slides"></div> -->
+    <div class="categorybox">
+        <div class="categorybg">
+            <div class="categorybgw"></div>
+            <div class="categoryball"></div>
+        </div>
+        <div class="barbox">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+        </div>
+        <div class="category" id="category">
+<!--             <a class="cat cat1" href="#">
+                <img src="styles/images/iconpic.png" alt="" class="pic">
+                <span class="text">联系我们</span>
+            </a>
+            <a class="cat cat2" href="#">
+                <img src="styles/images/iconpic.png" alt="" class="pic">
+                <span class="text">资讯中心</span>
+            </a>
+            <a class="cat cat3" href="#">
+                <img src="styles/images/iconpic.png" alt="" class="pic">
+                <span class="text">比赛报名</span>
+            </a>
+            <a class="cat cat4" href="#">
+                <img src="styles/images/iconpic.png" alt="" class="pic">
+                <span class="text">真伪查询</span>
+            </a>
+            <a class="cat cat5" href="#">
+                <img src="styles/images/iconpic.png" alt="" class="pic">
+                <span class="text">产品展示</span>
+            </a>
+            <a class="cat cat6" href="#">
+                <img src="styles/images/iconpic.png" alt="" class="pic">
+                <span class="text">品牌介绍</span>
+            </a>
+            <a class="cat cat7" href="#">
+                <img src="styles/images/iconpic.png" alt="" class="pic">
+                <span class="text">品牌介绍</span>
+            </a> -->
+        </div>
+    </div>
+    <footer></footer>
+</section>
+
+</body>
+<script src="/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+<script type="text/javascript">
+    wx.ready(function () {
+        wxapi.wxshare({
+            title: '$SHARETITLE$',
+            desc: '$SHAREDESC$',
+            //link: '', 
+            imgUrl: '$SHAREIMGURL$'
+        }
+
+    )
+    })
+</script>
+</html>

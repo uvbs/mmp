@@ -1,0 +1,29 @@
+<div class="resultbox viewbox">
+    <img class="banner" ng-src="{{QuestionnaireSet.bgimg_answer}}"/>
+  <div style="width: 100%; height: 1500px; opacity: 0.7; position: absolute; top: 0px; left: 0px; z-index: 999999; text-align: right; display: none; background: rgb(0, 0, 0);"
+    id="sharebg"  ng-mousedown="pageFunc.hideShare()">&nbsp;
+
+  </div>
+  <div style="position: absolute; z-index: 1000000; right: 0px; width: 100%; height: 1500px; text-align: right; top: 700px; display: none;"
+    id="sharebox" ng-mousedown="pageFunc.hideShare()">
+    <img src="http://comeoncloud.comeoncloud.net/customize/dati/assets/images/result/sharetip.png" style="width: 100%">
+  </div>
+  <section class="content-diy-1 result-content">
+    <p class="result-p font">你的成绩：<span class="result-p result-p-red" ng-bind="pageData.Score"></span></p>
+    <p class="font" ng-show="pageData.canAward">
+        {{setConfig.WinDescription}}
+    </p>
+  </section>
+
+  <section class="content-diy-2">
+    <span class="result-btn" ng-click="pageFunc.goTo(setConfig.WinBtnUrl)"
+          ng-show="pageData.canAward && setConfig.WinBtnUrl && setConfig.WinBtnText">
+        {{setConfig.WinBtnText}}
+    </span>
+    <span class="result-btn" ng-if="setConfig.AutoID>0 && setConfig.IsLogin && !setConfig.IsHideTest" ng-click="pageFunc.testAgain()">再测一次</span>
+    <span class="result-btn" id="btnShare" ng-mousedown="pageFunc.showShare()">邀请好友</span>
+  </section>
+</div>
+<script>
+
+</script>

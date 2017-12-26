@@ -1,0 +1,77 @@
+﻿<div class="wrapSelectCar">
+	<div class="wrapTabTop" ng-if="allowInput">
+		<div class="row">
+			<div class="col" ng-class="{selected:item.index == pageData.topTabSelectIndex}" ng-repeat="item in pageData.topTab" ng-click="pageData.topTabSelectIndex = item.index">
+				{{item.title}}
+			</div>
+			
+		</div>
+	</div>
+	<div class="selectCar" ng-if="pageData.topTabSelectIndex == 0">
+		<div class="wrapTabTitle">
+	        <div class="row">
+	            <div class="col" ng-repeat="name in ['品牌', '分类', '车系', '车型']" ng-class="{greenActive:pageData.modelSelectStage >= $index + 1}" ng-click="pageFunc.handleModelSelectStage($index + 1)" ng-bind="name"></div>
+	        </div>
+	    </div>
+
+		<div class="loading" ng-show="pageData.loading">加载中...</div>
+
+		<div class="wrapBrad" ng-show="!pageData.loading && pageData.modelSelectStage == 1">
+			<div class="list">
+				<a class="item item-icon-right" href="#"
+					 ng-repeat="brand in pageData.brands"
+					 ng-click="pageFunc.loadCategories(brand.carBrandId)">
+				    <span class="pRight10">{{::brand.firstLetter}}</span>
+				    <img ng-src="{{baseServer + brand.brandImg}}" class="avatar">
+				    <span>{{::brand.carBrandName}}</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="wrapCategory" ng-show="!pageData.loading && pageData.modelSelectStage == 2">
+			<div class="list">
+				<a class="item item-icon-right" href="#"
+					 ng-repeat="cate in pageData.categories"
+					 ng-click="pageFunc.loadSeries(cate.carSeriesCateId)">
+				    <span>{{cate.carSeriesCateName}}</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+			</div>
+		</div>
+		
+		<div class="wrapSeries" ng-show="!pageData.loading && pageData.modelSelectStage == 3">
+			<div class="list">
+				<a class="item item-icon-right" href="#"
+					 ng-repeat="se in pageData.series"
+					 ng-click="pageFunc.loadModels(se.carSeriesId)">
+				    <span>{{se.carSeriesName}}</span>
+				    <i class="icon iconfont icon-xiangyou"></i>
+				</a>
+			</div>
+		</div>
+		
+		<div class="wrapModel" ng-show="!pageData.loading && pageData.modelSelectStage == 4">
+			<div class="list">
+				<a class="item item-icon-right" href="#"
+					 ng-repeat="model in pageData.models"
+					 ng-click="selectModel(model)">
+				    <span>{{model.carModelName}}</span>
+				</a>
+			</div>
+		</div>		
+
+	</div>
+	<div class="noCar" ng-if="pageData.topTabSelectIndex == 1">
+		<div>请输入您的车型或VIN码</div>
+		<div>
+			<div class="txtVIN" contenteditable="true"></div>
+		</div>
+		<div>
+			<a href="javascript:;" class="greenBtn">
+				提&nbsp;&nbsp;交
+			</a>
+		</div>
+	</div>
+
+</div>

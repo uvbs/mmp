@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/web/template/template7/styles/css/style.css?v=0.0.1">
+    <script src="/web/template/common/jquery.js"></script>
+    <script src="/web/template/common/template_common.js"></script>
+    <script src="/web/template/common/quo.js"></script>
+    <script src="/web/template/common/common_article.js"></script>
+</head>
+<body>
+<section class="box">
+    <div class="article" id="article">
+    </div>
+    <div class="sharebtn">
+        <div class="btnbox"><div class="sharefriend"><span class="icon"></span>发送给朋友</div></div>
+        <div class="btnbox"><div class="sharecircle"><span class="icon"></span>分享到朋友圈</div></div>
+    </div>
+    <footer></footer>
+</section>
+</body>
+<script src="/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+<script type="text/javascript">
+    wx.ready(function () {
+        wxapi.wxshare({
+            title: '$SHARETITLE$',
+            desc: '$SHAREDESC$',
+            //link: '', 
+            imgUrl: '$SHAREIMGURL$'
+        }
+
+    )
+    })
+</script>
+</html>

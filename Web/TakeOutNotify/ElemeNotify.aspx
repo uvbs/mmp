@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" validateRequest="false" CodeBehind="ElemeNotify.aspx.cs" Inherits="ZentCloud.JubitIMP.Web.TakeOutNotify.ElemeNotify" %>

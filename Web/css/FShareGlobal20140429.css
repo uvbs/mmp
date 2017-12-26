@@ -1,0 +1,243 @@
+﻿/* 全局CSS定义 */
+body
+{
+    font-family: '宋体';
+    margin: 0 auto;
+    padding: 0;
+    background: #FFF;
+    font-size: 12px;
+    color: #333;
+}
+body div
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+div, form, ul, ol, li, span, p
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+img, a img
+{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6
+{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
+ul, ol, li
+{
+    list-style: none;
+}
+table, td, input
+{
+    font-size: 12px;
+    padding: 0;
+}
+/* 默认链接颜色 */
+a
+{
+    outline-style: none;
+    color: #333;
+    text-decoration: none;
+}
+a:hover
+{
+    color: #c00;
+    text-decoration: underline;
+}
+/*清除链接虚框*/
+/*a,area {blr:expression(this.onFocus=this.blur()) } for IE
+:focus {-moz-outline-style: none; } for Firefox
+*/
+
+
+.menu_t
+{
+    background: #A3D1EB;
+    color: #fff;
+    height: 38px;
+    line-height: 38px;
+}
+.menu_t span
+{
+    margin-left: 20px;
+    font-size: 16px;
+}
+.leftNav
+{
+    float: left;
+    width: 200px;
+    /*height: 470px;*/
+    overflow: auto;
+    background: #EEF4F7;
+    font-size: 15px;
+    font-weight: normal;
+    color: #ad8634;
+    font-family: microsoft yahei;
+}
+.menuList div
+{
+    background: url(/img/FShare/selected.png) no-repeat;
+    overflow: hidden;
+    border-bottom: 1px solid #DDDDDD;
+}
+.menuList div.collapsed
+{
+    height: 38px;
+}
+.menuList div span
+{
+    display: block;
+    line-height: 38px;
+    width: 170px;
+    font-weight: normal;
+    color: #333;
+    cursor: pointer;
+    margin-left: 10px;
+    padding-left: 20px;
+}
+.menuList div span a
+{
+    padding: 0;
+    background: none;
+    border: 0;
+    font-size: 14px;
+    line-height: 38px;
+    display: block;
+}
+.menuList div.collapsed
+{
+    background-image: url(plus_bg.jpg);
+    background-repeat: no-repeat;
+    width: 200px;
+    color: #000;
+}
+.menuList div.collapsed span
+{
+    color: #333;
+    line-height: 38px;
+}
+.menuList div.collapsed span a.current
+{
+    color: #ad8634;
+}
+.menuList div a
+{
+    padding-left: 47px;
+    display: block;
+    border-bottom: none;
+    color: #666;
+    font-size: 13px;
+    line-height: 28px;
+    text-decoration: none;
+}
+.menuList div a.current
+{
+    color: #006AC0;
+}
+.menuList div span a.current
+{
+    background: none;
+    color: #fff;
+}
+.menuList div a:hover
+{
+    background: #fff;
+    text-decoration: none;
+}
+.menuList div span a:hover
+{
+    color: #ad8634;
+}
+
+
+.right_centent
+{
+    float: right;
+    width: 782px;
+}
+
+
+.sort
+{
+    height: 45px;
+    line-height: 45px;
+    float: left;
+    text-align: left;
+    width: 740px;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 2px solid #97999c;
+    background-color: #f7f7f7;
+    color: #666;
+    padding: 0 20px;
+}
+.sort a
+{
+    color: #666;
+}
+.sort span
+{
+    color: #699d08;
+}
+.centent_r_btm
+{
+    width: 780px;
+    min-height: 422px;
+    border: 1px #BEBEBE solid;
+    float: left;
+    background-color: #fff;
+    margin-top: -1px;
+}
+
+.MicroLogin
+{
+    width: 950px;
+    height: 507px;
+    margin: 0 auto;
+    background: url("/img/FShare/login_bg.png") no-repeat;
+}
+dl
+{
+    float: right;
+    display: inline;
+    background: #fff;
+    margin-top: 70px;
+    box-shadow: 1px 2px 5px #C1C1C1;
+    border-radius: 5px;
+}
+.pageTopBtnBg
+{
+    padding: 5px;
+    vertical-align: middle;
+    background-color: #f0f0ee;
+}
+
+/*fieldset*/
+fieldset
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #f4f4f4;
+}
+fieldset legend
+{
+    font-weight: bold;
+    color: #727171;
+    border: 1px solid #eeeeee;
+    background: #FFFFFF;
+    padding: 2px 10px 2px 10px;
+    margin-bottom: 10px;
+}
+.ActivityBox
+{
+    margin: 15px;
+}

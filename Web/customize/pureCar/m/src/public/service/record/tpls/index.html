@@ -1,0 +1,80 @@
+<div class="serviceRecordCtrl">
+	<tabs class="titleTab" tabs="['基本信息', '保养记录']"
+		current="pageData.tabIndex" on-select="pageFunc.setTabIndex"></tabs>
+		
+	<div ng-if="pageData.tabIndex === 0">
+		<div class="text-center">
+			<img class="userAvatar" src="/customize/pureCar/m/static/img/avatar.jpg" alt="">
+		</div>
+		<div class="text-center font16 mBottom5">
+			车辆信息
+		</div>
+		<div class="list">
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-qiche"></i>
+				<div>暂无数据</div>
+			</div>
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-chepai"></i>
+				<div>暂无数据</div>
+			</div>
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-chejiahao"></i>
+				<div>暂无数据</div>
+			</div>
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-shijian"></i>
+				<div>暂无数据</div>
+			</div>
+		</div>
+		<div class="text-center font16 mBottom5">
+			车主信息
+		</div>
+		<div class="list">
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-yonghu"></i>
+				<div>暂无数据</div>
+			</div>
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-dianhua"></i>
+				<div>暂无数据</div>
+			</div>
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-address"></i>
+				<div>暂无数据</div>
+			</div>
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-shijian"></i>
+				<div>暂无数据</div>
+			</div>
+			<div class="item item-icon-left">
+				<i class="iconfont icon icon-shenfenzhengxinxi"></i>
+				<div>暂无数据</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="serviceOrdersCtrl mTop10" ng-if="pageData.tabIndex === 1">
+	    <ul class="orderList">
+	      <li class="orderItem row" ng-repeat="order in pageData.orderList">
+	        <div class="col col-75">
+	          <div>
+	            <span class="orderTitle">
+	              <a ng-href="{{'#/service/orders/' + order.id}}">{{order.title}}</a>
+	            </span>
+	            <span class="orderStatus" ng-class="{
+	                orderStatusProcessing: order.orderStatus === 0,
+	                orderStatusConfirmed: order.orderStatus === 1,
+	                orderStatusFinished: order.orderStatus === 2
+	              }">{{order.orderStatusText}}</span>
+	          </div>
+	          <div class="arrivalTime">到店时间: {{order.arrivalTime}}</div>
+	          <div class="orderTime">下单时间: {{order.orderTime}}</div>
+	        </div>
+	        <div class="col col-center text-center">
+	          <order-button order="order"></order-button>
+	        </div>
+	      </li>
+	    </ul>
+	</div>
+</div>

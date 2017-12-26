@@ -1,0 +1,34 @@
+<div class="serviceOrdersCtrl serviceOrderDetailCtrl">
+  <div class="fullWidthBlock">
+    <div class="font16">{{pageData.order.shop}}</div>
+    <hr class="mTop5">
+    <div class="mTop5">
+      <span class="orderTitle">
+        {{pageData.order.title}}
+      </span>
+      <span class="orderStatus" ng-class="{
+          orderStatusProcessing: pageData.order.orderStatus === 0,
+          orderStatusConfirmed: pageData.order.orderStatus === 1,
+          orderStatusFinished: pageData.order.orderStatus === 2
+        }">{{pageData.order.orderStatusText}}</span>
+    </div>
+    <div class="arrivalTime">到店时间: {{pageData.order.arrivalTime}}</div>
+    <div class="orderTime">下单时间: {{pageData.order.orderTime}}</div>
+  </div>
+  
+  <div class="fullWidthBlock">
+    <div class="font16">个人信息</div>
+    <hr class="mTop5">
+    <div class="mTop5">
+      车型: 奥迪 2015 Q5 2.0T SI
+    </div>
+    <hr class="mTop5">
+    <div class="mTop5">
+      车主姓名: 张三
+    </div>
+    <hr class="mTop5">
+    <div class="mTop5">
+      联系方式: 13888888888
+    </div>
+  </div>
+</div>

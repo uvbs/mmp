@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>其它API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+
+
+
+<link type="text/css" rel="stylesheet"
+	href="../Styles/SyntaxHighlighter.css" />
+<script src="../Scripts/shCore.js" language="javascript"></script>
+<script src="../Scripts/shBrushJScript.js" language="javascript"></script>
+<script src="../Scripts/shBrushJava.js" language="javascript"></script>
+
+
+<link type="text/css" rel="stylesheet"
+	href="../js/validate/css/validate.css" />
+<script src="./jquery-1.6.4.js" language="javascript"></script>
+<script src="../js/validate/talent-validate-all.js"
+	language="javascript"></script>
+
+</head>
+<body>
+	<ol>
+		<li>tt.validate():验证所有绑定过的元素 <pre class="javascript" name="code">
+						if(!tt.validate()) {   //验证所有绑定过的元素
+							return false;
+						}
+					</pre>
+		</li>
+
+		<li>tt.validateElement():验证指定元素 <pre class="javascript"
+				name="code">
+						if(!tt.validateElement(element1, element2)) {   //验证指定元素
+							return false;
+						}
+					</pre>
+		</li>
+
+		<li>tt.validateId():验证指定id对应的元素 <pre class="javascript"
+				name="code">
+						if(!tt.validateId('id_1', 'id_2')) {   //验证指定id对应的元素
+							return false;
+						}
+					</pre>
+		</li>
+
+		<li>tt.validateName():验证指定name对应的元素 <pre class="javascript"
+				name="code">
+						if(!tt.validateName('name_1', 'name_2')) {   //验证指定name对应的元素
+							return false;
+						}
+					</pre>
+		</li>
+
+		<li>tt.removeAll():解绑所有验证 <pre class="javascript" name="code">
+						tt.removeAll();   //解绑所有验证
+					</pre>
+		</li>
+
+		<li>tt.rmAllRemote():解绑所有服务器端的验证 <pre class="javascript"
+				name="code">
+						tt.rmAllRemote();   //解绑所有服务器端的验证
+					</pre>
+		</li>
+
+		<li>tt.rmAllRemote():解绑所有服务器端的验证 <pre class="javascript"
+				name="code">
+						tt.rmAllRemote();   //解绑所有服务器端的验证
+					</pre>
+		</li>
+
+
+		<li>tt.clearMsg():清空所有的验证消息提示 <pre class="javascript" name="code">
+						tt.clearMsg();   //清空所有的验证消息提示
+					</pre>
+		</li>
+	</ol>
+</body>
+<script>
+			dp.SyntaxHighlighter.ClipboardSwf = '../Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+</html>

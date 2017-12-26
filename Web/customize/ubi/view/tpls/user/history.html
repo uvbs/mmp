@@ -1,0 +1,95 @@
+<div class="layout boxMain  warpUserIndex warpHistory">
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="subTitle clear">
+                <span class="warpAskaleft">
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span class="hand" ng-click="go('#/userspace/'+pageData.id)">个人中心</span> > 积分历史</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-2">
+
+        </div>
+    </div>
+    <div class="warpHisCon">
+        <div class="hisTap  clear">
+            <div class="hisTapLeft">
+                <ul>
+                    <li><a href="javascript:;" ng-class="{change:pageData.tab==0}" ng-click="pageFunc.selectTab(0)">积分历史</a></li>
+                    <li><a href="javascript:;" ng-class="{change:pageData.tab==1}" ng-click="pageFunc.selectTab(1)">如何积分</a></li>
+                </ul>
+            </div>
+            <div class="hisTapRight">
+                没时间做任务？ <a ng-href="#/recharge/{{pageData.id}}">在线充值积分</a>  或联系我们升级vip享受更多权限  <a ng-href="#/contact/{{pageData.id}}">立即联系</a>
+            </div>
+        </div>
+        <div ng-show="pageData.tab==0">
+            <div class="hisConThree">
+                <div class="hisConTapM">
+                    <ul>
+                        <li><a href="javascript:;">日期 </a></li>
+                        <li><a href="javascript:;">积分描述</a></li>
+                        <li><a href="javascript:;">积分变化</a></li>
+                        <li><a href="javascript:;">总积分</a></li>
+                    </ul>
+                </div>
+                <div class="hisConMain clear">
+                    <div ng-repeat="item in pageData.historys.list">
+                        <ul class="ul">
+                            <li ng-bind="item.date"></li>
+                        </ul>
+                        <ul class="ul">
+                            <li ng-bind="item.summary">成功回复一条动态</li>
+                        </ul>
+                        <ul class="ul">
+                            <li ng-bind="item.score">+1</li>
+                        </ul>
+                        <ul class="ul">
+                            <li ng-bind="item.totalscore">1</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="warpPagination" ng-if="pageData.historys.totalCount > pageData.historys.pageSize">
+                <pagination ng-model="pageData.historys.pageIndex"
+                            total-items="pageData.historys.totalCount"
+                            max-size="pageData.historys.pageSize"
+                            boundary-links="true"
+                            rotate="false"
+                            previous-text="上一页"
+                            next-text="下一页"
+                            first-text="首页"
+                            last-text="尾页">
+                </pagination>
+            </div>
+            <br ng-if="pageData.historys.totalCount <= pageData.historys.pageSize" />
+        </div>
+        <div ng-show="pageData.tab==1">
+            <div class="hisConTwo">
+                <div class="hisConTapM">
+                    <ul>
+                        <li><a href="javascript:;">类别 </a></li>
+                        <li><a href="javascript:;">分值</a></li>
+                        <li><a href="javascript:;">说明</a></li>
+                    </ul>
+                </div>
+                <div class="hisConMain clear">
+                    <div ng-repeat="item in pageData.defines">
+                        <ul class="ul">
+                            <li ng-bind="item.name"></li>
+                        </ul>
+                        <ul class="ul">
+                            <li ng-bind="item.score">+1</li>
+                        </ul>
+                        <ul class="ul">
+                            <li ng-bind="item.summary">成功回复一条动态</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+
+</div>                                                                                                                                                      

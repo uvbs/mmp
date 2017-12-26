@@ -1,0 +1,70 @@
+.dp-highlighter {
+	PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 97%; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, DejaVu Sans Mono, Bitstream Vera Sans Mono, Consolas, Courier New, monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px
+}
+.dp-highlighter OL {
+	BORDER-BOTTOM: #d1d7dc 1px solid; BORDER-LEFT: #d1d7dc 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: #fff; LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #2b91af; BORDER-TOP: #d1d7dc 1px solid; BORDER-RIGHT: #d1d7dc 1px solid; PADDING-TOP: 2px
+}
+.dp-highlighter OL LI {
+	BORDER-LEFT: #d1d7dc 1px solid; LINE-HEIGHT: 18px; BACKGROUND-COLOR: #fafafa; MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px
+}
+.dp-highlighter .columns DIV {
+	BORDER-LEFT: #d1d7dc 1px solid; LINE-HEIGHT: 18px; BACKGROUND-COLOR: #fafafa; MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px
+}
+.dp-highlighter .columns {
+	WIDTH: 100%; COLOR: gray; OVERFLOW: hidden
+}
+.dp-highlighter .columns DIV {
+	PADDING-BOTTOM: 5px
+}
+.dp-highlighter OL LI SPAN {
+	COLOR: black
+}
+.dp-highlighter .tools {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px 4px 0px 4px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: normal; PADDING-TOP: 3px; 
+}
+.tools a{
+	margin:0px 4px 0px 4px; text-decoration:none;
+	}
+.tools a:link{color: #508231;}
+.tools a:visited{color: #508231;}
+.tools a:active{color: #508231;}
+.tools a:hover{color:#ffffff;background-color: #508231;}
+.dp-about {
+	PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #fff; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.dp-about TABLE {
+	WIDTH: 100%; FONT-FAMILY: Tahoma, Verdana, Arial, sans-serif !important; HEIGHT: 100%; FONT-SIZE: 11px
+}
+.dp-about TD {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; VERTICAL-ALIGN: top; PADDING-TOP: 10px
+}
+.dp-about .copy {
+	BORDER-BOTTOM: #aca899 1px solid; HEIGHT: 95%
+}
+.dp-about .title {
+	COLOR: red; FONT-WEIGHT: bold
+}
+.dp-about .para {
+	MARGIN: 0px 0px 4px
+}
+.dp-about .footer {
+	TEXT-ALIGN: right; BACKGROUND-COLOR: #eceadb; BORDER-TOP: #fff 1px solid
+}
+.dp-about .close {
+	BACKGROUND-COLOR: #eceadb; WIDTH: 60px; FONT-FAMILY: Tahoma, Verdana, Arial, sans-serif !important; HEIGHT: 22px; FONT-SIZE: 11px
+}
+.dp-highlighter .comment {
+	COLOR: #008200
+}
+.dp-highlighter .comments {
+	COLOR: #008200
+}
+.dp-highlighter .string {
+	COLOR: blue
+}
+.dp-highlighter .keyword {
+	COLOR: #7f0055; FONT-WEIGHT: bold
+}
+.dp-highlighter .preprocessor {
+	COLOR: gray
+}

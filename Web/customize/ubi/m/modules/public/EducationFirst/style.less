@@ -1,0 +1,225 @@
+.bgSize(@w,@h) {
+  width:@w;
+  height:@h;
+  background-size:@w @h;
+  background-repeat:no-repeat;
+}
+.boxCenter{
+  display: box;
+  display: -webkit-box;
+  display: -moz-box;
+  -webkit-box-pack:center;
+  -moz-box-pack:center;
+  -webkit-box-align:center;
+  -moz-box-align:center;
+}
+
+.wrapEducationFirst{
+  background-color: #FAFAF9;
+  padding-bottom: 48px;
+  .wrapAd{
+    background-color: #fff;
+    overflow: hidden;
+    height: 220px;
+    position: relative;
+    img{
+      width: 100%;
+      height: 220px;
+      border-radius: 0px;
+    }
+    .leftTile{
+      position: absolute;
+      top: 194px;
+    }
+    .imgIndex{
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      bottom: 0px;
+      font-size: 28px;
+      color:#fff;
+      height: 30px;
+      background-color: rgba(0,116,244,0.2);
+      padding-left: 260px;
+    }
+    div.rn-carousel-indicator span{
+      color: #949292;
+    }
+    div.rn-carousel-indicator span.active{
+      color: #fff;
+    }
+  }
+  .warpCenterMenu {
+   // margin-bottom: 60px;
+    color: #fff;
+    font-size: 16px;
+
+    .content {
+      .boxCenter();
+
+      .menuIco {
+        .bgSize(56px,60px);
+        margin-right: 10px;
+      }
+    }
+    .content:hover{
+
+    }
+
+    .mapMenu {
+      height: 150px;
+      padding: 5px;
+
+      .content {
+        height: 100%;
+        border-radius: 5px;
+        background-color: #71c5eb;
+
+        .menuIco {
+          background-image: url('/customize/ubi/images/yingfu/map.png');
+          .bgSize(86px,86px);
+          margin-right: 0;
+          margin-top: 24px;
+        }
+
+        .menuTitle {
+          position: absolute;
+          top: 14px;
+          left: 16px;
+        }
+      }
+    }
+
+    .activityMenu {
+      height: 150px;
+      padding: 0px 5px 5px;
+
+      .content {
+        height: 100%;
+        border-radius: 5px;
+        background-color: #66cac3;
+
+        .menuIco {
+          background-image: url('/customize/ubi/images/yingfu/notice.png');
+          .bgSize(86px,86px);
+          margin-right: 0;
+          margin-top: 24px;
+        }
+
+        .menuTitle {
+          position: absolute;
+          top: 10px;
+          left: 16px;
+        }
+      }
+    }
+
+    .sendMsgMenu {
+      height: 100px;
+      padding: 5px 5px 0px 0px;
+
+      .content {
+        height: 100%;
+        border-radius: 5px;
+        background-color: #ed7d6d;
+
+        .menuIco {
+          background-image: url('/customize/ubi/images/yingfu/onlineMsg.png');
+        }
+
+        .menuTitle {
+        }
+      }
+    }
+
+    .updateMenu {
+      height: 100px;
+      padding: 5px 5px 5px 0px;
+
+      .content {
+        height: 100%;
+        border-radius: 5px;
+        background-color: #f7a660;
+
+        .menuIco {
+          background-image: url('/customize/ubi/images/yingfu/update.png');
+        }
+
+        .menuTitle {
+        }
+      }
+    }
+
+    .memberMenu {
+      height: 100px;
+      padding: 0px 5px 5px 0px;
+
+      .content {
+        height: 100%;
+        border-radius: 5px;
+        background-color: #baaae4;
+
+        .menuIco {
+          background-image: url('/customize/ubi/images/yingfu/member.png');
+        }
+
+        .menuTitle {
+        }
+      }
+    }
+
+    @media (min-width: 320px) {
+
+      .mapMenu, .activityMenu {
+        height: 165px;
+      }
+
+      .sendMsgMenu, .updateMenu, .memberMenu {
+        height: 110px;
+      }
+    }
+
+    @media (min-width: 375px) {
+
+      .mapMenu, .activityMenu {
+        height: 200px;
+      }
+
+      .sendMsgMenu, .updateMenu, .memberMenu {
+        height: 133px;
+      }
+
+      .content {
+        .menuIco {
+          height: 80px;
+          width: 76px;
+          background-size: 76px 80px;
+        }
+      }
+
+      .mapMenu, .activityMenu {
+
+        .content {
+          .menuIco {
+            height: 110px;
+            width: 110px;
+            background-size: 110px 110px;
+            margin-right: 0;
+            margin-top: 24px;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 380px) {
+
+      .mapMenu, .activityMenu {
+        height: 225px;
+      }
+
+      .sendMsgMenu, .updateMenu, .memberMenu {
+        height: 150px;
+      }
+    }
+  }
+}

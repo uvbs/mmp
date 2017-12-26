@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML Strict//EN">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<html style="overflow: auto" lang="zh-cn" xml:lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+         
+       
+       
+        BODY
+        {
+            color: #525252;
+            background:black;
+        } 
+    </style>
+    <link   href="./style/msgbox.css" rel="stylesheet" type="text/css" />
+    <script src="./style/msgbox.js" type="text/javascript" ></script>
+</head>
+<body  >
+
+	<div><input type="text" value="显示新消息!" id="txt_msg" /><input type="button" value="显示消息" onclick="showMsg(txt_msg.value);" /> </div>
+     <div id="div_tip" class="gb_tip_layer" style="display:none;">
+     	<span class="gtl_ico_succ"></span><span>登录成功！</span><span class="gtl_end"></span>
+     </div>
+     <div id="div_tip1" class="gb_tip_layer"  style="margin-top:100px;">
+     	<span class="gtl_ico_fail"></span><span>网络连接超时！</span><span class="gtl_end"></span>
+     </div>
+     <div id="div_tip2" class="gb_tip_layer" style="margin-top:200px;">
+     	<span class="gtl_ico_hits"></span><span>正在加载...</span><span class="gtl_end"></span>
+     </div>
+       
+     
+</body>
+</html>
+<script type="text/javascript">
+	function hideDiv(obj,s){
+		setTimeout(function(){ if(obj){obj.style.display='none';} },s);
+	}
+	/*
+	var MessageBox = new function(){
+		var msgbox = new Object();
+		msgbox.count = 0;
+		msgbox.index=0;
+		msgbox.isloaded = false;//是否已经加载过了
+		msgbox.id_pre = "div_tip_";
+		msgbox.hide = function (id,d){ 
+			var dom_obj = document.getElementById(id);
+			var d = d || false;
+			if(dom_obj){
+				if(d == true){
+					dom_obj.style.display = "none";
+				}else{
+					dom_obj.parentNode.removeChild(dom_obj);
+				} 
+			}
+		}
+		msgbox.$ = function(id){ return document.getElementById(id); }
+		msgbox.getid = function(i){
+		    if(i<10){
+		        return msgbox.id_pre + "00" + i;
+		    }else if(i< 100){
+		        return msgbox.id_pre + "0" + i;
+		    }else{
+		        return msgbox.id_pre + i;
+		    }
+		}
+		msgbox.newid = function (){
+		    var id_temp = "";
+		    for (var i=0; i<msgbox.count; i++){
+		        id_temp = msgbox.getid(i); 
+		        if(msgbox.$(id_temp)){
+		            continue;
+		        } 
+		        msgbox.index = i;
+		        return id_temp;
+		    } 
+		    id_temp = msgbox.getid(msgbox.count);
+		    msgbox.index = msgbox.count;
+		    msgbox.count = msgbox.count + 1;
+		    
+		    return id_temp;
+		}
+		
+		//t:默认为0-提示,1-成功消息,2-错误消息
+		this.show = function (msg,t,_timeout,_fn){ 
+			var type = t || 0;
+		 	if(type > 2) type = 0;
+		 	
+		 	var timeout = _timeout || 5000;
+		 	var nullFn = function (){};
+		 	var fn = _fn || nullFn;
+		 	
+			var type_classes = new Array();
+			type_classes[0] = "gtl_ico_hits";
+			type_classes[1] = "gtl_ico_succ";
+			type_classes[2] = "gtl_ico_fail";
+			
+			var newlayer_id =  msgbox.newid(); 
+			
+		 	var newlayer = document.createElement("div");
+		 	newlayer.id = newlayer_id;
+		 	newlayer.className = "gb_tip_layer";  
+		 	newlayer.style.marginTop = 50 * parseInt(msgbox.index ) + "px";
+		 
+		 	
+		 	var tip_b = document.createElement("span");
+		 	tip_b.className = type_classes[type];
+		 	newlayer.appendChild(tip_b);
+		 	
+		 	var tip_c = document.createElement("span"); 
+		 	tip_c.innerHTML = msg;
+		 	newlayer.appendChild(tip_c);
+		 	
+		 	var tip_e = document.createElement("span");
+		 	tip_e.className = "gtl_end";
+		 	newlayer.appendChild(tip_e);
+		 	 
+		 	document.body.appendChild(newlayer);
+		 	
+		 	if(timeout > 0){
+		 	    setTimeout(function(){ newlayer.parentNode.removeChild(newlayer);fn(); }, timeout);
+		 	}
+		 	
+	        return newlayer;
+		}
+		
+		this.remove = function(obj){
+		    obj.parentNode.removeChild(obj);
+		}
+		
+		
+	}
+	 */
+//	MessageBox.show("消息提示测试!",0,8000,function(){ alert('消息框已经隐藏');});		
+ 	//MessageBox.show("消息提示测试!",1,5000 );
+ 	//MessageBox.show("消息提示测试!",2,500 );
+ 	
+ 	//setInterval(function(){MessageBox.show("对不起，QQ空间不兼容360浏览器!",2,500 )},1000);
+	MessageBox.show("对不起，QQ空间不兼容360浏览器!",2,5000 );
+	MessageBox.show("对不起，QQ空间不兼容360浏览器!",2,8000 );
+	MessageBox.show("QQ空间已经恢复兼容360浏览器!",1,5000 );
+	MessageBox.show("欢迎登录QQ空间!",0,9000 );
+	var j = 1;
+	function showMsg(msg){
+	    MessageBox.show(msg + (j++),0,3000);
+	}
+	
+</script>

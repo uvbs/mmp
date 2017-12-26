@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      validate验证框架演示
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Page-Enter" content="revealTrans(duration=1, transition=2)" />
+    <meta http-equiv="Page-Exit" content="revealTrans(duration=1, transition=2)" />
+    <link type="text/css" rel="stylesheet" href="../js/validate/css/validate.css" />
+
+    <script src="./jquery-1.6.4.js" language="javascript">
+    </script>
+    <script src="../js/validate/talent-validate-all.js" language="javascript">
+    </script>
+    <script src="./demo.js" language="javascript">
+    </script>
+    
+    <link type="text/css" rel="stylesheet" href="../Styles/SyntaxHighlighter.css" />
+	<link type="text/css" rel="stylesheet" href="./demo.css" />
+	<script src="../Scripts/shCore.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJScript.js" type="text/javascript"></script>
+	<script src="../Scripts/shBrushJava.js" type="text/javascript"></script>
+    <!-- 第一步 -->
+
+  </head>
+  <body>
+    <form name="form1">
+
+      <div style='border: 1px solid #9BDF70; margin: 8px;' title="根据name和字段比较">
+        d1
+        <input type="text" value="2005-12-19" name="d1" />
+        d2
+        <input type="text" value="2005-12-11" name="d2" />
+        <br />
+        d1
+        <input type="text" value="2005-12-19" name="d1" />
+        d2
+        <input type="text" value="2005-12-12" name="d2" />
+        <br />
+        <br />
+        n1
+        <input type="text" value="2" name="n1" />
+        n2
+        <input type="text" value="2" name="n2" />
+        <br />
+        n3
+        <input type="text" value="1" name="n3" />
+        n4
+        <input type="text" value="2" name="n4" />
+      </div>
+
+
+
+      <div style='border: 1px solid #9BDF70; margin: 8px;' title="根据id和字段比较">
+        id1
+        <input type="text" value="2005-12-19" id="id1" />
+        id2
+        <input type="text" value="2005-12-11" id="id2" />
+      </div>
+
+      <div style='border: 1px solid #9BDF70; margin: 8px;' title="和指定值比较">
+        fixValue1
+        <input type="text" value="2" name="fixValue1" />
+        <br />
+        fixValue2
+        <input type="text" value="not love" name="fixValue2" />
+        <br />
+        fixValue3
+        <input type="text" value="not" name="fixValue3" />
+        此处输入“love”将验证通过
+      </div>
+
+
+      <div style='border: 1px solid #9BDF70; margin: 8px;' title="复杂的表达式">
+        复杂的表达式
+        <br />
+        name="exp1"
+        <input type="text" value="2" name="exp1" />
+        <br />
+        id="exp2"
+        <input type="text" value="not love" id="exp2" />
+        <br />
+        name="exp3"
+        <input type="text" value="2" name="exp3" />
+        <br />
+        name="exp4"
+        <input type="text" value="2" name="exp4" />
+        <br />
+      </div>
+
+
+      <input type="button" class='button' value="验证" onclick="tt.validate()" />
+
+    </form>
+  </body>
+
+  <!-- 第二步 -->
+  <script id="talent_script">
+    //用name进行比较
+    var field2 = new tt.Field("d2", "d2");
+    new tt.CV().add(new tt.Field('d1',"d1")).set('v', "<=", field2);
+
+    var fieldn2 = new tt.Field("n2", "n2");
+    new tt.CV().add(new tt.Field('n1',"n1")).set('n', '!=', fieldn2);
+
+    var fieldn4 = new tt.Field("n4", "n4");
+    new tt.CV().add(new tt.Field('n3',"n3")).set('n', '>=', fieldn4);
+
+
+    //用id进行比较
+    var fieldid1 = new tt.Field('id1', null, 'id1');
+    var fieldid2 = new tt.Field("id2", null, 'id2');
+    new tt.CV().add(fieldid1).set('v', "<=", fieldid2);
+
+    //和指定值比较
+    new tt.CV().add("fixValue1").set('n', '==', 1);
+    new tt.CV().add("fixValue2").set('v', '==', 'love');
+    new tt.CV().add("fixValue3").set('v', '==', 'love', false);
+
+
+
+    //复杂的表达式
+    tt.vf.num.add("exp1","exp3");//.addId("exp2");
+    new tt.CV().add("exp1").set('n', '==', '${exp3} / 2 - 10').setI18('验证未通过，此值需要等于表达式 [${exp3} - 10] {2}');
+    new tt.CV().addId("exp2").set('v', '==', 'ss ${exp4}_${exp4}_${exp4}').setI18('验证未通过，此值需要等于表达式 [ss ${exp4}_${exp4}_${exp4}] {2}');
+  </script>
+</html>

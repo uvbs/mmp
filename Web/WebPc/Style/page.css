@@ -1,0 +1,326 @@
+﻿/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+html {
+    font-family: "Noto Sans CJK SC", "Source Han Sans CN", "Microsoft YaHei";
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+
+footer,
+header,
+nav
+
+ {
+    display: block;
+}
+
+
+a {
+    background-color: transparent;
+}
+
+    a:active,
+    a:hover {
+        outline: 0;
+    }
+
+
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+
+img {
+    border: 0;
+   
+}
+
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #e4e4e4;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/*
+ * Swiper 2.7.6
+ * Mobile touch slider and framework with hardware accelerated transitions
+ *
+ * http://www.idangero.us/sliders/swiper/
+ *
+ * Copyright 2010-2015, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ *
+ * Licensed under GPL & MIT
+ *
+ * Released on: February 11, 2015
+*/
+/* ===============================================================
+Basic Swiper Styles
+================================================================*/
+.swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    direction: ltr;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* Fix of Webkit flickering */
+    z-index: 1;
+    text-align:center;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    -webkit-transition-property: -webkit-transform, left, top;
+    -webkit-transition-duration: 0s;
+    -webkit-transform: translate3d(0px, 0, 0);
+    -webkit-transition-timing-function: ease;
+    -moz-transition-property: -moz-transform, left, top;
+    -moz-transition-duration: 0s;
+    -moz-transform: translate3d(0px, 0, 0);
+    -moz-transition-timing-function: ease;
+    -o-transition-property: -o-transform, left, top;
+    -o-transition-duration: 0s;
+    -o-transform: translate3d(0px, 0, 0);
+    -o-transition-timing-function: ease;
+    -o-transform: translate(0px, 0px);
+    -ms-transition-property: -ms-transform, left, top;
+    -ms-transition-duration: 0s;
+    -ms-transform: translate3d(0px, 0, 0);
+    -ms-transition-timing-function: ease;
+    transition-property: transform, left, top;
+    transition-duration: 0s;
+    transform: translate3d(0px, 0, 0);
+    transition-timing-function: ease;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.swiper-free-mode > .swiper-wrapper {
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    -ms-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    float: left;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.swiper-slide img {
+    width:100%;
+}
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+    -ms-touch-action: pan-y;
+}
+
+.swiper-wp8-vertical {
+    -ms-touch-action: pan-x;
+}
+/* ===============================================================
+Your custom styles, here you need to specify container's and slide's
+sizes, pagination, etc.
+================================================================*/
+.swiper-container {
+    /* Specify Swiper's Size: */
+    /*width:200px;
+  height: 100px;*/
+}
+
+.swiper-slide {
+    /* Specify Slides's Size: */
+    /*width: 100%;
+  height: 100%;*/
+}
+
+.swiper-slide-active {
+    /* Specific active slide styling: */
+}
+
+.swiper-slide-visible {
+    /* Specific visible slide styling: */
+}
+/* ===============================================================
+Pagination Styles
+================================================================*/
+.swiper-pagination-switch {
+    /* Stylize pagination button: */
+}
+
+.swiper-active-switch {
+    /* Specific active button style: */
+}
+
+.swiper-visible-switch {
+    /* Specific visible button style: */
+}
+
+
+
+.topbar {
+    background-color: #383a3d;
+}
+
+.topbar-inner {
+    margin: auto;
+    width: 1000px;
+    color: #999;
+    font-size: 12px;
+    line-height: 32px;
+}
+
+    .topbar-inner a {
+        color: #999;
+        font-size: 12px;
+    }
+
+        .topbar-inner a:hover {
+            color: #fff;
+        }
+
+    .topbar-inner:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+.topbar-left {
+    float: left;
+}
+
+.topbar-right {
+    margin-left: 16px;
+    float: right;
+}
+
+a {
+    text-decoration: none;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.link {
+    color: #38adff;
+    font-size: 15px;
+}
+
+.navbar {
+    width: 100%;
+    height: 72px;
+    line-height: 72px;
+    background: #f8f8f8;
+    font-size: 15px;
+    overflow:hidden;
+}
+
+    .navbar.fixed {
+        position: fixed;
+        top: 0px;
+        z-index: 1000;
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    .navbar .content {
+        width: 1000px;
+        margin: auto;
+    }
+
+    .navbar .logo {
+        vertical-align: middle;
+        position: relative;
+        top: -3px;
+        max-height: 68px;
+        max-width: 138px;
+    }
+
+    .navbar .link {
+        color: #999;
+        font-size: 16px;
+        margin-left: 70px;
+        display: inline-block;
+        position: relative;
+    }
+
+
+
+        .navbar .link.first {
+            margin-left: 110px;
+        }
+
+        .navbar .link:hover {
+            color: #38adff;
+        }
+
+        .navbar .link:active {
+            color: #38adff;
+            font-weight: bold;
+        }
+
+    .navbar .active {
+        color: #38adff;
+    }
+
+   
+/*footer*/
+.footer {
+    padding: 32px 0px;
+    font-size: 12px;
+    color: #999;
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    bottom: 0;
+}
+
+
+
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #e4e4e4;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Noto Sans CJK SC", "Source Han Sans CN", 'Hiragino Sans GB', 'Microsoft YaHei', '\5b8b\4f53', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.link {
+    color: #38adff;
+    font-size: 15px;
+}
+
+
+
+.customize-html {
+    padding-left: 10px;
+    padding-right: 10px;
+}

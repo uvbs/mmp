@@ -1,0 +1,57 @@
+.warpUpdate .tabContent {
+  padding-top: 0;
+}
+.warpUpdate .warpCommentList {
+  margin-top: 0;
+}
+.warpUpdate .warpSummary .baseInfo {
+  width: 400px;
+}
+.warpUpdate .warpSummary .baseInfo div {
+  height: 30px;
+  line-height: 30px;
+}
+.warpUpdate .warpSummary .baseInfo .name {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+.warpUpdate .warpSummary .baseInfo .btn-warning {
+  right: 42px;
+}
+.warpUpdate .warpSummary .summary {
+  width: 296px;
+}
+.warpUpdate .warpHotMembers .dataList li {
+  float: left;
+  padding: 8px;
+  border-radius: 5px;
+}
+.warpUpdate .warpHotMembers .dataList li img.avatar {
+  .size(38px,38px);
+					border-radius: 5px; 
+
+}
+.warpUpdate .warpHotMembers .dataList li:hover {
+  background-color: #F2F2F2;
+}
+.warpUpdate .warpMembers {
+  padding-top: 15px;
+  margin-bottom: 20px;
+}
+.warpUpdate .warpMembers .memberItem {
+  width: 104px;
+  float: left;
+  text-align: center;
+  padding: 20px 6px;
+  img{
+				.size(52px,52px);
+			} 
+
+}
+.warpUpdate .warpMembers .memberItem span {
+  width: 100%;
+  .overflow_ellipsis(); 
+
+  display: inline-block;
+  margin-top: 8px;
+}

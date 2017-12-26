@@ -1,0 +1,70 @@
+﻿<div class="wrapRank">
+    <div class="row">
+        <!--<div class="col all dropdown" ng-click="pageData.isDrop = true;pageData.isSelected=1;pageFunc.loadData(true,pageData.isSelected,pageData.advertiser,'','')" ng-class="{selected:pageData.isSelected==1}">-->
+        <div class="col all dropdown" ng-mousedown="pageData.isDrop = !pageData.isDrop;pageData.isSelected=1;pageData.isMediaDrop=false;" ng-class="{selected:pageData.isSelected==1}">
+            广告主榜
+            <div class="tapLi" ng-if="pageData.isDrop==true">
+                <ul>
+                    <li ng-class="{dropSelected:pageData.isDropSelected==1}" ng-mousedown="pageData.isDropSelected=1;pageFunc.loadData(true, pageData.isSelected, pageData.advertiser,pageData.isDropSelected,'K5 desc');">日榜排行</li>
+                    <li ng-class="{dropSelected:pageData.isDropSelected==2}" ng-mousedown="pageData.isDropSelected=2;pageFunc.loadData(true, pageData.isSelected, pageData.advertiser,pageData.isDropSelected,'K6 desc');">周榜排行</li>
+                    <li ng-class="{dropSelected:pageData.isDropSelected==3}" ng-mousedown="pageData.isDropSelected=3;pageFunc.loadData(true, pageData.isSelected, pageData.advertiser,pageData.isDropSelected,'K7 desc');">月榜排行</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col all" ng-mousedown="pageData.isMediaDrop = !pageData.isMediaDrop;pageData.isSelected=2;pageData.isDrop=false;" ng-class="{selected:pageData.isSelected==2}">
+            自媒体榜
+            <div class="tapLi" ng-if="pageData.isMediaDrop==true">
+                <ul>
+                    <li ng-class="{dropSelected:pageData.isMediaDropSelected==1}" ng-mousedown="pageData.isMediaDropSelected=1;pageFunc.loadData(true, pageData.isSelected, pageData.selfmedia,pageData.isMediaDropSelected,'K5 desc');">日榜排行</li>
+                    <li ng-class="{dropSelected:pageData.isMediaDropSelected==2}" ng-mousedown="pageData.isMediaDropSelected=2;pageFunc.loadData(true, pageData.isSelected, pageData.selfmedia,pageData.isMediaDropSelected,'K6 desc');">周榜排行</li>
+                    <li ng-class="{dropSelected:pageData.isMediaDropSelected==3}" ng-mousedown="pageData.isMediaDropSelected=3;pageFunc.loadData(true, pageData.isSelected, pageData.selfmedia,pageData.isMediaDropSelected,'K7 desc');">月榜排行</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        
+        <div class="rankshow" ng-if="pageData.isSelected==1">{{pageData.rankByAdv}}</div>
+        <div class="rankshow" ng-if="pageData.isSelected==2">{{pageData.rankByMedia}}</div>
+    <div ng-if="pageData.isSelected==1">
+        <div class="row textCenter">
+            <div class="col">排名</div>
+            <div class="col">公司名称</div>
+            <div class="col">发布个数</div>
+            <div class="col">总阅读</div>
+            <div class="col">点赞</div>
+        </div>
+        <div class="row center" ng-repeat="tag in pageData.advertiser.list">
+            <div class="col">{{$index+1}}</div>
+            <div class="col">{{tag.title}}</div>
+            <div class="col">{{tag.k3}}</div>
+            <div class="col">{{tag.k8}}</div>
+            <div class="col">{{tag.k4}}</div>
+        </div> 
+        <div class="wrapShowMore" ng-if="pageData.advertiser.list.length<pageData.advertiser.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>
+        </div>       
+    </div> 
+
+    <div ng-if="pageData.isSelected==2">
+        <div class="row textCenter">
+            <div class="col">排名</div>
+            <div class="col">公众号</div>
+            <div class="col">任务个数</div>
+            <div class="col">总阅读</div>
+            <div class="col">指数</div>
+        </div>
+        <div class="row center" ng-repeat="tag in pageData.selfmedia.list">
+            <div class="col">{{$index+1}}</div>
+            <div class="col">{{tag.title}}<br />{{tag.k5}}</div>
+            <div class="col">{{tag.k3}}</div>
+            <div class="col">{{tag.k8}}</div>
+            <div class="col">{{tag.k4}}</div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.selfmedia.list.length<pageData.selfmedia.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>
+        </div>        
+    </div>
+    <div ng-if="pageData.totalCount == 0">
+        没有数据
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿.wrapLogin {
+    height:100%;
+    .login-form {
+        padding: 5px 20px;
+
+        .weui-cells {
+            /*line-height:2.4em;*/
+            margin: 0px;
+            .weui-cell{
+                width:100%;
+                padding: 8px 0px;
+            }
+        }
+
+        .weui-cells:before {
+            border-top: 0px;
+        }
+
+        .weui-cells_form {
+            display: flex;
+            .weui-cell__bd,.weui-cell__ft{
+                padding: 0px 10px;
+            }
+            .weui-label {
+                width: 85px;
+                text-align: right;
+                font-size: 14px;
+            }
+
+            .weui-input {
+                font-size: 14px;
+            }
+
+            .weui-input::-webkit-input-placeholder {
+                color: #cccccc;
+            }
+
+            .btn-vcode {
+                display:none;
+                width:70px;
+            }
+            .cell-vcode{
+                height:29px;
+            }
+            .weui-btn_disabled{
+                color: #cccccc;
+            }
+        }
+    }
+
+    .login {
+        padding: 20px 20px 5px;
+
+        .btn-login {
+            background-color: #2d5ea8;
+            line-height: 2.2em;
+        }
+    }
+}

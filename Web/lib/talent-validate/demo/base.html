@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>talent-validate快速入门</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Page-Enter"
+	content="revealTrans(duration=1, transition=2)" />
+<meta http-equiv="Page-Exit"
+	content="revealTrans(duration=1, transition=2)" />
+
+
+
+<link type="text/css" rel="stylesheet"
+	href="../Styles/SyntaxHighlighter.css" />
+<script src="../Scripts/shCore.js" language="javascript"></script>
+<script src="../Scripts/shBrushJScript.js" language="javascript"></script>
+<script src="../Scripts/shBrushJava.js" language="javascript"></script>
+
+
+<link type="text/css" rel="stylesheet"
+	href="../js/validate/css/validate.css" />
+<script src="./jquery-1.6.4.js" language="javascript"></script>
+<script src="../js/validate/talent-validate-all.js"
+	language="javascript"></script>
+
+</head>
+<body>
+
+	<ol>
+		<li>
+			先把dist目录下的资源和jquery.js(或zepto.js)拷贝到您的工程中。本框架对jquery的版本几乎没有特别要求(依赖很小)，然后在你的页面加引入以下资源
+			<pre class="javascript" name="code">
+						&lt;link type="text/css" rel="stylesheet" href="../js/validate/css/validate.css" /&gt;
+						&lt;script src="./jquery.js" language="javascript">&lt;/script&gt;   //或zepto.js
+						&lt;script src="../js/validate/talent-validate-all.js" language="javascript">&lt;/script&gt;
+					</pre>
+
+		</li>
+
+		<li>你的页面应该会有一些需要验证的元素譬如 <pre class="javascript" name="code">
+						&lt;input type='text' name='name_1' /&gt;
+						&lt;input type='text' name='name_2' /&gt;
+						&lt;input type='text' id='id_1' /&gt;
+						&lt;input type='text' id='id_2' /&gt;
+						
+					</pre>
+		</li>
+
+		<li>绑定需要验证的元素以及验证规则 <pre class="javascript" name="code">
+						tt.vf.req.add("name_1", "name_2");     //用name绑定需要验证的元素
+						tt.vf.email.addId("id_1", "id_2");     //用id绑定需要验证的元素
+					</pre>
+		</li>
+
+		<li>在页面提交前对表单进行验证 <pre class="javascript" name="code">
+						if(!tt.validateForm('loginForm')) {   //loginForm是form的name
+							return false;
+						}
+					</pre>
+		</li>
+		<li>本框架是为验证的灵活性而生的，它有丰富的API供开发人员使用，譬如只验证某个元素，根据元素值灵活解绑验证等。 <pre
+				class="javascript" name="code">
+						//请参考其它API和后面的各种例子
+					</pre>
+		</li>
+	</ol>
+</body>
+<script>
+			dp.SyntaxHighlighter.ClipboardSwf = '../Scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+</html>

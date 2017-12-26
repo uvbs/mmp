@@ -1,0 +1,123 @@
+<div class="layout boxMain warpCase warpAnnounce">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle clear">
+                <span>
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span class="hand" ng-click="go('#/case')">案例分析</span> > 案例发布</span>
+                </span>
+            </div>
+           <div class="anMainCon">
+                <form class="form-horizontal" ng-submit="pageFunc.addCase()">
+                     <div class="form-group bot">
+                        <label class="col-sm-1 pLeft0 pRight0 control-label">标题:</label>
+                        <div class="col-sm-11">
+                        <input type="text" class="form-control" ng-model="pageData.article.title" placeholder="请输入标题" required>
+                        </div>
+                    </div>
+                    <div class="form-group bot">
+                        <label class="col-sm-1 pLeft0 pRight0 control-label">地区选择:</label>
+                         <div class="col-sm-3">
+                            <select ng-model="pageData.currSelectProvince" class="form-control" >
+                                <option value="0">全国</option>
+                                <option value="{{item.id}}" ng-repeat="item in pageData.provinceList">
+                                  {{item.name}}
+                                </option>
+                            </select>
+                            <!-- <select class="form-control" ng-option="p.id as p.name for p in pageData.provinceList"></select> -->
+                         </div>
+                         <div class="col-sm-3">
+                            <!--<select ng-model="pageData.currselectCity" class="form-control">
+                                <option value="0">请选择城市</option>
+                                <option value="" ng-repeat="item in pageData.cityList">
+                                </option>
+                            </select>-->
+                         </div>
+                    </div>
+                    <div class="form-group bot">
+                        <label class="col-sm-1 pLeft0 pRight0 control-label">标签选择:</label>
+                        <div class="col-sm-11 announceMark">
+                            <div class="markTop clear">
+                                <ul>
+                                     <li ng-repeat="item in pageData.tagList">
+                                        <a 
+                                         
+                                        ng-class="{change:item.checked}" 
+                                        href="javascript:;"
+                                        ng-click="pageFunc.selectTag(item)"
+                                        >
+                                        {{item.tag}}
+                                        </a>
+                                    </li>  
+                                </ul>
+
+                                <span class="showMoreBtn">
+
+                                <a href="Javascript:;" ng-if="!pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                                ng-click="pageData.showMoreTag = true">更多 <i class="iconfont icon-unfold "></i></a>
+
+                                <a href="Javascript:;"  ng-if="pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                                ng-click="pageData.showMoreTag = false">收起 <i class="iconfont icon-xiangshang "></i></a>
+
+                                </span>
+
+                            </div>
+                            <div class="markBot"  ng-if="pageData.tagOtherList.length > 0 && pageData.showMoreTag"> 
+                                <ul class="ul clear">
+                                    <li ng-repeat="item in pageData.tagOtherList">
+                                        <a 
+                                        ng-class="{change:item.checked}" 
+                                        href="javascript:;"
+                                        ng-click="pageFunc.selectTag(item)"
+                                        >
+                                        {{item.tag}}
+                                        </a>
+                                    </li>  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group bot markCon">
+                        <label  class="col-sm-1 pLeft0 pRight0 control-label">案例内容:</label>
+                        <div class="col-sm-11">
+                              <div class="warpComment">
+
+                                  <div class="ueditor" style="height:400px;" ng-model="pageData.article.content" config="pageData.ueditorConfig" required></div>
+                                  <!--<div 
+                                 text-angular 
+                                 ta-toolbar="[['bold', 'italics', 'underline','strikeThrough','justifyLeft', 'justifyCenter',                   'justifyRight', 'insertLink']]"
+                                 ng-model="pageData.article.content"
+                                 name="editor1"
+                                 required
+                                 >
+                                 </div>-->
+                                 <div class="warpOperate">
+                                     
+                                    <button ng-click="pageFunc.reset()" type="reset" class="btn btn-primary   changeBot">重置</button>
+                                    <button type="submit" class="btn btn-primary  mLeft80">发布</button>
+                                     <div class="clear"></div>
+                                 </div>
+                              </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+         
+            
+             
+        </div>
+        <div class="col-xs-3">
+           <div class="ancuMarkSide">
+               <h5>发布规则</h5>
+               <p>  近日，MG名爵首款SUV车型锐腾以11.97万元—17.97万元价格上市，从现场经销商的欢呼声中，记者感受到上汽乘用车在新车定价上更加务实了。</p>
+               <p>不仅如此而已，锐腾作为上汽乘用车旗下高性能城市SUV，“8秒破百”使其在性能和配置上甚至有超越本田CRV、别克昂科威等合资中级SUV的可能，但最终却以较低的价格将市场对手锁定在韩系主流SUV和自主SUV上。</p>
+               <p> 对此，上汽乘用车相关负责人告诉《证券日报》记者，毕竟自主品牌市场号召力势微，锐腾现有的核心配置发动机与通用是共用的，但公司却只能将价格下移至韩系小型SUV的价格，以及一部分主流的自主紧凑级SUV。</p>
+               <p>
+                   上汽集团副总裁、上汽乘用车公司总经理王晓秋毫不掩饰其野心，上汽未来会理顺产品的投放周期，尤其是瞄准市场增长最快的领域，在销量上谋求进一步突破。
+               </p>
+           </div>
+
+        </div>
+    </div>
+</div>

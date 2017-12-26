@@ -1,0 +1,66 @@
+body{
+
+	background-color: rgba(186, 154, 131, 0.27);
+}
+.container-fluid{
+	padding-top:10px;
+}
+.item{
+	margin: 0px 10px;
+	padding: 10px;
+	height: 100px;
+	border-radius: 5px;
+	background-color: white;
+	position: relative;
+}
+.item_pic{
+	float: left;
+}
+.item_pic img{
+	margin:0px;
+	width: 80px;
+	height: 80px;
+}
+.intro{
+	float: left;
+	margin-left: 5px;
+}
+.intro{
+	position: relative;
+	float: left;
+	height: 85px;
+	width: 69%;
+}
+.intro_title{
+	float: left;
+	width: 100%;
+	font-size: 15px;
+}
+.intro_classfic{
+	float: left;
+	width: 100%;
+	font-size: 15px;
+}
+.intro_context{
+	float: left;
+	width: 100%;
+}
+.intro_date{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	float: left;
+	width: 60%;
+	text-align: left;
+}
+.intro_reader{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 40%;
+	text-align: right;
+}
+.stress{
+	color: rgba(44, 74, 184, 0.63);
+}
+

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns:gs="http://www.gensee.com/ec">
+<head>
+    <meta charset="utf-8" />
+    <title>Example Page</title>
+    <script type="text/javascript" src="http://static.gensee.com/webcast/static/sdk/js/gssdk.js"></script>
+    <link href="http://static.gensee.com/webcast/static/sdk/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        .videoDiv {
+            height:0px;
+            width:0px;
+            position: static;
+            margin-top: -1000px;
+            display: none;
+        }
+
+        .docDiv {
+            height: 400px;
+            padding: 1px;
+        }
+    </style>
+    <script type="text/javascript">
+        var channel = GS.createChannel("testgroup");
+        channel.bind("onChapter", function (event) {
+            console.log(event.data);
+        });
+
+    </script>
+</head>
+<body>
+    <h2 align="center">Test Page</h2><br>
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span6 videoDiv">
+                <!-- Video Widget -->
+                <gs:video-vod site="easylaodongfa.gensee.com" ctx="training" ownerid="v2xRv0XKA2" py="1" group="testgroup" />
+            </div>
+            <div class="span6">
+                <div class="docDiv">
+                    <!-- Doc Widget -->
+                    <gs:doc site="easylaodongfa.gensee.com" ctx="training" ownerid="v2xRv0XKA2" group="testgroup" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

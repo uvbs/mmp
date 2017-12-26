@@ -1,0 +1,26 @@
+﻿<form ng-submit="loginModalFn.ok()">
+	<div class="modal-header">
+	    <h3 class="modal-title txtCenter">用户登录</h3>
+	</div>
+	<div class="modal-body warpLoginModelInput">
+		
+			<div class="form-group">
+				<input type="text" ng-model="loginModalData.userId" class="form-control" placeholder="请输入邮箱" required>
+				<i class="fa fa-envelope-o icon"></i>
+			</div>
+			<div class="form-group">
+				<input type="password" ng-model="loginModalData.pwd" class="form-control" placeholder="请输入密码" required>
+				<i class="fa fa-lock icon"></i>
+			</div>
+			<div class="form-group checkCode">
+				<input type="text" ng-model="loginModalData.checkCode" class="form-control checkCode" placeholder="验证码" required>
+				<img class="checkCode" src="/ValidateCode.aspx?" onclick="this.src=this.src+'?'" />
+				<div class="clear"></div>
+			</div>
+		
+	</div>
+	<div class="modal-footer txtCenter">
+	    <button type="submit" class="btn btn-primary pLeft26 pRight26">登录</button>
+	    <span class="btn btn-warning pLeft26 pRight26" ng-click="loginModalFn.cancel()">取消</span>
+	</div>
+</form>

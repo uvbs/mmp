@@ -1,0 +1,318 @@
+﻿
+body
+{
+    font-family: '宋体';
+    margin: 0 auto;
+    padding: 0;
+    background: #FFF;
+    font-size: 12px;
+    color: #333;
+}
+body div
+{
+    margin-right: auto;
+   
+}
+div, form, ul, ol, li, span, p
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+img, a img
+{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, li
+{
+    list-style: none;
+}
+table, td, input
+{
+    font-size: 12px;
+    padding: 0;
+}
+
+.bgSize(@w,@h) {
+    width:@w;
+    height:@h;
+    background-size:@w @h;
+    background-repeat:no-repeat;
+}
+.boxCenter{
+    display: box; 
+    display: -webkit-box; 
+    display: -moz-box; 
+    -webkit-box-pack:center; 
+    -moz-box-pack:center; 
+    -webkit-box-align:center; 
+    -moz-box-align:center; 
+}
+/*slider*/
+.bx-wrapper{
+    margin:0px;
+}
+.bx-viewport{
+  border: 0px!important;
+  left: 0px!important;
+}
+.bx-controls-direction{
+    display:none;
+}
+.bx-wrapper .bx-pager{
+    text-align:right!important;
+    bottom:0px!important;
+}
+.bx-pager-item .bx-pager-link{
+    color:rgba(0, 0, 0, 0);
+}
+.bx-wrapper .bx-pager.bx-default-pager a{
+    background:rgba(0, 0, 0, 0)!important;
+    border:1px solid #fff;
+}
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active{
+    background:#fff!important;
+}
+.bx-wrapper .bx-caption{
+    background: rgba(80, 80, 80, 0.50);
+}
+.bx-wrapper .bx-caption span{
+    padding:5px 10px;
+}
+.row{
+    margin:0;
+    padding:0;
+}
+.row div{
+    margin:0;
+    padding:0;
+}
+.warpIndex {
+    font-size: 14px;
+
+    .warpCenterMenu {
+        margin-bottom: 60px;
+        color: #fff;
+        font-size: 16px;
+
+        .content {
+            .boxCenter();
+
+            .menuIco {
+                .bgSize(56px,60px);
+                margin-right: 10px;
+            }
+        }
+        .content:hover{
+            
+        }
+
+        .mapMenu {
+            height: 150px;
+            padding: 5px;
+
+            .content {
+                height: 100%;
+                border-radius: 5px;
+                background-color: #71c5eb;
+
+                .menuIco {
+                    background-image: url('img/map.png');
+                    .bgSize(86px,86px);
+                    margin-right: 0;
+                    margin-top: 24px;
+                }
+
+                .menuTitle {
+                    position: absolute;
+                    top: 14px;
+                    left: 16px;
+                }
+            }
+        }
+
+        .activityMenu {
+            height: 150px;
+            padding: 0px 5px 5px;
+
+            .content {
+                height: 100%;
+                border-radius: 5px;
+                background-color: #66cac3;
+
+                .menuIco {
+                    background-image: url('img/notice.png');
+                    .bgSize(86px,86px);
+                    margin-right: 0;
+                    margin-top: 24px;
+                }
+
+                .menuTitle {
+                    position: absolute;
+                    top: 10px;
+                    left: 16px;
+                }
+            }
+        }
+
+        .sendMsgMenu {
+            height: 100px;
+            padding: 5px 5px 0px 0px;
+
+            .content {
+                height: 100%;
+                border-radius: 5px;
+                background-color: #ed7d6d;
+
+                .menuIco {
+                    background-image: url('img/onlineMsg.png');
+                }
+
+                .menuTitle {
+                }
+            }
+        }
+
+        .updateMenu {
+            height: 100px;
+            padding: 5px 5px 5px 0px;
+
+            .content {
+                height: 100%;
+                border-radius: 5px;
+                background-color: #f7a660;
+
+                .menuIco {
+                    background-image: url('img/update.png');
+                }
+
+                .menuTitle {
+                }
+            }
+        }
+
+        .memberMenu {
+            height: 100px;
+            padding: 0px 5px 5px 0px;
+
+            .content {
+                height: 100%;
+                border-radius: 5px;
+                background-color: #baaae4;
+
+                .menuIco {
+                    background-image: url('img/member.png');
+                }
+
+                .menuTitle {
+                }
+            }
+        }
+
+        @media (min-width: 320px) {
+
+            .mapMenu, .activityMenu {
+                height: 165px;
+            }
+
+            .sendMsgMenu, .updateMenu, .memberMenu {
+                height: 110px;
+            }
+        }
+
+        @media (min-width: 375px) {
+
+            .mapMenu, .activityMenu {
+                height: 200px;
+            }
+
+            .sendMsgMenu, .updateMenu, .memberMenu {
+                height: 133px;
+            }
+
+            .content {
+                .menuIco {
+                    height: 80px;
+                    width: 76px;
+                    background-size: 76px 80px;
+                }
+            }
+
+            .mapMenu, .activityMenu {
+
+                .content {
+                    .menuIco {
+                        height: 110px;
+                        width: 110px;
+                        background-size: 110px 110px;
+                        margin-right: 0;
+                        margin-top: 24px;
+                    }
+                }
+            }
+        }
+
+        @media (min-width: 380px) {
+
+            .mapMenu, .activityMenu {
+                height: 225px;
+            }
+
+            .sendMsgMenu, .updateMenu, .memberMenu {
+                height: 150px;
+            }
+        }
+    }
+
+    .warpBottomMenu {
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        bottom: 0px;
+        background-color: #e5e5e5;
+        font-size: 14px;
+        border-top: 1px solid #ccc;
+        .menu {
+            text-align: center;
+            padding-top: 7px;
+            color: #898989;
+
+            .menuIco {
+                background-image: url('img/home.png');
+                .bgSize(26px,26px);
+                width: 100%;
+                background-position: center;
+                margin-bottom: 2px;
+            }
+
+            .menuTitle {
+            }
+        }
+        .menu:hover{
+            background-color: #D0D0D0;
+        }
+        .indexMenu {
+            .menuIco {
+                background-image: url('img/home.png');
+            }
+            .menuTitle {
+                margin-left: 3px;
+            }
+        }
+
+        .reservationMenu {
+            .menuIco {
+                background-image: url('img/user_list.png');
+            }
+        }
+
+        .callMeMenu {
+            .menuIco {
+                background-image: url('img/phone.png');
+            }
+        }
+    }
+}

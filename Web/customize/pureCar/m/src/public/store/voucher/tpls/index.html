@@ -1,0 +1,74 @@
+<div class="storeVoucherCtrl">
+  <div class="firstBlock">
+    <div class="headOuterBlock clearfix">
+      <div class="leftTitle"><div>优质低价</div></div>
+      <div class="centerTitle">部落购车</div>
+      <div class="rightTitle"><div>竭诚为你</div></div>
+    </div>
+
+    <div class="productInfo clearfix" ng-if="quotation.quotationId">
+      <div class="productImageContainer">
+        <img class="productImage" ng-src="{{quotation.carImg || 'http://i1.sinaimg.cn/qc/news/2007-07-25/U642P33T2D296042F9DT20070725144212.JPG'}}" />
+      </div>
+      <div class="productText">
+        <div class="productName">{{quotation.carSeriesName + quotation.carModelName}}</div>
+        <div>指导价格：{{quotation.guidePrice | wan:true}}</div>
+        <div>库存状态：{{quotation.stockDescription || '紧张'}}</div>
+        <div>全国销量：{{quotation.nationalSalesCount}}台</div>
+        <div>环比增幅：{{quotation.increase}}%</div>
+      </div>
+    </div>
+
+    <div class="priceBlock" ng-if="quotation.quotationId">
+      裸车优惠价：<span class="priceText">{{quotation.discountPrice | wan:true}}</span>（比厂商指导价优惠3万）
+    </div>
+
+    <div class="countDown" ng-if="quotation.quotationId">
+      有效时间 <i class="iconfont icon-shijian"></i> {{quotation.activityStartTime | countDown:startTime}}
+    </div>
+
+    <div class="priceDetail clearfix" ng-if="quotation.quotationId">
+      <div class="priceDetailList">
+        <div class="priceDetailItem clearfix"><div>是否需要店内保险</div><div>{{quotation.isShopInsurance ? '是' : '否'}}</div></div>
+        <div class="priceDetailItem clearfix"><div>上牌费</div><div>{{quotation.licensingFees | wan:true}}</div></div>
+        <div class="priceDetailItem clearfix"><div>其他费用</div><div>{{quotation.otherExpenses | wan:true}}</div></div>
+        <div class="priceDetailItem clearfix"><div>保险预估</div><div>{{quotation.insuranceCost | wan:true}}</div></div>
+        <div class="priceDetailItem clearfix"><div>购置税预估</div><div>{{quotation.purchaseTaxCost | wan:true}}</div></div>
+      </div>
+      <div class="priceDetailNote">
+        <div>备注信息</div>
+        <div class="priceDetailNoteContent">{{quotation.sallerMemo}}</div>
+      </div>
+    </div>
+    <div class="priceClaim" ng-if="quotation.quotationId">
+      说明：购置税与保险费为4S店代收费用，预估仅供参考
+    </div>
+  </div>
+
+  <div class="finalPrice" ng-if="quotation.quotationId">
+    合计落地价格<span class="priceNumber">{{quotation.totalPrice | wan:false}}</span>万
+  </div>
+  <div class="enquiryCount" ng-if="quotation.quotationId">
+    近7日已有50人询价
+  </div>
+
+  <div class="bottomMenu clearfix">
+    <div class="consult" ng-click="go('#/store/consultation')">
+        <div class="mBottom4 mTop0"><i class="iconfont icon-woyaozixun font20"></i></div>
+      <div>咨 询</div>
+    </div>
+    <div class="comment" ng-click="go('#/store/stores')">
+        <div class="mBottom4 mTop0"><i class="iconfont icon-aixin font20"></i></div>
+      <div>评价4S店</div>
+    </div>
+    <div class="newcars">
+        <div class="mBottom4 mTop0">
+            <i class="iconfont icon-qiche_k font24"></i>
+        </div>
+        <div>新车精品</div>
+    </div>
+    <div class="apply" ng-click="pageFunc.apply()">
+      立即报名
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+﻿<div class="wrapUserEdit">
+    <div class="bar bar-header">      
+        <div class="h1 title"><i class="icon iconfont icon-fanhui fanhui" ng-click="pageFunc.goback()"></i>我想接广告</div>
+    </div>
+    <div class="content has-header">
+        <div class="list">
+            <label class="item item-input tip" >
+                <i class="icon iconfont icon-highvolume highvolume" ></i>
+                   提交广告申请：请确保填写真实有效资料</label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">受众行业：</span>
+                <select class="pRight10 border0 colorGrey_6" ng-model="pageData.city" ng-options="city.name for city in pageData.cityList" required></select>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">联系人姓名：</span>
+                <input type="text" class="form-control" ng-model="pageData.Name" placeholder="请填写姓名" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">联系手机：</span>
+                <input type="text" class="form-control" ng-model="pageData.Phone" placeholder="请填写手机号" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">联系邮箱：</span>
+                <input type="text" class="form-control" ng-model="pageData.K1" placeholder="请填写邮箱" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">账号名称：</span>
+                <input type="text" class="form-control" ng-model="pageData.K3" placeholder="请填写账号名称" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">微信ID号：</span>
+                <input type="text" class="form-control" ng-model="pageData.K4" placeholder="请填写微信ID号" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">粉丝数量：</span>
+                <input type="number" class="form-control" ng-model="pageData.K5" placeholder="单位（人）" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">影响区域：</span>
+                <!--<select class="pRight10 border0 colorGrey_6" ng-model="pageData.sex" ng-options="sex.name for sex in pageData.sexList"></select>-->
+                <select class="pRight10 border0 colorGrey_6" ng-model="pageData.province" ng-options="province.name for province in pageData.provinceList" required></select>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">刊例：</span>
+                <input type="number" class="form-control" ng-model="pageData.K7" placeholder="单位（元）" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">对外折扣：</span>
+                <input type="number" step="0.01" class="form-control" ng-model="pageData.K8" placeholder="单位（折）" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">最低折扣：</span>
+                <input type="number" step="0.01" class="form-control" ng-model="pageData.K11" placeholder="单位（折）" required>
+            </label>
+            <label class="item item-input">
+                <i class="iconfont icon-xinghao "></i>
+                <span class="input-label">结算方式：</span>
+                <select id="pro" class="pRight10 border0 colorGrey_6" ng-change="pageFunc.selectProvince()" ng-model="pageData.district" ng-options="district.name for district in pageData.districtList" required></select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">其他平台账号：</span>
+                <input type="text" class="form-control" ng-model="pageData.userInfo.userIntroduction" placeholder="" >
+            </label>
+        </div>
+        <div class="wrapBtn">
+            <button class="button button-block button-positive" ng-mousedown="pageFunc.submit()">
+                立即提交
+            </button>
+        </div>
+        <backbtn></backbtn>
+    </div>
+</div>

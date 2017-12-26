@@ -1,0 +1,41 @@
+﻿<div class="wrapArticle">
+    <div class="inputRegion">
+        <input class="titleStyle" ng-model="pageData.titleNm" type="text" required placeholder="标题描述..." />
+    </div>
+    <div class="textareaRegion">
+        <textarea class="contentStyle" ng-model="pageData.contentDesc" required placeholder="内容描述..."></textarea>
+    </div>
+    <div class="country">
+        <label class="">
+            <span class="spanStyle">省份选择：</span>
+            <select id="pro" class="selectStyle pRight10 border0 colorGrey_6" ng-change="pageFunc.selectProvince()" ng-model="pageData.province" ng-options="province.name for province in pageData.provinceList"></select>            
+        </label>       
+    </div>
+    <div class="country">
+            <span class="spanStyle">城市选择：</span>           
+            <select id="region" class="selectStyle pRight10 border0 colorGrey_6" ng-model="pageData.city" ng-options="city.name for city in pageData.cityList"></select>
+    </div>
+    <div class="country">
+            <span class="spanStyle" ng-click="pageFunc.showTagsDialog()" ng-model="pageData.currTagList">标签选择：</span>
+            <div class="labelChoose" ng-hide="pageData.isHide">
+                点击蓝色字可选择标签
+            </div>
+            <div class="TagsRegion">
+                <div class="width100 height30 tagDiv margin textC floatL lineH bgLightBlue " ng-show="pageData.isHide" ng-repeat="item in pageData.currTagList">
+                    <span class="colorWhite">{{item.tag}}</span>
+                    <i class="iconfont icon-guanbi colorWhite" ng-click="pageFunc.deleteTags(item,pageData.currTagList,0)"></i>                    
+                </div>
+                <div class="clear"></div>
+            </div>
+    </div>
+    <div class="buttonStyle">
+        <!--<button class="reset" ng-click="pageFunc.reset(0)">重置</button>
+        <button class="publish" ng-click="pageFunc.publish(0)">发布</button>-->
+        <button class="button button-stable" ng-click="pageFunc.reset(0)">
+            重置
+        </button>
+        <button class="button button-positive" ng-click="pageFunc.publish(0)">
+            发布
+        </button>
+    </div>
+</div>

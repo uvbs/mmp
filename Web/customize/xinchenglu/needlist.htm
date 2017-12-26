@@ -1,0 +1,206 @@
+﻿
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+		<title>需求列表</title>
+        <link type="text/css" rel="stylesheet" href="Css/style.css">
+        <script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+       <script src="/Scripts/StringBuilder.js" type="text/javascript"></script>
+       <style type="text/css">
+       .search .area, .search .company {height:auto;background-color:White;}
+       .search .search-btn{height:auto;}
+       .comm{background-color:White;}
+       .comm dd p label{font-size:14px;font-weight:bold;}
+       .comm dd p a{color:#14b467;}
+    </style>
+	</head>
+	<body>
+        <!-- Search -->
+        <div class="search">
+
+      <input type="text" id="txtName" class="company" placeholder="名称" style="width:70%"/>
+
+             
+          <input type="button" class="search-btn" value="搜索" id="btnSearch">                
+            
+        </div>
+        <!--/ Search -->
+        <!-- List -->
+        <div class="main" id="objList">
+
+
+        </div>
+        
+        <!--/ List -->
+        <div class="blank"></div>
+
+	</body>
+     <script type="text/javascript">
+         var PageIndex = 1; //第几页
+         var PageSize = 5; //每页显示条数
+         $(function () {
+             LoadList();
+             $("#btnSearch").click(function () {
+                 PageIndex = 1;
+                 $(this).html("正在搜索...");
+                 LoadList();
+
+             })
+         });
+
+         function BtnClick() {
+
+             PageIndex++;
+             LoadList();
+
+
+         }
+
+
+
+
+         //加载列表分页
+         function LoadList() {
+             $.ajax({
+                 type: 'post',
+                 url: "Wap.ashx",
+                 data: { Action: 'GetNeedList', NeedName: $("#txtName").val(), ActivityID: "216217", KName: "K3", KStatus: "K4", PageIndex: PageIndex, PageSize: PageSize },
+                 timeout: 60000,
+                 dataType: "json",
+                 success: function (resp) {
+                     $("#btnSearch").html("搜索");
+                     if (resp.ExObj == null) { return; }
+                     var listHtml = '';
+                     var str = new StringBuilder();
+                     for (var i = 0; i < resp.ExObj.length; i++) {
+                         //构造视图模板
+
+                         //
+                         str.AppendFormat('<dl class="comm">');
+                         str.AppendFormat('<dt><img src="{0}"></dt>', "images/logo.jpg");
+                         str.AppendFormat('<dd>');
+                         str.AppendFormat('<p>');
+                         str.AppendFormat('<label>{0}</label><br/>', resp.ExObj[i].K3);
+                         str.AppendFormat('姓名：{0}<br/>', resp.ExObj[i].Name);
+                         str.AppendFormat('居住地址：{0}<br/>', resp.ExObj[i].K1);
+                         str.AppendFormat('联系电话：<a  href="tel:{0}">{0}</a>&nbsp;<a style="font-size:14px;" href="tel:{0}">点击拨号</a><br/>', resp.ExObj[i].K2);
+                         str.AppendFormat('</p>');
+                         str.AppendFormat('</dd>');
+                         str.AppendFormat('</dl>');
+
+                         //
+
+                     };
+                     if (PageIndex == 1) {
+                         if (resp.ExStr == "1") {
+                             //显示下一页按钮
+                             str.AppendFormat(' <button id="btnNext" type="button" class="dismore" onclick="BtnClick()">显示更多</button>');
+                             listHtml += str.ToString();
+                             $("#objList").html(listHtml);
+
+                         }
+                         else {
+                             listHtml += str.ToString();
+                             if (listHtml == "") {
+                                 listHtml = "没有符合条件的需求";
+                             }
+                             $("#objList").html(listHtml);
+
+                         }
+
+
+
+                     }
+                     else {
+                         listHtml += str.ToString();
+                         if (listHtml != "") {
+                             $("#btnNext").before(listHtml);
+                         }
+                         else {
+
+                             $("#btnNext").html("没有更多了");
+                             $("#btnNext").removeAttr("onclick");
+
+                         }
+
+                     }
+
+
+
+                 },
+                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     if (textStatus == "timeout") {
+                         alert("加载超时，请刷新页面");
+
+                     }
+                     $("#btnSearch").html("搜索");
+                 }
+             });
+
+
+
+
+         }
+
+
+
+
+ </script>
+<!-- <script type="text/javascript">
+
+     var desc = "新成路街道";
+     var title = "新成路街道";
+     var imgUrl = "http://" + window.location.host + "/customize/xinchenglu/images/logo.jpg";
+     var shareUrl = window.location.href;
+     // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+     document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+         // 发送给好友
+         WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+             WeixinJSBridge.invoke('sendAppMessage', {
+                 //"appid": appId,
+                 "img_url": imgUrl,
+                 "img_width": "100",
+                 "img_height": "100",
+                 "link": shareUrl,
+                 "desc": desc,
+                 "title": title
+             }, function (res) {
+                 //if (res.err_msg == 'send_app_msg:ok') {
+                 AddLog(0);
+                 //}
+             })
+         });
+
+         WeixinJSBridge.on('menu:share:timeline', function (argv) {
+             WeixinJSBridge.invoke('shareTimeline', {
+                 //"appid": appId,
+                 "img_url": imgUrl,
+                 "img_width": "100",
+                 "img_height": "100",
+                 "link": shareUrl,
+                 "desc": desc,
+                 "title": title
+             }, function (res) {
+
+             })
+         });
+
+         WeixinJSBridge.on('menu:share:weibo', function (argv) {
+             WeixinJSBridge.invoke('shareWeibo', {
+                 "content": title,
+                 "url": shareUrl
+             }, function (res) {
+
+             });
+         });
+
+     }, false)
+
+</script>-->
+
+</html>

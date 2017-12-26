@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<cross-domain-policy>
+<allow-access-from domain="localhost"/>
+<allow-access-from domain="*.comeoncloud.com.cn"/>
+<allow-access-from domain="*.socialcrmyun.com"/>
+</cross-domain-policy>

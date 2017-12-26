@@ -1,0 +1,24 @@
+﻿<div class="wrapArticleContent pBottom100">
+    <div class="title">
+        {{pageData.article.title}}    
+    </div>
+    <br>
+    <p ng-if="!pageData.needBuy">
+    <iframe frameborder="0" style="width:100%;height:520px;" ng-src="{{pageData.article.webUrl}}"></iframe>
+    </p>
+    <div ng-if="pageData.needBuy" class="pTop72">
+        
+        <p class="txtCenter"> 该课程需要 <span class="colorBlue font20"> {{pageData.article.needScore}}</span>积分</p>
+        <p class="pTop20 txtCenter"><a href="javascripe:;" class="button button-positive" ng-click="pageFunc.buyClass()">立即购买？</a></p>
+
+    </div>
+    <!-- <div class="content" ng-bind-html="pageData.article.content"></div> -->
+    <!-- <div class="operateBtns">
+        <i class="iconfont icon-shoucangjia" ng-click="pageFunc.favoriteArticle()" ng-hide="pageData.article.currUserIsFavorite"></i>
+        <i class="iconfont icon-shoucangjia colorBlue" ng-click="pageFunc.disFavoriteArticle()" ng-show="pageData.article.currUserIsFavorite"></i>
+    </div> -->
+    <!--<backbtn ng-attr-url="#/open"></backbtn>-->
+    
+        <footermenu></footermenu>
+    
+</div>

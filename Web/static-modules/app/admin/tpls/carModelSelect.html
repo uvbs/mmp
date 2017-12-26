@@ -1,0 +1,52 @@
+﻿<div class="wrapCarModelSelect">
+    <div class="form-group">
+        <label for="selectBrand" class="col-sm-2 control-label">品牌</label>
+        <div class="col-sm-10">
+            <select id="selectBrand" ng-disabled="disabled==1" class="form-control" ng-change="pageFunc.loadSeriesCate()" ng-options="item.CarBrandName for item in pageData.brandList" ng-model="selectdata.currSelectBrand"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="selectSeriesCate" class="col-sm-2 control-label">类别</label>
+        <div class="col-sm-10">
+            <select id="selectSeriesCate" ng-disabled="disabled==1"  class="form-control" ng-change="pageFunc.loadSeries()" ng-model="selectdata.currSelectSeriesCate" ng-options="item.CarSeriesCateName for item in pageData.seriesCateList"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="selectSeries" class="col-sm-2 control-label">车系</label>
+        <div class="col-sm-10">
+            <select id="selectSeries" ng-hide="ismultiseries==1" ng-disabled="disabled==1"  class="form-control" ng-change="pageFunc.loadModel()" ng-model="selectdata.currSelectSeries" ng-options="item.CarSeriesName for item in pageData.seriesList"></select>
+            <div isteven-multi-select
+                 input-model="pageData.seriesList"
+                 output-model="selectdata.currSelectMultiSeries"
+                 button-label="CarSeriesName"
+                 item-label="CarSeriesName"
+                 tick-property="ticked"
+                 
+                 ng-show="ismultiseries==1"
+
+                 >
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="form-group" ng-hide="hidemodel==1">
+        <label for="selectCarModel" class="col-sm-2 control-label">车型</label>
+        <div class="col-sm-10">
+            <select id="selectCarModel" ng-hide="ismultimodel==1" ng-disabled="disabled==1"  class="form-control" ng-model="selectdata.currSelectCarModel" ng-options="item.ShowName for item in pageData.modelList"></select>
+        
+            <div isteven-multi-select
+                 input-model="pageData.modelList"
+                 output-model="selectdata.currSelectMultiModel"
+                 button-label="ShowName"
+                 item-label="ShowName"
+                 tick-property="ticked"
+                 ng-show="ismultimodel==1">
+            </div>
+        
+        </div>
+    </div>
+
+
+</div>

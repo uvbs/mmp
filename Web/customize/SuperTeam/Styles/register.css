@@ -1,0 +1,128 @@
+@import "//at.alicdn.com/t/font_1442209464_655242.css";
+.wrapRegister
+{
+    background-image: url(../image/beijing.png);
+    background-repeat: repeat-y;
+    background-size: 100% 105%;
+    padding-bottom: 61px;
+}
+.wrapRegister .imgWidth
+{
+    width: 100%;
+}
+.wrapRegister .content
+{
+    margin-top: -46px;
+}
+.wrapRegister .content .row .col-75 .select-reset
+{
+    width: 94%;
+    font-size: 12px;
+    background-color: rgba(64,65,65,.5);
+    color: #fff;
+    border-radius: 4px;
+    border: 1px;
+    padding: 5px;
+}
+.wrapRegister .content .row .col-75 .input-reset
+{
+    width: 94%;
+    font-size: 12px;
+    background-color: rgba(64,65,65,.5);
+    color: #fff !important;
+    border-radius: 4px;
+    border: 1px;
+    padding: 0 9px;
+    height: 28px;
+}
+.wrapRegister .content .row .col-75 .textarea-reset
+{
+    width: 94%;
+    font-size: 12px;
+    background-color: rgba(64,65,65,.5);
+    color: #fff !important;
+    border-radius: 4px;
+    height: 83px;
+    padding: 5px 9px;
+}
+.wrapRegister .content .row .col-75 .div-reset
+{
+    width: 94%;
+    font-size: 12px;
+    background-color: rgba(64,65,65,.5);
+    color: #fff !important;
+    border-radius: 4px;
+    height: 64px;
+    padding: 5px 9px;
+    position: relative;
+}
+.wrapRegister .content .row .col-75 .div-reset .jiahao
+{
+    position: absolute;
+    top: 23px;
+    left: -8px;
+    margin-left: 50%;
+    font-size: 28px;
+    color: #666;
+}
+.wrapRegister .content .row .col-75 .div-reset .span-reset
+{
+    position: absolute;
+    top: 23px;
+    left: -40px;
+    margin-left: 50%;
+}
+.wrapRegister .content .row .col-75 .item-reset
+{
+    width: 94%;
+    font-size: 12px;
+    background-color: rgba(64,65,65,.5);
+    border-radius: 4px;
+    height: 28px;
+    padding: 5px 9px;
+    border: 1px;
+}
+.wrapRegister .content .padding
+{
+    /*padding: 13px 60px 0 120px;*/
+}
+.wrapRegister .content .padding .button-reset
+{
+    line-height: 30px;
+    min-height: 37px;
+    border-radius: 4px;
+    background-color: rgba(64,65,65,.5);
+    border-color: rgba(64,65,65,.5);
+}
+.wrapRegister .bottom
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    background-color: #101010;
+    text-align: center;
+    height: 50px;
+}
+.wrapRegister .bottom .row, .wrapRegister .bottom .row .col
+{
+    padding: 0;
+}
+.wrapRegister .bottom .row .col .row
+{
+    padding-top: 0;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 15px;
+}
+.wrapRegister .bottom .row .col i
+{
+    position: relative;
+    top: 15px;
+    font-size: 30px;
+}
+.wrapRegister .borderLine
+{
+    border-right: 1px solid #fff;
+}

@@ -1,0 +1,35 @@
+﻿<div class="wrapArticleContent">
+    <div class="title">
+        {{pageData.article.title}}    
+    </div>
+    <!--<tagbtn  ng-attr-article="{{pageData.article}}"></tagbtn>-->
+    <div class="tags">
+        <ul>
+            <li class="floatL" ng-repeat="tag in pageData.article.tags">
+                <a class="tag" ng-click="pageFunc.go(tag)">{{tag}}</a>
+            </li>
+        </ul>      
+        <div class="Clear"></div>
+    </div>
+    <div class="pubInfo">
+        <a class="userName" href="#/master/{{pageData.article.pubUser.id}}">{{pageData.article.pubUser.userName}}</a>发表于<span class="time">{{pageData.article.createDate | date:'yyyy-MM-dd'}}</span>
+        <span class="viewCount" ng-if="pageData.hasview == '1'">
+            <i class="iconfont icon-liulan">
+            </i>
+            {{pageData.article.pv}}
+        </span>
+    </div>
+    <div class="content" ng-bind-html="pageData.article.content"></div>
+    <div class="operateBtns">
+        <div class="attiontion" ng-if="pageData.hasattention == '1'">
+            <span class="care" ng-if="!pageData.article.currUserIsFollow" ng-click="pageFunc.followArticle(pageData.article)">关注</span>
+            <span class="care" ng-if="pageData.article.currUserIsFollow" ng-click="pageFunc.disFollowArticle(pageData.article)">取消关注</span>
+        </div>
+        <i class="iconfont icon-shoucangjia toRight xingSize" ng-click="pageFunc.favoriteArticle()" ng-hide="pageData.article.currUserIsFavorite"></i>
+        <i class="iconfont icon-shoucangjia colorBlue toRight xingSize" ng-click="pageFunc.disFavoriteArticle()" ng-show="pageData.article.currUserIsFavorite"></i>
+        <div class="Clear"></div>
+        <!-- 
+        <i class="iconfont icon-xiaoxiguanli"></i><span class="count">100</span> -->
+    </div>
+    <comment ng-attr-article="pageData.article" ng-attr-optype="{{pageData.optype}}"></comment>
+</div>

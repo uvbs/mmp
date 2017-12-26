@@ -1,0 +1,15 @@
+﻿<div class="rightListThree wrapTutor" >
+    <h4>推荐专家<span ng-click="go('#/master')">更多</span></h4>
+    <dl ng-repeat="item in rcmtutorData.tutors">
+        <dt><img class="hand" ng-src="{{item.avatar}}" ng-click="go('#/userspace/' + item.id)" alt=""></dt>
+        <dd>
+            <p title="{{item.userName}}" class="threeTop hand" ng-click="go('#/userspace/' + item.id)">{{item.userName}}</p>           
+            <p>
+                回答{{item.answerCount}}个问题，发表{{item.articleCount}}篇文章，被
+                {{item.followUserCount}}个用户关注
+            </p>
+        </dd>
+        <button ng-if="!item.userIsFollow" class="btn btn-primary threeBot" ng-click="rcmtutorFunc.submitFollow(item)">关注</button>
+        <button ng-if="item.userIsFollow" class="btn btn-warning threeBot" ng-click="rcmtutorFunc.submitDisFollow(item)">取消</button>
+    </dl>
+</div>

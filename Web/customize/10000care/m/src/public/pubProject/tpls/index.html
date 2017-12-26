@@ -1,0 +1,85 @@
+﻿<div class="wrapPubProject">
+	<div class="row">
+		<div class="col">
+			<div class="mBottom10">项目名称:</div>
+			<div class="wrapInputDark">
+				<input type="text" placeholder="项目名称（必填）" ng-model="pageData.projectName">
+			</div>
+		</div>
+	</div>
+	<div class="row mTop10">
+		<div class="col">
+			<div class="floatL pTop9">项目分类:</div>
+			<div class="wrapInputDark floatL selectDark">
+				<select ng-model="pageData.category">
+					<option value="">选择分类</option>
+                    <option value="粘贴折叠">粘贴折叠</option>
+                    <option value="成品包装">成品包装</option>
+                    <option value="组件装配">组件装配</option>
+                    <option value="加工制作">加工制作</option>
+                    <option value="纺织串接">纺织串接</option>
+                    <option value="缝纫整熨">缝纫整熨</option>
+                    <option value="其它项目">其它项目</option>
+                    <option value="阳光办公室">阳光办公室</option>
+				</select>
+			</div>
+			<div class="Clear"></div>
+		</div>
+	</div>
+	<div class="row mTop10">
+		<div class="col">
+			<div class="floatL pTop9">项目周期:</div>
+			<div class="wrapInputDark floatL selectDark">
+				<select ng-model="pageData.projectCycle">
+					<option value="">选择周期</option>
+					<option value="0">临时(1个月以内)</option>
+					<option value="1">短期(1-3个月)</option>
+					<option value="2">中期(3-6个月)</option>
+					<option value="3">长期(6-12个月)</option>
+				</select>
+			</div>
+			<div class="Clear"></div>
+		</div>
+	</div>
+	<div class="row mTop10">
+		<div class="col">
+			<div class="floatL">
+				项目物流:
+			</div>
+			<div class="floatL pLeft4" ng-click="pageFunc.changeLogistics(0)">
+				<i class="iconfont icon-yuan" ng-show="pageData.logistics == 0"></i>
+				<i class="iconfont icon-iconfontxuanzequan" ng-show="pageData.logistics != 0"></i>
+				<span class="font13">企业负责配送</span>
+			</div>
+			<div class="floatL pLeft4 " ng-click="pageFunc.changeLogistics(1)">
+				<i class="iconfont icon-yuan" ng-show="pageData.logistics == 1"></i>
+				<i class="iconfont icon-iconfontxuanzequan" ng-show="pageData.logistics != 1"></i>
+				<span class="font13">基地负责配送</span>
+			</div>
+			<div class="Clear"></div>
+		</div>
+	</div>
+	<div class="row mTop10">
+		<div class="col">
+			<div class="mBottom10">工期要求:</div>
+			<div class="wrapInputDark textareaDark">
+				<!-- <input type="text" placeholder="工期要求"> -->
+				<textarea placeholder="工期要求" ng-model="pageData.timeRequirement"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row mTop10">
+		<div class="col">
+			<div class="mBottom10">项目介绍:</div>
+			<div class="wrapInputDark textareaDark">
+				<!-- <input type="text" placeholder="项目介绍"> -->
+				<textarea placeholder="项目介绍" ng-model="pageData.introduction"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row mTop10 pBottom32">
+		<div class="col wrapLoginBtn">
+			<a href="javascript:;" class="btnLogin" ng-click="pageFunc.save()">发布项目</a>
+		</div>
+	</div>
+</div>

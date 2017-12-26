@@ -1,0 +1,178 @@
+@import "//at.alicdn.com/t/font_1441004062_7972815.css";
+.wrapLoveExchangIndex
+{
+    background-image: url(../images/bg_02.png);
+    background-size: 100% 100%;
+    text-align: center;
+    position: relative;
+}
+.wrapLoveExchangIndex .pTopBottom0
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.wrapLoveExchangIndex .textL
+{
+    text-align: left;
+}
+.wrapLoveExchangIndex .top381
+{
+    top: 381px !important;
+}
+.wrapLoveExchangIndex .top441
+{
+    top: 441px !important;
+}
+.wrapLoveExchangIndex .top501
+{
+    top: 501px !important;
+}
+.wrapLoveExchangIndex .mTop30
+{
+    margin-top: 30px;
+}
+.wrapLoveExchangIndex .pTop15
+{
+    padding-top: 15px;
+}
+.wrapLoveExchangIndex .pAll0
+{
+    padding: 0 !important;
+}
+.wrapLoveExchangIndex .null
+{
+    height: 260px;
+}
+.wrapLoveExchangIndex .wrapInput
+{
+    color: #f1f4f8;
+}
+.wrapLoveExchangIndex .wrapInput .row
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.wrapLoveExchangIndex .wrapInput .row .one
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wrapLoveExchangIndex .wrapInput .row .one .register
+{
+    margin: 0 20px 0 56px;
+    background-color: #A45F2D;
+    padding: 10px 8px 10px 21px;
+    border-radius: 4px;
+}
+.wrapLoveExchangIndex .wrapInput .row .one .register .itemOne
+{
+    padding: 0;
+    position: relative;
+    top: 0;
+}
+.wrapLoveExchangIndex .wrapInput .row .one .register .outside
+{
+    width: 36px;
+    height: 36px;
+    background-color: #A45F2D;
+    border-radius: 50%;
+    border: 1px solid #EEC479;
+    position: absolute;
+    top: 321px;
+    left: 49px;
+}
+.wrapLoveExchangIndex .wrapInput .row .one .register .outside .inside
+{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #EEC479;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+.wrapLoveExchangIndex .wrapInput .row .one .register .outside .inside .oneWord
+{
+    font-size: 20px;
+    position: absolute;
+    top: 2px;
+    left: 8px;
+}
+.wrapLoveExchangIndex .wrapInput .row .register a
+{
+    background-color: #A45F2D;
+    padding: 5px;
+    position: relative;
+    top: -13px;
+    font-size: 13px;
+    color: #fff;
+}
+.wrapLoveExchangIndex .wrapInput .row .line
+{
+    border: 1px solid #C38749;
+}
+.wrapLoveExchangIndex .wrapInput .row .prizeImg
+{
+    width: 98%;
+}
+.wrapLoveExchangIndex .contact
+{
+    text-align: center;
+    margin-top: 50px;
+    color: #A17052;
+}
+.wrapLoveExchangIndex .erweima
+{
+    text-align: center;
+    margin-top: 10px;
+}
+.wrapLoveExchangIndex .erweima .erweimaImg
+{
+    width: 100px;
+    height: 100px;
+}
+.wrapLoveExchangIndex .intro
+{
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    color: #A17052;
+}
+.wrapLoveExchangIndex .intro .zhubanfang
+{
+    margin-top: 10px;
+    display: block;
+}
+.wrapLoveExchangIndex .bottom
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    background-color: #9D7742;
+    text-align: center;
+    height: 50px;
+}
+.wrapLoveExchangIndex .bottom .row, .wrapLoveExchangIndex .bottom .row .col
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.wrapLoveExchangIndex .bottom .row .col .row
+{
+    padding-top: 0;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 15px;
+}
+.wrapLoveExchangIndex .bottom .row .col i
+{
+    position: relative;
+    top: 15px;
+    font-size: 30px;
+}
+.wrapLoveExchangIndex .borderLine
+{
+    border-right: 1px solid #fff;
+}

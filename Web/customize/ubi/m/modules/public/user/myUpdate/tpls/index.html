@@ -1,0 +1,38 @@
+﻿<div class="pTop20">
+    <div class="wrapCardList wrapUpdateList">
+        <div class="card" ng-repeat="item in pageData.myUpdateList">
+            <div class="item">
+                <div class="row">
+                    <div class="col" ng-click="pageFunc.go(item.id)">
+                        <div class="mBottom6">
+                            <span class="userName">{{item.pubUser.userName}}</span>
+                            <span class="time">{{item.createTime | date:'yyyy-MM-dd'}}</span>
+                        </div>
+                        <summary><span ng-bind-html="item.summary"></span></summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a href="javascript:;" class="tag">{{tag}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row cardBtnList">
+                    <i class="iconfont icon-xiaoxiguanli"></i><span>{{item.commentCount}}</span>
+                    <i class="iconfont icon-dianzan"></i><span>{{item.praiseCount}}</span>
+                    <i class="iconfont icon-shoucangjia"  ng-hide="pageData.article.currUserIsFavorite"></i><span ng-hide="pageData.article.currUserIsFavorite">收藏</span>
+                    <i class="iconfont icon-shoucangjia colorBlue" ng-show="pageData.article.currUserIsFavorite"></i><span ng-show="pageData.article.currUserIsFavorite">收藏</span>
+                    <i class="iconfont icon-shequjubao"></i>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-show="pageData.myUpdateList.length < pageData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadData(false)">查看更多</button>
+        </div>
+        <div ng-if="pageData.totalCount == 0">
+            没有数据
+        </div>
+    </div>
+    <backbtn></backbtn>
+</div>

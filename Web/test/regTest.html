@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <a href="javascript:;" id="btnGetOpenId">查询OpenId</a><br />
+    <span id="OpenData"></span><br />
+    <span id="OpenId"></span><br />
+    <a href="javascript:;" id="btnRegGy">注册</a><br />
+    <span id="RegGyData"></span><br />
+    <a href="javascript:;" id="btnBindGy">绑定</a><br />
+    <span id="BindGyData"></span><br />
+    <a href="javascript:;" id="btnReg">注册本地账号</a><br />
+    <span id="RegData"></span><br />
+</body>
+</html>
+<script type="text/javascript" src="/Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#btnGetOpenId').on('click', function () {
+            $.ajax({
+                type: 'post',
+                url: "/Serv/API/User/WXOpenId.ashx",
+                success: function (data) {
+                    if (data.IsSuccess) {
+                        $('#OpenId').html(data.Result);
+                    }
+                    $('#OpenData').html(JSON.stringify(data));
+                }
+            });
+        });
+        $('#btnRegGy').on('click', function () {
+            var reqData = { email: "lijunboy168126.com", phone: "1800", pwd: "123456", openid: "o6gBIxMQKA3YNa8Pwq7F7GYOsLGU", name: "李俊", company: "至云" }
+            $.ajax({
+                type: 'post',
+                url: "http://gytest.chinayie.com/api/register",
+                data: reqData,
+                success: function (data) {
+                    $('#RegGyData').html(JSON.stringify(data));
+                }
+            });
+        });
+        var reqData = { email: "lijunboy168@126.com", phone: "18001779416", pwd: "123456", hasCode: "0", name: "李俊", company: "至云" }
+        var reqData = { email: "lijunboy1628@126.com", phone: "18001779416", pwd: "123456", hasCode: "0", name: "李俊", company: "至云" }
+
+        $('#btnReg').on('click', function () {
+            var reqData = { email: "lijunboy168@126.com", phone: "18001779416", pwd: "123456", hasCode: "0", name: "李俊", company: "至云" }
+            $.ajax({
+                type: 'post',
+                url: "/Serv/API/User/Register.ashx",
+                data: reqData,
+                success: function (data) {
+                    $('#RegData').html(JSON.stringify(data));
+                }
+            });
+        });
+
+        $('#btnBindGy').on('click', function () {
+            var reqData = { email: "guoye@chinayie.com", pwd: "Zy123456", openid: "o6gBIxMQKA3YNa8Pwq7F7GYOsLGU" }
+            $.ajax({
+                type: 'post',
+                url: "http://gytest.chinayie.com/api/binding",
+                data: reqData,
+                success: function (data) {
+                    $('#BindGyData').html(JSON.stringify(data));
+                }
+            });
+        });
+
+        var orderData = {
+            order_id: "163210",//订单号
+            use_amount: "0",//余额
+            cardcoupon_id:"0"//储值卡id
+
+        }
+
+        $.ajax({
+            type: 'post',
+            url: "/Serv/API/Mall/Order.ashx?action=Update",
+            data: { data: JSON.stringify(orderData) },
+            success: function (resp) {
+                
+            }
+        });
+
+
+
+        
+    });
+</script>

@@ -1,0 +1,21 @@
+﻿#wrapWinList {
+  display: none;
+  padding-bottom: 6%;
+}
+#wrapWinList .title {
+  padding: 6% 2%;
+  text-align: center;
+  font-size: 18px;
+}
+#wrapWinList .subTitle {
+  padding: 2% 6px;
+  margin: 2% 0;
+  font-size: 14px;
+  border-left: 4px solid #1aad19;
+  border-bottom: 1px dotted #1aad19;
+}
+#wrapWinList .noRecordMsg {
+  text-align: center;
+  padding-top: 70px;
+  font-size: 20px;
+}

@@ -1,0 +1,68 @@
+<div class="serviceOrdersCtrl">
+  <tabs class="titleTab" tabs="pageData.listTypeTabs"
+    current="pageData.listTypeIndex"
+    on-select="pageFunc.setListType"></tabs>
+  <div ng-if="pageData.listTypeIndex === 0">
+    <tabs class="subTab" tabs="pageData.statusTabs"
+      current="pageData.statusIndex"
+      on-select="pageFunc.setStatus"></tabs>
+    <ul class="orderList">
+      <li class="orderItem row" ng-repeat="order in pageData.orderList">
+        <div class="col col-75">
+          <div>
+            <span class="orderTitle">
+              <a ng-href="{{'#/service/orders/' + order.id}}">{{order.title}}</a>
+            </span>
+            <span class="orderStatus" ng-class="{
+                orderStatusProcessing: order.orderStatus === 0,
+                orderStatusConfirmed: order.orderStatus === 1,
+                orderStatusFinished: order.orderStatus === 2
+              }">{{order.orderStatusText}}</span>
+          </div>
+          <div class="arrivalTime">到店时间: {{order.arrivalTime}}</div>
+          <div class="orderTime">下单时间: {{order.orderTime}}</div>
+        </div>
+        <div class="col col-center text-center">
+          <order-button order="order"></order-button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="mallOrderList" ng-if="pageData.listTypeIndex === 1">
+    <ul class="orderList">
+      <li class="orderItem" ng-repeat="order in pageData.orderList">
+        <div class="lineHeight24">
+          <span>{{order.orderTime}}</span>
+          <span>订单编号: </span>
+          <span>{{order.orderId || '123123'}}</span>
+          <span>{{order.orderStatusText}}</span>
+        </div>
+        <div class="font16 mTop5 mBottom5 clearfix">
+          <span class="floatL text-center">
+            <img class="orderImage" src="/customize/pureCar/m/static/img/avatar.jpg" alt="" />
+          </span>
+          <span class="floatL mLeft6 lineHeight24">
+            <div><a ng-href="{{'#/service/orders/' + order.id}}">{{order.title}}</a></div>
+            <div>
+              {{(order.price || 300) | currency:''}}
+              <span class="colorRed">× {{order.amount || 1}}</span></div>
+          </span>
+        </div>
+        <hr />
+        <div class="row pAll0 mTop5">
+          <div class="font16 col col-66 col-center pAll0">
+            共 <span class="colorRed">1</span> 件商品，
+            <span class="colorRed">
+              <span class="font20">{{(order.amount * order.price || 300) | currency:'':0}}</span>
+              元
+            </span>
+          </div>
+          <div class="col col-center">
+            <order-button order="order"></order-button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

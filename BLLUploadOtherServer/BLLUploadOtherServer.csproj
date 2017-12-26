@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7EBFC9F9-C987-479D-9B94-7B28757FD180}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BLLUploadOtherServer</RootNamespace>
+    <AssemblyName>BLLUploadOtherServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AliStock\AliStock.csproj">
+      <Project>{d35152f9-a061-4586-b834-58c180f3a97d}</Project>
+      <Name>AliStock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AZStorage\AZStorage.csproj">
+      <Project>{d6394f37-0417-45ec-82b7-66e2d4e61e8f}</Project>
+      <Name>AZStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLLJIMP\BLLJIMP.csproj">
+      <Project>{38d7aa58-c95b-449b-86c6-a8073a56e11f}</Project>
+      <Name>BLLJIMP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileUploadOss\FileUploadOss.csproj">
+      <Project>{d23412b1-67c7-41ad-8ecb-7ffa2224de48}</Project>
+      <Name>FileUploadOss</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OssHelper\AliOss.csproj">
+      <Project>{f916a046-8d39-4038-892e-ef00a83caf22}</Project>
+      <Name>AliOss</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCBLLEngine\ZCBLLEngine.csproj">
+      <Project>{67a2097c-482c-4e08-a3bb-cf7a01c2ffe1}</Project>
+      <Name>ZCBLLEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCCommon\ZCCommon.csproj">
+      <Project>{66816e20-66b9-4bab-871f-45efe110146b}</Project>
+      <Name>ZCCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCDBEngine\ZCDALEngine.csproj">
+      <Project>{9722b8c9-701e-4f27-835f-ef9c79a7c554}</Project>
+      <Name>ZCDALEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

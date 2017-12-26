@@ -1,0 +1,29 @@
+﻿
+<div class="wrapCheckPayPwd">
+    <div class="logo-table">
+        <div class="logo-cell">
+            <img class="logo" src="http://file-cdn.songhebao.com/www/jubit/jubit/image/20170309/B2D620E4BFD249AB962DFFD55BF1F72B.png" />
+        </div>
+    </div>
+    <div class="comm-form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">支付密码：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="password" placeholder="请输入支付密码" v-model="pay_pwd" maxlength="20" v-on:keyup.enter="checkPayPwd()" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comm">
+        <a href="javascript:void(0);" class="weui-btn btn-disabled" v-if="!pay_pwd">验证</a>
+        <a href="javascript:void(0);" class="weui-btn btn-comm" v-if="pay_pwd" v-on:click="checkPayPwd()">验证</a>
+    </div>
+    <div class="order-table">
+        <div class="order-cell-right">
+            <span class="to-link" v-on:click="goForgetPassword()">忘记支付密码?</span>
+        </div>
+    </div>
+</div>

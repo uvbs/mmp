@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <title></title>
+    <script src="/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="/Scripts/wxshare/wxshare1.1.0/wxshare.js"></script>
+</head>
+<body style="margin:0px;height:0px;">
+    <iframe id="ifMap" style="height:320px;width:100%;" frameborder="0" src="http://m.amap.com/navi/?key=224bd7222ce22c01673ff105ffb93fda"></iframe>
+    <!--<a href="javascript:openLocation()">打开地图</a>-->
+    <!--<a href="javascript:openLocation()">获取转火星坐标</a>
+    <a href="javascript:openLocation()">打开地图</a>-->
+</body>
+</html>
+<script>
+    //function openLocation() {
+    //    wx.openLocation({
+    //        latitude: 31.032866, // 纬度，浮点数，范围为90 ~ -90
+    //        longitude:121.593156, // 经度，浮点数，范围为180 ~ -180。
+    //        name: '浦东新区航头镇社区事务受理服务中心', // 位置名
+    //        address: '航头镇航头路1538号', // 地址详情说明
+    //        scale: 1, // 地图缩放级别,整形值,范围从1~28。默认为最大
+    //        infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+    //    });
+    //}
+    var vm = {};
+    $(function () {
+        //initPage();
+
+        AMap.plugin(['AMap.Geolocation'], function () {
+            vm.geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+                timeout: 3000          //超过10秒后停止定位，默认：无穷大
+            });
+            AMap.event.addListener(vm.geolocation, 'complete', onComplete);//返回定位信息
+            AMap.event.addListener(vm.geolocation, 'error', onError);      //返回定位出错信息
+            vm.geolocation.getCurrentPosition();
+        });
+    });
+    //function initPage() {
+    //    var _h = $(window).height();
+    //    var _w = $(window).width();
+    //    console.log(_h);
+    //    console.log(_w);
+    //    $("#ifMap").css("height", _h);
+    //    $("#ifMap").css("width", _w);
+    //}
+</script>

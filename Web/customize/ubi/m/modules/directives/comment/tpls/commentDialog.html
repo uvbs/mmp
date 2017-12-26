@@ -1,0 +1,18 @@
+﻿<div>
+    <div class="warpCommentDialog">
+        <div class="list">
+            <textarea  class="mTop20 width295 height120" ng-model="pageData.currComment" placeholder="说两句吧。。" ng-trim="true"></textarea>
+        </div>
+        <div class="opeateBox">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="pageData.commentIncognito">
+                <span>匿名</span>
+            </label>
+
+            <a href="javascript:;" class="button button-positive" ng-click="pageFunc.submitComment()">
+                确定
+            </a>
+            <!--<div class="clear"></div>-->
+        </div>
+    </div>
+</div>

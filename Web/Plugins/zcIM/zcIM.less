@@ -1,0 +1,751 @@
+﻿.IM {
+    font-family: 'Microsoft YaHei';
+
+    .IM-tip {
+        position: fixed;
+        background: #f0f1f4;
+        right: 0px;
+        bottom: 0px;
+        width: 288px;
+        height: 40px;
+        line-height: 40px;
+        box-shadow: -3px -2px 8px -1px rgba(0,0,0,0.2);
+        cursor: pointer;
+        z-index: 1002;
+
+        .IM-tip-l {
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            float: left;
+
+            .IM-tip-email {
+                position: absolute;
+                width: 32px;
+                height: 32px;
+                top: 4px;
+                left: 7px;
+            }
+        }
+
+        .IM-tip-m {
+            float: left;
+            width: 196px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .IM-tip-m-twinkle {
+            float: left;
+            width: 196px;
+            height: 40px;
+            font-size: 14px;
+            animation: tip-twinkle 1.5s infinite;
+        }
+
+        @keyframes tip-twinkle {
+            0% {
+                color: #ea0404;
+            }
+
+            25% {
+                color: #ea0404;
+            }
+
+            50% {
+                color: #f0f1f4;
+            }
+
+            25% {
+                color: #ea0404;
+            }
+
+            100% {
+                color: #ea0404;
+            }
+        }
+
+        .IM-tip-r {
+            width: 36px;
+            height: 36px;
+            float: right;
+            padding: 2px;
+            position: absolute;
+            right: 0px;
+
+            .IM-tip-r-m {
+                background: #ff8140;
+                width: 36px;
+                height: 36px;
+                position: absolute;
+                border-radius: 2px;
+
+                .IM-tip-r-ico {
+                    width: 22px;
+                    height: 22px;
+                    margin: 8px 7px;
+                    background: url("/Plugins/zcIM/img/webchat_icon.png") 0 -30px no-repeat;
+                    position: absolute;
+                }
+            }
+
+            .IM-tip-r-m:hover {
+                background: #f7671d;
+            }
+        }
+    }
+
+    .IM-progress {
+        width: 560px;
+        position: fixed;
+        right: 0px;
+        bottom: 0px;
+        z-index: 1004;
+        height: 402px;
+        background: rgba(0,0,0,0.3);
+        box-shadow: -3px -2px 8px -1px rgba(0,0,0,0.2);
+        border-radius: 2px 0px 0px 2px;
+        display: table;
+
+        .IM-progress-cell {
+            display: table-cell;
+            padding: 10%;
+            vertical-align: middle;
+
+            .IM-progress-progress {
+                width: 100%;
+                height: 40px;
+                border: solid #11c1f3 2px;
+                text-align: center;
+                color: #fff;
+                position: relative;
+
+                .IM-progress-in {
+                    width: 0%;
+                    height: 38px;
+                    background: #11c1f3;
+                    position: absolute;
+                }
+
+                .IM-progress-text {
+                    width: 100%;
+                    height: 38px;
+                    position: absolute;
+                    line-height: 38px;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .IM-chat {
+        width: 560px;
+        position: fixed;
+        color: #333;
+        right: 0px;
+        bottom: 0px;
+        z-index: 1003;
+        height: 402px;
+        background: #fff;
+        box-shadow: -3px -2px 8px -1px rgba(0,0,0,0.2);
+        border-radius: 2px 0px 0px 2px;
+
+        .IM-friends {
+            width: 160px;
+            border-right: 1px #d9d9d9 solid;
+            float: left;
+            height: 402px;
+
+            .IM-friends-search {
+                padding: 5px;
+                border-bottom: 1px #d9d9d9 solid;
+                height: 38px;
+                position: relative;
+
+                .div-search {
+                    position: absolute;
+
+                    .txt-search {
+                        width: 128px;
+                        padding: 0 23px 0 5px;
+                        color: #808080;
+                        height: 27px;
+                        line-height: 27px;
+                        border: 1px #d9d9d9 solid;
+                    }
+
+                    .ico-search {
+                        position: absolute;
+                        right: 2px;
+                        top: 4px;
+                        cursor: pointer;
+                        width: 19px;
+                        height: 19px;
+                    }
+                }
+
+                .div-jia {
+                    position: absolute;
+                    width: 27px;
+                    height: 27px;
+                    left: 135px;
+
+                    .ico-jia {
+                        width: 21px;
+                        height: 21px;
+                        margin-top: 3px;
+                        z-index: 1;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .IM-friends-list {
+            overflow-y: auto;
+            height: 363px;
+
+            .Friend-li {
+                height: 38px;
+                padding: 4px 7px 4px 5px;
+                cursor: pointer;
+                position: relative;
+
+                .Friend-avatar {
+                    width: 30px;
+                    height: 30px;
+                    position: absolute;
+
+                    .Friend-avatar-img {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                .Friend-name {
+                    position: absolute;
+                    left: 37px;
+                    width: 95px;
+                    line-height: 30px;
+                    font-size: 12px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .Friend-unread {
+                    position: absolute;
+                    right: 4px;
+                    background-color: #ea0404;
+                    height: 20px;
+                    line-height: 20px;
+                    top: 9px;
+                    text-align: center;
+                    border-radius: 10px;
+                    color: #fff;
+                    min-width: 20px;
+                    font-size: 12px;
+                    z-index: 2;
+                }
+            }
+
+            .Friend-gray {
+                .Friend-avatar {
+                    .Friend-avatar-img {
+                        -webkit-filter: grayscale(100%);
+                        -moz-filter: grayscale(100%);
+                        -ms-filter: grayscale(100%);
+                        -o-filter: grayscale(100%);
+                        filter: grayscale(100%);
+                        filter: gray;
+                    }
+                }
+                .Friend-name {
+                    color: #bbb;
+                }
+            }
+            .Selected {
+                background: #f2f2f5;
+            }
+
+            .Friend-li:hover {
+                background: #f2f2f5;
+            }
+        }
+    }
+
+    .IM-form {
+        float: left;
+        width: 400px;
+        height: 402px;
+        position: relative;
+
+        .IM-chat-head {
+            padding: 0 10px;
+            border-bottom: 1px #d9d9d9 solid;
+            height: 38px;
+            line-height: 38px;
+
+            .to-avatar {
+                float: left;
+                width: 38px;
+                height: 38px;
+
+                .to-avatar-img {
+                    width: 30px;
+                    height: 30px;
+                    margin: 4px 4px 4px 0px;
+                }
+            }
+
+            .to-user {
+                font-size: 14px;
+                font-weight: bold;
+                float: left;
+            }
+
+            .chat-close {
+                float: right;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                width: 20px;
+                text-align: center;
+            }
+        }
+
+        .IM-chat-list {
+            position: absolute;
+            top: 38px;
+            bottom: 42px;
+            width: 100%;
+            overflow-y: auto;
+            padding: 10px 1%;
+
+            .u-localmsg {
+                text-align: center;
+                font-size: 12px;
+                color: #eb7350;
+                line-height: 20px;
+                cursor: pointer;
+            }
+
+            .u-msgTime {
+                text-align: center;
+                font-size: 12px;
+                color: #aaaaaa;
+                line-height: 20px;
+            }
+
+            .j-resend {
+                float: right;
+                padding: 5px 0px;
+                cursor: pointer;
+
+                .iconfont {
+                    color: #84c002;
+                    font-size: 24px;
+                    font-weight: bold;
+                    -webkit-text-stroke-width: 0px;
+                }
+            }
+
+            .item {
+                overflow: hidden;
+                padding: 4px 0px 10px 0px;
+
+                .img {
+                    width: 40px;
+                    height: 40px;
+                    cursor: pointer;
+                    border-radius: 50%;
+                }
+
+                .nick {
+                    margin: 0px 10px 0px 0px;
+                    color: #FF8E00;
+                    font-size: 14px;
+                }
+
+                .msg {
+                    position: relative;
+                    margin-top: 5px;
+                    border-radius: 8px;
+                    border: 1px solid;
+
+                    .box {
+                        position: relative;
+                        padding: 7px 12px;
+                        zoom: 1;
+
+                        .cnt {
+                            position: relative;
+                            min-height: 20px;
+                            line-height: 20px;
+                            overflow: hidden;
+                            white-space: normal;
+                            word-wrap: break-word;
+                            word-break: break-all;
+                            font-size: 14px;
+
+                            .j-pass {
+                                margin: 0px 10px;
+                                color: #0face0;
+                                cursor: pointer;
+                                font-size: 12px;
+                            }
+
+                            .j-reject, .j-read {
+                                color: #e20404;
+                                margin: 0px 10px;
+                                cursor: pointer;
+                                font-size: 12px;
+                            }
+
+                            .f-maxWid {
+                                max-width: 260px;
+                            }
+
+                            .img {
+                                max-width: 260px;
+                            }
+
+                            .emoji {
+                                max-width: 25px;
+                                margin: 0;
+                                vertical-align: middle;
+                                float: none;
+                            }
+
+                            .download-file {
+                                display: block;
+                                color: #fff;
+                                width: 100%;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+
+                            .icon {
+                                display: inline-block;
+                                width: 16px;
+                                height: 16px;
+                                background-image: url(/lib/IM/images/icons.png);
+                                background-repeat: no-repeat;
+                                vertical-align: middle;
+                            }
+
+                            .icon-file2 {
+                                background-position: -108px -118px;
+                                width: 37px;
+                                height: 50px;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+
+                .msg:before, .msg:after {
+                    content: ' ';
+                    position: absolute;
+                    top: 11px;
+                    border-top: 5px solid transparent;
+                    border-bottom: 5px solid transparent;
+                    width: 0;
+                    height: 0;
+                }
+
+                .readMsg {
+                    display: none;
+                    color: #6b8299;
+                    font-size: 12px;
+                    padding: 5px 5px;
+                    text-align: right;
+                    line-height: 37px;
+                    float: right;
+                }
+            }
+
+            .item-me {
+                .img {
+                    float: right;
+                    margin-left: 8px;
+                }
+
+                .msg-text {
+                    float: right;
+                    color: #fff;
+                    background: #5cacde;
+                }
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+                .msg:before {
+                    background: none;
+                }
+
+                .msg:after {
+                    left: 100%;
+                    border-left: 5px solid #5cacde;
+                }
+            }
+
+            .item-you {
+                .img {
+                    float: left;
+                    margin-right: 8px;
+                }
+
+                .msg-text {
+                    float: left;
+                    color: #6b8299;
+                    background: #eaeeef;
+                    border-color: #eee;
+                    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.06);
+                }
+
+                a {
+                    color: #6b8299;
+                    text-decoration: none;
+                }
+
+                .msg:before {
+                    background: none;
+                }
+
+                .msg:after {
+                    right: 100%;
+                    border-right: 5px solid #eaeeef;
+                }
+            }
+        }
+
+        .IM-chat-sendbox {
+            padding: 5px;
+            position: absolute;
+            bottom: 0px;
+            border-top: solid #d9d9d9 1px;
+            min-height: 30px;
+            width: 400px;
+            background: #fff;
+
+            .txt-sendbox, .txt-sendbox:focus, .txt-sendbox:visited {
+                float: left;
+                min-height: 20px;
+                line-height: 20px;
+                font-size: 14px;
+                padding: 5px;
+                max-height: 110px;
+                color: #808080;
+                border: solid #d9d9d9 1px;
+                width: 290px;
+                overflow-y: auto;
+            }
+
+            .emojiTag {
+                position: relative;
+                right: 25px;
+                bottom: -35px;
+                width: 0px;
+                height: 0px;
+
+                .m-emoji-wrapper {
+
+                    .m-emoji-picCol {
+                        overflow-x: hidden;
+                        overflow-y: auto;
+
+                        .m-emoji-picCol-ul {
+                            height: auto;
+                            padding: 0px;
+                            margin: 0px;
+
+                            span {
+                                padding: 2px;
+                            }
+                        }
+                    }
+
+                    .m-emoji-chnCol {
+                    }
+                }
+            }
+
+            .sendbox-face {
+                width: 26px;
+                height: 26px;
+                margin: 2px 5px;
+                cursor: pointer;
+            }
+
+            .sendbox-face:hover {
+                color: rgba(255, 164, 5, 0.7);
+            }
+
+            .sendbox-img-file {
+                display: none;
+            }
+
+            .sendbox-img {
+                width: 26px;
+                height: 26px;
+                margin: 2px 5px 2px 0px;
+                cursor: pointer;
+            }
+
+
+            .sendbox-img:hover {
+                color: rgba(132, 192, 2, 0.7);
+            }
+
+            .sendbox-file-file {
+                display: none;
+            }
+
+            .sendbox-file {
+                width: 26px;
+                height: 26px;
+                margin: 2px 5px 2px 0px;
+                cursor: pointer;
+            }
+
+            .sendbox-file:hover {
+                color: rgba(82, 180, 237, 0.7);
+            }
+        }
+    }
+
+    .IM-Users {
+        position: fixed;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(10,10,10,0.1);
+        z-index: 1005;
+
+        .IM-User-form {
+            width: 580px;
+            height: 477px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            margin: auto;
+            background: #fff;
+            border-radius: 2px;
+
+            .IM-User-Search {
+                height: 41px;
+                border-bottom: solid #ddd 1px;
+                padding: 8px;
+
+                .search-label {
+                    font-size: 14px;
+                    color: #0face0;
+                    line-height: 24px;
+                    height: 24px;
+                    display: inline-block;
+                }
+
+                .search-text {
+                    margin-right: 10px;
+                    height: 24px;
+                    padding: 0px;
+                    border: solid #dddddd 1px;
+                    margin-top: -6px;
+                    display: inline-block;
+                    line-height: 22px;
+                    border-radius: 2px;
+                    padding: 2px;
+                }
+
+                .search-btn {
+                    line-height: 13px;
+                    margin-top: -7px;
+                    font-size: 13px;
+                    width: 70px;
+                }
+
+                .search-close {
+                    line-height: 13px;
+                    margin-top: -2px;
+                    font-size: 13px;
+                    width: 70px;
+                    float: right;
+                }
+            }
+
+            .IM-User-List {
+                height: 436px;
+                padding: 1%;
+                overflow-y: auto;
+
+                .list-user {
+                    width: 48%;
+                    height: 130px;
+                    background: #fff;
+                    border: 1px solid #ddd;
+                    border-radius: 2px;
+                    padding: 0;
+                    margin: 1%;
+
+                    .list-userimg {
+                        width: 88px;
+                        height: 88px;
+                        padding: 3px;
+                        border: 1px solid #d9d9d9;
+                        margin: 5px;
+                        border-radius: 3px;
+
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+
+                    .list-username {
+                        position: absolute;
+                        top: 0;
+                        left: 92px;
+                        margin: 5px 6px 6px;
+                        color: #FF8E00;
+                        font-size: 14px;
+                        width: 62%;
+                    }
+
+                    .list-bottom {
+                        position: absolute;
+                        bottom: 0px;
+                        line-height: 30px;
+                        padding: 0px 10px;
+                        background: #eeeeee;
+                        border-top: solid #dddddd 1px;
+                        width: 100%;
+                        height: 30px;
+                        text-align: right;
+
+                        .list-add-friend {
+                            color: #1d6297;
+                            cursor: pointer;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+
+            .IM-User-Bottom {
+            }
+        }
+    }
+}
+
+.IM-hidden {
+    display: none !important;
+}

@@ -1,0 +1,13 @@
+@mixin icon($w,$h,$x,$y){
+	display:inline-block;
+	width:$w;height:$h;
+	background-position:$x $y;
+	background-repeat: no-repeat;
+}
+@mixin iconurl1(){background-image:url(http://comeoncloud.com/meitangold5/icons.png?v=0.0.5);background-size:450px 46px;}
+.ico_home{@include icon(23px,23px,0px,0px);@include iconurl1();}
+.ico_about{@include icon(23px,23px,-46px,0px);@include iconurl1();}
+.ico_note{@include icon(23px,23px,-23px,0px);@include iconurl1();}
+.ico_phone{@include icon(23px,23px,-92px,0px);@include iconurl1();}
+.ico_talk{@include icon(23px,23px,-69px,0px);@include iconurl1();}
+.ico_massage{@include icon(23px,23px,-115px,0px);@include iconurl1();}

@@ -1,0 +1,123 @@
+﻿<div class="wrapUpdate pBottom72">
+    <div class="wrapBanner">
+        <div class="row">
+            <div class="avatar">
+                <img src="{{pageData.cateList.img}}" alt="{{pageData.cateList.name}}">
+            </div>
+            <div class="col">
+                <div class="title">{{pageData.cateList.name}}社区</div>
+                <div>动态数：{{pageData.cateList.articleCount}} 条</div>
+                <div>创建时间：{{pageData.cateList.createTime | date:'yyyy-MM-dd'}}</div>
+                <div class="follow" ng-show="pageData.outParams==undefined">
+                    <span class="colorWhite" ng-if="!pageData.selected.userIsFollow" ng-click="pageFunc.followArticleCategory(pageData.selected)">关注</span>
+                    <span class="colorWhite" ng-if="pageData.selected.userIsFollow" ng-click="pageFunc.disFollowArticleCategory(pageData.selected)">取消关注</span>
+                </div>
+                <div class="choose" ng-show="pageData.isShowChoose==true">
+                    <a href="javascript:;" ng-click="pageFunc.showCommunityDialog()"><span class="colorWhite">社区筛选</span></a>
+                </div>                    
+            </div>
+        </div>
+    </div>
+    <div class="wrapTabTitle">
+        <div class="row">
+            <div class="col" ng-class="{bgGreen:pageData.currTabIndex == 0}" ng-click="pageFunc.tabSelect(0)">
+                最新动态
+            </div>
+            <div class="col" ng-class="{bgGreen:pageData.currTabIndex == 1}" ng-click="pageFunc.tabSelect(1)">
+                热门讨论
+            </div>
+            <div class="col" ng-class="{bgGreen:pageData.currTabIndex == 2}" ng-click="pageFunc.tabSelect(2)">
+                成员列表
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="wrapCardList wrapUpdateList" ng-if="pageData.currTabIndex == 0">
+        <div class="card" ng-repeat="item in pageData.articleList">
+            <div class="item">
+                <div class="row">
+                    <div class="col" ng-click="pageFunc.go(item.id)">
+                        <div class="mBottom6">
+                            <span class="userName">{{item.pubUser.userName}}</span>
+                            <span class="time">{{item.createTime | date:'yyyy-MM-dd'}}</span>
+                        </div>
+                        <summary><span ng-bind-html="item.summary"></span></summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a href="javascript:;" class="tag">{{tag}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row cardBtnList">
+                    <!--<i class="iconfont icon-xiaoxiguanli" ng-click="pageFunc.showCommentDialog(item)"></i><span>{{item.commentCount}}</span>
+                    <i class="iconfont icon-dianzan" ng-click="pageFunc.praiseReview(item)"></i><span>{{item.praiseCount}}</span>
+                    <i class="iconfont icon-shoucangjia" ng-click="pageFunc.favoriteArticle(item.pubUser)" ng-hide="pageData.article.currUserIsFavorite"></i><span ng-hide="pageData.article.currUserIsFavorite">收藏</span>
+                    <i class="iconfont icon-shoucangjia colorBlue" ng-click="pageFunc.disFavoriteArticle()" ng-show="pageData.article.currUserIsFavorite"></i><span ng-show="pageData.article.currUserIsFavorite">收藏</span>
+                    <i class="iconfont icon-shequjubao" ng-click="pageFunc.reportIllegalReview(item)"></i>-->
+                    <i class="iconfont icon-xiaoxiguanli"></i><span>{{item.commentCount}}</span>
+                    <i class="iconfont icon-dianzan"></i><span>{{item.praiseCount}}</span>
+                    <i class="iconfont icon-shoucangjia" ng-hide="pageData.article.currUserIsFavorite"></i><span ng-hide="pageData.article.currUserIsFavorite">收藏</span>                   
+                    <i class="iconfont icon-shequjubao"></i>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-show="pageData.articleList.length < pageData.lastestTotalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadLatestData(false)">查看更多</button>
+        </div>
+    </div>
+    <div class="wrapCardList wrapUpdateList" ng-if="pageData.currTabIndex == 1">
+        <div class="card" ng-repeat="item in pageData.leftHotArticle">
+            <div class="item">
+                <div class="row">
+                    <div class="col" ng-click="pageFunc.go(item.id)">
+                        <div class="mBottom6">
+                            <span class="userName">{{item.pubUser.userName}}</span>
+                            <span class="time">{{item.createTime | date:'yyyy-MM-dd'}}</span>
+                        </div>
+                        <summary><span ng-bind-html="item.summary"></span></summary>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in item.tags">
+                            <a href="javascript:;" class="tag">{{tag}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row cardBtnList">
+                    <!--<i class="iconfont icon-xiaoxiguanli" ng-click="pageFunc.showCommentDialog(item)"></i><span>{{item.commentCount}}</span>
+                    <i class="iconfont icon-dianzan" ng-click="pageFunc.praiseReview(item)"></i><span>{{item.praiseCount}}</span>
+                    <i class="iconfont icon-shoucangjia" ng-click="pageFunc.favoriteArticle(item.pubUser)" ng-hide="pageData.article.currUserIsFavorite"></i><span ng-hide="pageData.article.currUserIsFavorite">收藏</span>
+                    <i class="iconfont icon-shoucangjia colorBlue" ng-click="pageFunc.disFavoriteArticle()" ng-show="pageData.article.currUserIsFavorite"></i><span ng-show="pageData.article.currUserIsFavorite">收藏</span>                   
+                    <i class="iconfont icon-shequjubao" ng-click="pageFunc.reportIllegalReview(item)"></i>-->
+                    <i class="iconfont icon-xiaoxiguanli"></i><span>{{item.commentCount}}</span>
+                    <i class="iconfont icon-dianzan"></i><span>{{item.praiseCount}}</span>
+                    <i class="iconfont icon-shoucangjia" ng-hide="pageData.article.currUserIsFavorite"></i><span ng-hide="pageData.article.currUserIsFavorite">收藏</span>
+                    <i class="iconfont icon-shequjubao"></i>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.leftHotArticle.length<pageData.hotTotalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadHotDisData(false)">查看更多</button>
+        </div>
+    </div>
+    <div class="wrapUserList" ng-if="pageData.currTabIndex == 2">
+        <div class="card" ng-repeat="item in pageData.leftMemberData">
+            <a class="item item-avatar" href="#/master/{{item.id}}">
+                <img src="{{item.avatar}}">
+                <h2>{{item.userName}}</h2>
+                <!--<p>Back off, man. I'm a scientist.</p>-->
+            </a>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.leftMemberData.length<pageData.memberTotalCount">
+            <button class="button button-clear" ng-click="pageFunc.getHotMembers(false,pageData.cateList)">查看更多</button>
+        </div>
+    </div>
+    <div class="wrapAddbtn">
+        <i class="iconfont icon-dcjia" ng-mousedown="pageFunc.addTalkDialog()"></i>
+    </div>
+    <footermenu></footermenu>
+</div>

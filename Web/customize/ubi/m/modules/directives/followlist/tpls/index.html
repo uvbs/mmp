@@ -1,0 +1,11 @@
+﻿<div class="wrapUserList">
+    <div class="list">
+        <a class="item item-avatar" href="javascript:;" ng-repeat="item in pageData.userList.data">
+            <img src="{{item.avatar}}">
+            <h2 class="mTop10">{{item.userName}}</h2>
+        </a>
+        <div class="wrapShowMore" ng-if="pageData.userList.data.length < pageData.userList.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="wrapUserHeader">
+	<ul>
+		<li class="floatL pTop24" ng-if="!carModel">
+			<i class="iconfont icon-tianjiachexing font22"></i>
+		</li>
+		<li class="floatL font16 pLeft6 pTop24" ng-click="pageFunc.showSelectCarDialog()" ng-if="!carModel">
+			添加我的车辆
+		</li>
+		<li class="floatL font16 pLeft6 pTop24" ng-if="carModel">
+			{{carModel.carModelName}}
+		</li>
+		<li class="floatR userAvatar">
+			<a ng-href="#/{{homeType || 'store'}}/userhome">
+				<img class="avatar" src="/customize/pureCar/m/static/img/avatar.jpg" alt="">
+			</a>
+		</li>
+		<li class="line floatR">
+			<span></span>
+		</li>
+	</ul>
+	<div class="Clear"></div>
+</div>

@@ -1,0 +1,9 @@
+<div class="wrapHeader" ng-show="pageData.isshow==1">
+    <div class="bar bar-header">
+        <h1 class="title">
+            <a class="iconfont icon-arrowleft floatL  icon-reset" href="javascript:history.go(-1);" ng-show="pageData.showBack"></a>
+            {{pageData.title}}
+            <a class="floatR mRight10 button button-small button-reset" ng-if="pageData.showBtn==1">保存</a>
+        </h1>
+    </div>
+</div>

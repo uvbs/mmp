@@ -1,0 +1,308 @@
+﻿<div class="layout boxMain warpActivityDetail">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <img src="/customize/ubi/images/icon/icon_activity.png" class="titleIco" />
+                    <a href="#/activityList" class="titleText hand">活动</a><span class="titleSubText floatR font18 relativeTop4">活动详情</span><span class="titleGt floatR font20 relativeTop1 mRight6">&gt;</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="warpActivityBanner">
+            <div class="row">
+                <div class="col-xs-6 bannerImg">
+                    <img src="{{pageData.activity.activityimage}}" alt="" height="320px" width="450px" />
+                </div>
+                <div class="col-xs-6 bannerBaseInfo">
+                    <div class="atitle">
+                        {{pageData.activity.activityname}}
+                    </div>
+                    <div class="tags mTop22">
+                        <!--<a href="javascript:;" class="tagItem">标签1</a>
+                        <a href="javascript:;" class="tagItem">标签1标签1</a>
+                        <a href="javascript:;" class="tagItem">标签1</a>
+                        <a href="javascript:;" class="tagItem">标签1</a>
+                        <div class="clear"></div>-->
+                        <a href="javascript:;" class="tagItem" ng-repeat="tag in pageData.activity.tags">{{tag}}</a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="mTop26">
+                        <span class="iconTime"></span><span>开始时间：{{pageData.activity.starttime}}</span><br />
+                        <span class="iconTime"></span><span>结束时间：{{pageData.activity.endtime}}</span>
+                    </div>
+                    <div class="mTop18">
+                        <span class="iconAddress"></span><span class="lbAddress">地点：{{pageData.activity.address}}</span>
+                    </div>
+                    <div class="mTop26">
+                        <button class="btn btn-primary pLeft30 pRight30 mRight30 hand" ng-click="pageFunc.showSignUp()" ng-show="pageData.activity.status == 0">立即报名</button>
+                        <button class="btn btn-warning disabled pLeft30 pRight30 mRight30 hand" ng-show="pageData.activity.status == 1">活动已停止</button>
+                        <button class="btn btn-warning disabled pLeft30 pRight30 mRight30 hand" ng-show="pageData.activity.status == 2">活动已满员</button>
+                        <span>已报名{{pageData.activity.signcount}}人</span>
+                    </div>
+                    <div class="mTop26">
+                        <!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style">
+                            <span class="mRight6 floatL relativeTop_1">分享到：</span>
+                            <a class="jiathis_button_qzone"></a>
+                            <a class="jiathis_button_tsina"></a>
+                            <a class="jiathis_button_tqq"></a>
+                            <a class="jiathis_button_weixin"></a>
+                            <a class="jiathis_button_renren"></a>
+                            <a class="jiathis_button_xiaoyou"></a>
+                            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis"></a>
+                        </div>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1410416683851686"
+                                charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-9">
+            <div id="warpSignup" class="warpDesricption warpSignup" ng-class="{hidden:!pageData.signupIsShow}">
+                <div class="title">
+                    活动报名
+                </div>
+                <div class="content">
+                    <form class="form-horizontal" ng-submit="pageFunc.submitSignup()">
+                        <div class="form-group" ng-repeat="item in pageData.activity.signfield">
+                            <label class="col-sm-2 contral-label" for="exampleInputEmail1">{{item.key}}</label><!-- <span class="colorRed" ng-show="item.isnull == 0">*</span> -->
+                            <div class="col-sm-9">
+                                <input id="txtSignup_{{item.value}}" ng-model="item.input" type="text" class="form-control" placeholder="请输入{{item.key}}" ng-required="item.isnull == 0">
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="txtCenter">
+                            <button type="submit" class="btn btn-primary pLeft26 pRight26 ">提交</button>
+                            <span type="reset" class="btn btn-warning pLeft26 pRight26  mLeft10" ng-click="pageData.signupIsShow=false">取消</span>
+                        </div>
+                        <div class="clear"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="warpDesricption">
+                <div class="title">
+                    活动介绍
+                </div>
+                <div class="content" ng-bind-html="pageData.activity.activitycontent"> </div>
+
+                <!--<div ng-if="!pageData.isExpand">
+                    <div class="content" ng-bind-html="pageData.activity.activityname"></div>
+                    <a href="javascript:;" ng-click="pageFunc.showAll()">[点击查看活动详情]</a>
+                </div>
+                <div ng-if="pageData.isExpand">
+                    <div class="content" ng-bind-html="pageData.activity.activitycontent"> </div>
+                    <a href="javascript:;" ng-click="pageFunc.hidePart()">[收起]</a>
+                </div>-->
+            </div>
+
+            
+
+            <div class="boxMainText_PL warpCommentList">
+                <h4 class="title">
+                    {{pageData.activity.commentcount}}&nbsp;个评论
+                </h4>
+
+                <!--评论列表-->
+                <div class="list" ng-repeat="item in pageData.comments">
+                    <div class="listL">
+                        <a ng-click="pageFunc.goTo(item)">
+                            <img src="{{item.pubUser.avatar}}" class="avatar">
+                        </a>
+                        <!--<img src="{{item.pubUser.avatar}}" class="avatar">-->
+                    </div>
+                    <div class="listR">
+                        <a ng-click="pageFunc.goTo(item)" class="userName">{{item.pubUser.userName}}</a>
+                        <span class="mLeft_8">{{item.createDate | date:'yyyy-MM-dd'}}</span>
+                        <p class="content" ng-bind-html="item.content">
+
+                        </p>
+                        <div class="listBtn">
+                            <span class="pl01" ng-click="pageFunc.showReplyList(item)" ng-show="!item.subListShow && item.replyCount > 0">
+                                {{item.replyCount}}条回复
+                            </span>
+                            <span class="pl01" ng-click="pageFunc.showReplyList(item)" ng-show="!item.subListShow && item.replyCount == 0">
+                                添加回复
+                            </span>
+                            <span class="pl01" ng-click="pageFunc.hideReplyList(item)" ng-show="item.subListShow">
+                                收起回复
+                            </span>
+                            <span class="pl02" ng-click="pageFunc.praiseReview(item)" ng-show="!item.currUserIsPraise">{{item.praiseCount}}个赞</span>
+                            <span class="pl02" ng-click="pageFunc.disReviewContent(item)" ng-show="item.currUserIsPraise">{{item.praiseCount}}个赞</span>
+                            <span class="pl03" ng-click="pageFunc.showReportList(item)" ng-show="!item.isShowReport">举报</span>
+                            <span class="pl03" ng-click="pageFunc.hideReportList(item)" ng-show="item.isShowReport">收起举报</span>
+                        </div>
+
+                        <div class="boxMainText_PL warpReplyList" ng-show="item.subListShow">
+                            <!--评论回复提交-->
+                            <div class="warpReplySubmit" ng-show="item.replySubmitShow">
+                                <div id="txtComment_{{item.id}}" class="txtComment txtContent" contenteditable="true" aria-label="写下你的回复……"></div>
+                                <div class="warpOperate">
+                                    <button class="btn btn-primary floatR mLeft30" ng-click="pageFunc.replyComment(item)">回复</button>
+                                    <div class="btnCancel floatR">
+                                        <!--<label ng-click="pageFunc.hideReplySubmit(item)">
+                              取消
+                            </label>-->
+                                    </div>
+                                    <div class="checkbox floatR">
+                                        <label>
+                                            <input id="chkComment_{{item.id}}" type="checkbox"> 匿名
+                                        </label>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <!--回复列表-->
+                            <div class="list" ng-repeat="reply in item.replyList">
+                                <div class="listL">
+                                    <a ng-click="pageFunc.goTo(reply)">
+                                        <img src="{{reply.pubUser.avatar}}" class="avatar">
+                                    </a>
+                                    <!--<img src="{{reply.pubUser.avatar}}" class="avatar">-->
+                                </div>
+                                <div class="listR">
+                                    <a ng-click="pageFunc.goTo(reply)" class="userName">{{reply.pubUser.userName}}</a>
+                                    <span class="mLeft_8">{{reply.createDate | date:'yyyy-MM-dd'}}</span>
+                                    <span class="mLeft_12" ng-show="reply.replayToUser && reply.replayToUser.userName && reply.replayToUser.userName != ''">
+                                        回复 <a ng-click="pageFunc.goToRelpy(reply)" class="userName mLeft5">{{reply.replayToUser.userName}}</a>
+                                    </span>
+                                    <p class="content" ng-bind-html="reply.content">
+
+                                    </p>
+                                    <div class="listBtn">
+                                        <span class="pl01" ng-click="pageFunc.showReplyList(reply)" ng-show="!reply.subListShow">
+                                            添加回复
+                                        </span>
+                                        <span class="pl01" ng-click="pageFunc.hideReplyList(reply)" ng-show="reply.subListShow">
+                                            收起回复
+                                        </span>
+                                        <!--<span class="pl02" ng-click="pageFunc.praiseReview(reply)">{{reply.praiseCount}}个赞</span>-->
+                                        <span class="pl02" ng-click="pageFunc.praiseReview(reply)" ng-show="!reply.currUserIsPraise">{{reply.praiseCount}}个赞</span>
+                                        <span class="pl02" ng-click="pageFunc.disReviewContent(reply)" ng-show="reply.currUserIsPraise">{{reply.praiseCount}}个赞</span>
+                                        <!--<span class="pl03" ng-click="pageFunc.reportIllegalReview(reply)">举报</span>-->
+                                        <span class="pl03" ng-click="pageFunc.showReportList(reply)" ng-show="!reply.isShowCommentReport">举报</span>
+                                        <span class="pl03" ng-click="pageFunc.hideReportList(reply)" ng-show="reply.isShowCommentReport">收起举报</span>
+                                    </div>
+                                    <!--回复的回复提交-->
+                                    <div class="boxMainText_PL warpReplyList" ng-show="reply.replySubmitShow">
+                                        <div class="warpReplySubmit" ng-show="reply.replySubmitShow">
+                                            <div id="txtComment_{{item.id}}_{{reply.id}}" class="txtComment txtContent" contenteditable="true" aria-label="写下你的回复……"></div>
+                                            <div class="warpOperate">
+                                                <button class="btn btn-primary floatR" ng-click="pageFunc.replyComment(item,reply)">回复</button>
+                                                <div class="btnCancel floatR">
+                                                    <label ng-click="pageFunc.hideReplySubmit(reply)">
+                                                        取消
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox floatR">
+                                                    <label>
+                                                        <input id="chkComment_{{item.id}}_{{reply.id}}" type="checkbox"> 匿名
+                                                    </label>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--回复的举报提交-->
+                                    <div class="warpReplySubmit" ng-show="reply.isShowCommentReport">
+                                        <div id="txtReport_{{item.id}}_{{reply.id}}" class="txtComment txtContent" contenteditable="true" ng-model="pageData.currReportContent" aria-label="写下你的举报原因……"></div>
+                                        <div class="warpOperate">
+                                            <button class="btn btn-primary floatR mLeft30" ng-click="pageFunc.reportIllegalReview(item,reply)">举报</button>
+                                            <div class="btnCancel floatR">
+                                            </div>
+                                            <div class="checkbox floatR">
+                                                <label>
+                                                    <input id="chkReport_{{item.id}}_{{reply.id}}" type="checkbox"> 匿名
+                                                </label>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--加载更多回复-->
+                            <div class="more_btn" ng-show="item.replyCount > 0 && item.replyCount > item.replyList.length">
+                                <a href="javascript:" class="pl_input1 grad radius6" ng-click="pageFunc.loadReplyList(item)">显示更多回复</a>
+                            </div>
+                        </div>
+
+                        <div class="boxMainText_PL warpReplyList" ng-show="item.isShowReport">
+                            <!--评论中的举报提交-->
+                            <div class="warpReplySubmit" ng-show="item.isShowReport">
+                                <div id="txtReport_{{item.id}}" class="txtComment txtContent" contenteditable="true" ng-model="pageData.currReportContent" aria-label="写下你的举报原因……"></div>
+                                <div class="warpOperate">
+                                    <button class="btn btn-primary floatR mLeft30" ng-click="pageFunc.reportIllegalReview(item,null)">举报</button>
+                                    <div class="btnCancel floatR">
+                                    </div>
+                                    <div class="checkbox floatR">
+                                        <label>
+                                            <input id="chkReport_{{item.id}}" type="checkbox"> 匿名
+                                        </label>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--加载更多评论-->
+                <div class="more_btn" ng-show="pageData.comments.length < pageData.commentsTotalCount">
+                    <a href="javascript:" class="pl_input1 grad radius6" ng-click="pageFunc.loadCommentList()">显示更多评论</a>
+                </div>
+
+            </div>
+
+            <div class="warpComment">
+                <div text-angular
+                     ta-toolbar="[['bold', 'italics', 'underline','strikeThrough','justifyLeft', 'justifyCenter', 'justifyRight', 'insertLink']]"
+                     ng-model="pageData.currComment"
+                     name="editor1"></div>
+                <div class="warpOperate">
+
+                    <button class="btn btn-primary floatR btnComment" ng-click="pageFunc.submitComment()">提交评论</button>
+                    <div class="checkbox floatR">
+                        <label>
+                            <input type="checkbox" ng-model="pageData.commentIncognito"> 匿名
+                        </label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-3">
+            <div class="warpLeftCard warpPersonList">
+                <div class="title">报名列表</div>
+                <div class="dataList">
+                    <div class="item" ng-repeat="item in pageData.signupList">
+                        <ul>
+                            <li class="avatar">
+                                <img src="{{item.headimg}}" ng-click="pageFunc.go(item)">
+                            </li>
+                            <li class="name">
+                                <a ng-click="pageFunc.go(item)">{{item.name}}</a>
+                            </li>
+                            <li class="time">
+                                {{item.signupTime}}
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- <div class="loadMore">
+                        <a href="javascript:;"> 加载更多</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

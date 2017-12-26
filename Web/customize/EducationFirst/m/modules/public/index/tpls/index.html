@@ -1,0 +1,48 @@
+﻿<div class="wrapIndex">
+    <div class="wrapAd">
+        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="6" class="wrapAd">
+            <li ng-repeat="img in pageIndexData.adImgs">
+                <img ng-src="{{img.img}}" alt="{{img.title}} ">
+                <div class="leftTile">幼儿英语探索课程（3~6岁）</div>
+            </li>
+        </ul>
+        <div rn-carousel-indicators ng-if="pageIndexData.adImgs.length > 1" slides="pageIndexData.adImgs" rn-carousel-index="carouselIndex" class="imgIndex"></div>
+    </div>
+
+    <div class="centerMenu">
+        <div class="row">
+            <div class="col">
+                <div class="row bgColor_42C8EA mBottom10 pTop50 pBottom50 borderRadius4">
+                    <div class="col">
+                        英孚课程
+                    </div>
+                </div>
+                <div class="row bgColor_20CDC1 pTop50 pBottom50 borderRadius4">
+                    <div class="col">
+                        英孚活动
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row bgColor_FF735F mBottom10 pTop27 pBottom27 borderRadius4">
+                    <div class="col">
+                        外教师资
+                    </div>
+                </div>
+                <div class="row bgColor_FFA054 mBottom10 pTop28 pBottom28 borderRadius4">
+                    <div class="col">
+                        英孚新闻
+                    </div>
+                </div>
+                <div class="row bgColor_C2A8E1 pTop28 pBottom28 borderRadius4">
+                    <div class="col">
+                        关于英孚
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <footermenu ng-attr-select="0"></footermenu>
+</div>

@@ -1,0 +1,99 @@
+<div class="layout boxMain warpRegulations warpNews warpReguDetail">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span class="hand" ng-click="go('#/regulations')">政策法规</span> > 政策详情</span>
+                </span>
+            </div>
+            <div class="boxMainText">
+            	<div class="warpReguDetails">
+            		<div class="reguDetailsMainOne ">
+            			<h4>{{pageData.article.title}}</h4>
+            			<div class="reguDetailsMan clear">
+            				<p class="left"><a href="#/userspace/{{pageData.article.pubUser.id}}">{{pageData.article.pubUser.userName}}   </a>发表于{{pageData.article.createDate | date:'yyyy-MM-dd'}}  <!--   ({{pageData.article.commentCount}})评 --></p>
+            				<p class="right">{{pageData.article.favoriteCount}}人收藏此文章，
+                            
+                            <span class="hand" ng-click="pageFunc.favoriteArticle()" ng-hide="pageData.article.currUserIsFavorite">我要收藏 </span>
+
+                            <span class="hand" ng-click="pageFunc.disFavoriteArticle()" ng-show="pageData.article.currUserIsFavorite">取消收藏 </span></p>
+            			</div>
+            		</div>
+            		<div class="reguDetailsMainTwo clear">
+            			 <div ng-bind-html="pageData.article.content">
+                                 
+                         </div>
+            			 <div class="mTop26">
+                        <!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style clear">
+                            <span class="mRight6 floatL relativeTop_1">分享到：</span>
+                            <a class="jiathis_button_qzone"></a>
+                            <a class="jiathis_button_tsina"></a>
+                            <a class="jiathis_button_tqq"></a>
+                            <a class="jiathis_button_weixin"></a>
+                            <a class="jiathis_button_renren"></a>
+                            <a class="jiathis_button_xiaoyou"></a>
+                            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis"></a>
+                        </div>
+                          <script type="text/javascript">
+                              //var curUser = JSON.parse(localStorage.getItem(baseData.localStorageKeys.currUserInfo));
+                              //var UserAutoId = curUser == null ? 0 : curUser.id;
+                              var jiathis_config = {
+                                  url: document.location.href.replace('/#/', '/m#/')
+                              }
+                          </script> 
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1410416683851686"
+                                charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
+                   		 </div>
+
+            		</div>
+					
+            	</div>
+			<!-- <div class="reguDetailsMainThree">
+				<div class="left">
+					 <img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt="">
+				</div>
+				<div class="right">
+					<div class="warpComment">
+                <div 
+                text-angular 
+                ta-toolbar="[['bold', 'italics', 'underline','strikeThrough','justifyLeft', 'justifyCenter', 'justifyRight', 'insertImage', 'insertLink']]"
+                ng-model="pageData.currComment"
+                name="editor1"
+                ></div>
+                <div class="warpOperate">
+                    
+                    <button class="btn btn-primary floatR btnComment" ng-click="pageFunc.submitComment()">提交评论</button>
+                    <div class="checkbox floatR">
+                        <label>
+                          <input type="checkbox" ng-model="pageData.commentIncognito"> 匿名
+                        </label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+				</div>
+			</div> -->
+           
+            <comment ng-attr-articleid="{{pageData.currArticleId}}"></comment>
+           
+            </div>
+
+        </div>
+        <div class="col-xs-3">
+            <div class="warpCaseAside">
+                <smalldailycase></smalldailycase>
+                <smallhotarticle ng-attr-cateid="{{pageData.currCate}}" ng-attr-routename="regulations"></smallhotarticle>
+                <!--<smallhottags></smallhottags>-->   
+              
+             <!-- <div class="caseAsideImg">
+                <a href="javascript:;"><img src="http://static.oschina.net/uploads/group/JRTXi.jpg" alt=""></a>
+            </div> -->
+
+             </div>  
+
+        </div>
+    </div>
+</div>

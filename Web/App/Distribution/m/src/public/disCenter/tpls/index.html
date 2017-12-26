@@ -1,0 +1,102 @@
+<div class="wrapDisCenter">
+    <header ng-attr-title="{{discenter.title}}" ng-attr-btnshow="0"></header>
+    <div class="content has-header">
+        <div class="list list-sale">
+            <a class="item item-avatar userHeader">
+                <!--<img class="imgstyle" ng-src="{{discenter.currUseInfo.head_img_url}}">-->
+                <!--<div class="avatar" style="background-image: url(http://wx.qlogo.cn/mmopen/PagicBMQ2a4hUFLq1z3favzbP7aG7vcCTMQcUTibicicYEV4A8oEVN12Nfx9tA501uCn708MCOXy4eic4HJVaekwPcNzuxkehm7C9/0);">-->
+                <!--</div>-->
+                <div class="userAvatar floatL" style="background-image: url({{discenter.currUseInfo.head_img_url}});">
+                </div>
+                <div class="names floatL font14 colorFFF mTop14 mLeft10" ng-class="{mTop26:discenter.levels.is_show_distribution_rate!=1}">
+                    <div>
+                        <span class="nickName">
+                            {{discenter.currUseInfo.nick_name}}
+                        </span>
+                        <span class="levelName">{{discenter.currUseInfo.level_name}}</span>
+                    </div>
+                    <div ng-if="discenter.levels.is_show_distribution_rate==1">
+                        直接{{discenter.levels.commission_show_name}}比例：{{discenter.currUseInfo.direct_rate}}%
+                    </div>
+
+                </div>
+                <div class="font14 colorFFF divScore">
+                    <div class="score" ng-mousedown="go('#/myscore')">{{discenter.levels.commission_show_name}}历史</div>
+                </div>
+                <div class="clear"></div>
+            </a>
+        </div>
+
+
+        <div class="row row-sale wrapSaleAmount">
+            <!-- <div class="col col-sale">
+                累计直接销售<br/>
+                <span class="priceSmall">{{discenter.currUseInfo.direct_sale_amount}}</span>
+                
+            </div> -->
+            <div class="col col-sale">
+                累计{{discenter.levels.commission_show_name}}<br/>
+                <span class="priceSmall">{{discenter.currUseInfo.history_commission_total_amount}}</span>
+                
+            </div>
+            <div class="col col-sale">
+                可提{{discenter.levels.commission_show_name}}<br/>
+                <span class="priceSmall">{{discenter.currUseInfo.can_use_amount}}</span>
+                
+            </div>
+        </div>
+        <div class="list list-active">
+            <a class="item item-icon-right item-reset mTop10" href="#/discount">
+                {{discenter.levels.distribution_show_name}}统计
+            <span class="item-note">
+                {{discenter.currUseInfo.down_user_total_count}}人
+            </span>
+                <i class="icon iconfont icon-arrowright"></i>
+            </a>
+
+            <div class="row row-sale wrapSaleAmount">
+                <div class="col col-sale">
+                    <div>一级</div>
+                    <div> {{discenter.currUseInfo.down_user_level1_count}}人</div>
+                    <div ng-if="discenter.levels.is_show_distribution_rate==1">一级{{discenter.levels.commission_show_name}}比例{{discenter.currUseInfo.distribution_level1_rate}}%</div>
+                    
+                </div>
+                <div class="col col-sale" ng-if="discenter.levels.distribution_level>=2">
+                    <div> 二级</div>
+                    <div>{{discenter.currUseInfo.down_user_level2_count}}人</div>
+                    <div ng-if="discenter.levels.is_show_distribution_rate==1">二级{{discenter.levels.commission_show_name}}比例{{discenter.currUseInfo.distribution_level2_rate}}%</div>
+                    <!--<div>{{discenter.currUseInfo.distribution_level2_rate}}%佣金</div>-->
+                    
+                </div>
+                <div class="col col-sale" ng-if="discenter.levels.distribution_level>=3">
+                    <div>三级</div>
+                    <div>{{discenter.currUseInfo.down_user_level3_count}}人</div>
+                    <div ng-if="discenter.levels.is_show_distribution_rate==1">三级{{discenter.levels.commission_show_name}}比例{{discenter.currUseInfo.distribution_level3_rate}}%</div>
+                    <!--<div>{{discenter.currUseInfo.distribution_level3_rate}}%佣金</div>-->
+                    
+                </div>
+            </div>
+            <a class="item item-icon-left item-icon-right item-reset mTop10" href="#/mystatic">
+                <i class="icon iconfont icon-zhongchou colorRed"></i>
+                我提供的财富商机
+                <i class="icon iconfont icon-arrowright"></i>
+            </a>
+            <a class="item item-icon-left item-icon-right item-reset" href="#/myrecommend">
+                <i class="icon iconfont icon-erweima colorBlack"></i>
+                我的推荐码
+                <i class="icon iconfont icon-arrowright"></i>
+            </a>
+
+            <a class="item item-icon-left item-icon-right item-reset" href="/App/Cation/Wap/Mall/Distribution/WithdrawRecord.aspx">
+                <i class="icon iconfont icon-fabu colorGold"></i>
+                提现历史
+                <i class="icon iconfont icon-arrowright"></i>
+            </a>
+
+            <a class="button button-full button-energized mTop30" href="/App/Distribution/m/Withdraw.aspx">
+                申请提现
+            </a>
+
+        </div>
+    </div>
+</div>

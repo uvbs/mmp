@@ -1,0 +1,161 @@
+﻿<div class="layout boxMain warpCase">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="subTitle">
+                <span>
+                    <i class="iconfont icon-anli"></i>
+                    <span class="titleText">案例分析</span>
+                </span>
+            </div>
+            <div class="warpSearchInput ">
+                <div class="form-group">
+                    <input ng-model='pageData.keyword' type="search" class="form-control txtSearch" placeholder="搜索..." />
+                    <div class="btnSearch" ng-click="pageFunc.loadData(true)"></div>
+                </div>
+            </div>
+            <div class="boxMainText">
+                <div class="warpCaseSelect">
+                    <div class="caseSelectTop clear ">
+                        <ul>
+                            <li><span>地区选择：</span></li>
+                            <li ng-repeat="item in pageData.provinceList">
+                                <a 
+                                ng-class="{change:pageData.currSelectProvince.id == item.id}" 
+                                href="javascript:;"
+                                ng-click="pageFunc.selectProvince(item)"
+                                >
+                                {{item.name}}
+                                </a>
+                            </li>
+                         </ul>
+                        <span class="moreRight hand" ng-if="pageData.showMoreProvince && pageData.provinceOtherList.length > 0"
+                            ng-click="pageData.showMoreProvince = false"
+                        >
+                            收起
+                            <i class="iconfont icon-xiangshang "></i>
+                        </span>
+                        <span class="moreRight hand" ng-if="!pageData.showMoreProvince && pageData.provinceOtherList.length > 0"
+                            ng-click="pageData.showMoreProvince = true"
+                        >
+                            更多
+                            <i class="iconfont icon-unfold "></i>
+                        </span>
+                    </div>
+                    <div class="caseSelectBot clear" ng-if="pageData.provinceOtherList.length > 0 && pageData.showMoreProvince">
+                        <ul>
+                            <li ng-repeat="item in pageData.provinceOtherList">
+                                <a 
+                                 
+                                ng-class="{change:pageData.currSelectProvince.id == item.id}" 
+                                href="javascript:;"
+                                ng-click="pageFunc.selectProvince(item)">
+                                {{item.name}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                     <div class="caseSelectTop clear ">
+                        <ul >
+                            <li><span>标签选择：</span></li>
+                            <li ng-repeat="item in pageData.tagList">
+                                <a 
+                                 
+                                ng-class="{change:pageData.currSelectTag.tag == item.tag}" 
+                                href="javascript:;"
+                                ng-click="pageFunc.selectTag(item,1)"
+                                >
+                                {{item.tag}}
+                                </a>
+                            </li>                              
+                         </ul>
+                        <span class="moreRight hand" ng-if="pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                            ng-click="pageData.showMoreTag = false"
+                        >
+                            收起
+                            <i class="iconfont icon-xiangshang "></i>
+                        </span>
+                        <span class="moreRight hand" ng-if="!pageData.showMoreTag && pageData.tagOtherList.length > 0"
+                            ng-click="pageData.showMoreTag = true"
+                        >
+                            更多
+                            <i class="iconfont icon-unfold "></i>
+                        </span>
+                    </div>
+                    <div class="caseSelectBot clear" ng-if="pageData.tagOtherList.length > 0 && pageData.showMoreTag"> 
+                        <ul>
+                            <li ng-repeat="item in pageData.tagOtherList">
+                                <a 
+                                ng-class="{change:pageData.currSelectTag.tag == item.tag}" 
+                                href="javascript:;"
+                                ng-click="pageFunc.selectTag(item,1)">
+                                {{item.tag}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="warpCaseMain">
+                <dl class="caseMainOne" ng-repeat="article in pageData.articles">
+                        <dt>
+                            <a href="javascript:;">
+                                <img src="{{article.imgSrc}}" alt="">
+                            </a>
+                        </dt>
+                        <dd>
+                            <h5 ng-click="go('#/case/' + article.id)">{{article.title}}</h5>
+                            <div class="money mTop10"><span>{{article.pubUser.userName}} </span> &nbsp&nbsp 发表于{{article.createDate | date:'yyyy-MM-dd'}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>{{article.commentCount}}评</b></div>
+                            <p class="mTop10" ng-bind-html="article.summary">
+                            </p>
+                            <div class="txtRight pRight10">
+                                <a href="javascript:;" ng-click="go('#/case/' + article.id)">[阅读全文]</a>
+                            </div>
+                            <ul class="mTop10">
+                                <li ng-repeat="tag in article.tags">
+                                    <a ng-click="pageFunc.selectTag(tag,0)">
+                                        {{tag}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+                
+            </div>
+            <div class="warpPagination" ng-if="pageData.totalCount > pageData.pageSize">
+                <pagination ng-model="pageData.pageIndex"
+                            total-items="pageData.totalCount"
+                            items-per-page="pageData.pageSize"
+                            max-size="5"
+                            boundary-links="true"
+                            rotate="false"
+                            previous-text="上一页"
+                            next-text="下一页"
+                            first-text="首页"
+                            last-text="尾页">
+                </pagination>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="warpCaseAside">
+                <!--<div class="warpSearchInput ">
+                    <div class="form-group">
+                        <input ng-model='pageData.searchKeyword' type="search" class="form-control txtSearch" placeholder="搜索活动..." />
+                        <div class="btnSearch" ng-click="pageFunc.loadData(true)"></div>
+                        </div>
+                </div>-->
+                <div class="caseAsideEx">
+                    <div class="caseAsideExCon">
+                        <p>有什么好的案例？</p>
+                        <!--<button class="btn btn-primary caseExBot" ng-click="go('#/addCase')">发布案例</button>-->
+                        <button class="btn btn-primary caseExBot" ng-click="pageFunc.alert()">发布案例</button>
+                    </div>
+                </div>
+                <smalldailycase></smalldailycase>
+                <smallhotarticle ng-attr-cateid="{{pageData.currCate}}" routename="case"></smallhotarticle>
+                <smallhottags ng-attr-cateid="{{pageData.currCate}}"></smallhottags>
+            </div>
+        </div>
+    </div>
+</div>

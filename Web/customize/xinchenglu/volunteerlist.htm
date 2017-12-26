@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+		<title>志愿者列表</title>
+        <link type="text/css" rel="stylesheet" href="Css/style.css">
+        <script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+       <script src="/Scripts/StringBuilder.js" type="text/javascript"></script>
+       <style type="text/css">
+       body
+       {
+        font-family:"microsoft yahei",arial,\5b8b\4f53;
+       }
+       .search .area, .search .company {height:auto;background-color:White;}
+       .search .search-btn{height:auto;}
+      .comm dt img {width:80px;height:auto;}
+      .comm{background-color:White;}
+      .header 
+      {
+        display: block;
+        width: 100%;
+        height: 32px;
+        background-color: #37a3d6;
+        background-position: center center;
+        background-repeat: no-repeat;
+        }
+        .header  h3{font-weight:bold;text-align:center;color:White;}
+        .blankhead{height:5px;}
+        .comm dd p label{font-size:16px;font-weight:bold;}
+        .comm dd p a{color:#14b467;}
+    </style>
+	</head>
+	<body>
+    <div class="header">
+    <div class="blankhead"></div>
+      <h3 id="divCategory"></h3>
+    </div>
+        <!-- Search -->
+        <div class="search">
+
+      <input type="text" id="txtName" class="company" placeholder="姓名,服务项目" style="width:70%"/>
+       <input type="button" class="search-btn" value="搜索" id="btnSearch">                
+        </div>
+        <!--/ Search -->
+        <!-- List -->
+        <div class="main" id="objList">
+
+
+        </div>
+        
+        <!--/ List -->
+        <div class="blank"></div>
+      <!-- Back -->
+<a href="javascript:window.history.go(-1)" class="back">
+    <span class="iconfont icon-fanhui"></span>
+</a>
+        <!--/ Back -->
+
+	</body>
+     <script type="text/javascript">
+         var RootCategory = ConvertCategory(GetQueryString("cateid"));
+         var SecCategory = "";
+         var PageIndex = 1; //第几页
+         var PageSize = 5; //每页显示条数
+         $(function () {
+             LoadList();
+             $("#btnSearch").click(function () {
+                 PageIndex = 1;
+                 $(this).html("正在搜索...");
+                 LoadList();
+
+             })
+         });
+
+         function BtnClick() {
+
+             PageIndex++;
+             LoadList();
+
+
+         }
+
+         function GetQueryString(name) {
+             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+             var r = window.location.search.substr(1).match(reg);
+             if (r != null) return unescape(r[2]); return null;
+         }
+
+
+         function ConvertCategory(category) {
+             var result = "";
+
+             switch (category) {
+                 case "gonggongfuwu":
+                     result = "公共服务";
+                     break;
+                 case "bianminfuwu":
+                     result = "便民服务";
+                     break;
+                 case "xueqi":
+                     result = "学习类";
+                     break;
+                 case "zixun":
+                     result = "咨询类";
+                     break;
+                 case "wenyi":
+                     result = "文艺类";
+                     break;
+                 case "xiqu":
+                     result = "戏曲类";
+                     break;
+                 case "tiyu":
+                     result = "体育类";
+                     break;
+                 case "xiuqian":
+                     result = "休闲类";
+                     break;
+                 case "tiaojie":
+                     result = "调解类";
+                     break;
+                 case "sheying":
+                     result = "摄影类";
+                     break;
+                 case "yiliao":
+                     result = "医疗类";
+                     break;
+                 case "jisuanji":
+                     result = "计算机类";
+                     break;
+                 case "qingshaonianlei":
+                     result = "青少年服务类";
+                     break;
+                 case "qinglaojiedui":
+                     result = "青老结对";
+                     break;
+                 case "jinronglicai":
+                     result = "金融理财";
+                     break;
+             }
+             $("#divCategory").html("志愿团-" + result);
+             document.title = result;
+             return result;
+
+
+
+         }
+
+
+         //加载列表分页
+         function LoadList() {
+             $.ajax({
+                 type: 'post',
+                 url: "Wap.ashx",
+                 data: { Action: 'GetVolunteerList', Name: $("#txtName").val(), RootCategory: RootCategory, SecCategory: SecCategory, PageIndex: PageIndex, PageSize: PageSize },
+                 timeout: 60000,
+                 dataType: "json",
+                 success: function (resp) {
+                     $("#btnSearch").html("搜索");
+                     if (resp.ExObj == null) { return; }
+                     var listHtml = '';
+                     var str = new StringBuilder();
+                     for (var i = 0; i < resp.ExObj.length; i++) {
+                         //构造视图模板
+                         //
+                         str.AppendFormat('<dl class="comm">');
+                         var headimg = "images/head/default.jpg";
+                         if ((resp.ExObj[i].K11 != "") && (resp.ExObj[i].K11 != null)) {
+                             headimg = resp.ExObj[i].K11;
+                         }
+                         str.AppendFormat('<dt><img src="{0}"></dt>', headimg);
+                         str.AppendFormat('<dd>');
+                         str.AppendFormat('<p>');
+                         str.AppendFormat('姓名:&nbsp;<label>{0}</label><br/>', resp.ExObj[i].Name);
+                         str.AppendFormat('性别：{0}<br/>', resp.ExObj[i].K1);
+                         if (GetQueryString("cateid") == "jinronglicai") {
+                             str.AppendFormat('地址：{0}<br/>', resp.ExObj[i].K2);
+                         }
+                         else {
+                             str.AppendFormat('居住地址：{0}<br/>', resp.ExObj[i].K2);
+                         }
+
+                         str.AppendFormat('服务项目：{0}<br/>', resp.ExObj[i].K4);
+                         str.AppendFormat('服务时间：{0}<br/>', resp.ExObj[i].K5);
+                         str.AppendFormat('联系电话：<a  href="tel:{0}">{0}</a>&nbsp;<a style="font-size:14px;" href="tel:{0}">点击拨号</a><br/>', resp.ExObj[i].K3);
+                         str.AppendFormat('</p>');
+                         str.AppendFormat('</dd>');
+                         str.AppendFormat('</dl>');
+
+                         //
+
+                     };
+                     if (PageIndex == 1) {
+                         if (resp.ExStr == "1") {
+                             //显示下一页按钮
+                             str.AppendFormat(' <button id="btnNext" type="button" class="dismore" onclick="BtnClick()">显示更多</button>');
+                             listHtml += str.ToString();
+                             $("#objList").html(listHtml);
+
+                         }
+                         else {
+                             listHtml += str.ToString();
+                             if (listHtml == "") {
+                                 listHtml = "没有符合条件的结果";
+                             }
+                             $("#objList").html(listHtml);
+
+                         }
+
+
+
+                     }
+                     else {
+                         listHtml += str.ToString();
+                         if (listHtml != "") {
+                             $("#btnNext").before(listHtml);
+                         }
+                         else {
+
+                             $("#btnNext").html("没有更多了");
+                             $("#btnNext").removeAttr("onclick");
+
+                         }
+
+                     }
+
+
+
+                 },
+                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     if (textStatus == "timeout") {
+                         alert("加载超时，请刷新页面");
+
+                     }
+                     $("#btnSearch").html("搜索");
+                 }
+             });
+
+
+
+
+         }
+
+
+
+
+     </script>
+    
+
+</html>

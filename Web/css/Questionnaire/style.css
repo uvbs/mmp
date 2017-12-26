@@ -1,0 +1,515 @@
+@charst "utf-8";
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td, button {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th, td {
+    vertical-align: top;
+}
+
+i {
+    overflow: hidden;
+    display: inline-block;
+}
+
+iframe {
+    background-color: white;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 2px;
+    #margin-right:0;
+}
+
+input {
+    font-size: 12px;
+    font-family: Tahoma,Arial, Helvetica, sans-serif;
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    outline-color: -moz-use-text-color;
+    outline-style: none;
+    outline-width: medium;
+}
+
+label input {
+    position: relative;
+    top: 2px;
+    #top:1px;
+    font-size: 12px;
+}
+
+textarea {
+    overflow: auto;
+    padding: 1px 0 0 1px;
+    font-size: 12px;
+}
+
+select {
+    font-size: 12px;
+}
+
+cite {
+    line-height: 33px;
+    display: none;
+    text-indent: -999px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    color: #333;
+    font-family: Tahoma,Arial, Helvetica, sans-serif,"Hiragino Sans Gb","Microsoft YaHei";
+    background: #fff;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    outline: 0;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.box {
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    position: relative;
+}
+
+body {
+    background-color: #fff;
+}
+
+.toupiaobox {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    box-sizing: border-box;
+    margin: 5px 0px;
+    padding: 10px 0px;
+    position: relative;
+}
+
+    .toupiaobox .title {
+        font-weight: bold;
+        font-size: 14px;
+        box-sizing: border-box;
+        padding-left: 10px;
+    }
+
+    .toupiaobox .note {
+        margin: 10px 0 0 0;
+        box-sizing: border-box;
+        padding-left: 10px;
+        color: #999;
+        font-size: 12px;
+    }
+
+    .toupiaobox .radioinput {
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        opacity: 0;
+    }
+
+    .toupiaobox .mainconcent {
+        display: block;
+        width: 100%;
+        /*height: 40px;*/
+        /*border-bottom: 1px solid #e0e0e0;*/
+        line-height: 40px;
+        box-sizing: border-box;
+        padding: 0 10px;
+        position: relative;
+        -webkit-tap-highlight-color: rgba(0,0,0,0.3);
+    }
+
+        .toupiaobox .mainconcent .inputicon {
+            display: block;
+            width: 14px;
+            height: 14px;
+            border-radius: 14px;
+            border: 1px solid #e0e0e0;
+            float: left;
+            margin: 12px 10px 0 0;
+            background-color: #fff;
+        }
+
+            .toupiaobox .mainconcent .inputicon .icon {
+                display: block;
+                width: 8px;
+                height: 8px;
+                border-radius: 8px;
+                background-color: #F5CB5F;
+                margin: 2px;
+                display: none;
+            }
+
+        .toupiaobox .mainconcent .inputtext {
+            font-size: 14px;
+            /*float: left;*/
+            /*width: 230px;*/
+            /*height: 40px;*/
+            line-height: 40px;
+            /*text-overflow: ellipsis;
+            white-space: nowrap;*/
+            overflow: hidden;
+        }
+
+        .toupiaobox .mainconcent .inputlabel {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: transparent;
+        }
+
+        .toupiaobox .mainconcent .jindubar {
+            display: none;
+        }
+
+        .toupiaobox .mainconcent:active {
+            background-color: #eee;
+        }
+
+    .toupiaobox .radioinput:checked + .mainconcent .inputicon .icon {
+        display: block;
+    }
+
+    .toupiaobox .button {
+        width: 120px;
+        height: 40px;
+        display: block;
+        background-color: #04be02;
+        margin: 10px auto;
+        line-height: 40px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        text-align: center;
+    }
+
+        .toupiaobox .button:active {
+            background-color: #04be02;
+        }
+
+    .toupiaobox .toupiaoinfo {
+        display: none;
+    }
+
+.duoxuan .mainconcent .inputicon {
+    border-radius: 2px;
+}
+
+    .duoxuan .mainconcent .inputicon .icon {
+        border-radius: 1px;
+    }
+
+.toupiaoover .mainconcent {
+    border-bottom: none;
+}
+
+    .toupiaoover .mainconcent .inputicon {
+        display: none;
+    }
+
+    .toupiaoover .mainconcent .jindubar {
+        display: block;
+        width: 100%;
+        height: 5px;
+        background-color: #e0e0e0;
+        clear: both;
+        position: relative;
+        top: -8px;
+        border-radius: 2px;
+    }
+
+        .toupiaoover .mainconcent .jindubar .jindu {
+            height: 5px;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .toupiaoover .mainconcent .jindubar .pecent, .toupiaoover .mainconcent .jindubar .peoplenum {
+            display: block;
+            width: auto;
+            height: 20px;
+            line-height: 20px;
+            position: absolute;
+            bottom: 5px;
+            right: 50px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .toupiaoover .mainconcent .jindubar .pecent {
+            right: 5px;
+        }
+
+    .toupiaoover .mainconcent .inputlabel {
+        display: none;
+    }
+
+    .toupiaoover .mainconcent:active {
+        background-color: transparent;
+    }
+
+.toupiaoover .button {
+    display: none;
+}
+
+.toupiaoover .toupiaoinfo {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 6px 20px 6px 20px;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.mainconcent:nth-of-type(1n) .jindu {
+    background-color: #ec6161;
+}
+
+.mainconcent:nth-of-type(2n) .jindu {
+    background-color: #7db985;
+}
+
+.mainconcent:nth-of-type(3n) .jindu {
+    background-color: #7eade1;
+}
+
+.mainconcent:nth-of-type(4n) .jindu {
+    background-color: #eccc63;
+}
+
+.mainconcent:nth-of-type(5n) .jindu {
+    background-color: #ec9062;
+}
+
+.mainconcent:nth-of-type(6n) .jindu {
+    background-color: #9576d3;
+}
+
+@media all and (max-width: 319px) {
+    .box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media all and (min-width: 320px) {
+    .box {
+        width: 320px;
+    }
+}
+
+@media all and (min-width: 360px) {
+    .box {
+        width: 360px;
+    }
+
+    .toupiaobox .mainconcent .inputtext {
+        /*width: 260px;*/
+        /*height: 40px;*/
+        line-height: 40px;
+        /*text-overflow: ellipsis;
+        white-space: nowrap;*/
+        overflow: hidden;
+    }
+}
+
+.submit {
+    display: block;
+    width: 200px;
+    height: 40px;
+    background-color: #093;
+    margin: 0px auto;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    color: #FFF;
+    font-size: 16px;
+    font-family: '微软雅黑';
+    margin-top: 10px;
+}
+
+.header {
+    width: 100%;
+    height: 40px;
+    background-color: #04509E !important;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 40px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: "微软雅黑";
+}
+
+.box .cont {
+    margin: 20px;
+    font-family: "微软雅黑";
+    font-size: 16px;
+}
+
+.cont img {
+    max-width: 100%;
+}
+
+.container {
+    width: 150px;
+    height: 60px;
+}
+
+    .container span {
+        margin: 0px 40px;
+        font-family: "微软雅黑";
+        font-size: 16px;
+    }
+
+    .container input {
+        border-radius: 5px;
+        width: 270px;
+        height: 30px;
+        margin: 0px 40px;
+    }
+
+.toupiaobox:last-child {
+    border-bottom: none;
+}
+
+.mainconcent .inputtext input {
+    width: 100px;
+    height: 20px;
+    margin: 0px 10px;
+}
+
+    .toupiaobox .mainconcent .text {
+        width:100%;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #d5d5d5;
+        border-radius: 5px;
+        background-color: #fefefe;
+    }
+    .toupiaobox .provinceconcent {
+        display: block;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        box-sizing: border-box;
+        padding: 0 10px;
+        position: relative;
+        -webkit-tap-highlight-color: rgba(0,0,0,0.3);
+    }
+    .toupiaobox .provinceconcent .province{
+        width:40%;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #d5d5d5;
+        border-radius: 5px;
+        background-color: #fefefe;
+    }
+    .toupiaobox .provinceconcent .city{
+        width:30%;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #d5d5d5;
+        border-radius: 5px;
+        background-color: #fefefe;
+    }
+    .toupiaobox .provinceconcent .district{
+        width:30%;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #d5d5d5;
+        border-radius: 5px;
+        background-color: #fefefe;
+    }
+.grouptype{
+}
+.grouptype .grouptable{
+    width:100%;
+    line-height:28px;
+}
+.grouptype .grouptable .groupanswertd{
+    width:60%;
+    border:solid 1px #d5d5d5;
+    padding:0px 10px 0px 10px;
+}
+.grouptype .grouptable .groupselecttd{
+    text-align:center;
+    vertical-align:middle;
+    border:solid 1px #d5d5d5;
+    padding:0px 10px 0px 10px;
+}
+.borderBottom{
+    border-bottom: 1px solid #e0e0e0;
+}
+.show{
+    display:inline;
+}
+.hide{
+    display:none;
+}

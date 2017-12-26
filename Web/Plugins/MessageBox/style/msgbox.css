@@ -1,0 +1,55 @@
+.gb_tip_layer, .gb_tip_layer .gtl_ico_succ, .gb_tip_layer .gtl_ico_fail, .gb_tip_layer .gtl_ico_hits,  .gb_tip_layer .gtl_end
+{
+    background-image: url( "images/gb_tip_layer.png" );
+    background-repeat: no-repeat;
+    color: #606060;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 54px;
+    line-height: 54px;
+}
+.gb_tip_layer
+{
+    background-position: 0 -161px;
+    background-repeat: repeat-x;
+    left: 45%;
+    padding: 0 18px 0 9px;
+    position: absolute;
+    top: 50%;
+    font-family: Arial,Simsun, "Arial Unicode MS" ,Mingliu,Helvetica;
+    font-size: 14px;
+}
+.gb_tip_layer .gtl_ico_succ
+{
+    background-position: -6px 0;
+    left: -45px;
+    position: absolute;
+    top: 0;
+    width: 45px;
+}
+.gb_tip_layer .gtl_end
+{
+    background-position: 0 0;
+    position: absolute;
+    right: -6px;
+    top: 0;
+    width: 6px;
+}
+.gb_tip_layer .gtl_ico_fail
+{
+    background-position: -6px -108px;
+    left: -45px;
+    position: absolute;
+    top: 0;
+    width: 45px;
+}
+
+.gb_tip_layer .gtl_ico_hits
+{
+    background-position: -6px -54px;
+    left: -45px;
+    position: absolute;
+    top: 0;
+    width: 45px;
+}

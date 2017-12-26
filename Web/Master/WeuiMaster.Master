@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WeuiMaster.master.cs" Inherits="ZentCloud.JubitIMP.Web.Master.WeuiMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport" />
+    <title></title>
+    <%
+       ZentCloud.BLLJIMP.BLL bll = new ZentCloud.BLLJIMP.BLL();
+       ZentCloud.BLLJIMP.Model.CompanyWebsite_Config webSite = bll.GetColByKey<ZentCloud.BLLJIMP.Model.CompanyWebsite_Config>("WebsiteOwner", bll.WebsiteOwner, "AutoID,DistributionQRCodeIcon");
+       if (webSite != null && !string.IsNullOrWhiteSpace(webSite.DistributionQRCodeIcon)){
+           this.Response.Write(string.Format("<link type=\"image/x-icon\" rel=\"shortcut icon\" href=\"{0}\" />", webSite.DistributionQRCodeIcon));
+       }
+     %>
+    <link href="//res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css" rel="stylesheet" />
+    <link href="//static-files.socialcrmyun.com/css/global-m.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="content" runat="server">
+    </asp:ContentPlaceHolder>
+    <div id="loadingToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <script src="//static-files.socialcrmyun.com/lib/vue/2.0/vue.min.js" type="text/javascript"></script>
+    <script src="//static-files.socialcrmyun.com/lib/zepto/zepto.min.js" type="text/javascript"></script>
+    <script src="//static-files.socialcrmyun.com/Scripts/global-m.js?v=2017032901" type="text/javascript"></script>
+    <script src="//static-files.socialcrmyun.com/lib/layer.mobile/2.0/layer.js" type="text/javascript"></script>
+    <script src="//static-files.socialcrmyun.com/lib/lodash/lodash.min.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="bottom" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

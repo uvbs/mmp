@@ -1,0 +1,64 @@
+﻿<div class="wrapApply">
+    <!--<header ng-attr-btnshow="0"></header>-->
+    <!--<header ng-attr-title="{{vm.title}}" ng-attr-btnshow="0"></header>-->
+    <!---->
+    <div class="content" ng-if="vm.signData.apply_status==0">
+        <div class="list list-sale">
+            <!--<a class="item item-avatar userHeader">-->
+                <!--<div class="userAvatar" style="background-image: url({{vm.currUseInfo.head_img_url}});">-->
+                <!--</div>-->
+                <!--<span class="nickName">{{vm.currUseInfo.nick_name}}</span>-->
+            <!--</a>-->
+
+            <div class="headerContent"></div>
+
+
+        </div>
+
+
+        <form class="form-horizontal" ng-submit="vm.submitSignup()">
+            <div class="list">
+                <label class="item item-input item-reset" ng-repeat="item in vm.signData.signfield">
+                    <input class="input-style" id="txtSignup_{{item.value}}" type="text" ng-model="item.input" placeholder="请输入{{item.key}}" ng-required="{{(item.isnull==0)}}">
+                </label>
+                <!--<label class="item item-input item-reset">-->
+                <!--&lt;!&ndash;<div class="leftWord">姓名</div>&ndash;&gt;-->
+                <!--<input class="input-style" type="text" placeholder="请输入姓名">-->
+                <!--</label>-->
+                <!--<label class="item item-input item-reset">-->
+                <!--&lt;!&ndash;<div class="leftWord">手机</div>&ndash;&gt;-->
+                <!--<input class="input-style" type="text" placeholder="请输入手机号码">-->
+                <!--</label>-->
+                <!--<label class="item item-input item-reset">-->
+                <!--&lt;!&ndash;<div class="leftWord">公司</div>&ndash;&gt;-->
+                <!--<input class="input-style" type="text" placeholder="请输入公司">-->
+                <!--</label>-->
+                <!--<label class="item item-input item-reset">-->
+                <!--&lt;!&ndash;<div class="leftWord">年龄</div>&ndash;&gt;-->
+                <!--<input class="input-style" type="text" placeholder="请输入年龄">-->
+                <!--</label>-->
+                <!--<label class="item item-input item-reset">-->
+                <!--&lt;!&ndash;<div class="leftWord">推荐码</div>&ndash;&gt;-->
+                <!--<input class="input-style" type="text" placeholder="请输入公司">-->
+                <!--</label>-->
+            </div>
+            <div class="padding">
+                <button type="submit" class="button button-block button-energized change">
+                    申请成为财富伙伴
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="content has-header" ng-if="vm.signData.apply_status==1">
+        <div class="tips">
+            您的资料正在审核中</br></br>
+            请耐心等候...
+        </div>
+    </div>
+    <div class="content has-header" ng-if="vm.signData.apply_status==4001">
+        <div class="tips">
+            您的审核不通过</br></br>
+            原因：{{vm.showMsg}}
+        </div>
+    </div>
+</div>

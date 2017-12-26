@@ -1,0 +1,85 @@
+<div class="wrapStaticDetail wrapProStatus">
+    <header ng-attr-title="{{staticdetail.title}}" ng-attr-btnshow="0"></header>
+    <div class="content has-header">
+        <!--<div class="wrapProjectName">-->
+            <!--<span>项目:{{staticdetail.project.project_name}}</span>-->
+        <!--</div>-->
+        <div class="card">
+            <div class="item item-text-wrap">
+                <div class="textC">
+                    <span>项目名称:{{staticdetail.project.project_name}}</span>
+                    <!--状态：{{staticdetail.project.project_status}}&nbsp;&nbsp;&nbsp;&nbsp;-->
+                    <!--<a class="checklog" ng-href="#/prostatus/{{staticdetail.projectId}}" >查看日志</a>-->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <div class="list list-inset list-reset">
+                    <label class="item item-input" ng-repeat="item in staticdetail.fields">
+                        <span class="input-label textR">{{item.field_show_name}}：</span>
+                        <div class="">{{item.field_value}}</div>
+                        <!--<input id="txtSignup_{{item.field}}" type="text" ng-model="item.input" placeholder="请输入{{item.field_show_name}}" ng-required="{{(item.field_is_null==0)}}">-->
+                    </label>
+
+                    <!--<label class="item item-input">-->
+                        <!--<span class="input-label">姓名：</span>-->
+                        <!--<div class="">{{staticdetail.project.contact}}</div>-->
+                    <!--</label>-->
+                    <!--<label class="item item-input">-->
+                        <!--<span class="input-label">手机：</span>-->
+                        <!--<div class="">{{staticdetail.project.phone}}</div>-->
+                    <!--</label>-->
+                    <!--<label class="item item-input">-->
+                        <!--<span class="input-label">微信：</span>-->
+                        <!--<div class="">{{staticdetail.project.weixin}}</div>-->
+                    <!--</label>-->
+                    <!--<label class="item item-input">-->
+                        <!--<span class="input-label">单位：</span>-->
+                        <!--<div class="">{{staticdetail.project.company}}</div>-->
+                    <!--</label>-->
+                    <!--<label class="item item-input">-->
+                        <!--<span class="input-label">备注：</span>-->
+                        <!--<div class="">{{staticdetail.project.project_intro}}</div>-->
+                    <!--</label>-->
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap projectinfo">
+                <div class="">项目状态：{{staticdetail.project.project_status}}</div>
+                <div class="">项目金额：&nbsp;&nbsp;{{staticdetail.project.project_amount}}</div>
+                <div class="">预计佣金：&nbsp;&nbsp;{{staticdetail.project.commission_amount}}</div>
+
+                <!--项目金额<span class="price">{{staticdetail.project.project_amount}}</span><br/>-->
+                <!--预计佣金 <span class="price">{{staticdetail.project.commission_amount}}</span>-->
+            </div>
+        </div>
+
+        <div class="wrapCardList">
+            <div class="statuslog" ng-if="staticdetail.logList.length!=0">状态日志</div>
+            <div class="row pLeft32" ng-repeat="item in staticdetail.logList">
+                <div class="zhe" ng-if="$index==0"></div>
+
+                <div class="col leftLine">
+                    <div class="greenPoint"></div>
+                    <div class="null"></div>
+                    <div class="row pLeft0">
+
+                        <div class="col textL pLeft12">{{item.projectlog_time | date:'yyyy-MM-dd HH:mm'}}</div>
+                    </div>
+                    <div class="card">
+                        <div class="item pLeft0 pRight0">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 class="font14">{{item.status}}</h2>
+                                    <summary ng-bind="item.remark"></summary>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

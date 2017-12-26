@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <div class="divString" 
+         contenteditable="true"
+         style="width: 60%;line-height:21px;min-height:212px;padding:5px;border:solid #d3d3d3 1px;"></div>
+    <input type="button" value="处理图片" onclick="matchString()" />
+    <div class="divResult"></div>
+</body>
+</html>
+<script type="text/javascript" src="/Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    var ss = '执照图由[<a href="/xn_img/bj/image/6/350/41388qt1612152324110454.jpg" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152324110454.jpg" width="90" /></a><a href="/xn_img/bj/image/6/350/41388qt1612152330217754.png" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152330217754.png" width="90" /></a><a href="/xn_img/bj/image/6/350/41388qt1612152330347652.png" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152330347652.png" width="90" /></a><a href="/xn_img/bj/image/6/350/41388qt1612152330451123.png" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152330451123.png" width="90" /></a>]<br />改为[<a href="/xn_img/bj/image/6/350/41388qt1612152324110454.jpg" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152324110454.jpg" width="90" /></a><a href="/xn_img/bj/image/6/350/41388qt1612152330217754.png" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152330217754.png" width="90" /></a><a href="/xn_img/bj/image/6/350/41388qt1612152330347652.png" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152330347652.png" width="90" /></a><a href="/xn_img/bj/image/6/350/41388qt1612152330451123.png" target="_blank"><img src="/xn_img/bj/image/6/350/41388qt1612152330451123.png" width="90" /></a><a href="/xn_img/bj/image/6/360/46484qt1612251521582065.jpg" target="_blank"><img src="/xn_img/bj/image/6/360/46484qt1612251521582065.jpg" width="90" /></a>]';
+    $(function () {
+        $('.divString').html(ss);
+    });
+    function matchString() {
+        var inString = $('.divString').html();
+        matchParams(inString);
+    }
+    function matchParams(inString) {
+        //var str = "1adsc1bvvc1c";
+        //var reg = new RegExp("1.+?c", "g");
+        //var sss =str.match(reg)
+        //console.log(sss);
+        //return;
+        var re = /(\[.+?])/gi;
+        var r = inString.match(re);
+        for (var i = 0; i < r.length; i++) {
+            var imgs = matchImgs(r[i]);
+            if (imgs == '') continue;
+            inString = inString.replace(r[i], imgs);
+        }
+        $('.divResult').html(inString);
+    }
+    function matchImgs(inString) {
+        var re = /(\<a href=".+?" target="_blank">)/gi;
+        var r = inString.match(re);
+        var imgs = [];
+        for (var i = 0; i < r.length; i++) {
+            if (r[i] == '') continue;
+            var img = r[i].replace('<a href="', '').replace('" target="_blank">');
+            if (img == '') continue;
+            imgs.push(img);
+        }
+        return '[img:' + imgs.join(',') + ']';
+    }
+</script>

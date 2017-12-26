@@ -1,0 +1,171 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="ZentCloud.JubitIMP.Web.App.Cation.Wap.Vote.Comm.Master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <link href="http://comeoncloud-static.oss-cn-hangzhou.aliyuncs.com/css/ionic.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://comeoncloud-static.oss-cn-hangzhou.aliyuncs.com/css/vote/style.css" />
+    <link type="text/css" rel="stylesheet" href="http://comeoncloud-static.oss-cn-hangzhou.aliyuncs.com/css/vote/basic.css" />
+    <link href="//static-files.socialcrmyun.com/lib/layer.mobile/need/layer.css" rel="stylesheet" />    
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        #musicbutton{width: 50px;height: 50px;right: 2%;top: -5px;z-index: 10;position:fixed;background: url(http://comeoncloud-static.oss-cn-hangzhou.aliyuncs.com/img/music_sp.png);
+	background-repeat: no-repeat;background-size: 1024px 512px;background-position: 0px 0px;}
+        #audioBg{display:none;position:absolute;top:0px;left:0px;}
+        .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
+
+
+    </style>
+    
+</head>
+<body>
+   
+    <asp:ContentPlaceHolder ID="body" runat="server">
+    </asp:ContentPlaceHolder>
+  
+<%--    <div>
+        <img src="images/organisers.jpg" alt="" title="" border="0" style="width: 100%;" />
+    </div>
+    <div>
+        <img src="images/qrcode.jpg" style="width: 100%;" />
+    </div>--%>
+    <%--<div id="footer">
+        <div class="menu3 font14">
+            <ul>
+                <li id="li0">
+                    <a href="Index.aspx?vid=<%=Request["vid"]%>">
+                    <img src="images/tab_00.jpg" alt="" title="" class="mTop4" /></a>
+
+                </li>
+                <li id="li4"><a href="Rule.aspx?vid=<%=Request["vid"] %>" >
+
+                    <div class="arrow-right"></div>
+
+                    海选规则
+                     </a>
+
+                </li>
+                <li id="li5"><a href="SignUp.aspx?vid=<%=Request["vid"] %>">
+                    <div class="arrow-right"></div>
+                    参与海选
+                             </a></li>
+                <li id="li6">
+                    <a href="List.aspx?vid=<%=Request["vid"] %>">
+                        <div class="arrow-right"></div>
+                        为她投票
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </div>--%>
+
+  <%--  <div id="footer">
+        <div class="row">
+            <div class="col">
+                <i class="iconfont icon-shouyeshixin"></i>
+                <a href="#">首页</a>
+            </div>
+            <div class="col">
+                <i class="iconfont icon-shouyeshixin"></i>
+                <a href="#">首页</a>
+            </div>
+            <div class="col">
+                <a href="#">首页</a>
+            </div>
+        </div>
+    </div>--%>
+
+</body>
+    <script src="http://comeoncloud-static.oss-cn-hangzhou.aliyuncs.com/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="//static-files.socialcrmyun.com/lib/layer.mobile/layer.m.js" type="text/javascript" ></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="http://comeoncloud-static.oss-cn-hangzhou.aliyuncs.com/lib/audioplayer/audioplayer.js" type="text/javascript"></script>
+    
+    
+
+<asp:contentplaceholder id="bottom" runat="server">
+</asp:contentplaceholder>
+<script src="http://comeoncloud-static.oss-cn-hangzhou.aliyuncs.com/Scripts/wxshare/wxshare0.0.1/wxsharedali.js"></script>
+<script type="text/javascript">
+    var musicCtrl;
+    var audioplay;
+    //console.log('currVid',currVid);
+    //http://files.comeoncloud.net/music/bg.mp3
+    $(function () {
+
+        window.alert = function (msg) {
+            layer.open({
+                content: msg
+                , time: 2 //2秒后自动关闭
+            });
+        };
+
+        if ($('#audioBg').length > 0) {
+            audioplay = new AudioPlay("#audioBg", "#musicbutton");
+
+            musicCtrl = sessionStorage.getItem('musicCtrl');
+            if (!musicCtrl) {
+                musicCtrl = 'y';
+                sessionStorage.setItem('musicCtrl', musicCtrl);
+            }
+
+            if (musicCtrl == 'y') {
+                audioplay.init();
+            }
+        }
+
+    });
+
+    function changeMusicCtrl() {
+        if (!musicCtrl) {
+            musicCtrl = 'y';
+            audioplay.init();
+        }else if(musicCtrl == 'y'){
+            musicCtrl = 'n';
+        } else if (musicCtrl == 'n') {
+            musicCtrl = 'y';
+            audioplay.init();
+        }
+
+        sessionStorage.setItem('musicCtrl', musicCtrl);
+    }
+   
+
+    wx.ready(function () {
+
+        wxapi.wxshare({
+            title: shareTitle,
+            desc: shareDesc,
+            link: shareLink,
+            imgUrl: shareImgUrl
+        })
+    });
+
+    $(window).resize(function () {
+
+        if ($(document).height() < oHeight) {
+            $('#footer').hide();
+        } else {
+            $('#footer').show();
+        }
+
+    });
+
+</script>
+    <script src="//at.alicdn.com/t/font_ld3yub6m0ib8d7vi.js"></script>
+</html>

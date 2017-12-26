@@ -1,0 +1,24 @@
+<div class="storeOrdersCtrl">
+  <ul class="orderList">
+    <li class="orderItem row" ng-repeat="order in pageData.orderList">
+      <div class="block col col-75" ng-click="pageFunc.gotoVoucher(order)">
+        <div>
+          <span class="orderTitle">
+            <a>{{order.carBrandName}}</a>
+          </span>
+          <span class="orderStatus" ng-class="{
+              orderStatusProcessing: order.status === 1,
+              orderStatusConfirmed: order.status === 0,
+              orderStatusFinished: order.status >= 2
+            }">{{['未处理', '进行中', '已过期', '已取消'][order.status]}}</span>
+        </div>
+        <div class="arrivalTime">{{order.carSeriesName + order.carModelName}}</div>
+        <div class="orderTime">提交时间: {{order.createTime}}</div>
+      </div>
+      <div class="col col-center text-center">
+        <store-order-button order="order" on-canceled="pageFunc.onCanceled"></store-order-button>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>

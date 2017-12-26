@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css" />
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <!--Page 1 content-->
+    <div class="swiper-slide sliderbg1">
+        <div class="swiper-container swiper-nested">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <div class="pages_container">
+                            <div class="index_container3">
+                                <div class="panels_slider">
+                                    <ul class="slides">
+                                        <li>
+                                            <img src="images/4_01.png" alt="" title="" border="0" />
+                                        </li>
+                                        <li>
+                                            <img src="images/4_01.png" alt="" title="" border="0" />
+                                        </li>
+                                        <li>
+                                            <img src="images/4_01.png" alt="" title="" border="0" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="index_container4">
+                                    <div class="goods_div1">
+                                        <div class="goods_div1_l">
+                                            <h4>
+                                                澳洲直送 智利蓝莓 1斤/500g
+                                            </h4>
+                                            <p>
+                                                顺风送毁包陪蓝莓不掉柄 果径约33mm</p>
+                                        </div>
+                                        <div class="goods_div1_r">
+                                            <a href="#">
+                                                <img src="images/goods_01.png" width="45px" /></a></div>
+                                    </div>
+                                    <div class="goods_div2">
+                                        <div class="goods_div2_l">
+                                            <span class="goods_span1">销量999件</span><br />
+                                            <span class="goods_span2">原价￥98.9 </span>
+                                        </div>
+                                        <div class="goods_div2_r" style="width: 60%; float: left; text-align: right">
+                                            <span class="goods_span3">特价</span><span class="goods_span4">￥10.0</span></div>
+                                    </div>
+                                    <div class="goods_div3">
+                                        购买数量
+                                        <div style="float: right">
+                                            <input id="min" name="" type="button" value="-" class="btn_box text_box_1" />
+                                            <input id="text_box" name="" type="text" value="1" class="text_box" style="min-width: 60px" />
+                                            <input id="add" name="" type="button" value="+" class="btn_box text_box_2" />
+                                        </div>
+                                    </div>
+                                    <div class="goods_div4 radius10">
+                                        详情
+                                    </div>
+                                    <table class="goods_tb">
+                                        <tr>
+                                            <td>
+                                                国家：智利进口
+                                            </td>
+                                            <td>
+                                                配送方式：新鲜直达
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                国产：进口水果
+                                            </td>
+                                            <td>
+                                                净重(g)：500
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                品种：蓝莓
+                                            </td>
+                                            <td>
+                                                包装：盒装
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="image_single">
+                                        <a href="#">
+                                            <img src="images/4_02.png" alt="" title="" border="0" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <table class="goods_tb1">
+            <tr>
+                <td class="td1">
+                    ￥10.0
+                </td>
+                <td class="td2">
+                    <a href="javascript:void()" class="form_a1 green radius6">加入购物车</a>
+                </td>
+                <td class="td3">
+                    <a href="#">
+                        <img src="images/goods_02.png" width="35px" /></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
+    <script type="text/javascript" src="js/jquery.tabify.js"></script>
+    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/load.js"></script>
+    <script src="js/jquery.flexslider.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var $ = jQuery.noConflict();
+        $(window).load(function () {
+            $('.panels_slider').flexslider({
+                animation: "slide",
+                directionNav: false,
+                controlNav: true,
+                animationLoop: true,
+                slideToStart: 0,
+                slideshowSpeed: 3000,
+                animationDuration: 300,
+                slideshow: true
+            });
+        });
+
+
+        $(function () {
+            //获得文本框对象
+            var t = $("#text_box");
+            //数量增加操作
+            $("#add").click(function () {
+                t.val(parseInt(t.val()) + 1)
+                if (parseInt(t.val()) != 1) {
+                    $('#min').attr('disabled', false);
+                }
+                setTotal();
+            })
+            //数量减少操作
+            $("#min").click(function () {
+                t.val(parseInt(t.val()) - 1);
+                if (parseInt(t.val()) == 1) {
+                    $('#min').attr('disabled', true);
+                }
+                setTotal();
+            })
+
+        });
+    </script>
+</body>
+</html>

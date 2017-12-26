@@ -1,0 +1,10 @@
+﻿<div class="caseAsideNotice mTop10">
+    <h4>热门文章</h4>
+    <div class="caseNoticeTitle hand" ng-repeat="article in pageData.hotArticle" ng-click="pageFunc.itemClick(article)">
+        <p>
+            <i class="iconfont icon-dian dian"></i>
+            {{article.title}}
+        </p>
+        <span class="pRight10">1天前</span>
+    </div>
+</div>

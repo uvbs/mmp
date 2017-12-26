@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE> ZTREE DEMO - noLine </TITLE>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="../../../css/demo.css" type="text/css">
+	<link rel="stylesheet" href="../../../css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="../../../js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="../../../js/jquery.ztree.core-3.5.js"></script>
+	<!--  <script type="text/javascript" src="../../../js/jquery.ztree.excheck-3.5.js"></script>
+	  <script type="text/javascript" src="../../../js/jquery.ztree.exedit-3.5.js"></script>-->
+	<SCRIPT type="text/javascript">
+		<!--
+		var setting = {
+			view: {
+				showLine: false
+             
+			},
+			data: {
+                key:{title:"tip"},
+				simpleData: {
+			    enable: true
+				}
+			}
+		};
+
+		var zNodes =[
+			{ id:1, pId:0, name:"父节点1 - 展开", open:true},
+			{ id:11, pId:1, name:"父节点11 - 折叠",tip:"<img src='../../../css/zTreeStyle/img/diy/6.png' width='50px' height='50px'/>"},
+			{ id:111, pId:11, name:"叶子节点111"},
+			{ id:112, pId:11, name:"叶子节点112"},
+			{ id:113, pId:11, name:"叶子节点113"},
+			{ id:114, pId:11, name:"叶子节点114"},
+			{ id:12, pId:1, name:"父节点12 - 折叠"},
+			{ id:121, pId:12, name:"叶子节点121"},
+			{ id:122, pId:12, name:"叶子节点122"},
+			{ id:123, pId:12, name:"叶子节点123"},
+			{ id:124, pId:12, name:"叶子节点124"},
+			{ id:13, pId:1, name:"父节点13 - 没有子节点", isParent:true},
+			{ id:2, pId:0, name:"父节点2 - 折叠"},
+			{ id:21, pId:2, name:"父节点21 - 展开", open:true},
+			{ id:211, pId:21, name:"叶子节点211"},
+			{ id:212, pId:21, name:"叶子节点212"},
+			{ id:213, pId:21, name:"叶子节点213"},
+			{ id:214, pId:21, name:"叶子节点214"},
+			{ id:22, pId:2, name:"父节点22 - 折叠"},
+			{ id:221, pId:22, name:"叶子节点221"},
+			{ id:222, pId:22, name:"叶子节点222"},
+			{ id:223, pId:22, name:"叶子节点223"},
+			{ id:224, pId:22, name:"叶子节点224"},
+			{ id:23, pId:2, name:"父节点23 - 折叠"},
+			{ id:231, pId:23, name:"叶子节点231"},
+			{ id:232, pId:23, name:"叶子节点232"},
+			{ id:233, pId:23, name:"叶子节点233"},
+			{ id:234, pId:23, name:"叶子节点234"},
+			{ id:3, pId:0, name:"父节点3 - 没有子节点", isParent:true}
+		];
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		});
+		//-->
+
+function addHoverDom(treeId, treeNode) {
+    alert(1);};
+function removeHoverDom(treeId, treeNode) {
+    alert(1);
+};
+
+function addDiyDom(treeId, treeNode) {
+    var aObj = $("#" + treeNode.tId + "_a");
+    var editStr = "<img src='../../../css/zTreeStyle/img/diy/6.png' width='50px' height='50px'/>";
+    aObj.before(editStr);
+
+};
+	</SCRIPT>
+
+</HEAD>
+
+<BODY>
+<h1>不显示连接线的树</h1>
+<h6>[ 文件路径: core/noline.html ]</h6>
+<div class="content_wrap">
+	<div class="zTreeDemoBackground left">
+		<ul id="treeDemo" class="ztree"></ul>
+	</div>
+	<div class="right">
+		<ul class="info">
+			<li class="title"><h2>1、setting 配置信息说明</h2>
+				<ul class="list">
+				<li class="highlight_red">是否显示连接线请设置 setting.view.showLine 属性，详细请参见 API 文档中的相关内容</li>
+				</ul>
+			</li>
+			<li class="title"><h2>2、treeNode 节点数据说明</h2>
+				<ul class="list">
+				<li>是否显示连线，不需要 treeNode 节点数据提供特殊设置</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+</BODY>
+
+<style>
+body{
+padding:0px;
+margin:0px;
+font-size:10pt;
+padding-top:30px;
+}
+a{
+	color:#333;
+	text-decoration: none;
+}
+a:hover{
+color:#FF0000;
+text-decoration:underline;}
+/*下面这个样式用来控制title属性显示的那个方框样式的*/
+DIV#qTip {
+	BORDER: #abab98 1px solid; 
+	DISPLAY: none; 
+	FONT-SIZE: 12px; 
+	Z-INDEX: 1000; 
+	BACKGROUND: #fefeda;
+	COLOR: #5f5f52;
+	LINE-HEIGHT: 16px;
+	FONT-FAMILY: "Tahoma"; 
+	POSITION: absolute; 
+	TEXT-ALIGN: left;
+	padding:4px;
+	margin-top:-4px;
+}
+
+</style>
+</HEAD>
+<BODY>
+<SCRIPT language=JavaScript >
+
+    //////////////////////////////////////////////////////////////////
+    // qTip - CSS Tool Tips - by Craig Erskine
+    // http://qrayg.com | http://solardreamstudios.com
+    //
+    // Inspired by code from Travis Beckham
+    // http://www.squidfingers.com | http://www.podlob.com
+    //////////////////////////////////////////////////////////////////
+    var qTipTag = "a"; //Which tag do you want to qTip-ize? Keep it lowercase!//
+    var qTipX = -30; //This is qTip's X offset//
+    var qTipY = 25; //This is qTip's Y offset//
+    //There's No need to edit anything below this line//
+    tooltip = {
+        name: "qTip",
+        offsetX: qTipX,
+        offsetY: qTipY,
+        tip: null
+    }
+    tooltip.init = function () {
+        var tipNameSpaceURI = "http://www.w3.org/1999/xhtml";
+        if (!tipContainerID) { var tipContainerID = "qTip"; }
+        var tipContainer = document.getElementById(tipContainerID);
+        if (!tipContainer) {
+            tipContainer = document.createElementNS ? document.createElementNS(tipNameSpaceURI, "div") : document.createElement("div");
+            tipContainer.setAttribute("id", tipContainerID);
+            document.getElementsByTagName("body").item(0).appendChild(tipContainer);
+        }
+        if (!document.getElementById) return;
+        this.tip = document.getElementById(this.name);
+        if (this.tip) document.onmousemove = function (evt) { tooltip.move(evt) };
+        var a, sTitle;
+        var anchors = document.getElementsByTagName(qTipTag);
+
+        for (var i = 0; i < anchors.length; i++) {
+
+            a = anchors[i];
+
+            sTitle = a.getAttribute("title");
+          
+            if (sTitle) {
+                a.setAttribute("tiptitle", sTitle);
+                a.removeAttribute("title");
+                a.onmouseover = function () { tooltip.show(this.getAttribute('tiptitle')) };
+                a.onmouseout = function () { tooltip.hide() };
+            }
+        }
+    }
+    tooltip.move = function (evt) {
+        var x = 0, y = 0;
+        if (document.all) {//IE
+            x = (document.documentElement && document.documentElement.scrollLeft) ? document.documentElement.scrollLeft : document.body.scrollLeft;
+            y = (document.documentElement && document.documentElement.scrollTop) ? document.documentElement.scrollTop : document.body.scrollTop;
+            x += window.event.clientX;
+            y += window.event.clientY;
+
+        } else {//Good Browsers
+            x = evt.pageX;
+            y = evt.pageY;
+        }
+        this.tip.style.left = (x + this.offsetX) + "px";
+        this.tip.style.top = (y + this.offsetY) + "px";
+    }
+    tooltip.show = function (text) {
+        if (!this.tip) return;
+        this.tip.innerHTML = text;
+        this.tip.style.display = "block";
+    }
+    tooltip.hide = function () {
+        if (!this.tip) return;
+        this.tip.innerHTML = "";
+        this.tip.style.display = "none";
+    }
+    window.onload = function () {
+        tooltip.init();
+    }
+</SCRIPT>
+
+</HTML>

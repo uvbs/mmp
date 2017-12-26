@@ -1,0 +1,27 @@
+.wrapFooter {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  z-index: 999;
+  color: #999;
+}
+.wrapFooter .iconfont {
+  display: block;
+  font-size: 24px;
+}
+.wrapFooter .navtext {
+  display: block;
+  margin-top: 3px;
+}
+.wrapFooter .col {
+  padding: 5px 5px 0;
+}
+.wrapFooter .col:hover {
+  background-color: #ddd;
+}
+.wrapFooter .col.selected {
+  color: #4996e3;
+}

@@ -1,0 +1,158 @@
+<div class="layout boxMain warpAsk warpUserIndex">
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="subTitle clear">
+                <span class="warpAskaleft">
+                    <i class="iconfont icon-zhuiocn"></i>
+                    <span class="titleText"><span class="hand" ng-click="go('#/userspace/'+pageData.id)">个人中心</span> > 编辑资料</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-2">
+        </div>
+    </div>
+    <div class="uesrMainInfo">
+        <form ng-submit="pageFunc.submitEditUser()">
+            <div class="userMainCon">
+                <h4 class="line"><span></span>&nbsp&nbsp基本信息&nbsp&nbsp<span></span></h4>
+                <div class="userConOne">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-xs-2 control-label one" ng-show="pageData.userInfo.userType!=2">免冠半身照：</label>
+                            <label for="inputEmail3" class="col-xs-2 control-label one" ng-show="pageData.userInfo.userType==2">头像：</label>
+                            <div class="col-xs-3 two">
+                                <a href="javascript:;"><img alt="" src="{{pageData.userInfo.avatar}}"></a>
+                            </div>
+                            <div class="col-xs-5 userImg">
+
+                                <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()" ng-show="pageData.userInfo.userType!=2">上传免冠半身照</div>
+                                <div class="btn btn-primary" ng-click="pageFunc.clickFileDiv()" ng-show="pageData.userInfo.userType==2">上传头像</div>
+                                <input id="fileUserPhoto" class="hidden" type="file" nv-file-select="" uploader="uploader"  />
+                                <p>
+                                    支持 JPG、PNG、GIF 格式，不要超过 2M 。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="pageData.userInfo.userType!=2">
+                            <label for="inputPassword3" class="col-xs-2 control-label">姓名：</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="pageData.userInfo.userName" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="pageData.userInfo.userType==2">
+                            <label for="inputPassword3" class="col-xs-2 control-label">用户昵称：</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="pageData.userInfo.userName" placeholder="用户昵称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">性别：</label>
+                            <div class="col-xs-7">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" ng-model="pageData.userInfo.userSexInt" value="1">男
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" ng-model="pageData.userInfo.userSexInt" value="2">女
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label for="inputPassword3" class="col-xs-2 control-label" ng-show="pageData.userInfo.userType!=2">律师执业证编号：</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="pageData.userInfo.LawyerLicenseNo" placeholder="律师执业证编号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">手机：</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="pageData.userInfo.userPhone" placeholder="手机">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">座机：</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="pageData.userInfo.userTel" placeholder="座机">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">地区选择：</label>
+                            <div class="col-xs-3">
+                                <select ng-change="pageFunc.selectProvince()" ng-model="pageData.userInfo.userProvinceCode" class="form-control">
+                                    <option value="0">选择省份</option>
+                                    <option value="{{item.id}}" ng-repeat="item in pageData.provinceList">
+                                        {{item.name}}
+                                    </option>
+                                </select>
+                                <!-- <select class="form-control" ng-option="p.id as p.name for p in pageData.provinceList"></select> -->
+                            </div>
+                            <div class="col-xs-3">
+                                <select ng-model="pageData.userInfo.userCityCode" class="form-control">
+                                    <option value="0">选择城市</option>
+                                    <option value="{{item.id}}" ng-repeat="item in pageData.cityList">
+                                        {{item.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">个人介绍：</label>
+                            <div class="col-xs-7">
+                                <textarea class="form-control" ng-model="pageData.userInfo.userIntroduction" rows="3" placeholder="个人介绍"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group loginTable">
+                            <label class="col-xs-2 control-label">是否显示个人信息：</label>
+                            <div class="isShow">
+                                <input type="checkbox" ng-model="pageData.userInfo.isShowInfo">
+                            </div>                         
+                        </div>
+                    </div>
+
+                </div>
+                <h4 class="line"><span></span>&nbsp&nbsp律所/公司信息&nbsp&nbsp<span></span></h4>
+                <div class="userConOne">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">律所/公司名称：</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="pageData.userInfo.userCompany" placeholder="律所/公司名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">职位：</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" ng-model="pageData.userInfo.userPostion" placeholder="职位">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">律所/公司地址：</label>
+                            <div class="col-xs-7">
+                                <textarea class="form-control" rows="3" ng-model="pageData.userInfo.userCompanyAddress" placeholder="律所/公司地址"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="line"><span></span>&nbsp&nbsp其他信息&nbsp&nbsp<span></span></h4>
+                <div class="userConOne">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-2 control-label">收件地址：</label>
+                            <div class="col-xs-7">
+                                <textarea class="form-control" rows="3" ng-model="pageData.userInfo.userReceiveAddress" placeholder="收件地址"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-xs-3 control-label"></label>
+                            <!--<div class="col-xs-3">
+                                <button class="btn btn-primary changeBut" ng-click="pageFunc.loadUser()">取消设置</button>
+                            </div>-->
+                            <div class="col-xs-3">
+                                <button type="submit" class="btn btn-primary ">保存设置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

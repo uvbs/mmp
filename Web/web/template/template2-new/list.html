@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/web/template/template2/styles/css/style.css?v=0.0.1">
+    <script src="/web/template/common/jquery.js"></script>
+    <script src="/web/template/common/template_common.js"></script>
+    <script src="/web/template/template2-new/script/template_list.js"></script>
+</head>
+<body>
+<section class="box">
+   <div style="padding-top: 50px;">
+    <input type="text" value="" style="width:70%;height:25px;border-radius:3px;margin-left:10px;" id="txtName" placeholder="标题,描述"/>&nbsp;<input type="button" value="搜索" style="width:20%;height:30px;" id="btnSearch"/>
+</div>
+    <ul class="mianlist" id="mainlist"></ul>
+    <footer></footer>
+</section>
+</body>
+<script type="text/javascript">
+    $(function () {
+
+        $("#btnSearch").click(function () {
+            var Name = $("#txtName").val();
+
+            $.ajax({
+                type: "post",
+                url: "/Serv/WebsiteApi.ashx",
+                data: { Action: "getarticlelist", cateid: GetQueryString("cateid"), name: Name },
+                timeout: 30000,
+                success: function (resp) {
+                    var data = eval(resp);
+                    var html="";
+                    for (var i = 0; i < data.length; i++) {
+                    html+="<li class=\"list\">";
+                    html+="<a class=\"list"+(i+1)+"\" href=\""+data[i].ArticleUrl2+"\">";
+                    html+="<img src=\""+data[i].ArticleThumbnails+"\"  class=\"listpic\">";
+                    html+="<h2>"+data[i].ArticleTitle+"</h2>";
+                    html+="<p>"+data[i].ArticleContent+"</p>";
+                    html+="</a>";
+                    html+="</li>";
+                    }
+	        if(html!=""){$("#mainlist").html(html);}else{$("#mainlist").html("<label style=\"color:white;\">没有搜索到结果</label>");}
+                
+
+                },
+                error: function () {
+
+
+
+                }
+            })
+
+
+
+        });
+
+    })
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+</script>
+<script src="/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+<script type="text/javascript">
+    wx.ready(function () {
+        wxapi.wxshare({
+            title: '$SHARETITLE$',
+            desc: '$SHAREDESC$',
+            //link: '', 
+            imgUrl: '$SHAREIMGURL$'
+        }
+
+    )
+    })
+</script>
+</html>

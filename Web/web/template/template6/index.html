@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/web/template/template6/styles/css/style.css?v=0.0.1">
+    <script src="/web/template/common/jquery.js"></script>
+    <script src="/web/template/common/jquery.slides.min.js"></script>
+    <script src="/web/template/common/template_common.js"></script>
+    <script src="/web/template/template6/script/template_index.js?v=0.0.2"></script>
+</head>
+
+<body>
+<section class="box" id="mainbox">
+    <div id="slides"></div>
+    <div class="catgorybox"><div class="category" id="category"></div></div>
+    <footer></footer>
+</section>
+</body>
+<script src="/Scripts/wxshare/wxshare0.0.1/wxshare.js"></script>
+<script type="text/javascript">
+    wx.ready(function () {
+        wxapi.wxshare({
+            title: '$SHARETITLE$',
+            desc: '$SHAREDESC$',
+            //link: '', 
+            imgUrl: '$SHAREIMGURL$'
+        }
+
+    )
+    })
+</script>
+</html>

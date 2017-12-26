@@ -1,0 +1,39 @@
+/*重写样式*/
+.col-16 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 16%;
+    -ms-flex: 0 0 16%;
+    flex: 0 0 16%;
+    max-width: 16%;
+}
+
+.col-28 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 28%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 28%;
+    -ms-flex: 0 0 28%;
+    flex: 0 0 28%;
+    max-width: 28%;
+}
+
+/*自定义样式*/
+#bg {
+    background: url("../images/header/index-bg.jpg") top center repeat-y;
+    width: 100%;
+    height: auto;
+    padding-bottom: 13%;
+}
+
+#footer-fix {
+    padding: 0;
+    position: fixed;
+    z-index: 999;
+    bottom: -1%;
+}
+
+#footer-fix > .col {
+    padding: 0 1px;
+}

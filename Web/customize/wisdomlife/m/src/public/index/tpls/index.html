@@ -1,0 +1,122 @@
+﻿<div class="wrapIndex">
+    <div class="wrapAd">
+        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="6" class="wrapAd">
+            <li ng-repeat="img in pageIndexData.adImgs">
+                <img ng-src="{{img.img}}" alt="{{img.title}} " ng-click="go('{{img.url}}')">
+            </li>
+        </ul>
+        <div rn-carousel-indicators ng-if="pageIndexData.adImgs.length > 1" slides="pageIndexData.adImgs" rn-carousel-index="carouselIndex" class="imgIndex"></div>
+    </div>
+    <div class="wrapMenuList">
+        <div class="row">
+            <div class="col">
+                <div class="content regulations" ng-mousedown="pageIndexFunc.go('advertiser')">
+                    <div>
+                        <i class="iconfont icon-guanggaozhu"></i>
+                    </div>
+                    <div>
+                        <span class="colorLightBlack">广告主</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="content news" ng-mousedown="pageIndexFunc.go('selfMedia')">
+                    <div>
+                        <i class="iconfont icon-iconfontjihualiebiao"></i>
+                    </div>
+                    <div>
+                        <span class="colorLightBlack">自媒体</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="content case" ng-mousedown="pageIndexFunc.go('rank')">
+                    <div>
+                        <i class="iconfont icon-iconfontpaihangbang"></i>
+                    </div>
+                    <div>
+                        <span class="colorLightBlack">英雄榜</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="content ask" ng-mousedown="pageIndexFunc.goActivity()">
+                    <div>
+                        <i class="iconfont icon-iconfonticonfonthuodong"></i>
+                    </div>
+                    <div>
+                        <span class="colorLightBlack">活动区</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapTabTitle">
+        <div class="row">
+            <div class="col fontSize barTitle" ng-class="{selected:pageIndexData.currSelectTabIndex==item.id}" ng-repeat="item in pageIndexData.dataViews" ng-click="pageIndexFunc.tabClick(item)">
+                {{item.name}}
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapCardList wrapNewsList">
+        <div class="card" ng-repeat="item in pageIndexData.dataViews[pageIndexData.currSelectTabIndex-1].list" ng-mousedown="pageIndexFunc.goDetail(item)">
+            <div class="hTitle">
+                {{item.title}}
+            </div>
+            <div class="Content">
+                <img class="avatar" ng-src="{{item.imgSrc}}">
+                <summary>{{item.summary}}</summary>
+                <div class="clear"></div>
+            </div>
+            <!--<div class="tag">
+                <ul>
+                    <li class="floatL">
+                        <a ng-click="pageListFunc.goList(tag)" class="tag">{{item.categoryName}}</a>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-arrowdown xia"></i>
+                    </li>
+                    <li class="floatR">
+                        <span>{{item.createDate}}</span>
+                    </li>
+                </ul>
+            </div>-->
+            <div class="row">
+                <div class="col txtLeft">
+                    <!--<a href="javascript:;" class="tag">{{item.categoryName}}</a>-->
+                    <ul class="ul-set">
+                        <li class="floatL li-reset" ng-repeat="tag in [item.tags[0],item.tags[1]]" ng-if="item.tags.length>1">
+                            <div class="tag">{{tag}}</div>
+                        </li>
+                        <li class="floatL li-reset" ng-repeat="tag in [item.tags[0]]" ng-if="item.tags.length==1">
+                            <div class="tag">{{tag}}</div>
+                        </li>
+                    </ul>
+                </div>
+                <!--<div class="col txtCenter colorDDD">-->
+                    <!--<i class="iconfont icon-arrowdown relativeTop4"></i>-->
+                <!--</div>-->
+                <div class="col txtRight color999">
+                    <span class="relativeTop4">{{item.createDate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageIndexData.dataViews[pageIndexData.currSelectTabIndex-1].list.length<pageIndexData.dataViews[pageIndexData.currSelectTabIndex-1].totalCount">
+            <button class="button button-clear" ng-click="pageIndexFunc.loadMore()">查看更多</button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col rightLine topLine" ng-click="pageIndexFunc.go('putAd')">
+                我要投广告
+            </div>
+            <div class="col rightLine topLine" ng-click="pageIndexFunc.go('takeAd')">
+                我想接广告
+            </div>
+            <div class="col topLine" ng-click="pageIndexFunc.go('case')">
+                案例
+            </div>
+        </div>
+    </div>
+</div>

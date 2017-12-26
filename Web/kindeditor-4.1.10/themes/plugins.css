@@ -1,0 +1,17 @@
+﻿
+/*分享视频图标*/
+.ke-icon-video {
+	background-position: 0px -512px;
+    width: 16px;
+    height: 16px;
+}
+.ke-icon-cleardoc{
+	background-position: 0px -1200px;
+    width: 16px;
+    height: 16px;
+}
+.ke-icon-importword{
+	background-position: 0px -720px;
+	width: 16px;
+	height: 16px;
+}

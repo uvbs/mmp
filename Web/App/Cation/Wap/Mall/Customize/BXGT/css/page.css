@@ -1,0 +1,85 @@
+﻿@charset "utf-8";
+body{height:100%;font-size:12px;line-height:18px;font-family:"微软雅黑";}
+a:link{text-decoration:none; color:#353535;}
+a:visited {color:#42c0d1;text-decoration:none;}
+a:hover{color:#16ac5a; text-decoration:none;}
+a:active{color:#42c0d1; text-decoration:none;}
+a{text-decoration:none;}
+.banner{width:100%;}
+.banner img{width:100%;height:auto;}
+.address{padding:20px 0px 15px;width:100%;background:#fff;border-bottom:1px solid #e6e6e6;}
+.address .adCon{width:84.375%;margin:0 auto;}
+.address .adCon h2{height:24px;color:#201e1f;font-size:15px;border-bottom:1px solid #e6e6e6;margin-bottom:10px;}
+.address .adCon .xyUl li{width:86%;height:30px;line-height:30px;text-align:center;color:#201e1f;font-size:14px;border:1px solid #e6e6e6;border-radius:5px;margin-bottom:10px;}
+.address .adCon .xyUl li.cur{background:#de0000;color:#fff;border:1px solid #de0000;}
+.address .adCon .data{margin-top:10px;}
+.address .adCon .data ul{width:110%;}
+.address .adCon .data ul li{width:45px;height:45px;float:left;margin-right:8px;margin-bottom:10px;background:url(../images/Bg1.png) no-repeat;text-align:center;}
+.address .adCon .data ul li p.pp1{color:#201e1f;font-size:18px;padding-top:6px;}
+.address .adCon .data ul li p.pp2{color:#646464;font-size:9px;line-height:13px;}
+.address .adCon .data ul li.cur{background:url(../images/BgHov1.png) no-repeat;}
+.address .adCon .data ul li.cur p{color:#fff;}
+
+
+
+em{font-style:normal;}
+.price{margin-top:10px;padding:15px 0px;background:#fff;border:1px solid #e6e6e6;border-width:1px 0px;}
+.price .jgp{margin-left:7.6%;color:#646464;font-size:14px;}
+.price .jgp span{color:#ff580b;font-size:18px;font-weight:bold;padding-right:8px;}
+.price .jgp em{ text-decoration:line-through;}
+.price .kc{margin-left:7.6%;color:#646464;font-size:15px;}
+.price .kc span{color:#646464;}
+.GouMai{width:100%;height:42px;background:#fff;border-top:1px solid #e6e6e6;position:fixed;left:0px;bottom:0px;z-index:9999;}
+.GouMai p{width:30%;margin:0 auto;height:42px;line-height:42px;}
+.GouMai p img{width:100%;height:auto;}
+
+
+.XingHao{margin-top:10px;padding:10px 0px 50px;background:#fff;border-bottom:1px solid #e6e6e6;border-top:1px solid #e6e6e6;}
+.XingHao .xh{font-size:16px;color:#201e1f;line-height:32px;margin-left:7.6%;}
+.XingHao .xhUl{width:76%;}
+.XingHao .xhUl li{height:30px;padding:0px 7px;border:1px solid #e6e6e6;border-radius:5px;float:left;margin-right:10px;line-height:30px;margin-bottom:10px;color:#201e1f;font-size:14px;}
+.XingHao .xhUl li.cur{background:#de0000;border:1px solid #de0000;color:#fff;}
+
+
+
+.back{width:100%;height:30px;position:fixed;left:0px;top:0px;position:relative;background:#1b1a20;padding-top:20px;z-index:9999;}
+.back a{display:block;position:absolute;color:#fff;margin-left:3%;padding-left:15px;background:url(../images/jian.png) no-repeat left center;height:20px;line-height:20px;font-size:18px;}
+.back p{text-align:center;height:20px;color:#fff;line-height:20px;font-size:18px;}
+.spDetail{width:100%;padding:20px 0px 15px;background:#fff;border-bottom:1px solid #e6e6e6;}
+.spDetail .spCon{width:84.375%;margin:0 auto;}
+.spDetail .spCon h2{height:24px;color:#201e1f;font-size:15px;border-bottom:1px solid #e6e6e6;margin-bottom:10px;}
+.spDetail .spCon .sp{padding-bottom:12px;border-bottom:1px solid #e6e6e6;}
+.spDetail .spCon .spPic{width:26.4%;padding:5px;border:2px solid #c5c7c6;}
+.spDetail .spCon .spPic img{width:100%;height:auto;}
+.spDetail .spCon .spFont{width:65%;}
+.spDetail .spCon .spFont h3{color:#201e1f;font-size:16px;line-height:22px;}
+.spDetail .spCon .spFont .pt{color:#201e1f;font-size:12px;}
+.spDetail .spCon .spFont .jq{color:#ff580b;font-size:20px;line-height:20px;font-weight:bold;margin-top:10px;}
+.spDetail .spCon .sl{width:100%;text-align:right;color:#201e1f;font-size:15px;margin-top:3px;}
+.spDetail .spCon .sl span{color:#201e1f;}
+.XinXi{width:100%;padding:20px 0px 50px;background:#fff;border-bottom:1px solid #e6e6e6;margin-top:10px;}
+.XinXi .xxCon{width:84.375%;margin:0 auto;}
+.XinXi .xxCon h2{height:24px;color:#201e1f;font-size:15px;border-bottom:1px solid #e6e6e6;margin-bottom:10px;}
+.XinXi .xxCon .bdCon {width:100%;}
+.XinXi .xxCon .bdCon input{width:100%;height:25px;line-height:25px;margin-bottom:10px;border:1px solid #e6e6e6;text-indent:5px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

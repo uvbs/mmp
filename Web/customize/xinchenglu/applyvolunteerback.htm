@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>添加志愿者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link type="text/css" rel="stylesheet" href="Css/style.css">
+    <link href="../../css/buttons.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .category
+        {
+            height: 30px;
+            boder-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fbxm">
+        <form method="post" id="formsubmit">
+        <p>
+            <label>
+                姓名：</label><br />
+            <input id="Name" name="Name" style="width: 95%;" class="input100 name" type="text"
+                placeholder="姓名(必填)" value="">
+        </p>
+        <p class="logistics">
+            <span class="wl">性别：</span>
+            <input id="rdoman" class="radiobox" type="radio" checked="checked" name="K1" value="男">
+            <label for="rdoman">
+                <span class="wbtn"><span class="iconfont"></span></span>男</label>
+            <input class="radiobox" type="radio" id="rdowoman" name="K1" value="女"><label for="rdowoman"><span
+                class="wbtn"><span class="iconfont"></span></span>女</label></span>
+        </p>
+        <p>
+            <label style="float: none;">
+                居住地址：</label><br />
+            <textarea class="req" name="K2" id="K2" rows="5" placeholder="居住地址"></textarea>
+        </p>
+        <p>
+            <label style="float: none;">
+                服务分类：</label><br />
+            <select id="K9" name="K9" class="category" style="width: 95%;">
+                <option value="">请选择分类</option>
+                <option value="便民服务">便民服务</option>
+                <option value="学习类">学习类</option>
+                <option value="咨询类">咨询类</option>
+                <option value="文艺类">文艺类</option>
+                <option value="戏曲类">戏曲类</option>
+                <option value="体育类">体育类</option>
+                <option value="休闲类">休闲类</option>
+                <option value="调解类">调解类</option>
+                <option value="摄影类">摄影类</option>
+                <option value="医疗类">医疗类</option>
+                <option value="计算机类">计算机类</option>
+                <option value="青少年服务类">青少年服务类</option>
+                <option value="青老结对服务类">青老结对</option>
+                <option value="金融理财">金融理财</option>
+            </select>
+        </p>
+        <p>
+            <label>
+                服务项目：</label><br />
+            <input id="K4" name="K4" style="width: 95%; height: 50px;" class="input100 name"
+                type="text" placeholder="服务项目(必填)" value="">
+        </p>
+        <p style="margin-bottom: 0;">
+            <label style="float: none;">
+                服务介绍：</label><br />
+            <textarea id="K6" name="K6" placeholder="项目介绍(选填)" class="req" rows="10"></textarea>
+        </p>
+        <p>
+            <label>
+                服务时间：</label><br />
+            <input id="K5" name="K5" style="width: 95%;" class="input100 name" type="text" placeholder="服务时间(必填)"
+                value="预约">
+        </p>
+        <p>
+            <label>
+                联系电话：</label><br />
+            <input id="K3" name="K3" style="width: 95%;" class="input100 name" type="text" placeholder="联系电话(必填)"
+                value="">
+        </p>
+        <p>
+            <label>
+                个人理念：</label><br />
+            <input id="K7" name="K7" style="width: 95%;" class="input100 name" type="text" placeholder="个人理念(选填)"
+                value="">
+        </p>
+        <p>
+            <label>
+                头像：</label><br />
+               <img id="imghead" width="80" />
+              <a href="javascript:;" class="easyui-linkbutton" iconcls="icon-add2" plain="true" onclick="txtThumbnailsPath.click()">上传头像</a>
+              <img src="/MainStyle/Res/easyui/themes/icons/tip.png" />
+            <input type="file" id="txtThumbnailsPath" name="file1"  style="display:none;"/>
+        </p>
+        <label style="float:none;">是否党员：</label><br/>
+                  <select id="Select1" name="K12" class="category" style="width:95%;" >
+                  <option value="否">否</option>
+                  <option value="是">是</option>
+                  </select>
+        <a href="javascript:void(0)" id="btnSubmit" class="button button-block button-rounded button-action button-large">
+            添加志愿者</a>
+        <!--hidden -->
+        <input type="hidden" value="216214" name="ActivityID" />
+        <input type="hidden" value="eGluY2hlbmdsdQ==" name="LoginName" />
+        <input type="hidden" value="7F5F1AD0A5E8F29AB7A8EC4F#2F087FF" name="LoginPwd" />
+        <input type="hidden" value="systemdefault" name="Phone" />
+        <input type="hidden" value="Name,K3" name="DistinctKeys" />
+        <input type="hidden" value="" name="K11"  id="K11"/>
+        <input type="hidden" value="通过" name="K8"  id="K8"/>
+        <!--hidden -->
+        </form>
+    </div>
+    <div class="blank">
+    </div>
+    <!-- Back -->
+    <a href="javascript:window.history.go(-1)" class="back"><span class="iconfont icon-fanhui">
+    </span></a>
+    <!--/ Back -->
+</body>
+<script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+<script src="/Scripts/ajaxfileupload2.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#txtThumbnailsPath").live('change', function () {
+            try {
+                $.ajaxFileUpload(
+                     {
+                         url: '/Handler/CommHandler.ashx?action=UploadSingelFile&fd=JuActivityImg',
+                         secureuri: false,
+                         fileElementId: 'txtThumbnailsPath',
+                         dataType: 'text',
+                         success: function (result) {
+                             try {
+                                 result = result.substring(result.indexOf("{"), result.indexOf("</"));
+                             } catch (e) {
+                                 alert(e);
+                             }
+                             var resp = $.parseJSON(result);
+                             if (resp.Status == 1) {
+                                 $("#imghead").attr("src", resp.ExStr);
+                                 $("#K11").val(resp.ExStr);
+
+                             }
+                             else {
+                                 Alert(resp.Msg);
+                             }
+                         }
+                     }
+                    );
+
+            } catch (e) {
+                alert(e);
+            }
+        });
+
+        $("#btnSubmit").click(function () {
+            //
+            var Name = $("#Name").val();
+            var K2 = $.trim($("#K2").val());
+            var K4 = $.trim($("#K4").val());
+            var K5 = $.trim($("#K5").val());
+            var K3 = $.trim($("#K3").val()); //电话
+            var K9 = $.trim($("#K9").val());
+
+            if (Name == "") {
+                alert("请输入姓名");
+                $("#Name").focus();
+                return false;
+            }
+            if (K2 == "") {
+                alert("请输入居住地址");
+                $("#K2").focus();
+                return false;
+            }
+            if (K9 == "") {
+                alert("请选择服务分类");
+                return false;
+            }
+            if (K4 == "") {
+                alert("请输入服务项目");
+                $("#K4").focus();
+                return false;
+            }
+            if (K5 == "") {
+                alert("请输入服务时间");
+                $("#K5").focus();
+                return false;
+            }
+            if (K3 == "") {
+                alert("请输入联系电话");
+                $("#K3").focus();
+                return false;
+            }
+
+            $("#formsubmit").ajaxSubmit({
+                url: "/serv/ActivityApiJson.ashx",
+                type: "post",
+                dataType: "json",
+                success: function (resp) {
+                    if (resp.Status == 0) {//清空
+                        //$('input:text').val("");
+                        //$('textarea').val("");
+                        alert("添加成功!");
+                        return;
+
+                    }
+                    else if (resp.Status == 1) {
+                        alert("重复提交!");
+
+                    }
+                    else {
+                        alert(resp.Msg);
+                    }
+
+                }
+            });
+            return false;
+
+            //
+        });
+    });
+     
+
+    
+</script>
+</html>

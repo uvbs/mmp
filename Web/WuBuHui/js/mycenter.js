@@ -1,0 +1,1 @@
+$("#synecticsbtn").showfixbox("#discuss_exit",".secondtextarea"),$(".secondtextarea").css({height:$(window).height()-41}),$("#discuss_exit").bind("touchstart",function(){$("textarea").blur()});

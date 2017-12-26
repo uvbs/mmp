@@ -1,0 +1,75 @@
+<div class="wrapDisCount">
+    <header ng-attr-title="{{discount.title}}" ng-attr-btnshow="0"></header>
+    <div class="content has-header">
+        <div class="row row-sale">
+            <div class="col col-sale">
+                {{discount.classLevel.down_user_total_count}}<br/>
+                全部(人)
+            </div>
+            <div class="col col-sale" ng-class="{selected:discount.currPageIndex==0}" ng-mousedown="discount.currPageIndex=0">
+                {{discount.classLevel.down_user_level1_count}}<br/>
+                一级{{discount.levels.distribution_show_name}}(人)
+            </div>
+            <div class="col col-sale" ng-class="{selected:discount.currPageIndex==1}" ng-mousedown="discount.currPageIndex=1"  ng-if="discount.levels.distribution_level>=2">
+                {{discount.classLevel.down_user_level2_count}}<br/>
+                二级{{discount.levels.distribution_show_name}}(人)
+            </div>
+            <div class="col col-sale" ng-class="{selected:discount.currPageIndex==2}" ng-mousedown="discount.currPageIndex=2"  ng-if="discount.levels.distribution_level>=3">
+                {{discount.classLevel.down_user_level3_count}}<br/>
+                三级{{discount.levels.distribution_show_name}}(人)
+            </div>
+        </div>
+        <div class="row row-sale" ng-hide="true">
+            <div class="col col-sale">
+                <!--<label>-->
+                <!--<select class="form-control"  ng-options="discount.commission.name for discount.commission in discount.commissions"></select>-->
+                <!--</label>-->
+                <select class="form-control" aria-controls="editable" ng-model="prokeyword" >
+                    <option>贡献{{discount.levels.commission_show_name}}最多</option>
+                    <option>贡献{{discount.levels.commission_show_name}}最少</option>
+                    <option>合计贡献最多</option>
+                    <option>合计贡献最少</option>
+                </select>
+            </div>
+        </div>
+        <div ng-if="discount.currPageIndex==0">
+            <div class="mBottom10 mTop10" ng-repeat="item in discount.dataList">
+                <div class="list list-sale borderGreen">
+                    <a class="item item-avatar">
+                        <img class="imgstyle" ng-src="{{item.head_img_url}}">
+                        <h2>{{item.nick_name}} &nbsp;&nbsp;{{item.level_name}}</h2>
+                        <p>一级{{discount.levels.distribution_show_name}}</p>
+                    </a>
+                    <div class="commission">
+                        <span class="priceSmall"> {{item.contribution_commission_amount}}</span><br/>
+                        贡献{{discount.levels.commission_show_name}}
+                    </div>
+                </div>
+                <div class="row row-sale"  ng-if="discount.levels.distribution_level>=2">
+                    <div class="col col-sale">
+                        <span class="priceSmall">{{item.level2_contribution_commission_amount}}</span><br/>
+                        二级{{discount.levels.distribution_show_name}}贡献
+                    </div>
+                    <div class="col col-sale"  ng-if="discount.levels.distribution_level>=3">
+                        <span class="priceSmall"> {{item.level3_contribution_commission_amount}}</span><br/>
+                        三级{{discount.levels.distribution_show_name}}贡献
+                    </div>
+                </div>
+                <!--<div class="row row-sale">-->
+                    <!--<div class="col col-sale">-->
+                        <!--<span class="price">{{item.contribution_commission_total_amount}}</span><br/>-->
+                        <!--合计贡献{{discount.levels.commission_show_name}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="tips" ng-if="discount.currPageIndex==1">
+            根据平台隐私政策不予显示
+        </div>
+
+        <div class="tips" ng-if="discount.currPageIndex==2">
+            根据平台隐私政策不予显示
+        </div>
+
+    </div>
+</div>

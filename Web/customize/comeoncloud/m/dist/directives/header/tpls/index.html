@@ -1,0 +1,26 @@
+<div>
+    <div class="wrapHeader" ng-class="{mTop43:pageData.navData.head_bar.show==1}" ng-if="pageData.navData.userinfo.show==1">
+        <div class="info-center" ng-if="pageData.navData.userinfo.style==1">
+            <div class="info-head" style="background:{{pageData.navData.userinfo.bgcolor}}">
+                <img class="person-img" ng-src="{{pageData.userInfo.avatar}}">
+                <div class="person-text">
+                    <div class="person-name ng-binding" ng-bind-html="pageData.userInfo.nick_name"></div>
+                    <a class="manage-btn" href="{{pageData.navData.userinfo.btn_url}}"  ng-bind-html="pageData.navData.userinfo.btn_text"></a>
+                </div>
+                <div class="clear-both"></div>
+            </div>
+        </div>
+        <div class="wrapUserIndex" ng-if="pageData.navData.userinfo.style==2">
+            <div class="list">
+                <div class="userInfo" style="background:{{pageData.navData.userinfo.bgcolor}}">
+                    <div class="avatar" style="background-image: url({{pageData.userInfo.avatar}}); border-color: {{pageData.navData.userinfo.border_color}}">
+                        <!--<i ng-show="pageData.userInfo.isTutor" class="iconfont icon-v colorYellow"></i>-->
+                    </div>
+                    <div class="userName" ng-bind-html="pageData.userInfo.nick_name"></div>
+                    <a class="userIntroduce" href="{{pageData.navData.userinfo.btn_url}}" ng-bind-html="pageData.navData.userinfo.btn_text">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

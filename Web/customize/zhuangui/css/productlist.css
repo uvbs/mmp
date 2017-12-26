@@ -1,0 +1,188 @@
+﻿
+body {
+    background-color: white;
+}
+
+.top {
+    background: rgb(227, 81, 40);
+    position: fixed;
+    top: 0;
+    height: 40px;
+    width:100%;
+    z-index:100000;
+}
+
+.top-left {
+    width: 10%;
+    float: left;
+    height: 35px;
+}
+
+.top-left-img {
+    height: 25px;
+    margin-top: 9px;
+    margin-left:10px;
+}
+
+.top-right {
+    width: 10%;
+    height: 32px;
+    float: right;
+}
+
+.top-right-img {
+    height: 20px;
+    margin-top: 9px;
+}
+
+.logo {
+    width: 80%;
+    text-align: center;
+    max-height: 35px;
+    float: left;
+}
+
+    .logo img {
+        max-width: 100%;
+        max-height:35px;
+        
+    }
+
+.product-list {
+    margin-top: 50px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.product-item {
+    border: 1px solid #eee;
+    float: left;
+    width: 48%;
+    /*padding: 2px 2px 2px 2px;*/
+    margin-left: 1%;
+    margin-top: 5px;
+}
+
+
+.product-img {
+    text-align: center;
+}
+
+    .product-img img {
+        width: 100%;
+        overflow: hidden;
+    }
+
+.product-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.product-price {
+    padding: 5px;
+    color: #f60;
+    font-weight: bold;
+    font-size: 1.2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+}
+
+.weui-loadmore, weui-loadmore_line {
+}
+
+.weui-loadmore__tips {
+    margin-top: 20px;
+}
+
+.weui-tabbar {
+    position: fixed;
+    bottom: 0;
+}
+
+.notice {
+    margin-bottom: 80px;
+    word-break: break-all; /*支持IE，chrome，FF不支持*/
+    　　word-wrap: break-word; /*支持IE，chrome，FF*/
+}
+
+    .notice img {
+        width: 100%;
+    }
+
+.banner {
+    margin-top: 35px;
+}
+
+    .banner img {
+        width: 100%;
+    }
+
+#btnLoinout {
+    background-color: #ff6633;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    color: white;
+    z-index: 999;
+    opacity:0.8;
+}
+
+.info {
+    padding: 10px 10px 10px 10px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 80px;
+    margin: 0;
+}
+
+.info-left {
+    float: left;
+    width: 90px;
+}
+
+.info-left-logo {
+    width: 100%;
+}
+
+.info-left-logo {
+    width: 80px;
+    height: 80px;
+}
+
+.info-right {
+    float: left;
+    width: 70%;
+}
+
+.info-right-name {
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-right-desc {
+    font-size: 13px;
+    color: #666;
+}
+
+.info-right-link {
+    font-size: 16px;
+    float: right;
+    color: #ff6633;
+}
+.weui-btn {
+    opacity:0.9;
+}
+.weui-tabbar {
+    height:60px;
+}
+.weui-tabbar__label {
+    font-size:13px;
+    color:#4d4d4d;
+}

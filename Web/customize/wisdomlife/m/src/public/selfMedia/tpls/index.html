@@ -1,0 +1,60 @@
+﻿<div class="wrapArticleList">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+        <h3><i class="icon iconfont icon-fenlei classfy"></i>分类查询</h3>
+        <div class="cbp-wrap-menulist">
+            <a href="javascript:;" target="_blank" ng-click="pageFunc.leftMenuClick(item)" ng-repeat="item in pageData.tag">{{item.name}}</a>
+        </div>
+    </nav>
+
+    <form ng-submit="pageFunc.search()">
+        <div class="warpHeader bar bar-header item-input-inset ">
+            <i class="icon iconfont icon-fenlei classfy" ng-click="pageFunc.toggleMenuClick()"></i>
+            <div class="searchDiv">
+                <input class="inputSearch" type="search" ng-model="pageData.keyword" placeholder="搜索关键字查询">
+                <div class="rightSearch">
+                    <i class="icon iconfont icon-search" ng-click="pageFunc.search()"></i>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="wrapCardList wrapNewsList">
+        <div class="card" ng-repeat="item in pageData.dataList">
+            <div class="item">
+                <div class="row" ng-click="pageFunc.go(item)">
+                    <div>
+                        <img class="img" ng-src="{{item.imgSrc}}">
+                        <!--<img src="/customize/wisdomlife/m/static/img/cctv.png" class="img" />-->
+                    </div>
+                    <div class="col mLeft">
+                        <h2 title="{{item.title}}">{{item.title}}</h2>
+                        <summary>{{item.summary}}</summary>
+                        <ul class="ul-set">
+                            <li class="floatL li-reset" ng-repeat="tag in [item.tags[0],item.tags[1]]" ng-if="item.tags.length>1">
+                                <div class="tag">{{tag}}</div>
+                            </li>
+                            <li class="floatL li-reset" ng-repeat="tag in [item.tags[0]]" ng-if="item.tags.length==1">
+                                <div class="tag">{{tag}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<div class="row clear">
+                    <ul>
+                        <li class="floatL" ng-repeat="tag in [0,1,2,3]">
+                            <a  class="tag"></a>
+                        </li>
+                        <li class="floatR">
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="wrapShowMore" ng-if="pageData.dataList.length<pageData.totalCount">
+            <button class="button button-clear" ng-click="pageFunc.loadMore()">查看更多</button>
+        </div>
+    </div>
+    <div ng-if="pageData.totalCount == 0" class="txtCenter pTop22">
+        没有数据
+    </div>
+</div>
